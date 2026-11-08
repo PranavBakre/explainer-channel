@@ -316,3 +316,37 @@ Document: NIST SP 800-63B-4, "Digital Identity Guidelines: Authentication and Au
 - Figure: "One key advantage of having a work factor is that it can be increased over time as hardware becomes more powerful and cheaper. The most common approach to upgrading the work factor is to wait until the user next authenticates, then re-hash their password with the new work factor."
 - Source: OWASP Password Storage Cheat Sheet, "Upgrading the Work Factor", https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html (opened 2026-11-09)
 - VERIFIED
+
+**F39. scrypt was presented at BSDCan'09 in May 2009; it is designed to make hardware brute-force attacks far more costly.**
+- Figure: "presented at BSDCan'09, May 09"; "designed to be far more secure against hardware brute-force attacks than alternative functions such as PBKDF2 or bcrypt."
+- Source: Tarsnap scrypt page, https://www.tarsnap.com/scrypt.html (opened 2026-11-09)
+- VERIFIED
+
+**F40. SHA-256 always produces a 256-bit digest (64 hexadecimal characters).**
+- Figure: "The SHA-224 and SHA-256 algorithms produce 224-bit and 256-bit message digests"; table "SHA-256 32 byte / 256 bit".
+- Source: RFC 6234, US Secure Hash Algorithms, https://www.rfc-editor.org/rfc/rfc6234.txt (opened 2026-11-09)
+- VERIFIED
+
+**F41. NIST requires sites to allow password managers and autofill, and recommends allowing paste.**
+- Figure: "Verifiers SHALL allow the use of password managers and autofill functionality. Verifiers SHOULD permit claimants to use the 'paste' function when entering a password..."
+- Source: NIST SP 800-63B-4, §3.1.1.2, https://pages.nist.gov/800-63-4/sp800-63b.html (opened 2026-11-09)
+- VERIFIED
+
+**F42. A real Argon2id hash of mango@123 at OWASP's minimum settings, as stored by a common library.**
+- Figure: `$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6szy6uvAh96bkyw$Pr8MGyxkXWUs/ALFyQ4a+2IS3skjs84BpY4YSDhLGFM` — algorithm, version, memory (KiB), passes, parallelism, salt, hash in one string.
+- Source: computed locally with argon2-cffi `PasswordHasher(time_cost=2, memory_cost=19456, parallelism=1).hash('mango@123')` (2026-11-09). The salt is random per run.
+- VERIFIED (computed)
+
+**F43. SHA-256 and SHA-1 outputs used on screen (computed locally with shasum).**
+- SHA-256(`mango@123`) = `81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1`; SHA-1(`mango@123`) = `f14d5ba7f5892b8cb2549dea72287ee3692bb297`; SHA-1 of 123456, password, 12345678, qwerty, iloveyou, 111111 as shown in the lookup-table scene; SHA-256(`9f2c4a71mango@123`) = `fb9d0556…0401`, SHA-256(`e05b13d8mango@123`) = `324ce3f9…a9a8` (salt prepended, illustrative 32-bit salts).
+- VERIFIED (computed)
+
+**F44. Leaked passwords are reused against other sites (credential stuffing), which relies on people reusing passwords.**
+- Figure: "Credential stuffing attacks rely on not just the re-use of passwords between multiple sites, but also the re-use of usernames."; "due to frequent reuse of passwords across multiple sites, the possibility that the users email account has also been compromised should be considered."
+- Source: OWASP Credential Stuffing Prevention Cheat Sheet, https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html (opened 2026-11-09)
+- VERIFIED
+
+**F45. Verification recomputes the hash with the stored salt and settings and compares: a working demonstration.**
+- Figure: argon2-cffi `PasswordHasher.verify(stored, "mango@123")` returns True on the F42 string; `verify(stored, "mango@124")` raises `VerifyMismatchError`. The library reads algorithm, settings and salt from the stored string, hashes the attempt, and compares.
+- Source: computed locally with argon2-cffi (2026-11-09)
+- VERIFIED (computed demonstration)

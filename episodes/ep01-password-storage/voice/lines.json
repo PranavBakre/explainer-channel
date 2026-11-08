@@ -1,0 +1,346 @@
+[
+ {
+  "id": "S01_01",
+  "text": "A well-run website does not keep a readable copy of your password."
+ },
+ {
+  "id": "S01_02",
+  "text": "So when you log in, what is it checking against?"
+ },
+ {
+  "id": "S01_03",
+  "text": "Somewhere there's a row with your email on it. Next to it sits something nobody at the company can read back."
+ },
+ {
+  "id": "S01_04",
+  "text": "A badly run website does keep the password."
+ },
+ {
+  "id": "S02_01",
+  "text": "In December two thousand nine, a company called RockYou was hacked."
+ },
+ {
+  "id": "S02_02",
+  "text": "About thirty-two million passwords leaked, and they were stored as plain, readable text."
+ },
+ {
+  "id": "S02_03",
+  "text": "The most common password was one two three four five six. Almost three hundred thousand accounts used it."
+ },
+ {
+  "id": "S02_04",
+  "text": "Other sites did protect their passwords. But one modern graphics card can try every eight-character password of lowercase letters and digits, in some of those formats, in under a minute."
+ },
+ {
+  "id": "S03_01",
+  "text": "Let's say you sign up for a new grocery app. Your password is mango, at sign, one two three."
+ },
+ {
+  "id": "S03_02",
+  "text": "The simplest thing the app can do is save it as it is. One column for your email, one for your password."
+ },
+ {
+  "id": "S03_03",
+  "text": "It works. You log in. The app compares what you typed with what it saved, and lets you in."
+ },
+ {
+  "id": "S03_04",
+  "text": "It also means anyone who copies that table walks away with every password in it. That was RockYou."
+ },
+ {
+  "id": "S03_05",
+  "text": "And attackers try leaked passwords on other sites. If you reused yours, one leak can open those accounts too."
+ },
+ {
+  "id": "S04_01",
+  "text": "The obvious fix is to lock the column. Encrypt each password with a secret key."
+ },
+ {
+  "id": "S04_02",
+  "text": "Now the table shows scrambled text instead of mango at one two three."
+ },
+ {
+  "id": "S04_03",
+  "text": "But encryption is built to be undone. Whoever holds the key can turn every row back into the original."
+ },
+ {
+  "id": "S05_01",
+  "text": "In twenty thirteen, Adobe was breached."
+ },
+ {
+  "id": "S05_02",
+  "text": "Its passwords were encrypted, not hashed, with a cipher called Triple D E S."
+ },
+ {
+  "id": "S05_03",
+  "text": "Australia's privacy regulator later found that Adobe used a single encryption key for all of them."
+ },
+ {
+  "id": "S05_04",
+  "text": "About a hundred and nine million records also had a password hint, stored in plain text."
+ },
+ {
+  "id": "S05_05",
+  "text": "Adobe said about thirty-eight million active users were hit. The leaked file had about a hundred and fifty-three million records."
+ },
+ {
+  "id": "S05_06",
+  "text": "A hint like \"my dog's name\" gives a guesser a head start."
+ },
+ {
+  "id": "S05_07",
+  "text": "So encryption solved the wrong problem. The site never needed to read your password back. It only needs to check it."
+ },
+ {
+  "id": "S06_01",
+  "text": "Checking without reading back is what a cryptographic hash does."
+ },
+ {
+  "id": "S06_02",
+  "text": "It turns any text into a fingerprint of fixed length."
+ },
+ {
+  "id": "S06_03",
+  "text": "Feed it mango at one two three, and SHA-256 gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
+ },
+ {
+  "id": "S06_04",
+  "text": "And there's no practical way to run it backwards. An attacker can still guess, hash the guess, and compare."
+ },
+ {
+  "id": "S07_01",
+  "text": "Change one character, and the fingerprint changes all over."
+ },
+ {
+  "id": "S07_02",
+  "text": "Hunter two and hunter three differ by a single digit. The differences are scattered across the whole fingerprint."
+ },
+ {
+  "id": "S07_03",
+  "text": "In this pair, one hundred and forty-six of the two hundred and fifty-six bits flipped."
+ },
+ {
+  "id": "S07_04",
+  "text": "So a near miss doesn't look like a near miss."
+ },
+ {
+  "id": "S08_01",
+  "text": "So the app stores the fingerprint instead of the password."
+ },
+ {
+  "id": "S08_02",
+  "text": "When you log in, it hashes what you just typed, and compares the two fingerprints."
+ },
+ {
+  "id": "S08_03",
+  "text": "They match, so the app lets you in."
+ },
+ {
+  "id": "S08_04",
+  "text": "If that table leaks, the attacker gets fingerprints, not passwords. That sounds airtight. LinkedIn found out it wasn't."
+ },
+ {
+  "id": "S09_01",
+  "text": "In twenty twelve, a file of about six and a half million LinkedIn password hashes was posted online."
+ },
+ {
+  "id": "S09_02",
+  "text": "They were SHA-1 hashes, with nothing added. Unsalted."
+ },
+ {
+  "id": "S09_03",
+  "text": "That matters because the same password always produces the same fingerprint."
+ },
+ {
+  "id": "S09_04",
+  "text": "Attackers don't need to reverse anything. They hash millions of common passwords once, ahead of time, and keep the results in a lookup table."
+ },
+ {
+  "id": "S09_05",
+  "text": "Then they just search. If your fingerprint is in their table, your password is the row next to it."
+ },
+ {
+  "id": "S09_06",
+  "text": "Four years later, LinkedIn said it believed the breach was far bigger: a hundred and seventeen million emails and passwords."
+ },
+ {
+  "id": "S10_01",
+  "text": "The fix is called salting."
+ },
+ {
+  "id": "S10_02",
+  "text": "Each password gets its own random string, mixed in before hashing. That string is the salt."
+ },
+ {
+  "id": "S10_03",
+  "text": "It isn't secret. It's stored right next to the hash. Its job is to make the same password hash differently for every user."
+ },
+ {
+  "id": "S10_04",
+  "text": "Two people who both chose mango at one two three now get completely different fingerprints."
+ },
+ {
+  "id": "S10_05",
+  "text": "As long as salts are long and random, a table built in advance stops working. It would need a separate table for every salt."
+ },
+ {
+  "id": "S11_01",
+  "text": "But salt only stops the shortcut. It doesn't stop guessing."
+ },
+ {
+  "id": "S11_02",
+  "text": "An attacker with a leaked salt and hash can still try passwords one by one. Hash a guess with that salt, compare, repeat."
+ },
+ {
+  "id": "S11_03",
+  "text": "Real people make that easier. In the RockYou leak, nearly half the passwords were names, dictionary words or simple patterns."
+ },
+ {
+  "id": "S11_04",
+  "text": "So attackers try the likely passwords first, and the long tail later."
+ },
+ {
+  "id": "S11_05",
+  "text": "And the hashes we've seen so far are fast to calculate."
+ },
+ {
+  "id": "S12_01",
+  "text": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hashcat."
+ },
+ {
+  "id": "S12_02",
+  "text": "It tries about a hundred and sixty-four billion M D five guesses every second."
+ },
+ {
+  "id": "S12_03",
+  "text": "About fifty billion for SHA-1. About twenty-two billion for SHA-256."
+ },
+ {
+  "id": "S12_04",
+  "text": "Take every possible eight-character password made of lowercase letters and digits. That's about two point eight trillion of them."
+ },
+ {
+  "id": "S12_05",
+  "text": "With M D five, that card gets through all of them in about seventeen seconds. With SHA-1, under a minute. SHA-256, about two minutes."
+ },
+ {
+  "id": "S13_01",
+  "text": "So the real fix is to make each guess expensive."
+ },
+ {
+  "id": "S13_02",
+  "text": "Password hashing functions are built to be slow on purpose, and the slowness can be turned up as hardware gets faster."
+ },
+ {
+  "id": "S13_03",
+  "text": "bcrypt arrived in nineteen ninety-nine."
+ },
+ {
+  "id": "S13_04",
+  "text": "On the same card, bcrypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year."
+ },
+ {
+  "id": "S13_05",
+  "text": "scrypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware."
+ },
+ {
+  "id": "S13_06",
+  "text": "At the tested setting, the card manages about seven thousand guesses a second. About twelve and a half years for the same set."
+ },
+ {
+  "id": "S14_01",
+  "text": "The OWASP guidance on password storage recommends Argon2id. It comes from Argon2, which won an open password hashing competition in twenty fifteen."
+ },
+ {
+  "id": "S14_02",
+  "text": "Its minimum setting uses about twenty megabytes of memory and two rounds of work for every single guess."
+ },
+ {
+  "id": "S14_03",
+  "text": "In a common library's format, the stored value carries its own recipe. One line holds the algorithm and its settings. Then the salt. Then the hash."
+ },
+ {
+  "id": "S14_04",
+  "text": "Because the settings travel with the hash, a site can raise the cost later. It re-hashes your password the next time you log in."
+ },
+ {
+  "id": "S14_05",
+  "text": "Some sites add one more layer, called a pepper. It's a single secret kept outside the database, so a stolen table alone isn't enough to start guessing."
+ },
+ {
+  "id": "S14_06",
+  "text": "So picture the grocery app's table leaking today. Each row gives an attacker a salt and a slow fingerprint, and every guess costs real time."
+ },
+ {
+  "id": "S15_01",
+  "text": "There's one moment the site does see your password. Every time you log in."
+ },
+ {
+  "id": "S15_02",
+  "text": "It arrives over an encrypted connection, then gets hashed and compared with the stored value."
+ },
+ {
+  "id": "S15_03",
+  "text": "So if a site ever emails you the password you forgot, it can recover your password. That's the warning sign."
+ },
+ {
+  "id": "S16_01",
+  "text": "The current guidelines reflect all of this."
+ },
+ {
+  "id": "S16_02",
+  "text": "The US standards body NIST now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle."
+ },
+ {
+  "id": "S16_03",
+  "text": "Under these guidelines, sites must not force you to change your password on a schedule, like every ninety days. They must force a change if there's evidence it was compromised."
+ },
+ {
+  "id": "S16_04",
+  "text": "Sites must not demand symbols and mixed case. They ask for length instead. At least fifteen characters, if the password is your only login factor."
+ },
+ {
+  "id": "S16_05",
+  "text": "And sites must check new passwords against a blocklist of commonly used, expected or compromised passwords."
+ },
+ {
+  "id": "S17_01",
+  "text": "That last check can work without sending your password, or even its full hash."
+ },
+ {
+  "id": "S17_02",
+  "text": "Your browser or app hashes the password with SHA-1, and sends only the first five characters to the service Have I Been Pwned."
+ },
+ {
+  "id": "S17_03",
+  "text": "The service returns the endings of matching leaked hashes in its database. Your device checks its own ending against that list."
+ },
+ {
+  "id": "S18_01",
+  "text": "Put the whole chain together. Plain text leaks everything. Encryption leaks everything to whoever holds the key."
+ },
+ {
+  "id": "S18_02",
+  "text": "A plain hash can fall to a lookup table. A salted fast hash can fall to a graphics card. A salted slow hash makes every guess expensive."
+ },
+ {
+  "id": "S18_03",
+  "text": "Back to RockYou's most popular password. A sensible attacker tries the most common passwords first. So even behind Argon2, one two three four five six would be among the first guesses."
+ },
+ {
+  "id": "S18_04",
+  "text": "So the site's job is to make guessing expensive. Your job is a long password you've used nowhere else, so a leak on one site can't be replayed on your other accounts."
+ },
+ {
+  "id": "S18_05",
+  "text": "Our advice: use a password manager. NIST now requires sites to allow them."
+ },
+ {
+  "id": "S18_06",
+  "text": "What you can't see from a login screen is how a site stores your password. That half of the job is out of your hands. Your half isn't."
+ },
+ {
+  "id": "S18_07",
+  "text": "And if a breach notice ever says passwords were salted and hashed with something slow, you'll know what that bought you. Time."
+ }
+]

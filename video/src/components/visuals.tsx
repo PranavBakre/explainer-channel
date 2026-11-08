@@ -217,9 +217,17 @@ const Arrow: React.FC<{color?: string; back?: boolean}> = ({color = colors.slate
   </svg>
 );
 
-export const KeyDiagram: React.FC<ShotProps<{plain: string; cipher: string; keyLabel: string; caption?: string}>> = ({plain, cipher, keyLabel, caption, steps}) => {
+export const KeyDiagram: React.FC<ShotProps<{plain: string; cipher: string; keyLabel: string; caption?: string; backStep?: number; captionStep?: number}>> = ({
+  plain,
+  cipher,
+  keyLabel,
+  caption,
+  backStep = 1,
+  captionStep = 2,
+  steps,
+}) => {
   const frame = useCurrentFrame();
-  const back = stepAt(steps, 1);
+  const back = stepAt(steps, backStep);
   return (
     <Stage>
       <div style={{display: 'flex', alignItems: 'center', gap: 40, ...rise(frame, 0)}}>
@@ -240,7 +248,7 @@ export const KeyDiagram: React.FC<ShotProps<{plain: string; cipher: string; keyL
         <KeyIcon color={frame >= back ? colors.red : colors.cream} />
         <span style={{fontSize: 36, color: frame >= back ? colors.red : colors.cream}}>{keyLabel}</span>
       </div>
-      {caption ? <div style={{...rise(frame, stepAt(steps, 2)), marginTop: 44, fontSize: 40, textAlign: 'center'}}>{caption}</div> : null}
+      {caption ? <div style={{...rise(frame, stepAt(steps, captionStep)), marginTop: 44, fontSize: 40, textAlign: 'center'}}>{caption}</div> : null}
     </Stage>
   );
 };
@@ -323,7 +331,7 @@ export const LookupTable: React.FC<ShotProps<{title: string; rows: {password: st
   );
 };
 
-type Bar = {label: string; value: number; display: string; tone?: Tone};
+type Bar = {label: string; value: number; display: string; tone?: Tone; step?: number};
 
 export const RaceBars: React.FC<ShotProps<{title: string; bars: Bar[]; caption?: string; captionStep?: number; log?: boolean}>> = ({
   title,
@@ -341,14 +349,14 @@ export const RaceBars: React.FC<ShotProps<{title: string; bars: Bar[]; caption?:
         <Label>{title}</Label>
         <div style={{display: 'flex', flexDirection: 'column', gap: 34, marginTop: 40}}>
           {bars.map((b, i) => {
-            const s = stepAt(steps, i);
+            const s = (b.step ?? i) < 0 ? -1000 : stepAt(steps, b.step ?? i);
             const v = log ? Math.max(Math.log10(b.value), 0.3) : b.value;
-            const w = (v / max) * 1000 * enter(frame, s, 24);
+            const w = (v / max) * 860 * enter(frame, s, 24);
             return (
               <div key={b.label} style={{display: 'flex', alignItems: 'center', gap: 28, opacity: enter(frame, s, 8)}}>
                 <div style={{width: 220, fontSize: 34, fontWeight: 700, color: colors.cream}}>{b.label}</div>
                 <div style={{height: 54, width: w, background: tone(b.tone, 'red'), borderRadius: 6}} />
-                <div style={{fontFamily: fonts.mono, fontSize: 30, color: tone(b.tone, 'red'), opacity: enter(frame, s + 16)}}>{b.display}</div>
+                <div style={{fontFamily: fonts.mono, fontSize: 30, color: tone(b.tone, 'red'), opacity: enter(frame, s + 16), whiteSpace: 'nowrap'}}>{b.display}</div>
               </div>
             );
           })}
@@ -360,22 +368,22 @@ export const RaceBars: React.FC<ShotProps<{title: string; bars: Bar[]; caption?:
   );
 };
 
-type Stat = {value: string; label: string; tone?: Tone};
+type Stat = {value: string; label: string; tone?: Tone; step?: number};
 
-export const StatGrid: React.FC<ShotProps<{title?: string; items: Stat[]; caption?: string}>> = ({title, items, caption, steps}) => {
+export const StatGrid: React.FC<ShotProps<{title?: string; items: Stat[]; caption?: string; captionStep?: number}>> = ({title, items, caption, captionStep, steps}) => {
   const frame = useCurrentFrame();
   return (
     <Stage>
       {title ? <Label style={{...rise(frame, 0), marginBottom: 48}}>{title}</Label> : null}
       <div style={{display: 'flex', gap: 60, justifyContent: 'center'}}>
         {items.map((it, i) => (
-          <div key={i} style={{...rise(frame, stepAt(steps, i)), textAlign: 'center', width: 440}}>
+          <div key={i} style={{...rise(frame, stepAt(steps, it.step ?? i)), textAlign: 'center', width: 440}}>
             <div style={{fontFamily: fonts.serif, fontSize: 112, color: tone(it.tone, 'amber'), lineHeight: 1}}>{it.value}</div>
             <div style={{fontSize: 30, marginTop: 18, color: colors.cream}}>{it.label}</div>
           </div>
         ))}
       </div>
-      {caption ? <div style={{...rise(frame, stepAt(steps, items.length)), marginTop: 64, fontSize: 40, textAlign: 'center'}}>{caption}</div> : null}
+      {caption ? <div style={{...rise(frame, stepAt(steps, captionStep ?? items.length)), marginTop: 64, fontSize: 40, textAlign: 'center'}}>{caption}</div> : null}
     </Stage>
   );
 };
@@ -393,8 +401,8 @@ export const FlowDiagram: React.FC<ShotProps<{nodes: {label: string; sub?: strin
     <Stage>
       <div style={{display: 'flex', alignItems: 'center', gap: 18}}>
         {nodes.map((n, i) => {
-          const s = stepAt(steps, i);
-          const live = step === i && frame >= s;
+          const s = i < steps.length ? steps[i] : steps[steps.length - 1] + (i - steps.length + 1) * 20;
+          const live = (i < steps.length ? step === i : i === nodes.length - 1) && frame >= s;
           return (
             <React.Fragment key={i}>
               {i > 0 ? (
@@ -405,16 +413,16 @@ export const FlowDiagram: React.FC<ShotProps<{nodes: {label: string; sub?: strin
               <div
                 style={{
                   ...rise(frame, s),
-                  width: 270,
-                  padding: '28px 20px',
+                  width: 300,
+                  padding: '34px 22px',
                   borderRadius: 14,
                   border: `2px solid ${live ? tone(n.tone, 'amber') : colors.line}`,
                   background: colors.panel,
                   textAlign: 'center',
                 }}
               >
-                <div style={{fontSize: 32, fontWeight: 700, color: tone(n.tone, 'cream')}}>{n.label}</div>
-                {n.sub ? <div style={{fontFamily: fonts.mono, fontSize: 22, color: colors.slate, marginTop: 12, wordBreak: 'break-all'}}>{n.sub}</div> : null}
+                <div style={{fontSize: 36, fontWeight: 700, color: tone(n.tone, 'cream')}}>{n.label}</div>
+                {n.sub ? <div style={{fontFamily: fonts.mono, fontSize: 26, color: colors.slate, marginTop: 12, wordBreak: 'break-all'}}>{n.sub}</div> : null}
               </div>
             </React.Fragment>
           );
@@ -465,14 +473,14 @@ export const CodeCard: React.FC<ShotProps<{code: string; caption?: string; title
   );
 };
 
-export const Checklist: React.FC<ShotProps<{title: string; items: {text: string; tone?: Tone}[]}>> = ({title, items, steps}) => {
+export const Checklist: React.FC<ShotProps<{title: string; items: {text: string; tone?: Tone; step?: number}[]}>> = ({title, items, steps}) => {
   const frame = useCurrentFrame();
   return (
     <Stage>
       <div style={{width: 1300}}>
         <div style={{fontFamily: fonts.serif, fontSize: 84, ...rise(frame, 0), marginBottom: 48}}>{title}</div>
         {items.map((it, i) => {
-          const s = stepAt(steps, i + 1);
+          const s = stepAt(steps, it.step ?? i + 1);
           const c = tone(it.tone, 'teal');
           return (
             <div key={i} style={{display: 'flex', alignItems: 'center', gap: 32, marginBottom: 34, ...rise(frame, s)}}>
@@ -512,6 +520,34 @@ export const SaltDiagram: React.FC<ShotProps<{password: string; users: {name: st
         })}
       </div>
       {caption ? <div style={{...rise(frame, stepAt(steps, users.length)), marginTop: 56, fontSize: 40, textAlign: 'center'}}>{caption}</div> : null}
+    </Stage>
+  );
+};
+
+export const KAnonymity: React.FC<ShotProps<{password: string; hash: string; prefixLen?: number}>> = ({password, hash, prefixLen = 5, steps}) => {
+  const frame = useCurrentFrame();
+  const send = stepAt(steps, 1);
+  const back = stepAt(steps, 2);
+  const fly = interpolate(frame - send, [10, 40], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: (t) => 1 - Math.pow(1 - t, 3)});
+  return (
+    <Stage>
+      <div style={{display: 'flex', gap: 120, alignItems: 'center'}}>
+        <div style={{width: 760, padding: 40, border: `2px solid ${colors.line}`, borderRadius: 14, background: colors.panel, ...rise(frame, 0)}}>
+          <Label>your device</Label>
+          <div style={{fontFamily: fonts.mono, fontSize: 44, color: colors.amber, marginTop: 20}}>{password}</div>
+          <div style={{fontSize: 24, color: colors.slate, margin: '18px 0 10px'}}>SHA-1</div>
+          <div style={{fontFamily: fonts.mono, fontSize: 30, wordBreak: 'break-all', lineHeight: 1.4}}>
+            <span style={{color: colors.amber, background: frame >= send ? `${colors.amber}22` : 'transparent'}}>{hash.slice(0, prefixLen)}</span>
+            <span style={{color: colors.slate}}>{hash.slice(prefixLen)}</span>
+          </div>
+          <div style={{marginTop: 22, fontSize: 28, color: colors.teal, opacity: enter(frame, back + 10)}}>match checked here, on your device</div>
+        </div>
+        <div style={{width: 520, padding: 40, border: `2px solid ${colors.line}`, borderRadius: 14, background: colors.panel, ...rise(frame, 6)}}>
+          <Label>Have I Been Pwned</Label>
+          <div style={{fontFamily: fonts.mono, fontSize: 44, color: colors.amber, marginTop: 24, opacity: fly, transform: `translateX(${(1 - fly) * -200}px)`}}>{hash.slice(0, prefixLen)}…</div>
+          <div style={{fontSize: 26, color: colors.slate, marginTop: 24, opacity: enter(frame, back)}}>sends back every leaked hash starting with {hash.slice(0, prefixLen)}</div>
+        </div>
+      </div>
     </Stage>
   );
 };
