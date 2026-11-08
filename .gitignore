@@ -1,0 +1,7 @@
+node_modules/
+tools/tts/.venv/
+tools/tts-models/
+episodes/*/voice/**/*.wav
+episodes/*/out/
+video/public/ep*/
+*.mp4
