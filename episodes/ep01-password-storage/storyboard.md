@@ -40,7 +40,7 @@ Transition in: **push left (next link in the chain)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S04_01 | 1:26.5 | KeyDiagram | The obvious fix is to lock the column. Encrypt each password with a secret key. | mango@123 ⇄ U2FsdGVkX19x4k · one secret key | encrypt arrow first; red decrypt arrow and key turn red on the 'undone' line |  |
+| S04_01 | 1:26.5 | LockBox | The obvious fix is to lock the column. Encrypt each password with a secret key. | mango@123 locked → U2FsdGVkX19x4k · Whoever holds the key reads everything | card slides into a hand-drawn box, ciphertext appears, the key slides into the keyhole and the card pops out in red |  |
 | S04_02 | 1:32.5 | ↳ | Now the table shows scrambled text instead of mango at the rate one two three. |  |  |  |
 | S04_03 | 1:38.1 | ↳ | But encryption is built to be undone. Whoever holds the key can turn every row back into the original. |  |  |  |
 
@@ -51,7 +51,7 @@ Transition in: **fade 0.6 s (next step in the same part)**
 |---|---|---|---|---|---|---|
 | S05_01 | 1:45.5 | TextStack | In twenty thirteen, Adobe was breached. | Encrypted, not hashed / Triple DES | lines rise 24 px and fade in on the word that names them |  |
 | S05_02 | 1:48.6 | ↳ | Its passwords were encrypted, not hashed, with a cipher called Triple D E S. |  |  |  |
-| S05_03 | 1:54.4 | DbTable | Australia's privacy regulator later found that Adobe used a single encryption key for all of them. | table "adobe backup (illustration)" (email, password (encrypted), hint) · caption: One key for all of them · ~109M hints in plain text | rows fade in top to bottom; password cells re-scramble when the storage method changes |  |
+| S05_03 | 1:54.4 | KeyCascade | Australia's privacy regulator later found that Adobe used a single encryption key for all of them. | 24 encrypted boxes, one key · hints: my dog's name, 123456 lol, usual | one key passes every box in turn and each opens; plain-text hints fade in under three |  |
 | S05_04 | 2:01.6 | ↳ | About a hundred and nine million records also had a password hint, stored in plain text. |  |  | tick |
 | S05_05 | 2:07.8 | StatGrid | Adobe said about thirty-eight million active users were hit. The leaked file had about a hundred and fifty-three million records. | 38M active users hit (Adobe) · ~153M records in the leaked file | figures rise in together |  |
 | S05_06 | 2:16.5 | TextStack | A hint like "my dog's name" gives a guesser a head start. | A hint is a head start. / The site never needs to read it back. / It only needs to check it. | lines rise 24 px and fade in on the word that names them |  |
@@ -63,7 +63,7 @@ Transition in: **amber wipe (new part)**
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
 | S06_01 | 2:29.1 | ActTitle | Checking without reading back is what a cryptographic hash does. | Part two: Fingerprint it | title rises in, accent rule draws left to right | whoosh |
-| S06_02 | 2:33.4 | HashMachine | It turns any text into a fingerprint of fixed length. | mango@123 → SHA-256 → 81c68634d1b2… · No way back. Only guess, hash, compare. | input fades in, algorithm box pulses amber, output scrambles then locks left to right | tick |
+| S06_02 | 2:33.4 | HashGrinder | It turns any text into a fingerprint of fixed length. | mango@123 → machine → fingerprint grid · No way back. Only guess, hash, compare. | card slides into the drawn machine, it shakes, the fingerprint grid sweeps out; return arrow drawn and struck out | tick |
 | S06_03 | 2:37.2 | ↳ | Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise. |  |  |  |
 | S06_04 | 2:48.5 | ↳ | And there's no practical way to run it backwards. An attacker can still guess, hash the guess, and compare. |  |  |  |
 
@@ -72,7 +72,7 @@ Transition in: **cut (same idea continues)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S07_01 | 2:55.9 | HashMachine | Change one character, and the fingerprint changes all over. | hunter2 → SHA-256 → f52fbd32b2b3… · hunter3 → SHA-256 → fb8c2e2b85ca… · 146 of 256 bits changed | input fades in, algorithm box pulses amber, output scrambles then locks left to right |  |
+| S07_01 | 2:55.9 | Avalanche | Change one character, and the fingerprint changes all over. | hunter2 / hunter3 as 16×16 bit grids + their difference · One character apart. Nothing alike. | both fingerprint grids sweep in; differing cells turn red; XOR grid appears and its count runs to 146 |  |
 | S07_02 | 3:00.0 | ↳ | Hunter two and hunter three differ by a single digit. The differences are scattered across the whole fingerprint. |  |  |  |
 | S07_03 | 3:08.0 | ↳ | In this pair, one hundred and forty-six of the two hundred and fifty-six bits flipped. |  |  |  |
 | S07_04 | 3:13.6 | ↳ | So a near miss doesn't look like a near miss. |  |  |  |
@@ -82,7 +82,7 @@ Transition in: **push left (next link in the chain)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S08_01 | 3:16.9 | FlowDiagram | So the app stores the fingerprint instead of the password. | You type → Hash it → Compare → Logged in | boxes and arrows build left to right, active box outlined |  |
+| S08_01 | 3:16.9 | LoginMatch | So the app stores the fingerprint instead of the password. | mango@123 → machine → fingerprint grid · A leak gives fingerprints, not passwords | stored row draws in; typed card goes through the machine; new grid and stored grid turn teal on match; row outline turns red on leak |  |
 | S08_02 | 3:20.6 | ↳ | When you log in, it hashes what you just typed, and compares the two fingerprints. |  |  |  |
 | S08_03 | 3:26.1 | ↳ | They match, so the app lets you in. |  |  |  |
 | S08_04 | 3:28.7 | ↳ | If that table leaks, the attacker gets fingerprints, not passwords. That sounds airtight. LinkedIn found out it wasn't. |  |  |  |
@@ -94,7 +94,7 @@ Transition in: **fade 0.6 s (next step in the same part)**
 |---|---|---|---|---|---|---|
 | S09_01 | 3:37.0 | TextStack | In twenty twelve, a file of about six and a half million LinkedIn password hashes was posted online. | 6,458,020 password hashes posted online / SHA-1 · no salt | lines rise 24 px and fade in on the word that names them |  |
 | S09_02 | 3:44.3 | ↳ | They were S H A one hashes, with nothing added. Unsalted. |  |  |  |
-| S09_03 | 3:48.9 | LookupTable | That matters because the same password always produces the same fingerprint. | attacker's lookup table · SHA-1, computed in advance | scan bar steps down the table, matching row flashes red |  |
+| S09_03 | 3:48.9 | LookupWall | That matters because the same password always produces the same fingerprint. | stolen SHA-1 grid vs 7 precomputed rows · Your password is the row next to it | stolen grid sweeps in; table rows build; scan highlight steps down to the match; drawn arrow links them |  |
 | S09_04 | 3:54.3 | ↳ | Attackers don't need to reverse anything. They hash millions of common passwords once, ahead of time, and keep the results in a lookup table. |  |  |  |
 | S09_05 | 4:04.1 | ↳ | Then they just search. If your fingerprint is in their table, your password is the row next to it. |  |  | tick |
 | S09_06 | 4:10.5 | StatGrid | Four years later, LinkedIn said it believed the breach was far bigger: a hundred and seventeen million emails and passwords. | 6.5M hashes posted · 2012 · 117M emails and passwords · LinkedIn, 2016 | figures rise in together |  |
@@ -107,7 +107,7 @@ Transition in: **zoom in (go inside the mechanism)**
 | S10_01 | 4:19.4 | TextStack | The fix is called salting. | Salt / a random string, unique to each user / stored next to the hash · not secret | lines rise 24 px and fade in on the word that names them |  |
 | S10_02 | 4:21.6 | ↳ | Each password gets its own random string, mixed in before hashing. That string is the salt. |  |  |  |
 | S10_03 | 4:28.2 | ↳ | It isn't secret. It's stored right next to the hash. Its job is to make the same password hash differently for every user. |  |  |  |
-| S10_04 | 4:37.3 | SaltDiagram | Two people who both chose mango at the rate one two three now get completely different fingerprints. | Asha: mango@123+9f2c4a71 · You: mango@123+e05b13d8 | each user row fades in; salted hash scrambles then locks |  |
+| S10_04 | 4:37.3 | SaltGrinder | Two people who both chose mango at the rate one two three now get completely different fingerprints. | Asha: mango@123 + 9f2c4a71 · You: mango@123 + e05b13d8 | two lanes: same card plus different salt chips go through the machine; two unrelated grids; ≠ appears |  |
 | S10_05 | 4:43.8 | ↳ | As long as salts are long and random, a table built in advance stops working. It would need a separate table for every salt. |  |  |  |
 
 ## S11 — 3 · Slow it down · part 3 · 4:53.6
@@ -126,8 +126,8 @@ Transition in: **fade 0.6 s (next step in the same part)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S12_01 | 5:24.6 | TextStack | Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat. | RTX 4090 + hashcat | lines rise 24 px and fade in on the word that names them |  |
-| S12_02 | 5:31.5 | RaceBars | It tries about a hundred and sixty-four billion M D five guesses every second. | MD5 164.1 billion / s · SHA-1 50.6 billion / s · SHA-256 22.0 billion / s | bars grow left to right on a log scale, values fade in after each bar |  |
+| S12_01 | 5:24.6 | GuessStream | Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat. | one RTX 4090 running hashcat · MD5 164 billion guesses / s → SHA-1 50.6 billion / s → SHA-256 22.0 billion / s | 3D: password cards pour into the graphics card and leave as fingerprint tiles; density follows the benchmark rate (not to scale for slow hashes) |  |
+| S12_02 | 5:31.5 | ↳ | It tries about a hundred and sixty-four billion M D five guesses every second. |  |  |  |
 | S12_03 | 5:37.6 | ↳ | About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six. |  |  |  |
 | S12_04 | 5:44.5 | StatGrid | Take every possible eight-character password made of lowercase letters and digits. That's about two point eight trillion of them. | 17 s MD5 · 56 s SHA-1 · ~2 min SHA-256 | figures rise in together |  |
 | S12_05 | 5:53.1 | ↳ | With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes. |  |  |  |
@@ -140,7 +140,7 @@ Transition in: **push left (next link in the chain)**
 | S13_01 | 6:05.1 | TextStack | So the real fix is to make each guess expensive. | Make each guess expensive / slow on purpose · tunable as hardware improves / bcrypt · 1999 | lines rise 24 px and fade in on the word that names them |  |
 | S13_02 | 6:08.8 | ↳ | Password hashing functions are built to be slow on purpose, and the slowness can be turned up as hardware gets faster. |  |  |  |
 | S13_03 | 6:16.8 | ↳ | B crypt arrived in nineteen ninety-nine. |  |  |  |
-| S13_04 | 6:19.9 | RaceBars | On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year. | bcrypt 184 thousand / s (cost 5) · scrypt 7,126 / s | bars grow left to right on a log scale, values fade in after each bar |  |
+| S13_04 | 6:19.9 | GuessStream | On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year. | same RTX 4090 · slow hashes · bcrypt (cost 5) 184 thousand / s → scrypt 7,126 / s | 3D: password cards pour into the graphics card and leave as fingerprint tiles; density follows the benchmark rate (not to scale for slow hashes) |  |
 | S13_05 | 6:31.5 | ↳ | S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware. |  |  |  |
 | S13_06 | 6:40.4 | ↳ | At the tested setting, the card manages about seven thousand guesses a second. About twelve and a half years for the same set. |  |  |  |
 
@@ -181,7 +181,7 @@ Transition in: **push left (next link in the chain)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S17_01 | 8:54.1 | KAnonymity | That last check can work without sending your password, or even its full hash. | mango@123 → SHA-1 f14d5… sent | five-character prefix slides from device panel to service panel |  |
+| S17_01 | 8:54.1 | KAnonExchange | That last check can work without sending your password, or even its full hash. | mango@123 → SHA-1 grid; prefix f14d5 sent to Have I Been Pwned; endings returned | hand-drawn device and service; struck-out arrow; prefix chip arcs across; endings stream back and are scanned on the device |  |
 | S17_02 | 8:59.3 | ↳ | Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned. |  |  |  |
 | S17_03 | 9:09.1 | ↳ | The service returns the endings of matching leaked hashes in its database. Your device checks its own ending against that list. |  |  |  |
 
@@ -190,7 +190,7 @@ Transition in: **fade 0.6 s (next step in the same part)**
 
 | Beat | Time | Shot | Narration | On screen | Motion | Sound |
 |---|---|---|---|---|---|---|
-| S18_01 | 9:18.3 | TextStack | Put the whole chain together. Plain text leaks everything. Encryption leaks everything to whoever holds the key. | Plain text → leaks everything / Encryption → leaks to whoever holds the key / Plain hash → lookup table / Salted fast hash → graphics card / Salted slow hash → holds | lines rise 24 px and fade in on the word that names them |  |
+| S18_01 | 9:18.3 | ChainLine | Put the whole chain together. Plain text leaks everything. Encryption leaks everything to whoever holds the key. | plain text (everything leaks) → encrypted (the key reads all) → plain hash (lookup table) → salt + fast hash (graphics card) → salt + slow hash (every guess is slow) | card moves station to station; each station lights red on its failure, the last teal |  |
 | S18_02 | 9:25.9 | ↳ | A plain hash can fall to a lookup table. A salted fast hash can fall to a graphics card. A salted slow hash makes every guess expensive. |  |  |  |
 | S18_03 | 9:36.2 | TextStack | Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses. | 123456 / among the first guesses on any list | lines rise 24 px and fade in on the word that names them |  |
 | S18_04 | 9:50.7 | Checklist | So the site's job is to make guessing expensive. Your job is a long password you've used nowhere else, so a leak on one site can't be replayed on your other accounts. | Two jobs: The site: a slow, salted hash / You: a long password, used nowhere else / Use a password manager | items rise in, tick strokes draw |  |

@@ -54,3 +54,11 @@ Running log. Newest at the bottom of each section.
 - **Write narration the way it is spoken.** "SHA-256" → "S H A two fifty-six", "@" → "at the rate" (not "at sign"), "bcrypt" → "B crypt". A hidden written → spoken lexicon made the script, the review and the audio disagree, and respellings like "shah" and "ay to eff" still came out wrong. The script is now the TTS input; `voice/written.json` maps spoken back to written for captions only, and the lexicon is a safety net (`{}`).
 - **Every Remotion bundle copies `public/` into `$TMPDIR`** (~150 MB each here) and is never deleted; five renders left 761 MB. `stills.mjs` now removes its bundle; delete `remotion-webpack-bundle-*` after CLI renders too.
 - **Operator feedback: v1 was text, not visuals.** Plan in `episodes/ep01-password-storage/visual-pass-v2.md`: one physical password card, hashes drawn as their real bits, three.js (`@remotion/three`) for machines and the guess swarm, rough.js for hand-drawn marks, pre-seeded particles instead of a physics engine (Remotion renders frames out of order).
+
+## Visual pass v2 (2026-11-09)
+- **Showing beats telling, and it was cheaper than expected.** Ten mechanism components (rough.js boxes, SVG bit grids, one three.js scene) took about the same effort as the original card set and removed every static hold in the scenes they replaced.
+- **Hashes as bit grids** made abstract claims visible and stayed honest: every grid is the real digest, so "146 of 256 bits" is a count the viewer can see.
+- **Remotion's audio mixer filled the disk**: it writes a full-length WAV per group of overlapping clips (~120 MB each). Pre-mixing the 86 narration lines into one `narration.wav` in `build-episode.ts` fixed it and also stopped `public/` (copied into every bundle) from carrying 86 WAVs. Keep `public/` small: the pad is now mono 32 kHz.
+- **zsh does not word-split `$VAR`**: `node stills.mjs ep01 out $F` passed every frame as one argument (Frame NaN). Use `${=F}`. And clean up in `finally`, or failed runs leak a bundle each.
+- **@remotion/three needed no `--gl` flag** on this Mac; instanced meshes updated in `useLayoutEffect` rendered correctly frame by frame.
+- **Seed every random thing by index or frame** (rough.js `seed`, particle lanes from `sin` hashes), or wobble and particles jump between frames rendered out of order.

@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import {colors, enter, fonts, rise} from '../../theme';
 import {Label, ShotProps, stepAt} from '../base';
 
-type Phase = {label: string; rate: string; perFrame: number; step: number; offset?: number};
+type Phase = {label: string; rate: string; perFrame: number; step: number; offset?: number; sub?: string};
 
 const TRAVEL = 70;
 const MAX = 900;
@@ -36,12 +36,12 @@ const Swarm: React.FC<{spawns: number[]; frame: number}> = ({spawns, frame}) => 
       const age = frame - spawns[i];
       if (age < 0) continue;
       if (age > TRAVEL * 2) break;
-      const ly = (rand(i, 1) - 0.5) * 3.2;
+      const ly = 0.9 + (rand(i, 1) - 0.5) * 3.2;
       const lz = (rand(i, 2) - 0.5) * 2.4;
       if (age < TRAVEL && a < MAX) {
         const t = age / TRAVEL;
         const funnel = 1 - t * t;
-        m.position.set(-11 + 10.2 * t, ly * funnel, lz * funnel);
+        m.position.set(-11 + 10.2 * t, 0.9 + (ly - 0.9) * funnel, lz * funnel);
         m.rotation.set(rand(i, 3) * 6 + t * 4, rand(i, 4) * 6 + t * 3, 0);
         m.scale.setScalar(1);
         m.updateMatrix();
@@ -49,7 +49,7 @@ const Swarm: React.FC<{spawns: number[]; frame: number}> = ({spawns, frame}) => 
       } else if (age >= TRAVEL && b < MAX) {
         const t = (age - TRAVEL) / TRAVEL;
         const spread = Math.sqrt(t);
-        m.position.set(0.8 + 10.5 * t, ly * spread * 0.9, lz * spread * 0.9);
+        m.position.set(0.8 + 10.5 * t, 0.9 + (ly - 0.9) * spread * 0.9, lz * spread * 0.9);
         m.rotation.set(0, 0, 0);
         m.scale.setScalar(1);
         m.updateMatrix();
@@ -76,10 +76,10 @@ const Swarm: React.FC<{spawns: number[]; frame: number}> = ({spawns, frame}) => 
 };
 
 const Machine: React.FC<{frame: number; heat: number}> = ({frame, heat}) => (
-  <group rotation={[0.12, -0.35, 0]}>
+  <group position={[0, 0.9, 0]} rotation={[0.12, -0.35, 0]}>
     <mesh>
       <boxGeometry args={[2.2, 3.4, 2.6]} />
-      <meshStandardMaterial color={colors.panel} roughness={0.7} flatShading />
+      <meshStandardMaterial color="#3A4656" roughness={0.55} metalness={0.2} flatShading />
     </mesh>
     <mesh position={[0, 0, 1.31]}>
       <boxGeometry args={[1.7, 0.18, 0.02]} />
@@ -88,7 +88,7 @@ const Machine: React.FC<{frame: number; heat: number}> = ({frame, heat}) => (
     {[-0.9, 0, 0.9].map((y, k) => (
       <mesh key={k} position={[0, y - 0.05, 1.32]} rotation={[0, 0, frame * (0.05 + heat * 0.25) * (k % 2 ? -1 : 1)]}>
         <torusGeometry args={[0.28, 0.06, 6, 12]} />
-        <meshStandardMaterial color={colors.line} flatShading />
+        <meshStandardMaterial color={colors.slate} flatShading />
       </mesh>
     ))}
   </group>
@@ -109,7 +109,7 @@ export const GuessStream: React.FC<ShotProps<{title: string; phases: Phase[]; no
   return (
     <AbsoluteFill>
       <ThreeCanvas width={width} height={height} camera={{position: [camX, 2.4, 15], fov: 34}}>
-        <ambientLight intensity={0.55} />
+        <ambientLight intensity={0.9} />
         <directionalLight position={[4, 8, 6]} intensity={1.6} />
         <directionalLight position={[-6, -2, -4]} intensity={0.5} color={colors.amber} />
         <Machine frame={frame} heat={heat} />
@@ -123,15 +123,16 @@ export const GuessStream: React.FC<ShotProps<{title: string; phases: Phase[]; no
         const o = enter(frame, p.from) * (1 - enter(frame, next, 9));
         if (o <= 0) return null;
         return (
-          <AbsoluteFill key={k} style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 200, opacity: o}}>
+          <AbsoluteFill key={k} style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 175, opacity: o}}>
             <Label>{p.label}</Label>
-            <div style={{fontFamily: fonts.serif, fontSize: 92, color: colors.red, lineHeight: 1.1}}>{p.rate}</div>
+            <div style={{fontFamily: fonts.serif, fontSize: 92, color: p.perFrame < 0.5 ? colors.teal : colors.red, lineHeight: 1.1}}>{p.rate}</div>
+            {p.sub ? <div style={{fontFamily: fonts.sans, fontSize: 32, color: colors.cream, marginTop: 6}}>{p.sub}</div> : null}
           </AbsoluteFill>
         );
       })}
       {note ? (
-        <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 168, opacity: enter(frame, stepAt(steps, 1) + 30)}}>
-          <div style={{fontFamily: fonts.sans, fontSize: 22, color: colors.slate}}>{note}</div>
+        <AbsoluteFill style={{justifyContent: 'flex-start', alignItems: 'center', paddingTop: 160, opacity: enter(frame, stepAt(steps, 1) + 30)}}>
+          <div style={{fontFamily: fonts.sans, fontSize: 26, color: colors.slate}}>{note}</div>
         </AbsoluteFill>
       ) : null}
     </AbsoluteFill>

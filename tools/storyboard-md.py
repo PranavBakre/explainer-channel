@@ -21,6 +21,16 @@ MOTION = {
     "Checklist": "items rise in, tick strokes draw",
     "SaltDiagram": "each user row fades in; salted hash scrambles then locks",
     "KAnonymity": "five-character prefix slides from device panel to service panel",
+    "Avalanche": "both fingerprint grids sweep in; differing cells turn red; XOR grid appears and its count runs to 146",
+    "GuessStream": "3D: password cards pour into the graphics card and leave as fingerprint tiles; density follows the benchmark rate (not to scale for slow hashes)",
+    "KAnonExchange": "hand-drawn device and service; struck-out arrow; prefix chip arcs across; endings stream back and are scanned on the device",
+    "LockBox": "card slides into a hand-drawn box, ciphertext appears, the key slides into the keyhole and the card pops out in red",
+    "KeyCascade": "one key passes every box in turn and each opens; plain-text hints fade in under three",
+    "HashGrinder": "card slides into the drawn machine, it shakes, the fingerprint grid sweeps out; return arrow drawn and struck out",
+    "LoginMatch": "stored row draws in; typed card goes through the machine; new grid and stored grid turn teal on match; row outline turns red on leak",
+    "LookupWall": "stolen grid sweeps in; table rows build; scan highlight steps down to the match; drawn arrow links them",
+    "SaltGrinder": "two lanes: same card plus different salt chips go through the machine; two unrelated grids; ≠ appears",
+    "ChainLine": "card moves station to station; each station lights red on its failure, the last teal",
 }
 TRANSITION = {
     "cut": "cut (same idea continues)",
@@ -61,6 +71,24 @@ def on_screen(visual, p):
         return f'{p["plain"]} ⇄ {p["cipher"]} · {p["keyLabel"]}'
     if visual == "LookupTable":
         return p["title"]
+    if visual == "Avalanche":
+        return f'{p["a"]} / {p["b"]} as 16×16 bit grids + their difference · {p.get("caption","")}'
+    if visual == "GuessStream":
+        return p["title"] + " · " + " → ".join(f'{x["label"]} {x["rate"]}' for x in p["phases"])
+    if visual == "KAnonExchange":
+        return f'{p["password"]} → SHA-1 grid; prefix {p["hash"][:5]} sent to {p["service"]}; endings returned'
+    if visual == "LockBox":
+        return f'{p["plain"]} locked → {p["cipher"]} · {p.get("caption","")}'
+    if visual == "KeyCascade":
+        return "24 encrypted boxes, one key · hints: " + ", ".join(h["text"] for h in p["hints"])
+    if visual in ("HashGrinder", "LoginMatch"):
+        return f'{p["input"]} → machine → fingerprint grid · {p.get("caption","")}'
+    if visual == "LookupWall":
+        return f'stolen SHA-1 grid vs {len(p["rows"])} precomputed rows · {p.get("caption","")}'
+    if visual == "SaltGrinder":
+        return " · ".join(f'{u["name"]}: {p["password"]} + {u["salt"]}' for u in p["users"])
+    if visual == "ChainLine":
+        return " → ".join(f'{x["label"]} ({x["verdict"]})' for x in p["stations"])
     return ""
 
 ep, built_path = Path(sys.argv[1]), Path(sys.argv[2])

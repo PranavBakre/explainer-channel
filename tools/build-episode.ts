@@ -1,7 +1,7 @@
 // Usage: bun tools/build-episode.ts <episode-dir> <id>
 // Merges storyboard.json with voice/lines/manifest.json into video/src/episodes/<id>.json,
-// copies narration audio into video/public/<id>/, and writes captions.srt + chapters.txt.
-import {copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+// pre-mixes the narration into video/public/<id>/narration.wav, and writes captions.srt + chapters.txt.
+import {existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 
 type Beat = {id: string; vo: string};
@@ -47,7 +47,6 @@ const scenes = sb.scenes.map((scene, si) => {
       if (!m) throw new Error(`No audio for ${beat.id}`);
       steps.push(t - shotFrom);
       audio.push({file: m.file, from: t});
-      copyFileSync(join(epDir, 'voice/lines', m.file), join(pubDir, m.file));
       srt.push(`${srt.length + 1}\n${fmtSrt(t / fps)} --> ${fmtSrt(t / fps + m.seconds)}\n${toWritten(beat.vo)}\n`);
       const lastBeat = shi === scene.shots.length - 1 && bi === shot.beats.length - 1;
       t += Math.round((m.seconds + (lastBeat ? tail : PAUSE_BEAT)) * fps);
@@ -58,8 +57,19 @@ const scenes = sb.scenes.map((scene, si) => {
   return {id: scene.id, act: scene.act, transitionIn: scene.transitionIn, from: sceneFrom, duration: t - sceneFrom, shots};
 });
 
+// One pre-mixed narration track: Remotion's own mixer writes a full-length WAV per overlapping clip group, which filled the disk.
+for (const f of readdirSync(pubDir)) if (/^S\d+_\d+\.wav$/.test(f)) rmSync(join(pubDir, f));
+const inputs = audio.flatMap((a) => ['-i', join(epDir, 'voice/lines', a.file)]);
+const filter =
+  audio.map((a, i) => `[${i}]adelay=${Math.round((a.from / fps) * 1000)}:all=1[a${i}]`).join(';') +
+  ';' +
+  audio.map((_, i) => `[a${i}]`).join('') +
+  `amix=inputs=${audio.length}:normalize=0:dropout_transition=0,apad=whole_dur=${(t / fps).toFixed(3)}[out]`;
+const mix = Bun.spawnSync(['ffmpeg', '-y', '-v', 'error', ...inputs, '-filter_complex', filter, '-map', '[out]', '-ac', '1', '-ar', '24000', join(pubDir, 'narration.wav')]);
+if (mix.exitCode !== 0) throw new Error(`narration mix failed: ${mix.stderr.toString()}`);
+
 const music = existsSync(join(pubDir, 'pad.wav')) ? {file: 'pad.wav', volume: sb.musicVolume ?? 0.12} : undefined;
-const built = {id, fps, width: sb.width, height: sb.height, durationInFrames: t, scenes, audio, music};
+const built = {id, fps, width: sb.width, height: sb.height, durationInFrames: t, scenes, audio: [{file: 'narration.wav', from: 0}], music};
 writeFileSync(join(root, 'video/src/episodes', `${id}.json`), JSON.stringify(built, null, 1));
 writeFileSync(join(epDir, 'out', 'captions.srt'), srt.join('\n'));
 writeFileSync(join(epDir, 'out', 'chapters.txt'), chapters.join('\n') + '\n');

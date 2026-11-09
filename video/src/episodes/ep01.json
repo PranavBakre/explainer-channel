@@ -312,13 +312,10 @@
    "duration": 570,
    "shots": [
     {
-     "visual": "KeyDiagram",
+     "visual": "LockBox",
      "props": {
       "plain": "mango@123",
       "cipher": "U2FsdGVkX19x4k",
-      "keyLabel": "one secret key",
-      "backStep": 2,
-      "captionStep": 2,
       "caption": "Whoever holds the key reads everything"
      },
      "from": 0,
@@ -365,61 +362,23 @@
      "sfx": []
     },
     {
-     "visual": "DbTable",
+     "visual": "KeyCascade",
      "props": {
-      "title": "adobe backup (illustration)",
-      "columns": [
-       "email",
-       "password (encrypted)",
-       "hint"
-      ],
-      "secretCol": 1,
-      "rows": [
-       [
-        "a…@…",
-        "EQ7fIpT7i/Q=",
-        "my dog's name"
-       ],
-       [
-        "b…@…",
-        "j9p+HwtWWT8=",
-        "123456 lol"
-       ],
-       [
-        "c…@…",
-        "EQ7fIpT7i/Q=",
-        "usual"
-       ]
-      ],
-      "variants": [
+      "hints": [
        {
-        "fromStep": 1,
-        "rows": [
-         [
-          "a…@…",
-          "EQ7fIpT7i/Q=",
-          "my dog's name"
-         ],
-         [
-          "b…@…",
-          "j9p+HwtWWT8=",
-          "123456 lol"
-         ],
-         [
-          "c…@…",
-          "EQ7fIpT7i/Q=",
-          "usual"
-         ]
-        ],
-        "tone": "red",
-        "highlight": [
-         0,
-         1,
-         2
-        ],
-        "caption": "One key for all of them · ~109M hints in plain text"
+        "at": 2,
+        "text": "my dog's name"
+       },
+       {
+        "at": 9,
+        "text": "123456 lol"
+       },
+       {
+        "at": 16,
+        "text": "usual"
        }
-      ]
+      ],
+      "caption": "One key for all of them · ~109M hints in plain text"
      },
      "from": 267,
      "duration": 402,
@@ -520,19 +479,13 @@
      ]
     },
     {
-     "visual": "HashMachine",
+     "visual": "HashGrinder",
      "props": {
+      "input": "mango@123",
       "algo": "SHA-256",
-      "pairs": [
-       {
-        "input": "mango@123",
-        "output": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-        "note": "64 hex characters, every time"
-       }
-      ],
-      "caption": "No way back. Only guess, hash, compare.",
-      "captionStep": 2,
-      "outputTone": "cream"
+      "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
+      "note": "64 characters, every time",
+      "caption": "No way back. Only guess, hash, compare."
      },
      "from": 130,
      "duration": 674,
@@ -587,29 +540,12 @@
    "duration": 605,
    "shots": [
     {
-     "visual": "FlowDiagram",
+     "visual": "LoginMatch",
      "props": {
-      "nodes": [
-       {
-        "label": "You type",
-        "sub": "mango@123",
-        "tone": "amber"
-       },
-       {
-        "label": "Hash it",
-        "sub": "SHA-256"
-       },
-       {
-        "label": "Compare",
-        "sub": "81c68634… = 81c68634…"
-       },
-       {
-        "label": "Logged in",
-        "tone": "teal"
-       }
-      ],
-      "caption": "A leak gives fingerprints, not passwords",
-      "captionStep": 3
+      "input": "mango@123",
+      "email": "you@mail.com",
+      "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
+      "caption": "A leak gives fingerprints, not passwords"
      },
      "from": 0,
      "duration": 605,
@@ -657,9 +593,9 @@
      "sfx": []
     },
     {
-     "visual": "LookupTable",
+     "visual": "LookupWall",
      "props": {
-      "title": "attacker's lookup table · SHA-1, computed in advance",
+      "stolen": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
       "rows": [
        {
         "password": "123456",
@@ -690,9 +626,7 @@
         "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
        }
       ],
-      "target": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-      "matchRow": 6,
-      "caption": "Same password, same hash. Just search."
+      "caption": "Your password is the row next to it"
      },
      "from": 357,
      "duration": 648,
@@ -779,7 +713,7 @@
      "sfx": []
     },
     {
-     "visual": "SaltDiagram",
+     "visual": "SaltGrinder",
      "props": {
       "password": "mango@123",
       "users": [
@@ -794,7 +728,7 @@
         "hash": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
        }
       ],
-      "caption": "A precomputed table would need one table per salt"
+      "caption": "A table built in advance would need one per salt"
      },
      "from": 536,
      "duration": 489,
@@ -1020,48 +954,26 @@
      "sfx": []
     },
     {
-     "visual": "RaceBars",
+     "visual": "GuessStream",
      "props": {
-      "title": "guesses per second · same card",
-      "bars": [
+      "title": "same RTX 4090 · slow hashes",
+      "note": "drawn far from scale: bcrypt here is about 900,000× slower than MD5",
+      "phases": [
        {
-        "label": "MD5",
-        "value": 164100000000,
-        "display": "164.1 billion / s",
-        "tone": "red",
-        "step": -1
-       },
-       {
-        "label": "SHA-1",
-        "value": 50640000000,
-        "display": "50.6 billion / s",
-        "tone": "red",
-        "step": -1
-       },
-       {
-        "label": "SHA-256",
-        "value": 21980000000,
-        "display": "22.0 billion / s",
-        "tone": "red",
-        "step": -1
-       },
-       {
-        "label": "bcrypt",
-        "value": 184000,
-        "display": "184 thousand / s (cost 5)",
-        "tone": "teal",
+        "label": "bcrypt (cost 5)",
+        "rate": "184 thousand / s",
+        "sub": "same 2.8 trillion: about 177 days",
+        "perFrame": 0.07,
         "step": 0
        },
        {
         "label": "scrypt",
-        "value": 7126,
-        "display": "7,126 / s",
-        "tone": "teal",
+        "rate": "7,126 / s",
+        "sub": "same 2.8 trillion: about 12.5 years",
+        "perFrame": 0.02,
         "step": 2
        }
-      ],
-      "caption": "Same 2.8 trillion, full-search estimate: bcrypt ≈ 177 days · scrypt ≈ 12.5 years",
-      "captionStep": 2
+      ]
      },
      "from": 442,
      "duration": 879,
@@ -1382,44 +1294,34 @@
    "duration": 2072,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "ChainLine",
      "props": {
-      "kicker": "the whole chain",
-      "align": "left",
-      "lines": [
+      "card": "mango@123",
+      "stations": [
        {
-        "text": "Plain text → leaks everything",
-        "tone": "red",
-        "size": 52,
-        "serif": false,
+        "label": "plain text",
+        "verdict": "everything leaks",
         "step": 0
        },
        {
-        "text": "Encryption → leaks to whoever holds the key",
-        "tone": "red",
-        "size": 52,
-        "serif": false,
+        "label": "encrypted",
+        "verdict": "the key reads all",
         "step": 0
        },
        {
-        "text": "Plain hash → lookup table",
-        "tone": "red",
-        "size": 52,
-        "serif": false,
+        "label": "plain hash",
+        "verdict": "lookup table",
         "step": 1
        },
        {
-        "text": "Salted fast hash → graphics card",
-        "tone": "red",
-        "size": 52,
-        "serif": false,
+        "label": "salt + fast hash",
+        "verdict": "graphics card",
         "step": 1
        },
        {
-        "text": "Salted slow hash → holds",
-        "tone": "teal",
-        "size": 52,
-        "serif": false,
+        "label": "salt + slow hash",
+        "verdict": "every guess is slow",
+        "holds": true,
         "step": 1
        }
       ]
@@ -1517,348 +1419,8 @@
  ],
  "audio": [
   {
-   "file": "S01_01.wav",
-   "from": 18
-  },
-  {
-   "file": "S01_02.wav",
-   "from": 162
-  },
-  {
-   "file": "S01_03.wav",
-   "from": 261
-  },
-  {
-   "file": "S01_04.wav",
-   "from": 481
-  },
-  {
-   "file": "S02_01.wav",
-   "from": 589
-  },
-  {
-   "file": "S02_02.wav",
-   "from": 731
-  },
-  {
-   "file": "S02_03.wav",
-   "from": 908
-  },
-  {
-   "file": "S02_04.wav",
-   "from": 1127
-  },
-  {
-   "file": "S03_01.wav",
-   "from": 1548
-  },
-  {
-   "file": "S03_02.wav",
-   "from": 1736
-  },
-  {
-   "file": "S03_03.wav",
-   "from": 1961
-  },
-  {
-   "file": "S03_04.wav",
-   "from": 2148
-  },
-  {
-   "file": "S03_05.wav",
-   "from": 2350
-  },
-  {
-   "file": "S04_01.wav",
-   "from": 2596
-  },
-  {
-   "file": "S04_02.wav",
-   "from": 2776
-  },
-  {
-   "file": "S04_03.wav",
-   "from": 2944
-  },
-  {
-   "file": "S05_01.wav",
-   "from": 3166
-  },
-  {
-   "file": "S05_02.wav",
-   "from": 3257
-  },
-  {
-   "file": "S05_03.wav",
-   "from": 3433
-  },
-  {
-   "file": "S05_04.wav",
-   "from": 3649
-  },
-  {
-   "file": "S05_05.wav",
-   "from": 3835
-  },
-  {
-   "file": "S05_06.wav",
-   "from": 4096
-  },
-  {
-   "file": "S05_07.wav",
-   "from": 4216
-  },
-  {
-   "file": "S06_01.wav",
-   "from": 4473
-  },
-  {
-   "file": "S06_02.wav",
-   "from": 4603
-  },
-  {
-   "file": "S06_03.wav",
-   "from": 4715
-  },
-  {
-   "file": "S06_04.wav",
-   "from": 5054
-  },
-  {
-   "file": "S07_01.wav",
-   "from": 5277
-  },
-  {
-   "file": "S07_02.wav",
-   "from": 5401
-  },
-  {
-   "file": "S07_03.wav",
-   "from": 5640
-  },
-  {
-   "file": "S07_04.wav",
-   "from": 5808
-  },
-  {
-   "file": "S08_01.wav",
-   "from": 5906
-  },
-  {
-   "file": "S08_02.wav",
-   "from": 6017
-  },
-  {
-   "file": "S08_03.wav",
-   "from": 6182
-  },
-  {
-   "file": "S08_04.wav",
-   "from": 6261
-  },
-  {
-   "file": "S09_01.wav",
-   "from": 6511
-  },
-  {
-   "file": "S09_02.wav",
-   "from": 6729
-  },
-  {
-   "file": "S09_03.wav",
-   "from": 6868
-  },
-  {
-   "file": "S09_04.wav",
-   "from": 7028
-  },
-  {
-   "file": "S09_05.wav",
-   "from": 7322
-  },
-  {
-   "file": "S09_06.wav",
-   "from": 7516
-  },
-  {
-   "file": "S10_01.wav",
-   "from": 7782
-  },
-  {
-   "file": "S10_02.wav",
-   "from": 7847
-  },
-  {
-   "file": "S10_03.wav",
-   "from": 8047
-  },
-  {
-   "file": "S10_04.wav",
-   "from": 8318
-  },
-  {
-   "file": "S10_05.wav",
-   "from": 8514
-  },
-  {
-   "file": "S11_01.wav",
-   "from": 8807
-  },
-  {
-   "file": "S11_02.wav",
-   "from": 8934
-  },
-  {
-   "file": "S11_03.wav",
-   "from": 9197
-  },
-  {
-   "file": "S11_04.wav",
-   "from": 9464
-  },
-  {
-   "file": "S11_05.wav",
-   "from": 9613
-  },
-  {
-   "file": "S12_01.wav",
-   "from": 9738
-  },
-  {
-   "file": "S12_02.wav",
-   "from": 9944
-  },
-  {
-   "file": "S12_03.wav",
-   "from": 10128
-  },
-  {
-   "file": "S12_04.wav",
-   "from": 10334
-  },
-  {
-   "file": "S12_05.wav",
-   "from": 10593
-  },
-  {
-   "file": "S13_01.wav",
-   "from": 10954
-  },
-  {
-   "file": "S13_02.wav",
-   "from": 11064
-  },
-  {
-   "file": "S13_03.wav",
-   "from": 11305
-  },
-  {
-   "file": "S13_04.wav",
-   "from": 11396
-  },
-  {
-   "file": "S13_05.wav",
-   "from": 11745
-  },
-  {
-   "file": "S13_06.wav",
-   "from": 12011
-  },
-  {
-   "file": "S14_01.wav",
-   "from": 12275
-  },
-  {
-   "file": "S14_02.wav",
-   "from": 12659
-  },
-  {
-   "file": "S14_03.wav",
-   "from": 12875
-  },
-  {
-   "file": "S14_04.wav",
-   "from": 13209
-  },
-  {
-   "file": "S14_05.wav",
-   "from": 13471
-  },
-  {
-   "file": "S14_06.wav",
-   "from": 13788
-  },
-  {
-   "file": "S15_01.wav",
-   "from": 14118
-  },
-  {
-   "file": "S15_02.wav",
-   "from": 14265
-  },
-  {
-   "file": "S15_03.wav",
-   "from": 14455
-  },
-  {
-   "file": "S16_01.wav",
-   "from": 14680
-  },
-  {
-   "file": "S16_02.wav",
-   "from": 14771
-  },
-  {
-   "file": "S16_03.wav",
-   "from": 15097
-  },
-  {
-   "file": "S16_04.wav",
-   "from": 15453
-  },
-  {
-   "file": "S16_05.wav",
-   "from": 15769
-  },
-  {
-   "file": "S17_01.wav",
-   "from": 16022
-  },
-  {
-   "file": "S17_02.wav",
-   "from": 16180
-  },
-  {
-   "file": "S17_03.wav",
-   "from": 16472
-  },
-  {
-   "file": "S18_01.wav",
-   "from": 16750
-  },
-  {
-   "file": "S18_02.wav",
-   "from": 16976
-  },
-  {
-   "file": "S18_03.wav",
-   "from": 17285
-  },
-  {
-   "file": "S18_04.wav",
-   "from": 17720
-  },
-  {
-   "file": "S18_05.wav",
-   "from": 18072
-  },
-  {
-   "file": "S18_06.wav",
-   "from": 18254
-  },
-  {
-   "file": "S18_07.wav",
-   "from": 18522
+   "file": "narration.wav",
+   "from": 0
   }
  ],
  "music": {

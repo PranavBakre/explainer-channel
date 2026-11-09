@@ -324,13 +324,10 @@
       "transitionIn": "push",
       "shots": [
         {
-          "visual": "KeyDiagram",
+          "visual": "LockBox",
           "props": {
             "plain": "mango@123",
             "cipher": "U2FsdGVkX19x4k",
-            "keyLabel": "one secret key",
-            "backStep": 2,
-            "captionStep": 2,
             "caption": "Whoever holds the key reads everything"
           },
           "beats": [
@@ -385,61 +382,23 @@
           ]
         },
         {
-          "visual": "DbTable",
+          "visual": "KeyCascade",
           "props": {
-            "title": "adobe backup (illustration)",
-            "columns": [
-              "email",
-              "password (encrypted)",
-              "hint"
-            ],
-            "secretCol": 1,
-            "rows": [
-              [
-                "a…@…",
-                "EQ7fIpT7i/Q=",
-                "my dog's name"
-              ],
-              [
-                "b…@…",
-                "j9p+HwtWWT8=",
-                "123456 lol"
-              ],
-              [
-                "c…@…",
-                "EQ7fIpT7i/Q=",
-                "usual"
-              ]
-            ],
-            "variants": [
+            "hints": [
               {
-                "fromStep": 1,
-                "rows": [
-                  [
-                    "a…@…",
-                    "EQ7fIpT7i/Q=",
-                    "my dog's name"
-                  ],
-                  [
-                    "b…@…",
-                    "j9p+HwtWWT8=",
-                    "123456 lol"
-                  ],
-                  [
-                    "c…@…",
-                    "EQ7fIpT7i/Q=",
-                    "usual"
-                  ]
-                ],
-                "tone": "red",
-                "highlight": [
-                  0,
-                  1,
-                  2
-                ],
-                "caption": "One key for all of them · ~109M hints in plain text"
+                "at": 2,
+                "text": "my dog's name"
+              },
+              {
+                "at": 9,
+                "text": "123456 lol"
+              },
+              {
+                "at": 16,
+                "text": "usual"
               }
-            ]
+            ],
+            "caption": "One key for all of them · ~109M hints in plain text"
           },
           "beats": [
             {
@@ -544,19 +503,13 @@
           ]
         },
         {
-          "visual": "HashMachine",
+          "visual": "HashGrinder",
           "props": {
+            "input": "mango@123",
             "algo": "SHA-256",
-            "pairs": [
-              {
-                "input": "mango@123",
-                "output": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-                "note": "64 hex characters, every time"
-              }
-            ],
-            "caption": "No way back. Only guess, hash, compare.",
-            "captionStep": 2,
-            "outputTone": "cream"
+            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
+            "note": "64 characters, every time",
+            "caption": "No way back. Only guess, hash, compare."
           },
           "beats": [
             {
@@ -622,29 +575,12 @@
       "transitionIn": "push",
       "shots": [
         {
-          "visual": "FlowDiagram",
+          "visual": "LoginMatch",
           "props": {
-            "nodes": [
-              {
-                "label": "You type",
-                "sub": "mango@123",
-                "tone": "amber"
-              },
-              {
-                "label": "Hash it",
-                "sub": "SHA-256"
-              },
-              {
-                "label": "Compare",
-                "sub": "81c68634… = 81c68634…"
-              },
-              {
-                "label": "Logged in",
-                "tone": "teal"
-              }
-            ],
-            "caption": "A leak gives fingerprints, not passwords",
-            "captionStep": 3
+            "input": "mango@123",
+            "email": "you@mail.com",
+            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
+            "caption": "A leak gives fingerprints, not passwords"
           },
           "beats": [
             {
@@ -703,9 +639,9 @@
           ]
         },
         {
-          "visual": "LookupTable",
+          "visual": "LookupWall",
           "props": {
-            "title": "attacker's lookup table · SHA-1, computed in advance",
+            "stolen": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
             "rows": [
               {
                 "password": "123456",
@@ -736,9 +672,7 @@
                 "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
               }
             ],
-            "target": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-            "matchRow": 6,
-            "caption": "Same password, same hash. Just search."
+            "caption": "Your password is the row next to it"
           },
           "beats": [
             {
@@ -837,7 +771,7 @@
           ]
         },
         {
-          "visual": "SaltDiagram",
+          "visual": "SaltGrinder",
           "props": {
             "password": "mango@123",
             "users": [
@@ -852,7 +786,7 @@
                 "hash": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
               }
             ],
-            "caption": "A precomputed table would need one table per salt"
+            "caption": "A table built in advance would need one per salt"
           },
           "beats": [
             {
@@ -1097,48 +1031,26 @@
           ]
         },
         {
-          "visual": "RaceBars",
+          "visual": "GuessStream",
           "props": {
-            "title": "guesses per second · same card",
-            "bars": [
+            "title": "same RTX 4090 · slow hashes",
+            "note": "drawn far from scale: bcrypt here is about 900,000× slower than MD5",
+            "phases": [
               {
-                "label": "MD5",
-                "value": 164100000000.0,
-                "display": "164.1 billion / s",
-                "tone": "red",
-                "step": -1
-              },
-              {
-                "label": "SHA-1",
-                "value": 50640000000.0,
-                "display": "50.6 billion / s",
-                "tone": "red",
-                "step": -1
-              },
-              {
-                "label": "SHA-256",
-                "value": 21980000000.0,
-                "display": "22.0 billion / s",
-                "tone": "red",
-                "step": -1
-              },
-              {
-                "label": "bcrypt",
-                "value": 184000.0,
-                "display": "184 thousand / s (cost 5)",
-                "tone": "teal",
+                "label": "bcrypt (cost 5)",
+                "rate": "184 thousand / s",
+                "sub": "same 2.8 trillion: about 177 days",
+                "perFrame": 0.07,
                 "step": 0
               },
               {
                 "label": "scrypt",
-                "value": 7126,
-                "display": "7,126 / s",
-                "tone": "teal",
+                "rate": "7,126 / s",
+                "sub": "same 2.8 trillion: about 12.5 years",
+                "perFrame": 0.02,
                 "step": 2
               }
-            ],
-            "caption": "Same 2.8 trillion, full-search estimate: bcrypt ≈ 177 days · scrypt ≈ 12.5 years",
-            "captionStep": 2
+            ]
           },
           "beats": [
             {
@@ -1470,44 +1382,34 @@
       "transitionIn": "fade",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "ChainLine",
           "props": {
-            "kicker": "the whole chain",
-            "align": "left",
-            "lines": [
+            "card": "mango@123",
+            "stations": [
               {
-                "text": "Plain text → leaks everything",
-                "tone": "red",
-                "size": 52,
-                "serif": false,
+                "label": "plain text",
+                "verdict": "everything leaks",
                 "step": 0
               },
               {
-                "text": "Encryption → leaks to whoever holds the key",
-                "tone": "red",
-                "size": 52,
-                "serif": false,
+                "label": "encrypted",
+                "verdict": "the key reads all",
                 "step": 0
               },
               {
-                "text": "Plain hash → lookup table",
-                "tone": "red",
-                "size": 52,
-                "serif": false,
+                "label": "plain hash",
+                "verdict": "lookup table",
                 "step": 1
               },
               {
-                "text": "Salted fast hash → graphics card",
-                "tone": "red",
-                "size": 52,
-                "serif": false,
+                "label": "salt + fast hash",
+                "verdict": "graphics card",
                 "step": 1
               },
               {
-                "text": "Salted slow hash → holds",
-                "tone": "teal",
-                "size": 52,
-                "serif": false,
+                "label": "salt + slow hash",
+                "verdict": "every guess is slow",
+                "holds": true,
                 "step": 1
               }
             ]
