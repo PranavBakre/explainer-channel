@@ -1,9 +1,57 @@
 [
  {
-  "visual": "CatalogSet",
+  "visual": "LottieShot",
   "props": {
-   "action": "library",
-   "tags": []
+   "file": "profile-phone",
+   "scale": 0.95,
+   "tags": [
+    {
+     "x": 1500,
+     "y": 300,
+     "text": "sign up: mango@123",
+     "at": 0.3,
+     "color": "#B87400"
+    }
+   ]
+  }
+ },
+ {
+  "visual": "LottieShot",
+  "props": {
+   "file": "login-laptop",
+   "scale": 0.9,
+   "tags": [
+    {
+     "x": 1480,
+     "y": 260,
+     "text": "every login, the site sees it",
+     "at": 0.3
+    }
+   ]
+  }
+ },
+ {
+  "visual": "MachineSet",
+  "props": {
+   "action": "punch",
+   "angle": "output",
+   "input": "mango@123",
+   "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+  }
+ },
+ {
+  "visual": "LottieShot",
+  "props": {
+   "file": "server",
+   "scale": 1.25,
+   "bg": "#E3E6EA"
+  }
+ },
+ {
+  "visual": "LottieShot",
+  "props": {
+   "file": "search",
+   "scale": 0.6
   }
  }
 ]
