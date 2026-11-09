@@ -8,7 +8,8 @@ import {MachineSet} from './three/sets/MachineSet';
 import {LightTableSet} from './three/sets/LightTableSet';
 import {CatalogSet} from './three/sets/CatalogSet';
 import {LockboxSet} from './three/sets/LockboxSet';
-import {Chalkboard} from './chalk/Chalkboard';
+import {FlipChart} from './hand/FlipChart';
 
-export const registry = {...visuals, Avalanche, KAnonExchange, GuessStream, ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder, MachineSet, LightTableSet, CatalogSet, LockboxSet, Chalkboard} as unknown as Record<string, React.FC<Record<string, unknown>>>;
+
+export const registry = {...visuals, Avalanche, KAnonExchange, GuessStream, ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder, MachineSet, LightTableSet, CatalogSet, LockboxSet, FlipChart} as unknown as Record<string, React.FC<Record<string, unknown>>>;
 
