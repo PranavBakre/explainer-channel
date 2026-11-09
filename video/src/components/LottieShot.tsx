@@ -31,8 +31,8 @@ export const LottieShot: React.FC<{
     <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 42%, ${bg} 0%, ${bg} 45%, #C9C0AE 100%)`}}>
       {data ? (
         <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-          <div style={{width: 1080 * scale, height: 1080 * scale, transform: `translate(${x}px, ${y}px)`}}>
-            <Lottie animationData={data} playbackRate={speed} loop style={{width: '100%', height: '100%'}} />
+          <div style={{width: (data.w > data.h ? 1920 : 1080) * scale, height: ((data.w > data.h ? 1920 : 1080) * scale * data.h) / data.w, transform: `translate(${x}px, ${y}px)`}}>
+            <Lottie animationData={data} playbackRate={speed} loop={data.w <= data.h} style={{width: '100%', height: '100%'}} />
           </div>
         </AbsoluteFill>
       ) : null}
