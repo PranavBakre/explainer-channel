@@ -2,7 +2,7 @@ import React from 'react';
 import {RoundedBox} from '@react-three/drei';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {fonts} from '../../theme';
-import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, Plate, Studio, Tag, useCanvasTexture} from '../kit';
+import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
 
 export type Field = 'plain' | 'hidden' | 'hash' | 'salted';
 
@@ -96,7 +96,7 @@ const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, 
 const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
   const cols = 9;
   const rows = 5;
-  const labels = ['123456', 'password', '12345678', 'qwerty', 'iloveyou', '111111', 'abc123', 'monkey', 'letmein', 'dragon', 'sunshine', 'princess', 'football', 'shadow', 'mango@123'];
+  const labels = ['7c4a8d09', '5baa61e4', '7c222fb2', 'b1b3773a', 'ee8d8728', '3d4f2bf0', '6367c48d', 'ab87d24b', 'b7a875fc', 'af8978b1', '8d6e34f9', '775bb961', '2d27b62c', 'ed9d3d83', 'f14d5ba7'];
   return (
     <group>
       <RoundedBox args={[cols * 1.25 + 0.4, rows * 0.95 + 0.4, 1.6]} radius={0.05} position={[0, rows * 0.475 + 0.3, -0.85]} castShadow receiveShadow>
@@ -115,6 +115,11 @@ const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
             <group position={[0, 0.12, 0.07]}>
               <Plate text={labels[i % labels.length]} w={0.8} h={0.2} bg="#EFE7D6" color="#1A1E24" />
             </group>
+            {isHit && hit > 0.01 ? (
+              <group position={[0, 0.35 + hit * 0.75, 0.3]} rotation={[-0.15, 0, 0]}>
+                <PaperCard big="mango@123" label="password" w={1.3} h={0.8} />
+              </group>
+            ) : null}
             <mesh position={[0, -0.18, 0.08]}>
               <boxGeometry args={[0.3, 0.08, 0.04]} />
               <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />

@@ -96,6 +96,8 @@ const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: 
   </group>
 );
 
+const WALL = ['123456', 'sunshine1', 'password', 'qwerty', 'iloveyou', 'adobe123', 'mango@123', 'football', 'princess'];
+
 // Lockbox set: one encrypted box and its key, or a wall of boxes that one key opens.
 export const LockboxSet: React.FC<{
   action: 'lock' | 'locked' | 'unlock' | 'wall' | 'hints';
@@ -150,7 +152,7 @@ export const LockboxSet: React.FC<{
                   position={[x + (row % 2) * 1.0, 0, -row * 2.3]}
                   scale={0.62}
                   open={o * 0.6}
-                  card={{text: '••••••', rise: o * 0.5, red: true}}
+                  card={{text: WALL[i % WALL.length], rise: o * 0.5, red: true}}
                   hint={action === 'hints' && hintIdx >= 0 ? hints[hintIdx] : undefined}
                 />
               );
