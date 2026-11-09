@@ -2,8 +2,9 @@
 
 Rule, from the reference (Veritasium, 8HBDE-msUjw): 3D is used where a physical object *is* the mechanism, so the
 viewer sees the idea work. Each object stands for one real part of the system and keeps that meaning all episode,
-and everything printed on it is real data (real hashes, real ciphertext, real counts). Numbers go on the math board,
-evidence (news, regulators, NIST) goes on screen as the actual document. Nothing from v2 survives.
+and everything printed on it is real data (real hashes, real ciphertext, real counts). There is no board: a number
+appears either in the real document it comes from, or on a prop whose reading it is (a counter, a stopwatch, a calendar).
+Evidence (news, regulators, NIST, benchmarks) goes on screen as the actual document. Nothing from v2 survives.
 
 ## The props (one meaning each, all episode)
 
@@ -19,6 +20,7 @@ evidence (news, regulators, NIST) goes on screen as the actual document. Nothing
 | Card heap | how often a password is reused | heap size proportional to the count |
 | Graphics card | the attacker's hardware | guess rate from the hashcat 4090 benchmark |
 | Gears + dial | a slow, tunable hash | dial = cost setting |
+| Counter, stopwatch, calendar | quantities and durations | the real computed values |
 | Phone | you, at sign-up / login | — |
 
 ## Shots (beat → mode → what moves → why 3D)
@@ -30,7 +32,7 @@ evidence (news, regulators, NIST) goes on screen as the actual document. Nothing
 | S01.3 | something nobody can read | 3D drawer | field becomes the real Argon2id string | the answer, shown on the row itself |
 | S01.4 | badly run site keeps it | 3D drawer | field flips to amber `mango@123` | contrast on the same row |
 | S02.1 | RockYou hacked | doc | news screenshot | evidence |
-| S02.2 | 32M plain text | math | 32,603,388 | a number |
+| S02.2 | 32M plain text | doc | RockYou article crop, the count highlighted | the number is in the source |
 | S02.3 | 123456 × ~290k | 3D heap | heap of `123456` cards beside a single card | reuse as physical mass |
 | S02.4 | GPU, under a minute | 3D GPU | card blurs guesses through | sets up part 3's antagonist |
 | S03.1 | sign up, mango@123 | 3D phone | typing the password | where it comes from |
@@ -45,7 +47,7 @@ evidence (news, regulators, NIST) goes on screen as the actual document. Nothing
 | S05.2 | Triple DES | 3D lockbox | close on the "TRIPLE DES" stamp | — |
 | S05.3 | one key for all | 3D lockbox wall | one key opens every box, real passwords rise | the regulator's finding, physically |
 | S05.4 | 109M plain hints | doc | OAIC report crop | evidence |
-| S05.5 | 38M / 153M | math | two numbers | numbers |
+| S05.5 | 38M / 153M | doc | Krebs crop, "38 million active users" highlighted | the number is in the source |
 | S05.6 | "my dog's name" | 3D lockbox wall | hint tags on locked boxes | hints sit outside the lock |
 | S05.7 | only needs to check | 3D light table | two cards overlay without opening anything | foreshadows hashing |
 | S06.1 | a hash does that | 3D machine | reveal | — |
@@ -62,7 +64,7 @@ evidence (news, regulators, NIST) goes on screen as the actual document. Nothing
 | S09.3 | same password, same print | 3D machine | mango fed twice → two identical cards | determinism |
 | S09.4 | hash once, in advance | 3D lookup wall | machine output filed into hash-labelled drawers | precomputation |
 | S09.5 | just search | 3D lookup wall | `f14d5ba7` drawer opens, `mango@123` rises | lookup, not reversal |
-| S09.6 | 117M in 2016 | doc + math | LinkedIn 2016 crop, 6.5M → 117M | evidence |
+| S09.6 | 117M in 2016 | doc | LinkedIn 2016 crop | evidence |
 | S10.1 | salting | 3D machine | salt chip clipped to the card | — |
 | S10.2 | mixed in before hashing | 3D machine | card + chip fed together | order of operations |
 | S10.3 | stored next to the hash | 3D drawer | field = `e05b13d8 · 324ce3f9…` | not secret |
@@ -70,17 +72,19 @@ evidence (news, regulators, NIST) goes on screen as the actual document. Nothing
 | S10.5 | a table per salt | 3D lookup wall | search finds nothing; wall multiplies | why salt defeats it |
 | S11.1 | salt doesn't stop guessing | 3D machine | salt chip fixed, guesses fed | — |
 | S11.2 | hash, compare, repeat | 3D machine + light table | loop | the attack loop |
-| S11.3 | nearly half names/words | math | RockYou category share | a number |
+| S11.3 | nearly half names/words | 3D heap | the RockYou heap splits; about half slides into bins tagged names, words, patterns | share shown as mass |
 | S11.4 | likely first | 3D heap | heaps by count, tallest first into the slot | order of guessing |
 | S11.5 | fast to calculate | 3D machine | loop at full speed | — |
 | S12.1 | RTX 4090 + hashcat | 3D GPU | card on its bench, fans spin | — |
-| S12.2–5 | rates, 2.8T, 17s/56s/2min | math | 36⁸ = 2,821,109,907,456 ÷ rate | arithmetic |
+| S12.2–3 | rates | doc | hashcat 4090 benchmark crops: MD5, SHA1, SHA2-256 lines | the rates are in the source |
+| S12.4 | 2.8 trillion passwords | 3D GPU | a mechanical counter on the bench rolls to 2,821,109,907,456 | the size of the space as a reading |
+| S12.5 | 17 s / under a minute / 2 min | 3D GPU | a stopwatch beside the card: three runs, MD5, SHA-1, SHA-256 | time as a reading |
 | S13.1 | make each guess expensive | 3D machine | gears appear | slowness as mechanism |
 | S13.2 | turn it up | 3D machine | cost dial turns, gears slow | tunable cost |
 | S13.3 | bcrypt 1999 | 3D machine | plate reads BCRYPT | — |
-| S13.4 | 184k/s, half a year | math | — | numbers |
+| S13.4 | 184k/s, half a year | 3D machine | same bench, stopwatch swapped for a desk calendar flipping to ~177 days | time outgrows the stopwatch |
 | S13.5 | scrypt: memory | 3D machine | memory drawers must fill per guess | memory-hard, visible |
-| S13.6 | 7k/s, 12.5 years | math | — | numbers |
+| S13.6 | 7k/s, 12.5 years | 3D machine | the calendar keeps flipping, years tick to 12.5 | — |
 | S14.1 | OWASP recommends Argon2id | doc | OWASP crop | evidence |
 | S14.2 | 19 MiB, 2 rounds | 3D machine | memory gauge 19 MiB, counter t=2 | the settings, physical |
 | S14.3 | value carries its recipe | 3D drawer | close on the real string, fields light up in turn | the format |
