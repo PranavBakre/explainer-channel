@@ -1,15 +1,9 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {Background} from './components/base';
-import * as visuals from './components/visuals';
-import {Avalanche} from './components/fingerprint';
-import {KAnonExchange} from './components/KAnonExchange';
-import {ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder} from './components/mechanisms';
-import {GuessStream} from './components/three/GuessStream';
+import {registry} from './registry';
 import {SceneTransition} from './transitions';
 import {BuiltEpisode, BuiltShot} from './types';
-
-const registry = {...visuals, Avalanche, KAnonExchange, GuessStream, ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder} as unknown as Record<string, React.FC<Record<string, unknown>>>;
 
 const SFX_VOLUME = {tick: 0.18, hit: 0.35, whoosh: 0.2};
 
@@ -30,7 +24,7 @@ const Shot: React.FC<{shot: BuiltShot}> = ({shot}) => {
   // Stage content centres at y≈503 of 1080 because its bottom padding is larger than its top.
   return (
     <AbsoluteFill style={{transform: `scale(${scale})`, transformOrigin: '50% 46.6%'}}>
-      <Visual {...shot.props} steps={shot.steps} />
+      <Visual {...shot.props} steps={shot.steps} duration={shot.duration} />
     </AbsoluteFill>
   );
 };

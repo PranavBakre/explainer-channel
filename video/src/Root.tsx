@@ -2,6 +2,8 @@ import React from 'react';
 import {Composition} from 'remotion';
 import {Episode} from './Episode';
 import {Thumbnail} from './Thumbnail';
+import {Gallery, GALLERY_SHOT} from './Gallery';
+import gallery from './gallery.json';
 import {HashMachineSet} from './three/HashMachineSet';
 import {BuiltEpisode} from './types';
 import ep01 from './episodes/ep01.json';
@@ -23,6 +25,7 @@ export const Root: React.FC = () => (
       />
     ))}
     <Composition id="proto-hash" component={HashMachineSet} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{input: 'mango@123', hex: '81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1'}} />
+    <Composition id="gallery" component={Gallery} durationInFrames={Math.max(1, gallery.length) * GALLERY_SHOT} fps={30} width={1920} height={1080} />
     <Composition id="thumb-ep01" component={Thumbnail} durationInFrames={1} fps={30} width={1280} height={720} />
   </>
 );

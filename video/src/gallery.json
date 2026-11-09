@@ -1,0 +1,70 @@
+[
+ {
+  "visual": "CatalogSet",
+  "props": {
+   "action": "row",
+   "field": "plain",
+   "fieldTo": "hash"
+  }
+ },
+ {
+  "visual": "CatalogSet",
+  "props": {
+   "action": "copy",
+   "field": "hash",
+   "tags": [
+    {
+     "x": 1400,
+     "y": 160,
+     "text": "a stolen copy",
+     "at": 0.5,
+     "color": "#FF5A4E"
+    }
+   ]
+  }
+ },
+ {
+  "visual": "CatalogSet",
+  "props": {
+   "action": "library",
+   "tags": [
+    {
+     "x": 960,
+     "y": 110,
+     "text": "every guess, hashed in advance",
+     "at": 0.2
+    }
+   ]
+  }
+ },
+ {
+  "visual": "LockboxSet",
+  "props": {
+   "action": "wall",
+   "plain": "",
+   "cipher": "",
+   "tags": [
+    {
+     "x": 960,
+     "y": 110,
+     "text": "one key opens every box",
+     "at": 0.4,
+     "color": "#FF5A4E"
+    }
+   ]
+  }
+ },
+ {
+  "visual": "LockboxSet",
+  "props": {
+   "action": "hints",
+   "plain": "",
+   "cipher": "",
+   "hints": [
+    "my dog's name",
+    "fav fruit + 123",
+    "same as email"
+   ]
+  }
+ }
+]

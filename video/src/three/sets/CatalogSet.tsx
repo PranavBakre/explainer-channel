@@ -1,0 +1,165 @@
+import React from 'react';
+import {RoundedBox} from '@react-three/drei';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {fonts} from '../../theme';
+import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, Plate, Studio, Tag, useCanvasTexture} from '../kit';
+
+export type Field = 'plain' | 'hidden' | 'hash' | 'salted';
+
+const ANGLES: Record<string, Angle> = {
+  row: {from: [0.4, 2.3, 4.2], to: [0.2, 2.2, 3.6], target: [0, 1.75, 0.6]},
+  drawer: {from: [-3.6, 4.2, 7.2], to: [-2.8, 3.8, 6.4], target: [0, 1.2, 0]},
+  copy: {from: [1.5, 4.4, 9.5], to: [1.8, 4.0, 8.6], target: [1.6, 1.1, 0]},
+  library: {from: [-3.5, 3.0, 13.5], to: [1.5, 2.9, 12], target: [0, 2.7, 0]},
+  match: {from: [2.8, 2.6, 6.2], to: [2.4, 2.4, 5.4], target: [1.25, 2.1, 0]},
+};
+
+const FIELD_TEXT: Record<Field, (pw: string) => {text: string; color: string}> = {
+  plain: (pw) => ({text: pw, color: '#B87400'}),
+  hidden: () => ({text: '?', color: '#8A8F98'}),
+  hash: () => ({text: '81c68634d1b2…', color: '#1A1E24'}),
+  salted: () => ({text: 'e05b13d8 · 324ce3f9…', color: '#1A1E24'}),
+};
+
+const IndexCard: React.FC<{email: string; value: string; color: string}> = ({email, value, color}) => {
+  const tex = useCanvasTexture(
+    1024,
+    640,
+    (c, W, H) => {
+      c.fillStyle = PAPER;
+      c.fillRect(0, 0, W, H);
+      c.fillStyle = '#C0463A';
+      c.fillRect(0, 120, W, 6);
+      for (let y = 230; y < H; y += 90) {
+        c.fillStyle = 'rgba(80,120,170,0.35)';
+        c.fillRect(0, y, W, 3);
+      }
+      c.fillStyle = '#7A6A52';
+      c.font = `600 40px ${fonts.sans}`;
+      c.fillText('EMAIL', 60, 200);
+      c.fillText('PASSWORD', 60, 400);
+      c.fillStyle = '#1A1E24';
+      c.font = `500 64px ${fonts.sans}`;
+      c.fillText(email, 60, 290);
+      c.fillStyle = color;
+      let size = 84;
+      c.font = `700 ${size}px ${fonts.mono}`;
+      while (c.measureText(value).width > W - 120 && size > 30) {
+        size -= 4;
+        c.font = `700 ${size}px ${fonts.mono}`;
+      }
+      c.fillText(value, 60, 500);
+    },
+    [email, value, color],
+  );
+  return (
+    <mesh castShadow>
+      <boxGeometry args={[1.6, 1.0, 0.015]} />
+      {[0, 1, 2, 3, 5].map((i) => (
+        <meshStandardMaterial key={i} attach={`material-${i}`} color="#E6DCC8" />
+      ))}
+      <meshStandardMaterial attach="material-4" map={tex} roughness={0.85} />
+    </mesh>
+  );
+};
+
+const USERS = [
+  ['asha@mail.com', 'sunshine1'],
+  ['ravi@mail.com', '123456'],
+  ['meera@mail.com', 'qwerty'],
+  ['dev@mail.com', 'iloveyou'],
+  ['sam@mail.com', 'football'],
+  ['you@mail.com', 'mango@123'],
+];
+
+const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, number]; ghost?: boolean}> = ({field, lift, position = [0, 0, 0], ghost}) => (
+  <group position={position}>
+    <RoundedBox args={[2.0, 0.9, 3.4]} radius={0.05} position={[0, 0.95, 0]} castShadow receiveShadow>
+      <meshStandardMaterial color="#7A4E2E" roughness={0.55} metalness={0.05} transparent={ghost} opacity={ghost ? 0.85 : 1} />
+    </RoundedBox>
+    <mesh position={[0, 1.05, 1.71]}>
+      <boxGeometry args={[0.5, 0.18, 0.04]} />
+      <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />
+    </mesh>
+    {USERS.map(([email, pw], i) => {
+      const f = FIELD_TEXT[field](pw);
+      const isYou = email === 'you@mail.com';
+      return (
+        <group key={email} position={[0, 1.7 + (isYou ? lift : 0), -1.05 + i * 0.45]} rotation={[-0.12, 0, 0]}>
+          <IndexCard email={email} value={f.text} color={f.color} />
+        </group>
+      );
+    })}
+  </group>
+);
+
+const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
+  const cols = 9;
+  const rows = 5;
+  const labels = ['123456', 'password', '12345678', 'qwerty', 'iloveyou', '111111', 'abc123', 'monkey', 'letmein', 'dragon', 'sunshine', 'princess', 'football', 'shadow', 'mango@123'];
+  return (
+    <group>
+      <RoundedBox args={[cols * 1.25 + 0.4, rows * 0.95 + 0.4, 1.6]} radius={0.05} position={[0, rows * 0.475 + 0.3, -0.85]} castShadow receiveShadow>
+        <meshStandardMaterial color="#5E3B22" roughness={0.6} />
+      </RoundedBox>
+      {Array.from({length: cols * rows}, (_, i) => {
+        const cx = (i % cols) * 1.25 - ((cols - 1) * 1.25) / 2;
+        const cy = Math.floor(i / cols) * 0.95 + 0.75;
+        const isHit = i === 29;
+        const out = isHit ? hit : 0;
+        return (
+          <group key={i} position={[cx, cy, 0.02 + out * 0.9]}>
+            <RoundedBox args={[1.12, 0.82, 0.12]} radius={0.03}>
+              <meshStandardMaterial color={isHit && hit > 0.5 ? '#9C3B2E' : '#7A4E2E'} roughness={0.55} />
+            </RoundedBox>
+            <group position={[0, 0.12, 0.07]}>
+              <Plate text={labels[i % labels.length]} w={0.8} h={0.2} bg="#EFE7D6" color="#1A1E24" />
+            </group>
+            <mesh position={[0, -0.18, 0.08]}>
+              <boxGeometry args={[0.3, 0.08, 0.04]} />
+              <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />
+            </mesh>
+            {isHit ? <Glow position={[0, 0, 0.4]} size={2.4 * hit} opacity={0.5 * hit} color="224,69,47" /> : null}
+          </group>
+        );
+      })}
+    </group>
+  );
+};
+
+// Card-catalogue set: a drawer of user rows, a stolen copy, or a wall of precomputed lookups.
+export const CatalogSet: React.FC<{
+  action: 'row' | 'drawer' | 'copy' | 'library';
+  angle?: string;
+  field?: Field;
+  fieldTo?: Field;
+  color?: string;
+  tags?: {x: number; y: number; text: string; at?: number; color?: string}[];
+  duration: number;
+}> = ({action, angle, field = 'plain', fieldTo, color = '#4E3A36', tags = [], duration}) => {
+  const frame = useCurrentFrame();
+  const t = frame / Math.max(1, duration);
+  const swap = fieldTo ? t > 0.5 : false;
+  const f = swap ? fieldTo! : field;
+  const lift = action === 'row' ? 0.35 : 0;
+  const steal = action === 'copy' ? ease(t, 0.15, 0.7) : 0;
+  const hit = action === 'library' ? ease(t, 0.55, 0.75) : 0;
+  const ang = ANGLES[angle ?? (action === 'library' ? 'library' : action === 'copy' ? 'copy' : action === 'row' ? 'row' : 'drawer')];
+  return (
+    <AbsoluteFill>
+      <Studio color={color} angle={ang} duration={duration}>
+        {action === 'library' ? (
+          <LibraryWall hit={hit} />
+        ) : (
+          <>
+            <Drawer field={f} lift={lift} />
+            {action === 'copy' ? <Drawer field={f} lift={0} position={[mix(0, 3.6, steal), 0, mix(0, 0.8, steal)]} ghost /> : null}
+          </>
+        )}
+      </Studio>
+      {tags.map((tg, i) => (
+        <Tag key={i} x={tg.x} y={tg.y} text={tg.text} color={tg.color} opacity={interpolate(t, [tg.at ?? 0.3, (tg.at ?? 0.3) + 0.08], [0, 1], clamp)} />
+      ))}
+    </AbsoluteFill>
+  );
+};
