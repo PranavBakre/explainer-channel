@@ -16,6 +16,7 @@
     "@remotion/google-fonts": "4.0.541",
     "@remotion/media-utils": "4.0.541",
     "@remotion/three": "4.0.541",
+    "hersheytext": "2.0.0",
     "postprocessing": "^6.39.6",
     "react": "19.1.1",
     "react-dom": "19.1.1",
