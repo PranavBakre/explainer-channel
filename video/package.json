@@ -9,11 +9,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-three/drei": "10",
     "@react-three/fiber": "9",
+    "@react-three/postprocessing": "3",
     "@remotion/cli": "4.0.541",
     "@remotion/google-fonts": "4.0.541",
     "@remotion/media-utils": "4.0.541",
     "@remotion/three": "4.0.541",
+    "postprocessing": "^6.39.6",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "remotion": "4.0.541",

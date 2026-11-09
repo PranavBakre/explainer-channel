@@ -7,10 +7,9 @@ import path from 'node:path';
 
 const [id, outDir, ...frameArgs] = process.argv.slice(2);
 mkdirSync(outDir, {recursive: true});
-const data = JSON.parse(readFileSync(`src/episodes/${id}.json`, 'utf8'));
 const frames = frameArgs.length
   ? frameArgs.map((f) => ({frame: Number(f), name: `f${f}`}))
-  : data.scenes.flatMap((s) => s.shots.map((sh, i) => ({frame: s.from + sh.from + Math.floor(sh.duration * 0.7), name: `${s.id}_${i}_${sh.visual}`})));
+  : JSON.parse(readFileSync(`src/episodes/${id}.json`, 'utf8')).scenes.flatMap((s) => s.shots.map((sh, i) => ({frame: s.from + sh.from + Math.floor(sh.duration * 0.7), name: `${s.id}_${i}_${sh.visual}`})));
 const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts')});
 try {
   const composition = await selectComposition({serveUrl, id, inputProps: {}});

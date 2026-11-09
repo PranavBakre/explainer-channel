@@ -62,3 +62,10 @@ Running log. Newest at the bottom of each section.
 - **zsh does not word-split `$VAR`**: `node stills.mjs ep01 out $F` passed every frame as one argument (Frame NaN). Use `${=F}`. And clean up in `finally`, or failed runs leak a bundle each.
 - **@remotion/three needed no `--gl` flag** on this Mac; instanced meshes updated in `useLayoutEffect` rendered correctly frame by frame.
 - **Seed every random thing by index or frame** (rough.js `seed`, particle lanes from `sin` hashes), or wobble and particles jump between frames rendered out of order.
+
+## Operator feedback: v2 still bad; reference Veritasium "We're 99.9% sure this pattern is true" (2026-11-09)
+- **What the reference actually does** (41:30, 428 cuts ≈ one every 5.8 s): lit 3D *objects* with real materials (marble number tiles in a brass tray, a copper "Averaging Machine" with an Edison bulb, reflective floor, depth of field); one coloured studio per idea; text only as small labels on the objects; mixed modes (3D sets, math board, archival photos, papers, host, interviews). v2 was flat outlines on black: a slide deck with doodles.
+- **three.js can reach that look in Remotion** with physical materials, a lit backdrop, `MeshReflectorMaterial` floor, `ContactShadows`, `Environment` + `Lightformer`s, and canvas textures for labels (no async font loading). Prototype: `out/proto-hash-machine.mp4`.
+- **`@react-three/postprocessing` renders a blank canvas under Remotion capture** (with and without MSAA); even the scene background disappears. Use an additive sprite for bulb glow and CSS overlays for vignette instead of bloom/vignette passes.
+- **R3F's `camera` prop is applied once**; animate the camera with a rig that sets position + `lookAt` in `useLayoutEffect` per frame.
+- **yt-dlp older than ~90 days gets only images from YouTube** ("Only images are available"); `brew upgrade yt-dlp` fixed it.
