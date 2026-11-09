@@ -2,7 +2,7 @@
 // Without frames, renders one still at ~70% through every shot (after its build-up) for review.
 import {bundle} from '@remotion/bundler';
 import {renderStill, selectComposition} from '@remotion/renderer';
-import {mkdirSync, readFileSync} from 'node:fs';
+import {mkdirSync, readFileSync, rmSync} from 'node:fs';
 import path from 'node:path';
 
 const [id, outDir, ...frameArgs] = process.argv.slice(2);
@@ -17,3 +17,4 @@ for (const f of frames) {
   await renderStill({composition, serveUrl, frame: f.frame, output: path.join(outDir, `${f.name}.jpeg`), imageFormat: 'jpeg', jpegQuality: 80});
   console.log(f.name, f.frame);
 }
+rmSync(serveUrl, {recursive: true, force: true});

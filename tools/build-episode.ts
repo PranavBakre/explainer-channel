@@ -15,6 +15,11 @@ const root = resolve(import.meta.dir, '..');
 const sb: Storyboard = JSON.parse(readFileSync(join(epDir, 'storyboard.json'), 'utf8'));
 const manifest: ManifestLine[] = JSON.parse(readFileSync(join(epDir, 'voice/lines/manifest.json'), 'utf8'));
 const byId = new Map(manifest.map((m) => [m.id, m]));
+const writtenPath = join(epDir, 'voice/written.json');
+const written: [string, string][] = existsSync(writtenPath)
+  ? Object.entries(JSON.parse(readFileSync(writtenPath, 'utf8')) as Record<string, string>).sort((a, b) => b[0].length - a[0].length)
+  : [];
+const toWritten = (vo: string) => written.reduce((s, [spoken, w]) => s.replaceAll(spoken, w), vo);
 
 const PAUSE_BEAT = 0.45;
 const PAUSE_SCENE = 0.7;
@@ -43,7 +48,7 @@ const scenes = sb.scenes.map((scene, si) => {
       steps.push(t - shotFrom);
       audio.push({file: m.file, from: t});
       copyFileSync(join(epDir, 'voice/lines', m.file), join(pubDir, m.file));
-      srt.push(`${srt.length + 1}\n${fmtSrt(t / fps)} --> ${fmtSrt(t / fps + m.seconds)}\n${beat.vo}\n`);
+      srt.push(`${srt.length + 1}\n${fmtSrt(t / fps)} --> ${fmtSrt(t / fps + m.seconds)}\n${toWritten(beat.vo)}\n`);
       const lastBeat = shi === scene.shots.length - 1 && bi === shot.beats.length - 1;
       t += Math.round((m.seconds + (lastBeat ? tail : PAUSE_BEAT)) * fps);
     });

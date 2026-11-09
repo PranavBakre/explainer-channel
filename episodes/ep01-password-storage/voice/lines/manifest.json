@@ -33,11 +33,11 @@
  },
  {
   "id": "S02_01",
-  "text": "In December two thousand nine, a company called RockYou was hacked.",
+  "text": "In December two thousand nine, a company called Rock You was hacked.",
   "spoken": "In December two thousand nine, a company called Rock You was hacked.",
   "file": "S02_01.wav",
   "seconds": 4.267,
-  "wpm": 154.7
+  "wpm": 168.8
  },
  {
   "id": "S02_02",
@@ -65,11 +65,11 @@
  },
  {
   "id": "S03_01",
-  "text": "Let's say you sign up for a new grocery app. Your password is mango, at sign, one two three.",
-  "spoken": "Let's say you sign up for a new grocery app. Your password is mango, at sign, one two three.",
+  "text": "Let's say you sign up for a new grocery app. Your password is mango at the rate one two three.",
+  "spoken": "Let's say you sign up for a new grocery app. Your password is mango at the rate one two three.",
   "file": "S03_01.wav",
-  "seconds": 6.187,
-  "wpm": 184.3
+  "seconds": 5.803,
+  "wpm": 206.8
  },
  {
   "id": "S03_02",
@@ -89,11 +89,11 @@
  },
  {
   "id": "S03_04",
-  "text": "It also means anyone who copies that table walks away with every password in it. That was RockYou.",
+  "text": "It also means anyone who copies that table walks away with every password in it. That was Rock You.",
   "spoken": "It also means anyone who copies that table walks away with every password in it. That was Rock You.",
   "file": "S03_04.wav",
   "seconds": 6.293,
-  "wpm": 171.6
+  "wpm": 181.1
  },
  {
   "id": "S03_05",
@@ -113,11 +113,11 @@
  },
  {
   "id": "S04_02",
-  "text": "Now the table shows scrambled text instead of mango at one two three.",
-  "spoken": "Now the table shows scrambled text instead of mango at one two three.",
+  "text": "Now the table shows scrambled text instead of mango at the rate one two three.",
+  "spoken": "Now the table shows scrambled text instead of mango at the rate one two three.",
   "file": "S04_02.wav",
-  "seconds": 4.651,
-  "wpm": 167.7
+  "seconds": 5.141,
+  "wpm": 175.1
  },
  {
   "id": "S04_03",
@@ -201,11 +201,11 @@
  },
  {
   "id": "S06_03",
-  "text": "Feed it mango at one two three, and SHA-256 gives back sixty-four characters, a jumble of digits and letters. It looks like noise.",
-  "spoken": "Feed it mango at one two three, and shah two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise.",
+  "text": "Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise.",
+  "spoken": "Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise.",
   "file": "S06_03.wav",
-  "seconds": 10.133,
-  "wpm": 136.2
+  "seconds": 10.859,
+  "wpm": 160.2
  },
  {
   "id": "S06_04",
@@ -289,11 +289,11 @@
  },
  {
   "id": "S09_02",
-  "text": "They were SHA-1 hashes, with nothing added. Unsalted.",
-  "spoken": "They were shah one hashes, with nothing added. Unsalted.",
+  "text": "They were S H A one hashes, with nothing added. Unsalted.",
+  "spoken": "They were S H A one hashes, with nothing added. Unsalted.",
   "file": "S09_02.wav",
-  "seconds": 3.627,
-  "wpm": 132.4
+  "seconds": 4.181,
+  "wpm": 157.8
  },
  {
   "id": "S09_03",
@@ -353,11 +353,11 @@
  },
  {
   "id": "S10_04",
-  "text": "Two people who both chose mango at one two three now get completely different fingerprints.",
-  "spoken": "Two people who both chose mango at one two three now get completely different fingerprints.",
+  "text": "Two people who both chose mango at the rate one two three now get completely different fingerprints.",
+  "spoken": "Two people who both chose mango at the rate one two three now get completely different fingerprints.",
   "file": "S10_04.wav",
-  "seconds": 5.739,
-  "wpm": 156.8
+  "seconds": 6.08,
+  "wpm": 167.8
  },
  {
   "id": "S10_05",
@@ -385,11 +385,11 @@
  },
  {
   "id": "S11_03",
-  "text": "Real people make that easier. In the RockYou leak, nearly half the passwords were names, dictionary words or simple patterns.",
+  "text": "Real people make that easier. In the Rock You leak, nearly half the passwords were names, dictionary words or simple patterns.",
   "spoken": "Real people make that easier. In the Rock You leak, nearly half the passwords were names, dictionary words or simple patterns.",
   "file": "S11_03.wav",
   "seconds": 8.448,
-  "wpm": 142.0
+  "wpm": 149.1
  },
  {
   "id": "S11_04",
@@ -409,11 +409,11 @@
  },
  {
   "id": "S12_01",
-  "text": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hashcat.",
+  "text": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat.",
   "spoken": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat.",
   "file": "S12_01.wav",
   "seconds": 6.4,
-  "wpm": 150.0
+  "wpm": 159.4
  },
  {
   "id": "S12_02",
@@ -425,11 +425,11 @@
  },
  {
   "id": "S12_03",
-  "text": "About fifty billion for SHA-1. About twenty-two billion for SHA-256.",
-  "spoken": "About fifty billion for shah one. About twenty-two billion for shah two fifty-six.",
+  "text": "About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six.",
+  "spoken": "About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six.",
   "file": "S12_03.wav",
-  "seconds": 5.611,
-  "wpm": 106.9
+  "seconds": 6.421,
+  "wpm": 158.8
  },
  {
   "id": "S12_04",
@@ -441,11 +441,11 @@
  },
  {
   "id": "S12_05",
-  "text": "With M D five, that card gets through all of them in about seventeen seconds. With SHA-1, under a minute. SHA-256, about two minutes.",
-  "spoken": "With M D five, that card gets through all of them in about seventeen seconds. With shah one, under a minute. shah two fifty-six, about two minutes.",
+  "text": "With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes.",
+  "spoken": "With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes.",
   "file": "S12_05.wav",
-  "seconds": 10.091,
-  "wpm": 142.7
+  "seconds": 11.328,
+  "wpm": 164.2
  },
  {
   "id": "S13_01",
@@ -465,27 +465,27 @@
  },
  {
   "id": "S13_03",
-  "text": "bcrypt arrived in nineteen ninety-nine.",
-  "spoken": "bee-crypt arrived in nineteen ninety-nine.",
+  "text": "B crypt arrived in nineteen ninety-nine.",
+  "spoken": "B crypt arrived in nineteen ninety-nine.",
   "file": "S13_03.wav",
-  "seconds": 2.453,
-  "wpm": 122.3
+  "seconds": 2.581,
+  "wpm": 139.5
  },
  {
   "id": "S13_04",
-  "text": "On the same card, bcrypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year.",
-  "spoken": "On the same card, bee-crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year.",
+  "text": "On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year.",
+  "spoken": "On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year.",
   "file": "S13_04.wav",
-  "seconds": 11.008,
-  "wpm": 163.5
+  "seconds": 11.179,
+  "wpm": 166.4
  },
  {
   "id": "S13_05",
-  "text": "scrypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware.",
-  "spoken": "ess-crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware.",
+  "text": "S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware.",
+  "spoken": "S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware.",
   "file": "S13_05.wav",
-  "seconds": 8.32,
-  "wpm": 151.4
+  "seconds": 8.405,
+  "wpm": 157.0
  },
  {
   "id": "S13_06",
@@ -497,11 +497,11 @@
  },
  {
   "id": "S14_01",
-  "text": "The OWASP guidance on password storage recommends Argon2id. It comes from Argon2, which won an open password hashing competition in twenty fifteen.",
-  "spoken": "The Oh-wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen.",
+  "text": "The Oh wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen.",
+  "spoken": "The Oh wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen.",
   "file": "S14_01.wav",
-  "seconds": 12.181,
-  "wpm": 108.4
+  "seconds": 12.352,
+  "wpm": 131.2
  },
  {
   "id": "S14_02",
@@ -577,11 +577,11 @@
  },
  {
   "id": "S16_02",
-  "text": "The US standards body NIST now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle.",
-  "spoken": "The U.S. standards body Nist now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle.",
+  "text": "The U S standards body Nist now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle.",
+  "spoken": "The U S standards body Nist now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle.",
   "file": "S16_02.wav",
-  "seconds": 10.645,
-  "wpm": 129.6
+  "seconds": 10.411,
+  "wpm": 138.3
  },
  {
   "id": "S16_03",
@@ -617,11 +617,11 @@
  },
  {
   "id": "S17_02",
-  "text": "Your browser or app hashes the password with SHA-1, and sends only the first five characters to the service Have I Been Pwned.",
-  "spoken": "Your browser or app hashes the password with shah one, and sends only the first five characters to the service Have I Been Poned.",
+  "text": "Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned.",
+  "spoken": "Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned.",
   "file": "S17_02.wav",
-  "seconds": 8.896,
-  "wpm": 155.1
+  "seconds": 9.28,
+  "wpm": 168.1
  },
  {
   "id": "S17_03",
@@ -649,11 +649,11 @@
  },
  {
   "id": "S18_03",
-  "text": "Back to RockYou's most popular password. A sensible attacker tries the most common passwords first. So even behind Argon2, one two three four five six would be among the first guesses.",
-  "spoken": "Back to Rock You's most popular password. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses.",
+  "text": "Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses.",
+  "spoken": "Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses.",
   "file": "S18_03.wav",
-  "seconds": 13.461,
-  "wpm": 138.2
+  "seconds": 14.037,
+  "wpm": 158.1
  },
  {
   "id": "S18_04",
@@ -665,7 +665,7 @@
  },
  {
   "id": "S18_05",
-  "text": "Our advice: use a password manager. NIST now requires sites to allow them.",
+  "text": "Our advice: use a password manager. Nist now requires sites to allow them.",
   "spoken": "Our advice: use a password manager. Nist now requires sites to allow them.",
   "file": "S18_05.wav",
   "seconds": 5.611,

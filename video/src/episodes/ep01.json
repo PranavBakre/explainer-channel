@@ -3,7 +3,7 @@
  "fps": 30,
  "width": 1920,
  "height": 1080,
- "durationInFrames": 18668,
+ "durationInFrames": 18822,
  "scenes": [
   {
    "id": "S01",
@@ -213,7 +213,7 @@
    "act": 1,
    "transitionIn": "wipe",
    "from": 1548,
-   "duration": 1059,
+   "duration": 1048,
    "shots": [
     {
      "visual": "ActTitle",
@@ -223,7 +223,7 @@
       "tone": "red"
      },
      "from": 0,
-     "duration": 199,
+     "duration": 188,
      "steps": [
       0
      ],
@@ -292,7 +292,7 @@
        }
       ]
      },
-     "from": 199,
+     "from": 188,
      "duration": 860,
      "steps": [
       0,
@@ -308,8 +308,8 @@
    "id": "S04",
    "act": 1,
    "transitionIn": "push",
-   "from": 2607,
-   "duration": 555,
+   "from": 2596,
+   "duration": 570,
    "shots": [
     {
      "visual": "KeyDiagram",
@@ -322,11 +322,11 @@
       "caption": "Whoever holds the key reads everything"
      },
      "from": 0,
-     "duration": 555,
+     "duration": 570,
      "steps": [
       0,
       180,
-      333
+      348
      ],
      "sfx": []
     }
@@ -336,7 +336,7 @@
    "id": "S05",
    "act": 1,
    "transitionIn": "fade",
-   "from": 3162,
+   "from": 3166,
    "duration": 1307,
    "shots": [
     {
@@ -497,8 +497,8 @@
    "id": "S06",
    "act": 2,
    "transitionIn": "wipe",
-   "from": 4469,
-   "duration": 782,
+   "from": 4473,
+   "duration": 804,
    "shots": [
     {
      "visual": "ActTitle",
@@ -535,11 +535,11 @@
       "outputTone": "cream"
      },
      "from": 130,
-     "duration": 652,
+     "duration": 674,
      "steps": [
       0,
       112,
-      429
+      451
      ],
      "sfx": [
       {
@@ -554,26 +554,18 @@
    "id": "S07",
    "act": 2,
    "transitionIn": "cut",
-   "from": 5251,
+   "from": 5277,
    "duration": 629,
    "shots": [
     {
-     "visual": "HashMachine",
+     "visual": "Avalanche",
      "props": {
-      "algo": "SHA-256",
-      "pairs": [
-       {
-        "input": "hunter2",
-        "output": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7"
-       },
-       {
-        "input": "hunter3",
-        "output": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a"
-       }
-      ],
-      "caption": "146 of 256 bits changed",
-      "captionStep": 2,
-      "outputTone": "cream"
+      "a": "hunter2",
+      "b": "hunter3",
+      "diffAt": 6,
+      "hexA": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7",
+      "hexB": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a",
+      "caption": "One character apart. Nothing alike."
      },
      "from": 0,
      "duration": 629,
@@ -591,7 +583,7 @@
    "id": "S08",
    "act": 2,
    "transitionIn": "push",
-   "from": 5880,
+   "from": 5906,
    "duration": 605,
    "shots": [
     {
@@ -635,8 +627,8 @@
    "id": "S09",
    "act": 2,
    "transitionIn": "fade",
-   "from": 6485,
-   "duration": 1254,
+   "from": 6511,
+   "duration": 1271,
    "shots": [
     {
      "visual": "TextStack",
@@ -657,7 +649,7 @@
       ]
      },
      "from": 0,
-     "duration": 340,
+     "duration": 357,
      "steps": [
       0,
       218
@@ -702,7 +694,7 @@
       "matchRow": 6,
       "caption": "Same password, same hash. Just search."
      },
-     "from": 340,
+     "from": 357,
      "duration": 648,
      "steps": [
       0,
@@ -735,7 +727,7 @@
        }
       ]
      },
-     "from": 988,
+     "from": 1005,
      "duration": 266,
      "steps": [
       0
@@ -748,8 +740,8 @@
    "id": "S10",
    "act": 2,
    "transitionIn": "zoom",
-   "from": 7739,
-   "duration": 1015,
+   "from": 7782,
+   "duration": 1025,
    "shots": [
     {
      "visual": "TextStack",
@@ -805,10 +797,10 @@
       "caption": "A precomputed table would need one table per salt"
      },
      "from": 536,
-     "duration": 479,
+     "duration": 489,
      "steps": [
       0,
-      186
+      196
      ],
      "sfx": []
     }
@@ -818,7 +810,7 @@
    "id": "S11",
    "act": 3,
    "transitionIn": "wipe",
-   "from": 8754,
+   "from": 8807,
    "duration": 931,
    "shots": [
     {
@@ -913,62 +905,42 @@
    "id": "S12",
    "act": 3,
    "transitionIn": "fade",
-   "from": 9685,
-   "duration": 1155,
+   "from": 9738,
+   "duration": 1216,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "GuessStream",
      "props": {
-      "kicker": "one gaming graphics card",
-      "lines": [
+      "title": "one RTX 4090 running hashcat",
+      "note": "each card stands for over a billion guesses · hashcat benchmark",
+      "phases": [
        {
-        "text": "RTX 4090 + hashcat",
-        "mono": true,
-        "tone": "amber",
-        "step": 0
+        "label": "MD5",
+        "rate": "164 billion guesses / s",
+        "perFrame": 4,
+        "step": 1
+       },
+       {
+        "label": "SHA-1",
+        "rate": "50.6 billion / s",
+        "perFrame": 1.23,
+        "step": 2
+       },
+       {
+        "label": "SHA-256",
+        "rate": "22.0 billion / s",
+        "perFrame": 0.54,
+        "step": 2,
+        "offset": 90
        }
       ]
      },
      "from": 0,
-     "duration": 206,
-     "steps": [
-      0
-     ],
-     "sfx": []
-    },
-    {
-     "visual": "RaceBars",
-     "props": {
-      "title": "guesses per second · one RTX 4090 (hashcat benchmark)",
-      "bars": [
-       {
-        "label": "MD5",
-        "value": 164100000000,
-        "display": "164.1 billion / s",
-        "tone": "red",
-        "step": 0
-       },
-       {
-        "label": "SHA-1",
-        "value": 50640000000,
-        "display": "50.6 billion / s",
-        "tone": "red",
-        "step": 1
-       },
-       {
-        "label": "SHA-256",
-        "value": 21980000000,
-        "display": "22.0 billion / s",
-        "tone": "red",
-        "step": 1
-       }
-      ]
-     },
-     "from": 206,
-     "duration": 366,
+     "duration": 596,
      "steps": [
       0,
-      184
+      206,
+      390
      ],
      "sfx": []
     },
@@ -997,8 +969,8 @@
        }
       ]
      },
-     "from": 572,
-     "duration": 583,
+     "from": 596,
+     "duration": 620,
      "steps": [
       0,
       259
@@ -1011,8 +983,8 @@
    "id": "S13",
    "act": 3,
    "transitionIn": "push",
-   "from": 10840,
-   "duration": 1309,
+   "from": 10954,
+   "duration": 1321,
    "shots": [
     {
      "visual": "TextStack",
@@ -1039,7 +1011,7 @@
       ]
      },
      "from": 0,
-     "duration": 438,
+     "duration": 442,
      "steps": [
       0,
       110,
@@ -1091,12 +1063,12 @@
       "caption": "Same 2.8 trillion, full-search estimate: bcrypt ≈ 177 days · scrypt ≈ 12.5 years",
       "captionStep": 2
      },
-     "from": 438,
-     "duration": 871,
+     "from": 442,
+     "duration": 879,
      "steps": [
       0,
-      344,
-      607
+      349,
+      615
      ],
      "sfx": []
     }
@@ -1106,8 +1078,8 @@
    "id": "S14",
    "act": 3,
    "transitionIn": "fade",
-   "from": 12149,
-   "duration": 1838,
+   "from": 12275,
+   "duration": 1843,
    "shots": [
     {
      "visual": "TextStack",
@@ -1137,10 +1109,10 @@
       ]
      },
      "from": 0,
-     "duration": 595,
+     "duration": 600,
      "steps": [
       0,
-      379
+      384
      ],
      "sfx": []
     },
@@ -1151,7 +1123,7 @@
       "code": "# algorithm + settings · salt · hash\n$argon2id$v=19$m=19456,t=2,p=1\n$cE3JU6U6szy6uvAh96bkyw\n$Pr8MGyxkXWUs/ALFyQ4a+2IS3skjs84BpY4YSDhLGFM",
       "caption": "Settings travel with the hash, so the cost can be raised later"
      },
-     "from": 595,
+     "from": 600,
      "duration": 596,
      "steps": [
       0,
@@ -1178,7 +1150,7 @@
        }
       ]
      },
-     "from": 1191,
+     "from": 1196,
      "duration": 317,
      "steps": [
       0
@@ -1202,7 +1174,7 @@
        }
       ]
      },
-     "from": 1508,
+     "from": 1513,
      "duration": 330,
      "steps": [
       0
@@ -1215,7 +1187,7 @@
    "id": "S15",
    "act": 4,
    "transitionIn": "wipe",
-   "from": 13987,
+   "from": 14118,
    "duration": 562,
    "shots": [
     {
@@ -1298,8 +1270,8 @@
    "id": "S16",
    "act": 4,
    "transitionIn": "fade",
-   "from": 14549,
-   "duration": 1349,
+   "from": 14680,
+   "duration": 1342,
    "shots": [
     {
      "visual": "TextStack",
@@ -1327,7 +1299,7 @@
       "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
      "from": 91,
-     "duration": 333,
+     "duration": 326,
      "steps": [
       0
      ],
@@ -1340,7 +1312,7 @@
       "highlight": "SHALL NOT",
       "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
-     "from": 424,
+     "from": 417,
      "duration": 356,
      "steps": [
       0
@@ -1354,7 +1326,7 @@
       "highlight": "15 characters",
       "source": "NIST SP 800-63B-4 · §3.1.1.2 · single-factor passwords"
      },
-     "from": 780,
+     "from": 773,
      "duration": 316,
      "steps": [
       0
@@ -1368,7 +1340,7 @@
       "highlight": "blocklist",
       "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
-     "from": 1096,
+     "from": 1089,
      "duration": 253,
      "steps": [
       0
@@ -1381,21 +1353,22 @@
    "id": "S17",
    "act": 4,
    "transitionIn": "push",
-   "from": 15898,
-   "duration": 716,
+   "from": 16022,
+   "duration": 728,
    "shots": [
     {
-     "visual": "KAnonymity",
+     "visual": "KAnonExchange",
      "props": {
       "password": "mango@123",
-      "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
+      "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
+      "service": "Have I Been Pwned"
      },
      "from": 0,
-     "duration": 716,
+     "duration": 728,
      "steps": [
       0,
       158,
-      438
+      450
      ],
      "sfx": []
     }
@@ -1405,8 +1378,8 @@
    "id": "S18",
    "act": 4,
    "transitionIn": "fade",
-   "from": 16614,
-   "duration": 2054,
+   "from": 16750,
+   "duration": 2072,
    "shots": [
     {
      "visual": "TextStack",
@@ -1480,7 +1453,7 @@
       ]
      },
      "from": 535,
-     "duration": 417,
+     "duration": 435,
      "steps": [
       0
      ],
@@ -1505,7 +1478,7 @@
        }
       ]
      },
-     "from": 952,
+     "from": 970,
      "duration": 802,
      "steps": [
       0,
@@ -1532,7 +1505,7 @@
        }
       ]
      },
-     "from": 1754,
+     "from": 1772,
      "duration": 300,
      "steps": [
       0
@@ -1581,311 +1554,311 @@
   },
   {
    "file": "S03_02.wav",
-   "from": 1747
+   "from": 1736
   },
   {
    "file": "S03_03.wav",
-   "from": 1972
+   "from": 1961
   },
   {
    "file": "S03_04.wav",
-   "from": 2159
+   "from": 2148
   },
   {
    "file": "S03_05.wav",
-   "from": 2361
+   "from": 2350
   },
   {
    "file": "S04_01.wav",
-   "from": 2607
+   "from": 2596
   },
   {
    "file": "S04_02.wav",
-   "from": 2787
+   "from": 2776
   },
   {
    "file": "S04_03.wav",
-   "from": 2940
+   "from": 2944
   },
   {
    "file": "S05_01.wav",
-   "from": 3162
+   "from": 3166
   },
   {
    "file": "S05_02.wav",
-   "from": 3253
+   "from": 3257
   },
   {
    "file": "S05_03.wav",
-   "from": 3429
+   "from": 3433
   },
   {
    "file": "S05_04.wav",
-   "from": 3645
+   "from": 3649
   },
   {
    "file": "S05_05.wav",
-   "from": 3831
+   "from": 3835
   },
   {
    "file": "S05_06.wav",
-   "from": 4092
+   "from": 4096
   },
   {
    "file": "S05_07.wav",
-   "from": 4212
+   "from": 4216
   },
   {
    "file": "S06_01.wav",
-   "from": 4469
+   "from": 4473
   },
   {
    "file": "S06_02.wav",
-   "from": 4599
+   "from": 4603
   },
   {
    "file": "S06_03.wav",
-   "from": 4711
+   "from": 4715
   },
   {
    "file": "S06_04.wav",
-   "from": 5028
+   "from": 5054
   },
   {
    "file": "S07_01.wav",
-   "from": 5251
+   "from": 5277
   },
   {
    "file": "S07_02.wav",
-   "from": 5375
+   "from": 5401
   },
   {
    "file": "S07_03.wav",
-   "from": 5614
+   "from": 5640
   },
   {
    "file": "S07_04.wav",
-   "from": 5782
+   "from": 5808
   },
   {
    "file": "S08_01.wav",
-   "from": 5880
+   "from": 5906
   },
   {
    "file": "S08_02.wav",
-   "from": 5991
+   "from": 6017
   },
   {
    "file": "S08_03.wav",
-   "from": 6156
+   "from": 6182
   },
   {
    "file": "S08_04.wav",
-   "from": 6235
+   "from": 6261
   },
   {
    "file": "S09_01.wav",
-   "from": 6485
+   "from": 6511
   },
   {
    "file": "S09_02.wav",
-   "from": 6703
+   "from": 6729
   },
   {
    "file": "S09_03.wav",
-   "from": 6825
+   "from": 6868
   },
   {
    "file": "S09_04.wav",
-   "from": 6985
+   "from": 7028
   },
   {
    "file": "S09_05.wav",
-   "from": 7279
+   "from": 7322
   },
   {
    "file": "S09_06.wav",
-   "from": 7473
+   "from": 7516
   },
   {
    "file": "S10_01.wav",
-   "from": 7739
+   "from": 7782
   },
   {
    "file": "S10_02.wav",
-   "from": 7804
+   "from": 7847
   },
   {
    "file": "S10_03.wav",
-   "from": 8004
+   "from": 8047
   },
   {
    "file": "S10_04.wav",
-   "from": 8275
+   "from": 8318
   },
   {
    "file": "S10_05.wav",
-   "from": 8461
+   "from": 8514
   },
   {
    "file": "S11_01.wav",
-   "from": 8754
+   "from": 8807
   },
   {
    "file": "S11_02.wav",
-   "from": 8881
+   "from": 8934
   },
   {
    "file": "S11_03.wav",
-   "from": 9144
+   "from": 9197
   },
   {
    "file": "S11_04.wav",
-   "from": 9411
+   "from": 9464
   },
   {
    "file": "S11_05.wav",
-   "from": 9560
+   "from": 9613
   },
   {
    "file": "S12_01.wav",
-   "from": 9685
+   "from": 9738
   },
   {
    "file": "S12_02.wav",
-   "from": 9891
+   "from": 9944
   },
   {
    "file": "S12_03.wav",
-   "from": 10075
+   "from": 10128
   },
   {
    "file": "S12_04.wav",
-   "from": 10257
+   "from": 10334
   },
   {
    "file": "S12_05.wav",
-   "from": 10516
+   "from": 10593
   },
   {
    "file": "S13_01.wav",
-   "from": 10840
+   "from": 10954
   },
   {
    "file": "S13_02.wav",
-   "from": 10950
+   "from": 11064
   },
   {
    "file": "S13_03.wav",
-   "from": 11191
+   "from": 11305
   },
   {
    "file": "S13_04.wav",
-   "from": 11278
+   "from": 11396
   },
   {
    "file": "S13_05.wav",
-   "from": 11622
+   "from": 11745
   },
   {
    "file": "S13_06.wav",
-   "from": 11885
+   "from": 12011
   },
   {
    "file": "S14_01.wav",
-   "from": 12149
+   "from": 12275
   },
   {
    "file": "S14_02.wav",
-   "from": 12528
+   "from": 12659
   },
   {
    "file": "S14_03.wav",
-   "from": 12744
+   "from": 12875
   },
   {
    "file": "S14_04.wav",
-   "from": 13078
+   "from": 13209
   },
   {
    "file": "S14_05.wav",
-   "from": 13340
+   "from": 13471
   },
   {
    "file": "S14_06.wav",
-   "from": 13657
+   "from": 13788
   },
   {
    "file": "S15_01.wav",
-   "from": 13987
+   "from": 14118
   },
   {
    "file": "S15_02.wav",
-   "from": 14134
+   "from": 14265
   },
   {
    "file": "S15_03.wav",
-   "from": 14324
+   "from": 14455
   },
   {
    "file": "S16_01.wav",
-   "from": 14549
+   "from": 14680
   },
   {
    "file": "S16_02.wav",
-   "from": 14640
+   "from": 14771
   },
   {
    "file": "S16_03.wav",
-   "from": 14973
+   "from": 15097
   },
   {
    "file": "S16_04.wav",
-   "from": 15329
+   "from": 15453
   },
   {
    "file": "S16_05.wav",
-   "from": 15645
+   "from": 15769
   },
   {
    "file": "S17_01.wav",
-   "from": 15898
+   "from": 16022
   },
   {
    "file": "S17_02.wav",
-   "from": 16056
+   "from": 16180
   },
   {
    "file": "S17_03.wav",
-   "from": 16336
+   "from": 16472
   },
   {
    "file": "S18_01.wav",
-   "from": 16614
+   "from": 16750
   },
   {
    "file": "S18_02.wav",
-   "from": 16840
+   "from": 16976
   },
   {
    "file": "S18_03.wav",
-   "from": 17149
+   "from": 17285
   },
   {
    "file": "S18_04.wav",
-   "from": 17566
+   "from": 17720
   },
   {
    "file": "S18_05.wav",
-   "from": 17918
+   "from": 18072
   },
   {
    "file": "S18_06.wav",
-   "from": 18100
+   "from": 18254
   },
   {
    "file": "S18_07.wav",
-   "from": 18368
+   "from": 18522
   }
  ],
  "music": {

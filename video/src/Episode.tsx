@@ -2,10 +2,13 @@ import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {Background} from './components/base';
 import * as visuals from './components/visuals';
+import {Avalanche} from './components/fingerprint';
+import {KAnonExchange} from './components/KAnonExchange';
+import {GuessStream} from './components/three/GuessStream';
 import {SceneTransition} from './transitions';
 import {BuiltEpisode, BuiltShot} from './types';
 
-const registry = visuals as unknown as Record<string, React.FC<Record<string, unknown>>>;
+const registry = {...visuals, Avalanche, KAnonExchange, GuessStream} as unknown as Record<string, React.FC<Record<string, unknown>>>;
 
 const SFX_VOLUME = {tick: 0.18, hit: 0.35, whoosh: 0.2};
 

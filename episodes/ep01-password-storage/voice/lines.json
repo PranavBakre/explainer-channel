@@ -17,7 +17,7 @@
  },
  {
   "id": "S02_01",
-  "text": "In December two thousand nine, a company called RockYou was hacked."
+  "text": "In December two thousand nine, a company called Rock You was hacked."
  },
  {
   "id": "S02_02",
@@ -33,7 +33,7 @@
  },
  {
   "id": "S03_01",
-  "text": "Let's say you sign up for a new grocery app. Your password is mango, at sign, one two three."
+  "text": "Let's say you sign up for a new grocery app. Your password is mango at the rate one two three."
  },
  {
   "id": "S03_02",
@@ -45,7 +45,7 @@
  },
  {
   "id": "S03_04",
-  "text": "It also means anyone who copies that table walks away with every password in it. That was RockYou."
+  "text": "It also means anyone who copies that table walks away with every password in it. That was Rock You."
  },
  {
   "id": "S03_05",
@@ -57,7 +57,7 @@
  },
  {
   "id": "S04_02",
-  "text": "Now the table shows scrambled text instead of mango at one two three."
+  "text": "Now the table shows scrambled text instead of mango at the rate one two three."
  },
  {
   "id": "S04_03",
@@ -101,7 +101,7 @@
  },
  {
   "id": "S06_03",
-  "text": "Feed it mango at one two three, and SHA-256 gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
+  "text": "Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
  },
  {
   "id": "S06_04",
@@ -145,7 +145,7 @@
  },
  {
   "id": "S09_02",
-  "text": "They were SHA-1 hashes, with nothing added. Unsalted."
+  "text": "They were S H A one hashes, with nothing added. Unsalted."
  },
  {
   "id": "S09_03",
@@ -177,7 +177,7 @@
  },
  {
   "id": "S10_04",
-  "text": "Two people who both chose mango at one two three now get completely different fingerprints."
+  "text": "Two people who both chose mango at the rate one two three now get completely different fingerprints."
  },
  {
   "id": "S10_05",
@@ -193,7 +193,7 @@
  },
  {
   "id": "S11_03",
-  "text": "Real people make that easier. In the RockYou leak, nearly half the passwords were names, dictionary words or simple patterns."
+  "text": "Real people make that easier. In the Rock You leak, nearly half the passwords were names, dictionary words or simple patterns."
  },
  {
   "id": "S11_04",
@@ -205,7 +205,7 @@
  },
  {
   "id": "S12_01",
-  "text": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hashcat."
+  "text": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat."
  },
  {
   "id": "S12_02",
@@ -213,7 +213,7 @@
  },
  {
   "id": "S12_03",
-  "text": "About fifty billion for SHA-1. About twenty-two billion for SHA-256."
+  "text": "About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six."
  },
  {
   "id": "S12_04",
@@ -221,7 +221,7 @@
  },
  {
   "id": "S12_05",
-  "text": "With M D five, that card gets through all of them in about seventeen seconds. With SHA-1, under a minute. SHA-256, about two minutes."
+  "text": "With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes."
  },
  {
   "id": "S13_01",
@@ -233,15 +233,15 @@
  },
  {
   "id": "S13_03",
-  "text": "bcrypt arrived in nineteen ninety-nine."
+  "text": "B crypt arrived in nineteen ninety-nine."
  },
  {
   "id": "S13_04",
-  "text": "On the same card, bcrypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year."
+  "text": "On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year."
  },
  {
   "id": "S13_05",
-  "text": "scrypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware."
+  "text": "S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware."
  },
  {
   "id": "S13_06",
@@ -249,7 +249,7 @@
  },
  {
   "id": "S14_01",
-  "text": "The OWASP guidance on password storage recommends Argon2id. It comes from Argon2, which won an open password hashing competition in twenty fifteen."
+  "text": "The Oh wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen."
  },
  {
   "id": "S14_02",
@@ -289,7 +289,7 @@
  },
  {
   "id": "S16_02",
-  "text": "The US standards body NIST now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle."
+  "text": "The U S standards body Nist now requires salted password hashing in its guidelines, and recommends the highest cost a site can practically handle."
  },
  {
   "id": "S16_03",
@@ -309,7 +309,7 @@
  },
  {
   "id": "S17_02",
-  "text": "Your browser or app hashes the password with SHA-1, and sends only the first five characters to the service Have I Been Pwned."
+  "text": "Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned."
  },
  {
   "id": "S17_03",
@@ -325,7 +325,7 @@
  },
  {
   "id": "S18_03",
-  "text": "Back to RockYou's most popular password. A sensible attacker tries the most common passwords first. So even behind Argon2, one two three four five six would be among the first guesses."
+  "text": "Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses."
  },
  {
   "id": "S18_04",
@@ -333,7 +333,7 @@
  },
  {
   "id": "S18_05",
-  "text": "Our advice: use a password manager. NIST now requires sites to allow them."
+  "text": "Our advice: use a password manager. Nist now requires sites to allow them."
  },
  {
   "id": "S18_06",

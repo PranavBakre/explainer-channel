@@ -15,7 +15,7 @@ tools/tts/.venv/bin/python tools/tts/synth.py episodes/<ep>/voice/lines.json epi
 `lines.json` = `[{"id":"S01_01","text":"…"}]`, one sentence group (≤ 2 sentences) per line so timing is fine-grained. Write numbers as spoken words in the text. Manifest gives seconds and wpm per line.
 
 ## Lexicon
-`lexicon.json` maps written → spoken (`"SHA-256": "shah two fifty-six"`, `"bcrypt": "bee-crypt"`, `"NIST": "nist"`). Add an entry for every acronym, product name and symbol.
+The script is already written as spoken (see script-writing), so `lexicon.json` is a safety net for stray written forms, normally `{}`. Fix a mispronunciation in the script text, not the lexicon. `voice/written.json` maps spoken → written (`"S H A two fifty-six": "SHA-256"`, `"at the rate": "@"` forms) and is applied only to captions by `build-episode.ts`.
 
 ## Check (every run)
 1. Transcribe each line with `tools/tts/transcribe.py`; diff against text. Any word error on a key term → lexicon fix → resynth that line.

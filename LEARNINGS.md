@@ -49,3 +49,8 @@ Running log. Newest at the bottom of each section.
 2. Highlight the comparison: changed bits, matching substring, aligned rows — at readable size.
 3. Speed differences as time (17 s → 6 months → 12 years), not only log bars.
 4. Keep the running object (the user row) on screen through the recap.
+
+## Operator feedback (2026-11-09)
+- **Write narration the way it is spoken.** "SHA-256" → "S H A two fifty-six", "@" → "at the rate" (not "at sign"), "bcrypt" → "B crypt". A hidden written → spoken lexicon made the script, the review and the audio disagree, and respellings like "shah" and "ay to eff" still came out wrong. The script is now the TTS input; `voice/written.json` maps spoken back to written for captions only, and the lexicon is a safety net (`{}`).
+- **Every Remotion bundle copies `public/` into `$TMPDIR`** (~150 MB each here) and is never deleted; five renders left 761 MB. `stills.mjs` now removes its bundle; delete `remotion-webpack-bundle-*` after CLI renders too.
+- **Operator feedback: v1 was text, not visuals.** Plan in `episodes/ep01-password-storage/visual-pass-v2.md`: one physical password card, hashes drawn as their real bits, three.js (`@remotion/three`) for machines and the guess swarm, rough.js for hand-drawn marks, pre-seeded particles instead of a physics engine (Remotion renders frames out of order).

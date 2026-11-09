@@ -9,15 +9,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "remotion": "4.0.541",
+    "@react-three/fiber": "9",
     "@remotion/cli": "4.0.541",
     "@remotion/google-fonts": "4.0.541",
     "@remotion/media-utils": "4.0.541",
+    "@remotion/three": "4.0.541",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "remotion": "4.0.541",
+    "roughjs": "^4.6.6",
+    "three": "^0.187.0"
   },
   "devDependencies": {
-    "typescript": "5.9.3",
-    "@types/react": "19.1.12"
+    "@types/react": "19.1.12",
+    "@types/three": "^0.187.0",
+    "typescript": "5.9.3"
   }
 }
