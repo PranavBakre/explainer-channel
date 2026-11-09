@@ -3,7 +3,7 @@
  "fps": 30,
  "width": 1920,
  "height": 1080,
- "durationInFrames": 18822,
+ "durationInFrames": 18842,
  "scenes": [
   {
    "id": "S01",
@@ -457,7 +457,7 @@
    "act": 2,
    "transitionIn": "wipe",
    "from": 4473,
-   "duration": 804,
+   "duration": 809,
    "shots": [
     {
      "visual": "ActTitle",
@@ -488,11 +488,11 @@
       "caption": "No way back. Only guess, hash, compare."
      },
      "from": 130,
-     "duration": 674,
+     "duration": 679,
      "steps": [
       0,
       112,
-      451
+      456
      ],
      "sfx": [
       {
@@ -507,7 +507,7 @@
    "id": "S07",
    "act": 2,
    "transitionIn": "cut",
-   "from": 5277,
+   "from": 5282,
    "duration": 629,
    "shots": [
     {
@@ -536,7 +536,7 @@
    "id": "S08",
    "act": 2,
    "transitionIn": "push",
-   "from": 5906,
+   "from": 5911,
    "duration": 605,
    "shots": [
     {
@@ -563,8 +563,8 @@
    "id": "S09",
    "act": 2,
    "transitionIn": "fade",
-   "from": 6511,
-   "duration": 1271,
+   "from": 6516,
+   "duration": 1274,
    "shots": [
     {
      "visual": "TextStack",
@@ -585,7 +585,7 @@
       ]
      },
      "from": 0,
-     "duration": 357,
+     "duration": 360,
      "steps": [
       0,
       218
@@ -628,7 +628,7 @@
       ],
       "caption": "Your password is the row next to it"
      },
-     "from": 357,
+     "from": 360,
      "duration": 648,
      "steps": [
       0,
@@ -661,7 +661,7 @@
        }
       ]
      },
-     "from": 1005,
+     "from": 1008,
      "duration": 266,
      "steps": [
       0
@@ -674,7 +674,7 @@
    "id": "S10",
    "act": 2,
    "transitionIn": "zoom",
-   "from": 7782,
+   "from": 7790,
    "duration": 1025,
    "shots": [
     {
@@ -744,7 +744,7 @@
    "id": "S11",
    "act": 3,
    "transitionIn": "wipe",
-   "from": 8807,
+   "from": 8815,
    "duration": 931,
    "shots": [
     {
@@ -839,8 +839,8 @@
    "id": "S12",
    "act": 3,
    "transitionIn": "fade",
-   "from": 9738,
-   "duration": 1216,
+   "from": 9746,
+   "duration": 1224,
    "shots": [
     {
      "visual": "GuessStream",
@@ -870,7 +870,7 @@
       ]
      },
      "from": 0,
-     "duration": 596,
+     "duration": 604,
      "steps": [
       0,
       206,
@@ -903,7 +903,7 @@
        }
       ]
      },
-     "from": 596,
+     "from": 604,
      "duration": 620,
      "steps": [
       0,
@@ -917,7 +917,7 @@
    "id": "S13",
    "act": 3,
    "transitionIn": "push",
-   "from": 10954,
+   "from": 10970,
    "duration": 1321,
    "shots": [
     {
@@ -990,7 +990,7 @@
    "id": "S14",
    "act": 3,
    "transitionIn": "fade",
-   "from": 12275,
+   "from": 12291,
    "duration": 1843,
    "shots": [
     {
@@ -1099,7 +1099,7 @@
    "id": "S15",
    "act": 4,
    "transitionIn": "wipe",
-   "from": 14118,
+   "from": 14134,
    "duration": 562,
    "shots": [
     {
@@ -1182,7 +1182,7 @@
    "id": "S16",
    "act": 4,
    "transitionIn": "fade",
-   "from": 14680,
+   "from": 14696,
    "duration": 1342,
    "shots": [
     {
@@ -1265,8 +1265,8 @@
    "id": "S17",
    "act": 4,
    "transitionIn": "push",
-   "from": 16022,
-   "duration": 728,
+   "from": 16038,
+   "duration": 732,
    "shots": [
     {
      "visual": "KAnonExchange",
@@ -1276,11 +1276,11 @@
       "service": "Have I Been Pwned"
      },
      "from": 0,
-     "duration": 728,
+     "duration": 732,
      "steps": [
       0,
       158,
-      450
+      454
      ],
      "sfx": []
     }
@@ -1290,7 +1290,7 @@
    "id": "S18",
    "act": 4,
    "transitionIn": "fade",
-   "from": 16750,
+   "from": 16770,
    "duration": 2072,
    "shots": [
     {

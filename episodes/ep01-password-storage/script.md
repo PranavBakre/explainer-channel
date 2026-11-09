@@ -2,7 +2,7 @@
 
 Template: problem chain (each fix breaks somewhere new). Target 10:00 at ~155 wpm.
 Running scenario: you sign up for a grocery app with the password `mango@123`.
-Fact tags `[F#]` refer to `factsheet.md`; they are stripped before TTS. Narration is written as spoken ("S H A two fifty-six", "at the rate"); `voice/written.json` maps it back for captions.
+Fact tags `[F#]` refer to `factsheet.md`; they are stripped before TTS. Narration is written as spoken ("SHA two fifty-six", "at the rate"); `voice/written.json` maps it back for captions.
 Revision 5 — narrows the S02 benchmark scope per `reviews/script-r4-codex.md`. Revision 4 addressed `reviews/script-r3-codex.md` remaining fact issues and the r1 DeepSeek proofread. Revision 3 addressed `reviews/script-r2-codex.md` blocking corrections. Revision 2 addressed `reviews/script-r1-codex.md` (accuracy, hook, stacked questions, absolutes) and `reviews/script-r1-deepseek-proofread.md`.
 
 | Scene | Beat | Job |
@@ -56,7 +56,7 @@ So encryption solved the wrong problem. The site never needed to read your passw
 ## S06 — Part two: the one-way idea
 Checking without reading back is what a cryptographic hash does.
 It turns any text into a fingerprint of fixed length. [F12][F40]
-Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise. [F40][F43]
+Feed it mango at the rate one two three, and SHA two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise. [F40][F43]
 And there's no practical way to run it backwards. An attacker can still guess, hash the guess, and compare. [F12]
 > on-screen: mango@123 → SHA-256 → 81c68634…efff1
 
@@ -76,7 +76,7 @@ If that table leaks, the attacker gets fingerprints, not passwords. That sounds 
 
 ## S09 — Part two: LinkedIn and lookup tables
 In twenty twelve, a file of about six and a half million LinkedIn password hashes was posted online. [F16]
-They were S H A one hashes, with nothing added. Unsalted. [F16]
+They were SHA one hashes, with nothing added. Unsalted. [F16]
 That matters because the same password always produces the same fingerprint.
 Attackers don't need to reverse anything. They hash millions of common passwords once, ahead of time, and keep the results in a lookup table. [F19][F43]
 Then they just search. If your fingerprint is in their table, your password is the row next to it.
@@ -102,9 +102,9 @@ And the hashes we've seen so far are fast to calculate.
 ## S12 — Part three: the GPU race
 Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat. [F23]
 It tries about a hundred and sixty-four billion M D five guesses every second. [F23]
-About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six. [F23]
+About fifty billion for SHA one. About twenty-two billion for SHA two fifty-six. [F23]
 Take every possible eight-character password made of lowercase letters and digits. That's about two point eight trillion of them. [F24]
-With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes. [F24]
+With M D five, that card gets through all of them in about seventeen seconds. With SHA one, under a minute. SHA two fifty-six, about two minutes. [F24]
 > on-screen: log-scale bars MD5 / SHA-1 / SHA-256; StatGrid 17 s · 56 s · ~2 min
 
 ## S13 — Part three: slow on purpose
@@ -141,7 +141,7 @@ And sites must check new passwords against a blocklist of commonly used, expecte
 
 ## S17 — Part four: checking without telling
 That last check can work without sending your password, or even its full hash.
-Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned. [F33]
+Your browser or app hashes the password with SHA one, and sends only the first five characters to the service Have I Been Poned. [F33]
 The service returns the endings of matching leaked hashes in its database. Your device checks its own ending against that list. [F33]
 > on-screen: SHA-1 of mango@123, first five chars "f14d5" sent, the rest stays local
 

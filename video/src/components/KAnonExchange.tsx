@@ -45,7 +45,7 @@ export const KAnonExchange: React.FC<ShotProps<{password: string; hash: string; 
         not the password, not the full hash
       </div>
       <div style={{position: 'absolute', left: PHONE.x + 40, top: PHONE.y + 150, opacity: enter(frame, s1)}}>
-        <Label>S H A-1</Label>
+        <Label>SHA-1</Label>
         <div style={{marginTop: 12}}>
           <Fingerprint hex={hash} cols={16} cell={18} reveal={interpolate(frame - s1, [10, 50], [0, 1], clamp)} on={colors.cream} />
         </div>

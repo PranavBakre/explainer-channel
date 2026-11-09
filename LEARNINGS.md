@@ -51,7 +51,7 @@ Running log. Newest at the bottom of each section.
 4. Keep the running object (the user row) on screen through the recap.
 
 ## Operator feedback (2026-11-09)
-- **Write narration the way it is spoken.** "SHA-256" → "S H A two fifty-six", "@" → "at the rate" (not "at sign"), "bcrypt" → "B crypt". A hidden written → spoken lexicon made the script, the review and the audio disagree, and respellings like "shah" and "ay to eff" still came out wrong. The script is now the TTS input; `voice/written.json` maps spoken back to written for captions only, and the lexicon is a safety net (`{}`).
+- **Write narration the way it is spoken.** "SHA-256" → "SHA two fifty-six", "@" → "at the rate" (not "at sign"), "bcrypt" → "B crypt". A hidden written → spoken lexicon made the script, the review and the audio disagree, and respellings like "shah" and "ay to eff" still came out wrong. The script is now the TTS input; `voice/written.json` maps spoken back to written for captions only, and the lexicon is a safety net (`{}`).
 - **Every Remotion bundle copies `public/` into `$TMPDIR`** (~150 MB each here) and is never deleted; five renders left 761 MB. `stills.mjs` now removes its bundle; delete `remotion-webpack-bundle-*` after CLI renders too.
 - **Operator feedback: v1 was text, not visuals.** Plan in `episodes/ep01-password-storage/visual-pass-v2.md`: one physical password card, hashes drawn as their real bits, three.js (`@remotion/three`) for machines and the guess swarm, rough.js for hand-drawn marks, pre-seeded particles instead of a physics engine (Remotion renders frames out of order).
 
@@ -69,3 +69,5 @@ Running log. Newest at the bottom of each section.
 - **`@react-three/postprocessing` renders a blank canvas under Remotion capture** (with and without MSAA); even the scene background disappears. Use an additive sprite for bulb glow and CSS overlays for vignette instead of bloom/vignette passes.
 - **R3F's `camera` prop is applied once**; animate the camera with a rig that sets position + `lookAt` in `useLayoutEffect` per frame.
 - **yt-dlp older than ~90 days gets only images from YouTube** ("Only images are available"); `brew upgrade yt-dlp` fixed it.
+
+- **A lone spaced "A" is the article to Kokoro.** "S H A one" phonemized as /ˈɛs ˈeɪtʃ ɐ wˈʌn/, so the operator heard "S H" then "uh-one". Writing "SHA one" gives /ˌɛsˌeɪtʃˈeɪ/; other spaced letters (I D, M D, N I S T, D E S) were fine. Check new acronyms with the phonemizer before synthesis, not only Whisper after it: Whisper had normalised the broken take back to "SHA-1".

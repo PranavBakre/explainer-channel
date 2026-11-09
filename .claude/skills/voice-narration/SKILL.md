@@ -15,9 +15,10 @@ tools/tts/.venv/bin/python tools/tts/synth.py episodes/<ep>/voice/lines.json epi
 `lines.json` = `[{"id":"S01_01","text":"…"}]`, one sentence group (≤ 2 sentences) per line so timing is fine-grained. Write numbers as spoken words in the text. Manifest gives seconds and wpm per line.
 
 ## Lexicon
-The script is already written as spoken (see script-writing), so `lexicon.json` is a safety net for stray written forms, normally `{}`. Fix a mispronunciation in the script text, not the lexicon. `voice/written.json` maps spoken → written (`"S H A two fifty-six": "SHA-256"`, `"at the rate": "@"` forms) and is applied only to captions by `build-episode.ts`.
+The script is already written as spoken (see script-writing), so `lexicon.json` is a safety net for stray written forms, normally `{}`. Fix a mispronunciation in the script text, not the lexicon. `voice/written.json` maps spoken → written (`"SHA two fifty-six": "SHA-256"`, `"at the rate": "@"` forms) and is applied only to captions by `build-episode.ts`.
 
 ## Check (every run)
+0. Phonemize new acronyms before synthesis (`k.tokenizer.phonemize(text, "en-us")`): a spaced capital `A` comes out as /ɐ/ ("uh") and merges with the next word; capitalized initialisms like `SHA`, `GPU` phonemize letter by letter.
 1. Transcribe each line with `tools/tts/transcribe.py`; diff against text. Any word error on a key term → lexicon fix → resynth that line.
 2. Pace: overall 145–170 wpm; flag lines < 120 or > 185.
 3. Silence: each line file starts/ends within 0.3 s of speech; the build adds the pauses.

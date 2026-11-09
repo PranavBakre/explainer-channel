@@ -25,7 +25,7 @@ Rotate templates across episodes so the channel never looks templated (YouTube "
 - Misconception first: voice the wrong belief, show why it fails, then the right idea.
 - One scenario carried through the whole video; return to it when a new term appears.
 - Real names, one rounded number per idea, said as spoken ("thirty-two million").
-- Write every narration line exactly as it is spoken — the script is the TTS input. Acronyms spelled out ("S H A two fifty-six", "M D five"), symbols as words ("mango at the rate one two three", never "at sign" or "@"), names as said ("Argon two I D", "Oh wasp", "B crypt"). On-screen text and captions keep the written form via `voice/written.json`.
+- Write every narration line exactly as it is spoken — the script is the TTS input. Acronyms spelled out ("M D five", "N I S T"), except a lone letter A, which Kokoro reads as the article "uh": write "SHA two fifty-six", never "S H A", symbols as words ("mango at the rate one two three", never "at sign" or "@"), names as said ("Argon two I D", "Oh wasp", "B crypt"). On-screen text and captions keep the written form via `voice/written.json`.
 - Define jargon once, in ≤8 words, the first time.
 - Sentences 6–14 words mostly; one breath each. Max three items per list, as plain sentences.
 - Trade-offs shown as concrete consequences, never signposted.

@@ -101,7 +101,7 @@
  },
  {
   "id": "S06_03",
-  "text": "Feed it mango at the rate one two three, and S H A two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
+  "text": "Feed it mango at the rate one two three, and SHA two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
  },
  {
   "id": "S06_04",
@@ -145,7 +145,7 @@
  },
  {
   "id": "S09_02",
-  "text": "They were S H A one hashes, with nothing added. Unsalted."
+  "text": "They were SHA one hashes, with nothing added. Unsalted."
  },
  {
   "id": "S09_03",
@@ -213,7 +213,7 @@
  },
  {
   "id": "S12_03",
-  "text": "About fifty billion for S H A one. About twenty-two billion for S H A two fifty-six."
+  "text": "About fifty billion for SHA one. About twenty-two billion for SHA two fifty-six."
  },
  {
   "id": "S12_04",
@@ -221,7 +221,7 @@
  },
  {
   "id": "S12_05",
-  "text": "With M D five, that card gets through all of them in about seventeen seconds. With S H A one, under a minute. S H A two fifty-six, about two minutes."
+  "text": "With M D five, that card gets through all of them in about seventeen seconds. With SHA one, under a minute. SHA two fifty-six, about two minutes."
  },
  {
   "id": "S13_01",
@@ -309,7 +309,7 @@
  },
  {
   "id": "S17_02",
-  "text": "Your browser or app hashes the password with S H A one, and sends only the first five characters to the service Have I Been Poned."
+  "text": "Your browser or app hashes the password with SHA one, and sends only the first five characters to the service Have I Been Poned."
  },
  {
   "id": "S17_03",
