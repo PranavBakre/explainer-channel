@@ -6,21 +6,43 @@
     "transitionIn": "push",
     "shots": [
       {
-        "visual": "LockBox",
+        "visual": "LockboxSet",
         "props": {
+          "action": "lock",
+          "angle": "lid",
           "plain": "mango@123",
-          "cipher": "U2FsdGVkX19x4k",
-          "caption": "Whoever holds the key reads everything"
+          "cipher": "6FeRQifMiphtMzZfI0QUmw=="
         },
         "beats": [
           {
             "id": "S04_01",
             "vo": "The obvious fix is to lock the column. Encrypt each password with a secret key."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "CatalogSet",
+        "props": {
+          "action": "drawer",
+          "angle": "drawer",
+          "field": "cipher"
+        },
+        "beats": [
           {
             "id": "S04_02",
             "vo": "Now the table shows scrambled text instead of mango at the rate one two three."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "LockboxSet",
+        "props": {
+          "action": "unlock",
+          "angle": "rise",
+          "plain": "mango@123",
+          "cipher": "6FeRQifMiphtMzZfI0QUmw=="
+        },
+        "beats": [
           {
             "id": "S04_03",
             "vo": "But encryption is built to be undone. Whoever holds the key can turn every row back into the original."
@@ -36,27 +58,32 @@
     "transitionIn": "fade",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "EvidenceShot",
         "props": {
-          "kicker": "Adobe · 2013",
-          "lines": [
-            {
-              "text": "Encrypted, not hashed",
-              "step": 0
-            },
-            {
-              "text": "Triple DES",
-              "mono": true,
-              "tone": "amber",
-              "step": 1
-            }
+          "page": "adobe-krebs.png",
+          "source": "Krebs on Security · 29 Oct 2013",
+          "focus": [
+            0,
+            0.25
           ]
         },
         "beats": [
           {
             "id": "S05_01",
             "vo": "In twenty thirteen, Adobe was breached."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "LockboxSet",
+        "props": {
+          "action": "locked",
+          "angle": "stamp",
+          "plain": "mango@123",
+          "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+          "stamp": "TRIPLE DES"
+        },
+        "beats": [
           {
             "id": "S05_02",
             "vo": "Its passwords were encrypted, not hashed, with a cipher called Triple D E S."
@@ -64,29 +91,36 @@
         ]
       },
       {
-        "visual": "KeyCascade",
+        "visual": "LockboxSet",
         "props": {
-          "hints": [
-            {
-              "at": 2,
-              "text": "my dog's name"
-            },
-            {
-              "at": 9,
-              "text": "123456 lol"
-            },
-            {
-              "at": 16,
-              "text": "usual"
-            }
-          ],
-          "caption": "One key for all of them · ~109M hints in plain text"
+          "action": "wall",
+          "angle": "wall",
+          "plain": "mango@123",
+          "cipher": "6FeRQifMiphtMzZfI0QUmw=="
         },
         "beats": [
           {
             "id": "S05_03",
             "vo": "Australia's privacy regulator later found that Adobe used a single encryption key for all of them."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "EvidenceShot",
+        "props": {
+          "page": "adobe-oaic.png",
+          "quote": "adobe-oaic-quote.png",
+          "source": "OAIC · Adobe investigation report · June 2015",
+          "note": "Counted by Troy Hunt: ≈109M records had a hint",
+          "at": 45,
+          "quoteBand": [
+            2672,
+            213,
+            57,
+            161
+          ]
+        },
+        "beats": [
           {
             "id": "S05_04",
             "vo": "About a hundred and nine million records also had a password hint, stored in plain text."
@@ -94,28 +128,25 @@
         ],
         "sfx": [
           "tick"
-        ],
-        "sfxBeat": [
-          1
         ]
       },
       {
-        "visual": "StatGrid",
+        "visual": "EvidenceShot",
         "props": {
-          "title": "Adobe breach",
-          "items": [
-            {
-              "value": "38M",
-              "label": "active users hit (Adobe)",
-              "tone": "red",
-              "step": 0
-            },
-            {
-              "value": "~153M",
-              "label": "records in the leaked file",
-              "tone": "red",
-              "step": 0
-            }
+          "page": "adobe-krebs.png",
+          "quote": "adobe-krebs-quote.png",
+          "source": "Krebs on Security · 29 Oct 2013",
+          "note": "Counted by Have I Been Pwned: ≈153M records in the leaked file",
+          "at": 45,
+          "focus": [
+            0,
+            0.3
+          ],
+          "quoteBand": [
+            1677,
+            347,
+            54,
+            287
           ]
         },
         "beats": [
@@ -126,33 +157,41 @@
         ]
       },
       {
-        "visual": "TextStack",
+        "visual": "LockboxSet",
         "props": {
-          "lines": [
-            {
-              "text": "A hint is a head start.",
-              "step": 0,
-              "tone": "red"
-            },
-            {
-              "text": "The site never needs to read it back.",
-              "step": 1,
-              "size": 56,
-              "tone": "amber"
-            },
-            {
-              "text": "It only needs to check it.",
-              "step": 1,
-              "size": 56,
-              "tone": "teal"
-            }
+          "action": "hints",
+          "angle": "hints",
+          "closed": true,
+          "plain": "mango@123",
+          "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+          "hints": [
+            "my dog's name",
+            "my dog's name",
+            "my dog's name"
           ]
         },
         "beats": [
           {
             "id": "S05_06",
             "vo": "A hint like \"my dog's name\" gives a guesser a head start."
+          }
+        ]
+      },
+      {
+        "visual": "LightTableSet",
+        "props": {
+          "action": "match",
+          "angle": "wide",
+          "a": {
+            "label": "WHAT YOU TYPED",
+            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
           },
+          "b": {
+            "label": "WHAT IS STORED",
+            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+          }
+        },
+        "beats": [
           {
             "id": "S05_07",
             "vo": "So encryption solved the wrong problem. The site never needed to read your password back. It only needs to check it."
@@ -168,15 +207,10 @@
     "transitionIn": "fade",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "EvidenceShot",
         "props": {
-          "kicker": "NIST SP 800-63B-4 · July 2025",
-          "lines": [
-            {
-              "text": "The current rules",
-              "step": 0
-            }
-          ]
+          "page": "nist.png",
+          "source": "NIST SP 800-63B-4 · July 2025"
         },
         "beats": [
           {
@@ -186,11 +220,19 @@
         ]
       },
       {
-        "visual": "QuoteCard",
+        "visual": "EvidenceShot",
         "props": {
-          "quote": "Passwords SHALL be salted and hashed using a suitable password hashing scheme.",
-          "highlight": "salted and hashed",
-          "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+          "page": "nist.png",
+          "quote": "nist-salted-hashed-quote.png",
+          "source": "NIST SP 800-63B-4 · July 2025",
+          "at": 105,
+          "quoteBand": [
+            2162,
+            570,
+            63,
+            513
+          ],
+          "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
         },
         "beats": [
           {
@@ -200,11 +242,19 @@
         ]
       },
       {
-        "visual": "QuoteCard",
+        "visual": "EvidenceShot",
         "props": {
-          "quote": "Verifiers and CSPs SHALL NOT require subscribers to change passwords periodically.",
-          "highlight": "SHALL NOT",
-          "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+          "page": "nist.png",
+          "quote": "nist-no-rotation-quote.png",
+          "source": "NIST SP 800-63B-4 · July 2025",
+          "at": 70,
+          "quoteBand": [
+            2082,
+            226,
+            4,
+            163
+          ],
+          "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
         },
         "beats": [
           {
@@ -214,11 +264,19 @@
         ]
       },
       {
-        "visual": "QuoteCard",
+        "visual": "EvidenceShot",
         "props": {
-          "quote": "a minimum of 15 characters in length",
-          "highlight": "15 characters",
-          "source": "NIST SP 800-63B-4 · §3.1.1.2 · single-factor passwords"
+          "page": "nist.png",
+          "quote": "nist-min-length-quote.png",
+          "source": "NIST SP 800-63B-4 · July 2025",
+          "at": 150,
+          "quoteBand": [
+            2082,
+            286,
+            62,
+            285
+          ],
+          "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
         },
         "beats": [
           {
@@ -228,11 +286,19 @@
         ]
       },
       {
-        "visual": "QuoteCard",
+        "visual": "EvidenceShot",
         "props": {
-          "quote": "SHALL compare the prospective secret against a blocklist that contains known commonly used, expected, or compromised passwords",
-          "highlight": "blocklist",
-          "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+          "page": "nist.png",
+          "quote": "nist-blocklist-quote.png",
+          "source": "NIST SP 800-63B-4 · July 2025",
+          "at": 55,
+          "quoteBand": [
+            2162,
+            284,
+            63,
+            228
+          ],
+          "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
         },
         "beats": [
           {

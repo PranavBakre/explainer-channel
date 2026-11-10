@@ -4,7 +4,7 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {fonts} from '../../theme';
 import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
 
-export type Field = 'plain' | 'hidden' | 'hash' | 'salted';
+export type Field = 'plain' | 'hidden' | 'hash' | 'salted' | 'cipher';
 
 const ANGLES: Record<string, Angle> = {
   row: {from: [0.4, 2.3, 4.2], to: [0.2, 2.2, 3.6], target: [0, 1.75, 0.6]},
@@ -19,6 +19,7 @@ const FIELD_TEXT: Record<Field, (pw: string) => {text: string; color: string}> =
   hidden: () => ({text: '?', color: '#8A8F98'}),
   hash: () => ({text: '81c68634d1b2…', color: '#1A1E24'}),
   salted: () => ({text: 'e05b13d8 · 324ce3f9…', color: '#1A1E24'}),
+  cipher: (pw) => ({text: `${CIPHER[pw].replace(/=+$/, '').slice(0, 12)}…`, color: '#1A1E24'}),
 };
 
 const IndexCard: React.FC<{email: string; value: string; color: string}> = ({email, value, color}) => {
@@ -71,6 +72,16 @@ const USERS = [
   ['sam@mail.com', 'football'],
   ['you@mail.com', 'mango@123'],
 ];
+
+// Triple DES (EDE3, CBC, PKCS#7) of each stored password under one demo key: 0123456789ABCDEF… (24 bytes), IV zero.
+export const CIPHER: Record<string, string> = {
+  sunshine1: 'hstsZlb8v6ItsAQx8pDMCQ==',
+  '123456': 'YvyLlffrXN8=',
+  qwerty: 'px4kh3Q10Do=',
+  iloveyou: 'cGwWPiVXhC7jj3em3WEoJw==',
+  football: 'DHrScU34Jx8Z6UMom6dHlg==',
+  'mango@123': '6FeRQifMiphtMzZfI0QUmw==',
+};
 
 const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, number]; ghost?: boolean}> = ({field, lift, position = [0, 0, 0], ghost}) => (
   <group position={position}>

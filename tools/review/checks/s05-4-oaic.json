@@ -1,0 +1,6 @@
+[
+ {"name": "oaic-note-chip", "frame": 1150, "region": [1170, 958, 1895, 1024],
+  "box": "#11151B", "tol": 22, "ink": "#F2EDE4", "ink_tol": 90},
+ {"name": "oaic-source-chip", "frame": 1150, "region": [86, 958, 800, 1024],
+  "box": "#11151B", "tol": 22, "ink": "#F2EDE4", "ink_tol": 90}
+]

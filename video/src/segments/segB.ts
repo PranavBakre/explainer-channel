@@ -1,2 +1,4 @@
+import {EvidenceShot} from './segB/EvidenceShot';
+
 // Visuals added by segment B; spread into the registry.
-export const segB = {};
+export const segB = {EvidenceShot};

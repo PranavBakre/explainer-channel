@@ -1,0 +1,4 @@
+[
+ {"name": "nist-source-chip", "frame": 2150, "region": [86, 958, 760, 1024],
+  "box": "#11151B", "tol": 22, "ink": "#F2EDE4", "ink_tol": 90}
+]
