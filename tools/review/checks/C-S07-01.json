@@ -1,0 +1,80 @@
+[
+  {
+    "name": "input-label-0",
+    "frame": 594,
+    "region": [
+      424,
+      755,
+      891,
+      845
+    ],
+    "box": "#e4dfd4",
+    "ink": "#26211b",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "input-label-1",
+    "frame": 594,
+    "region": [
+      1029,
+      755,
+      1496,
+      845
+    ],
+    "box": "#e0dbd2",
+    "ink": "#1d1b18",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "paired-heading-0",
+    "frame": 5,
+    "region": [
+      543,
+      418,
+      927,
+      452
+    ],
+    "box": "#dfdcd4",
+    "ink": "#867457",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "paired-heading-1",
+    "frame": 5,
+    "region": [
+      993,
+      415,
+      1378,
+      448
+    ],
+    "box": "#dfddd7",
+    "ink": "#8a7e64",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "overlay-heading",
+    "frame": 594,
+    "region": [
+      730,
+      275,
+      1190,
+      337
+    ],
+    "box": "#dfddd7",
+    "ink": "#887859",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  }
+]

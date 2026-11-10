@@ -1,0 +1,192 @@
+[
+  {
+    "input": "a",
+    "algorithm": "sha1",
+    "hex": "86f7e437faa5a7fce15d1ddcb9eaeaea377667b8"
+  },
+  {
+    "input": "a",
+    "algorithm": "sha256",
+    "hex": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
+  },
+  {
+    "input": "mango@123",
+    "algorithm": "sha1",
+    "hex": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
+  },
+  {
+    "input": "mango@123",
+    "algorithm": "sha256",
+    "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+  },
+  {
+    "input": "Any text becomes a fixed-length fingerprint.",
+    "algorithm": "sha1",
+    "hex": "a6024c8e183a4de117c0d4b67f50ed3f38421c4b"
+  },
+  {
+    "input": "Any text becomes a fixed-length fingerprint.",
+    "algorithm": "sha256",
+    "hex": "77070bb4e8c1264328add0d96ec6f2cd4c04d7bcdcb792935a2c1b7219d7c969"
+  },
+  {
+    "input": "hunter2",
+    "algorithm": "sha1",
+    "hex": "f3bbbd66a63d4bf1747940578ec3d0103530e21d"
+  },
+  {
+    "input": "hunter2",
+    "algorithm": "sha256",
+    "hex": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7"
+  },
+  {
+    "input": "hunter3",
+    "algorithm": "sha1",
+    "hex": "71544f76730f65cdb71a68877b02d015feb51ab1"
+  },
+  {
+    "input": "hunter3",
+    "algorithm": "sha256",
+    "hex": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a"
+  },
+  {
+    "input": "sunshine1",
+    "algorithm": "sha1",
+    "hex": "08b314f0e1e2c41ec92c3735910658e5a82c6ba7"
+  },
+  {
+    "input": "sunshine1",
+    "algorithm": "sha256",
+    "hex": "284fff3bd254b48cca05a8bfc4fad69e05cad0d086513a034a66a118829e6fa4"
+  },
+  {
+    "input": "123456",
+    "algorithm": "sha1",
+    "hex": "7c4a8d09ca3762af61e59520943dc26494f8941b"
+  },
+  {
+    "input": "123456",
+    "algorithm": "sha256",
+    "hex": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+  },
+  {
+    "input": "qwerty",
+    "algorithm": "sha1",
+    "hex": "b1b3773a05c0ed0176787a4f1574ff0075f7521e"
+  },
+  {
+    "input": "qwerty",
+    "algorithm": "sha256",
+    "hex": "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5"
+  },
+  {
+    "input": "iloveyou",
+    "algorithm": "sha1",
+    "hex": "ee8d8728f435fd550f83852aabab5234ce1da528"
+  },
+  {
+    "input": "iloveyou",
+    "algorithm": "sha256",
+    "hex": "e4ad93ca07acb8d908a3aa41e920ea4f4ef4f26e7f86cf8291c5db289780a5ae"
+  },
+  {
+    "input": "football",
+    "algorithm": "sha1",
+    "hex": "2d27b62c597ec858f6e7b54e7e58525e6a95e6d8"
+  },
+  {
+    "input": "football",
+    "algorithm": "sha256",
+    "hex": "6382deaf1f5dc6e792b76db4a4a7bf2ba468884e000b25e7928e621e27fb23cb"
+  },
+  {
+    "input": "password",
+    "algorithm": "sha1",
+    "hex": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
+  },
+  {
+    "input": "password",
+    "algorithm": "sha256",
+    "hex": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+  },
+  {
+    "input": "12345678",
+    "algorithm": "sha1",
+    "hex": "7c222fb2927d828af22f592134e8932480637c0d"
+  },
+  {
+    "input": "12345678",
+    "algorithm": "sha256",
+    "hex": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+  },
+  {
+    "input": "111111",
+    "algorithm": "sha1",
+    "hex": "3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d"
+  },
+  {
+    "input": "111111",
+    "algorithm": "sha256",
+    "hex": "bcb15f821479b4d5772bd0ca866c00ad5f926e3580720659cc80d39c9d09802a"
+  },
+  {
+    "input": "9f2c4a71mango@123",
+    "algorithm": "sha256",
+    "hex": "fb9d05563ec1fbbdebc0c48ed14a7db7087102a8373e44fc54ad57d8b1ed0401"
+  },
+  {
+    "input": "9f2c4a71123456",
+    "algorithm": "sha256",
+    "hex": "d88030fd1291c9d885156c6179fca6f73681dac751b730fcbebbcf9e87960b5e"
+  },
+  {
+    "input": "9f2c4a71password",
+    "algorithm": "sha256",
+    "hex": "27418a5aeee9589b0a4cd82cf5cb4de1d82847e691af78001907bb246fca7563"
+  },
+  {
+    "input": "9f2c4a71qwerty",
+    "algorithm": "sha256",
+    "hex": "086d15c2ca4b35d406c5cde888e2af45e7344a3ca9e977e84786d2f4e597d8c3"
+  },
+  {
+    "input": "9f2c4a71iloveyou",
+    "algorithm": "sha256",
+    "hex": "e7e0182b39db3dc95b0753924c3b9220f9dc765eb1fd06c87484e35cd59af2fb"
+  },
+  {
+    "input": "9f2c4a71111111",
+    "algorithm": "sha256",
+    "hex": "bae538bf219f417be11ee8917dd7f8e202c3f9a6c825898bdf9720829d7c0e65"
+  },
+  {
+    "input": "e05b13d8mango@123",
+    "algorithm": "sha256",
+    "hex": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
+  },
+  {
+    "input": "e05b13d8123456",
+    "algorithm": "sha256",
+    "hex": "18f5aa40812be12091e712305b515234220d185caafb6d74c593c8c8d2e042b3"
+  },
+  {
+    "input": "e05b13d8password",
+    "algorithm": "sha256",
+    "hex": "de62f9ae86f8462b1e85b328dbf78d6a4e41f631fe314f4c523dbd142abf5c7a"
+  },
+  {
+    "input": "e05b13d8qwerty",
+    "algorithm": "sha256",
+    "hex": "994232f95abee3f05f457d3028a91cfcfee63e79bb889fd520d129ac54d86674"
+  },
+  {
+    "input": "e05b13d8iloveyou",
+    "algorithm": "sha256",
+    "hex": "2694f667634106c4cc27d8ef794434708659c84cb5f7a59c9ba91361196da37b"
+  },
+  {
+    "input": "e05b13d8111111",
+    "algorithm": "sha256",
+    "hex": "5902325b202a328ff95f5f92166131fb23aafb48ef91b3f9dd54638647833c59"
+  }
+]

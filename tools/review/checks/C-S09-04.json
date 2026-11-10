@@ -1,0 +1,152 @@
+[
+  {
+    "name": "wall-0-title",
+    "frame": 249,
+    "region": [
+      956,
+      264,
+      1598,
+      361
+    ],
+    "box": "#d1c4b1",
+    "ink": "#080400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-0",
+    "frame": 249,
+    "region": [
+      855,
+      393,
+      1109,
+      479
+    ],
+    "box": "#ddd2bf",
+    "ink": "#1a130b",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-1",
+    "frame": 249,
+    "region": [
+      1138,
+      394,
+      1401,
+      481
+    ],
+    "box": "#d2c5b2",
+    "ink": "#120903",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-2",
+    "frame": 249,
+    "region": [
+      1430,
+      396,
+      1704,
+      484
+    ],
+    "box": "#b8ac9a",
+    "ink": "#060200",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-3",
+    "frame": 249,
+    "region": [
+      857,
+      577,
+      1106,
+      663
+    ],
+    "box": "#d7cab8",
+    "ink": "#160f06",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-4",
+    "frame": 249,
+    "region": [
+      1135,
+      582,
+      1394,
+      669
+    ],
+    "box": "#d0c3b0",
+    "ink": "#100901",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-5",
+    "frame": 249,
+    "region": [
+      1422,
+      586,
+      1691,
+      674
+    ],
+    "box": "#c2b4a2",
+    "ink": "#080400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "machine-name",
+    "frame": 249,
+    "region": [
+      342,
+      554,
+      600,
+      624
+    ],
+    "box": "#0f0703",
+    "ink": "#d9c69f",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "algorithm",
+    "frame": 249,
+    "region": [
+      370,
+      623,
+      574,
+      692
+    ],
+    "box": "#100904",
+    "ink": "#d2c2a0",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "precomputed-password",
+    "frame": 249,
+    "region": [
+      70,
+      630,
+      251,
+      710
+    ],
+    "box": "#968c7d",
+    "ink": "#6c4624",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  }
+]

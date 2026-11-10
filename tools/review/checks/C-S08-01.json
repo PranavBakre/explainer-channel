@@ -1,0 +1,32 @@
+[
+  {
+    "name": "user-row-0",
+    "frame": 94,
+    "region": [
+      571,
+      277,
+      1345,
+      684
+    ],
+    "box": "#dcd0be",
+    "ink": "#171009",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "users-label-0",
+    "frame": 94,
+    "region": [
+      744,
+      700,
+      1165,
+      788
+    ],
+    "box": "#d3c6b5",
+    "ink": "#120a03",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  }
+]

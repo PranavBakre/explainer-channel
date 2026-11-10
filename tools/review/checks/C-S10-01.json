@@ -1,0 +1,62 @@
+[
+  {
+    "name": "machine-name",
+    "frame": 55,
+    "region": [
+      758,
+      413,
+      1160,
+      512
+    ],
+    "box": "#201209",
+    "ink": "#e3d1af",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "algorithm",
+    "frame": 55,
+    "region": [
+      801,
+      519,
+      1116,
+      616
+    ],
+    "box": "#1e1208",
+    "ink": "#e3d3b4",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "password",
+    "frame": 3,
+    "region": [
+      303,
+      515,
+      648,
+      633
+    ],
+    "box": "#d7cab8",
+    "ink": "#a35f13",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  },
+  {
+    "name": "salt",
+    "frame": 55,
+    "region": [
+      313,
+      457,
+      576,
+      523
+    ],
+    "box": "#dab570",
+    "ink": "#1d0c00",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  }
+]

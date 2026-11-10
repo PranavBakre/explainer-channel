@@ -1,0 +1,140 @@
+[
+  {
+    "name": "machine-name",
+    "frame": 95,
+    "region": [
+      673,
+      413,
+      1075,
+      512
+    ],
+    "box": "#21140a",
+    "ink": "#e5d2b0",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "algorithm",
+    "frame": 95,
+    "region": [
+      716,
+      519,
+      1032,
+      616
+    ],
+    "box": "#372515",
+    "ink": "#f7ecdb",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "input-0",
+    "frame": 95,
+    "region": [
+      210,
+      283,
+      577,
+      372
+    ],
+    "box": "#dcd1be",
+    "ink": "#a45e18",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  },
+  {
+    "name": "input-1",
+    "frame": 95,
+    "region": [
+      217,
+      399,
+      580,
+      486
+    ],
+    "box": "#dbcebb",
+    "ink": "#a36019",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  },
+  {
+    "name": "input-2",
+    "frame": 95,
+    "region": [
+      224,
+      521,
+      587,
+      717
+    ],
+    "box": "#d3c5b3",
+    "ink": "#985c20",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  },
+  {
+    "name": "fixed-size-reading",
+    "frame": 95,
+    "region": [
+      1251,
+      251,
+      1704,
+      335
+    ],
+    "box": "#bcae9c",
+    "ink": "#050000",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "output-heading-0",
+    "frame": 108,
+    "region": [
+      1170,
+      439,
+      1392,
+      478
+    ],
+    "box": "#cfc0ac",
+    "ink": "#644f35",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "output-heading-1",
+    "frame": 108,
+    "region": [
+      1415,
+      439,
+      1641,
+      478
+    ],
+    "box": "#beb09d",
+    "ink": "#4f3e29",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "output-heading-2",
+    "frame": 108,
+    "region": [
+      1661,
+      440,
+      1891,
+      479
+    ],
+    "box": "#9b9081",
+    "ink": "#392d1c",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  }
+]

@@ -171,10 +171,11 @@ export const PaperCard: React.FC<{
 };
 
 // A punched card carrying the real bits of a hash: a hole for every 1.
-export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; cols?: number; mark?: boolean[]; markColor?: string; tint?: string}> = ({
+export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; titleScale?: number; cols?: number; mark?: boolean[]; markColor?: string; tint?: string}> = ({
   hex,
   w = 1.5,
   title = 'FINGERPRINT',
+  titleScale = 1,
   cols = 16,
   mark,
   markColor = '#E0452F',
@@ -190,8 +191,8 @@ export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; col
       c.fillStyle = tint ?? PAPER;
       c.fillRect(0, 0, W, H);
       c.fillStyle = '#7A6A52';
-      c.font = `600 ${Math.round(W * 0.038)}px ${fonts.sans}`;
-      c.fillText(title, W * 0.07, H * 0.085);
+      c.font = `600 ${Math.round(W * 0.038 * titleScale)}px ${fonts.sans}`;
+      c.fillText(title, W * 0.07, titleScale === 1 ? H * 0.085 : Math.max(H * 0.085, W * 0.038 * titleScale * 0.95));
       const cell = (W * 0.86) / cols;
       const top = H * 0.13;
       bits.forEach((b, i) => {
@@ -203,7 +204,7 @@ export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; col
         c.fill();
       });
     },
-    [hex, w, title, cols, mark?.join(''), markColor, tint],
+    [hex, w, title, titleScale, cols, mark?.join(''), markColor, tint],
   );
   return (
     <mesh castShadow>

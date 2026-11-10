@@ -1,0 +1,110 @@
+[
+  {
+    "name": "input-label-0",
+    "frame": 166,
+    "region": [
+      476,
+      754,
+      836,
+      843
+    ],
+    "box": "#e4cb91",
+    "ink": "#2c2113",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "input-label-1",
+    "frame": 166,
+    "region": [
+      1084,
+      754,
+      1444,
+      843
+    ],
+    "box": "#dfc68b",
+    "ink": "#241b0d",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "salted-hash-0",
+    "frame": 166,
+    "region": [
+      487,
+      202,
+      900,
+      274
+    ],
+    "box": "#dedad2",
+    "ink": "#1c1915",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 16
+  },
+  {
+    "name": "salted-hash-1",
+    "frame": 166,
+    "region": [
+      1020,
+      202,
+      1433,
+      274
+    ],
+    "box": "#deded8",
+    "ink": "#1f211f",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 16
+  },
+  {
+    "name": "paired-heading-0",
+    "frame": 5,
+    "region": [
+      543,
+      418,
+      927,
+      452
+    ],
+    "box": "#dfdcd4",
+    "ink": "#867558",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "paired-heading-1",
+    "frame": 5,
+    "region": [
+      993,
+      415,
+      1378,
+      448
+    ],
+    "box": "#dfddd7",
+    "ink": "#897d62",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "overlay-heading",
+    "frame": 166,
+    "region": [
+      730,
+      275,
+      1190,
+      337
+    ],
+    "box": "#dfddd7",
+    "ink": "#89785a",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  }
+]

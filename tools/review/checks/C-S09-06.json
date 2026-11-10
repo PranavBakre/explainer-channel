@@ -1,0 +1,49 @@
+[
+  {
+    "name": "source-credit",
+    "frame": 226,
+    "region": [
+      130,
+      875,
+      1380,
+      941
+    ],
+    "box": "#23262a",
+    "ink": "#f1efeb",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "source-quote",
+    "frame": 119,
+    "region": [
+      240,
+      345,
+      1680,
+      615
+    ],
+    "box": "#ffffff",
+    "ink": "#0e0d02",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "source-paragraph",
+    "frame": 226,
+    "region": [
+      240,
+      345,
+      1680,
+      615
+    ],
+    "box": "#ffffff",
+    "ink": "#0e0e0e",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  }
+]

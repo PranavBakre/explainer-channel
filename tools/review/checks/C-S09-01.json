@@ -1,0 +1,33 @@
+[
+  {
+    "name": "source-credit",
+    "frame": 185,
+    "region": [
+      130,
+      875,
+      1000,
+      941
+    ],
+    "box": "#25282c",
+    "ink": "#f1efea",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "source-quote",
+    "frame": 185,
+    "region": [
+      240,
+      365,
+      1680,
+      595
+    ],
+    "box": "#ffffff",
+    "ink": "#020202",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  }
+]

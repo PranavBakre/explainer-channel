@@ -1,0 +1,80 @@
+[
+  {
+    "name": "input-label-0",
+    "frame": 67,
+    "region": [
+      424,
+      755,
+      891,
+      845
+    ],
+    "box": "#e4dfd4",
+    "ink": "#242018",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "input-label-1",
+    "frame": 67,
+    "region": [
+      1029,
+      755,
+      1496,
+      845
+    ],
+    "box": "#dfdbd2",
+    "ink": "#1c1a15",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "paired-heading-0",
+    "frame": 5,
+    "region": [
+      543,
+      418,
+      927,
+      452
+    ],
+    "box": "#dfdcd4",
+    "ink": "#867458",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "paired-heading-1",
+    "frame": 5,
+    "region": [
+      993,
+      415,
+      1378,
+      448
+    ],
+    "box": "#dfddd9",
+    "ink": "#887d64",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  },
+  {
+    "name": "overlay-heading",
+    "frame": 67,
+    "region": [
+      730,
+      275,
+      1190,
+      337
+    ],
+    "box": "#dbe0dc",
+    "ink": "#87785b",
+    "tol": 180,
+    "ink_tol": 50,
+    "inset": 5,
+    "align": "left"
+  }
+]

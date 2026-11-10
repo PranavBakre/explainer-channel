@@ -14,7 +14,7 @@ const ANGLES: Record<string, Angle> = {
   top: {from: [0.5, 7.5, 7.5], to: [0.3, 7.0, 6.6], target: [0, 1.2, 0]},
 };
 
-export const Machine: React.FC<{frame: number; busy: number; label?: string; status?: string; lamp?: string; heavy?: number; position?: V3}> = ({
+export const Machine: React.FC<{frame: number; busy: number; label?: string; status?: string; lamp?: string; heavy?: number; position?: V3; largeLabel?: boolean}> = ({
   frame,
   busy,
   label = 'HASH MACHINE',
@@ -22,6 +22,7 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
   lamp = '#FFB224',
   heavy = 0,
   position = [0, 0, 0],
+  largeLabel = false,
 }) => {
   const shake = busy * Math.sin(frame * 1.7) * 0.012;
   return (
@@ -46,13 +47,13 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
       </mesh>
       <group position={[0, 0, 1.11]}>
         <group position={[0, 2.3, 0.01]}>
-          <Plate text={label} w={1.7} h={0.26} />
+          <Plate text={label} w={largeLabel ? 2.8 : 1.7} h={largeLabel ? 0.65 : 0.26} />
         </group>
         <RoundedBox args={[2.4, 0.75, 0.08]} radius={0.06} position={[0, 1.55, 0]}>
           <meshStandardMaterial color="#12161C" metalness={0.2} roughness={0.15} />
         </RoundedBox>
         <group position={[0, 1.55, 0.05]}>
-          <Plate text={status} w={2.2} h={0.5} glow={busy * 1.2} />
+          <Plate text={status} w={2.2} h={largeLabel ? 0.65 : 0.5} glow={busy * 1.2} />
         </group>
         <mesh position={[0, 0.8, 0.02]}>
           <boxGeometry args={[2.2, 0.06, 0.04]} />

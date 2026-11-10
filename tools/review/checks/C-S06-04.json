@@ -1,0 +1,63 @@
+[
+  {
+    "name": "machine-name",
+    "frame": 189,
+    "region": [
+      758,
+      413,
+      1160,
+      512
+    ],
+    "box": "#201208",
+    "ink": "#e3d1ae",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "algorithm",
+    "frame": 189,
+    "region": [
+      801,
+      519,
+      1117,
+      616
+    ],
+    "box": "#1e1208",
+    "ink": "#e3d3b2",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "submitted-password",
+    "frame": 113,
+    "region": [
+      284,
+      513,
+      638,
+      635
+    ],
+    "box": "#d7cab8",
+    "ink": "#a55f12",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  },
+  {
+    "name": "output-heading-0",
+    "frame": 219,
+    "region": [
+      1321,
+      383,
+      1660,
+      426
+    ],
+    "box": "#c1b2a0",
+    "ink": "#483926",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5,
+    "align": "left"
+  }
+]
