@@ -1,0 +1,48 @@
+[
+  {
+    "name": "argon-card",
+    "frame": 120,
+    "region": [
+      685,
+      110,
+      1205,
+      495
+    ],
+    "box": "#E2D7C1",
+    "ink": "#CC8B32",
+    "tol": 40,
+    "ink_tol": 70,
+    "align": "left",
+    "inset": 12
+  },
+  {
+    "name": "open-drawer-label",
+    "frame": 120,
+    "region": [
+      815,
+      730,
+      1040,
+      825
+    ],
+    "box": "#1B1005",
+    "ink": "#E0CCA5",
+    "tol": 35,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "closed-drawer-label",
+    "frame": 460,
+    "region": [
+      880,
+      555,
+      1055,
+      635
+    ],
+    "box": "#130A00",
+    "ink": "#E0CCA5",
+    "tol": 35,
+    "ink_tol": 70,
+    "inset": 7
+  }
+]

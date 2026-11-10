@@ -4,7 +4,7 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {fonts} from '../../theme';
 import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
 
-export type Field = 'plain' | 'hidden' | 'hash' | 'salted' | 'cipher';
+export type Field = 'plain' | 'hidden' | 'hash' | 'salted' | 'cipher' | 'argon2id';
 
 const ANGLES: Record<string, Angle> = {
   row: {from: [0.4, 2.3, 4.2], to: [0.2, 2.2, 3.6], target: [0, 1.75, 0.6]},
@@ -20,6 +20,7 @@ const FIELD_TEXT: Record<Field, (pw: string) => {text: string; color: string}> =
   hash: () => ({text: '81c68634d1b2…', color: '#1A1E24'}),
   salted: () => ({text: 'e05b13d8 · 324ce3f9…', color: '#1A1E24'}),
   cipher: (pw) => ({text: `${CIPHER[pw].replace(/=+$/, '').slice(0, 12)}…`, color: '#1A1E24'}),
+  argon2id: () => ({text: '$argon2id$v=19$…', color: '#1A1E24'}),
 };
 
 const IndexCard: React.FC<{email: string; value: string; color: string}> = ({email, value, color}) => {
@@ -104,9 +105,8 @@ const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, 
   </group>
 );
 
-const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
-  const cols = 9;
-  const rows = 5;
+const LibraryWall: React.FC<{hit: number; columns?: number; rows?: number; hitIndex?: number}> = ({hit, columns = 9, rows = 5, hitIndex = 29}) => {
+  const cols = columns;
   const labels = ['7c4a8d09', '5baa61e4', '7c222fb2', 'b1b3773a', 'ee8d8728', '3d4f2bf0', '6367c48d', 'ab87d24b', 'b7a875fc', 'af8978b1', '8d6e34f9', '775bb961', '2d27b62c', 'ed9d3d83', 'f14d5ba7'];
   return (
     <group>
@@ -116,7 +116,7 @@ const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
       {Array.from({length: cols * rows}, (_, i) => {
         const cx = (i % cols) * 1.25 - ((cols - 1) * 1.25) / 2;
         const cy = Math.floor(i / cols) * 0.95 + 0.75;
-        const isHit = i === 29;
+        const isHit = i === hitIndex;
         const out = isHit ? hit : 0;
         return (
           <group key={i} position={[cx, cy, 0.02 + out * 0.9]}>
@@ -124,7 +124,7 @@ const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
               <meshStandardMaterial color={isHit && hit > 0.5 ? '#9C3B2E' : '#7A4E2E'} roughness={0.55} />
             </RoundedBox>
             <group position={[0, 0.12, 0.07]}>
-              <Plate text={labels[i % labels.length]} w={0.8} h={0.2} bg="#EFE7D6" color="#1A1E24" />
+              <Plate text={isHit ? 'f14d5ba7' : labels[i % labels.length]} w={0.8} h={0.2} bg="#EFE7D6" color="#1A1E24" />
             </group>
             {isHit && hit > 0.01 ? (
               <group position={[0, 0.35 + hit * 0.75, 0.3]} rotation={[-0.15, 0, 0]}>
@@ -179,3 +179,6 @@ export const CatalogSet: React.FC<{
     </AbsoluteFill>
   );
 };
+
+export const CatalogDrawer = Drawer;
+export const LookupCabinet = LibraryWall;

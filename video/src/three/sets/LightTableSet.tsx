@@ -65,3 +65,21 @@ export const LightTableSet: React.FC<{
     </AbsoluteFill>
   );
 };
+
+export const ComparisonTable: React.FC<{hex: string; slide: number}> = ({hex, slide}) => (
+  <group>
+    <RoundedBox args={[6.4, 0.5, 3.6]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow>
+      <meshStandardMaterial color="#5A4636" metalness={0.3} roughness={0.6} />
+    </RoundedBox>
+    <mesh position={[0, 0.51, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[5.9, 3.1]} />
+      <meshStandardMaterial color="#FFF6E2" emissive="#FFF1D0" emissiveIntensity={0.45} />
+    </mesh>
+    <group position={[mix(-1.55, 0, slide), 0.53, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <PunchedCard hex={hex} w={2.4} title="STORED HASH" />
+    </group>
+    <group position={[mix(1.55, 0, slide), 0.56, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <PunchedCard hex={hex} w={2.4} title={slide > 0.95 ? 'MATCH' : 'LOGIN HASH'} tint={slide > 0.95 ? '#DDF5E8' : undefined} />
+    </group>
+  </group>
+);

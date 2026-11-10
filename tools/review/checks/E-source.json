@@ -1,0 +1,32 @@
+[
+  {
+    "name": "source-caption",
+    "frame": 120,
+    "region": [
+      70,
+      885,
+      635,
+      950
+    ],
+    "box": "#0A0B10",
+    "ink": "#F2EDE4",
+    "tol": 30,
+    "ink_tol": 50,
+    "inset": 8
+  },
+  {
+    "name": "quote-in-source-card",
+    "frame": 120,
+    "region": [
+      180,
+      380,
+      1740,
+      620
+    ],
+    "box": "#FFFFFF",
+    "ink": "#1B1111",
+    "tol": 15,
+    "ink_tol": 16,
+    "inset": 40
+  }
+]
