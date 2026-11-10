@@ -1,0 +1,47 @@
+[
+  {
+    "name": "machine-name",
+    "frame": 110,
+    "region": [
+      758,
+      413,
+      1160,
+      512
+    ],
+    "box": "#201208",
+    "ink": "#e3d1ae",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "algorithm",
+    "frame": 110,
+    "region": [
+      801,
+      519,
+      1116,
+      616
+    ],
+    "box": "#1e1208",
+    "ink": "#e4d3b3",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 9
+  },
+  {
+    "name": "password",
+    "frame": 110,
+    "region": [
+      270,
+      512,
+      630,
+      637
+    ],
+    "box": "#d7cab8",
+    "ink": "#a45f14",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  }
+]

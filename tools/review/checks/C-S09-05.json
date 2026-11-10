@@ -1,0 +1,137 @@
+[
+  {
+    "name": "wall-0-title",
+    "frame": 164,
+    "region": [
+      649,
+      265,
+      1273,
+      360
+    ],
+    "box": "#dcd1be",
+    "ink": "#0f0903",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-0",
+    "frame": 164,
+    "region": [
+      549,
+      393,
+      803,
+      477
+    ],
+    "box": "#dfd4c3",
+    "ink": "#1e150c",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-1",
+    "frame": 164,
+    "region": [
+      833,
+      393,
+      1087,
+      478
+    ],
+    "box": "#dbcfbd",
+    "ink": "#191007",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-2",
+    "frame": 164,
+    "region": [
+      1117,
+      393,
+      1374,
+      478
+    ],
+    "box": "#cabeab",
+    "ink": "#0c0701",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-3",
+    "frame": 164,
+    "region": [
+      556,
+      578,
+      806,
+      660
+    ],
+    "box": "#d9cdba",
+    "ink": "#180f06",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-4",
+    "frame": 164,
+    "region": [
+      835,
+      579,
+      1085,
+      661
+    ],
+    "box": "#d6c8b6",
+    "ink": "#150d05",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-5",
+    "frame": 164,
+    "region": [
+      1125,
+      599,
+      1397,
+      688
+    ],
+    "box": "#cbbeab",
+    "ink": "#0d0701",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "lookup-query",
+    "frame": 164,
+    "region": [
+      361,
+      167,
+      895,
+      243
+    ],
+    "box": "#d1c3b1",
+    "ink": "#090400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "lookup-password",
+    "frame": 164,
+    "region": [
+      1102,
+      492,
+      1435,
+      598
+    ],
+    "box": "#ccbfac",
+    "ink": "#92510e",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  }
+]

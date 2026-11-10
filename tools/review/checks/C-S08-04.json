@@ -1,0 +1,62 @@
+[
+  {
+    "name": "user-row-0",
+    "frame": 212,
+    "region": [
+      330,
+      386,
+      785,
+      626
+    ],
+    "box": "#e0d5c4",
+    "ink": "#1e140b",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "users-label-0",
+    "frame": 212,
+    "region": [
+      429,
+      631,
+      676,
+      685
+    ],
+    "box": "#d7cab8",
+    "ink": "#1c1004",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "user-row-1",
+    "frame": 212,
+    "region": [
+      1039,
+      395,
+      1510,
+      643
+    ],
+    "box": "#baae9c",
+    "ink": "#090300",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "users-label-1",
+    "frame": 212,
+    "region": [
+      1151,
+      650,
+      1407,
+      705
+    ],
+    "box": "#b6aa98",
+    "ink": "#0a0400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  }
+]

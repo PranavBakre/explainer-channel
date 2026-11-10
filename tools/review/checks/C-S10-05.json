@@ -1,0 +1,332 @@
+[
+  {
+    "name": "wall-0-title",
+    "frame": 282,
+    "region": [
+      781,
+      437,
+      1139,
+      493
+    ],
+    "box": "#dbd0bd",
+    "ink": "#17110c",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-0",
+    "frame": 282,
+    "region": [
+      724,
+      509,
+      872,
+      560
+    ],
+    "box": "#dbd1be",
+    "ink": "#241909",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-1",
+    "frame": 282,
+    "region": [
+      886,
+      510,
+      1034,
+      561
+    ],
+    "box": "#d8cbb9",
+    "ink": "#1e1308",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-2",
+    "frame": 282,
+    "region": [
+      1048,
+      510,
+      1197,
+      561
+    ],
+    "box": "#d1c3b1",
+    "ink": "#170d02",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-3",
+    "frame": 282,
+    "region": [
+      725,
+      615,
+      872,
+      666
+    ],
+    "box": "#d7cab8",
+    "ink": "#1e1305",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-4",
+    "frame": 282,
+    "region": [
+      886,
+      616,
+      1033,
+      666
+    ],
+    "box": "#d3c6b4",
+    "ink": "#1b1004",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-0-hash-5",
+    "frame": 282,
+    "region": [
+      1047,
+      616,
+      1195,
+      666
+    ],
+    "box": "#cec1ae",
+    "ink": "#150d03",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-title",
+    "frame": 282,
+    "region": [
+      253,
+      387,
+      608,
+      444
+    ],
+    "box": "#aa9f8e",
+    "ink": "#090300",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-0",
+    "frame": 282,
+    "region": [
+      195,
+      459,
+      344,
+      510
+    ],
+    "box": "#a2998b",
+    "ink": "#0a0300",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-1",
+    "frame": 282,
+    "region": [
+      356,
+      460,
+      504,
+      510
+    ],
+    "box": "#aa9f8e",
+    "ink": "#0a0400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-2",
+    "frame": 282,
+    "region": [
+      517,
+      460,
+      664,
+      511
+    ],
+    "box": "#b1a696",
+    "ink": "#0a0500",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-3",
+    "frame": 282,
+    "region": [
+      201,
+      565,
+      348,
+      615
+    ],
+    "box": "#a19888",
+    "ink": "#0a0300",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-4",
+    "frame": 282,
+    "region": [
+      360,
+      565,
+      507,
+      616
+    ],
+    "box": "#a99f8e",
+    "ink": "#0a0300",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-1-hash-5",
+    "frame": 282,
+    "region": [
+      520,
+      565,
+      667,
+      616
+    ],
+    "box": "#bdb09e",
+    "ink": "#0e0700",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-title",
+    "frame": 282,
+    "region": [
+      1318,
+      388,
+      1679,
+      444
+    ],
+    "box": "#aba08f",
+    "ink": "#070400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-0",
+    "frame": 282,
+    "region": [
+      1261,
+      460,
+      1410,
+      511
+    ],
+    "box": "#b8ac9a",
+    "ink": "#0c0500",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-1",
+    "frame": 282,
+    "region": [
+      1423,
+      460,
+      1574,
+      512
+    ],
+    "box": "#aba08f",
+    "ink": "#080400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-2",
+    "frame": 282,
+    "region": [
+      1587,
+      460,
+      1738,
+      512
+    ],
+    "box": "#a19889",
+    "ink": "#090400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-3",
+    "frame": 282,
+    "region": [
+      1258,
+      567,
+      1407,
+      617
+    ],
+    "box": "#bfb3a1",
+    "ink": "#0f0700",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-4",
+    "frame": 282,
+    "region": [
+      1420,
+      567,
+      1569,
+      618
+    ],
+    "box": "#b2a896",
+    "ink": "#0a0400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "wall-2-hash-5",
+    "frame": 282,
+    "region": [
+      1582,
+      567,
+      1732,
+      618
+    ],
+    "box": "#a29888",
+    "ink": "#090400",
+    "tol": 180,
+    "ink_tol": 35,
+    "inset": 5
+  },
+  {
+    "name": "miss-query",
+    "frame": 282,
+    "region": [
+      636,
+      191,
+      1286,
+      297
+    ],
+    "box": "#c4b5a3",
+    "ink": "#5c120e",
+    "tol": 180,
+    "ink_tol": 80,
+    "inset": 5
+  }
+]

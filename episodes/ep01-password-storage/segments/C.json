@@ -2,19 +2,14 @@
   {
     "id": "S06",
     "act": 2,
-    "title": "2 · Fingerprint it",
+    "title": "2 \u00b7 Fingerprint it",
     "transitionIn": "wipe",
     "shots": [
       {
-        "visual": "ActTitle",
+        "visual": "HashMachineC",
         "props": {
-          "act": "Part two",
-          "title": "Fingerprint it",
-          "tone": "amber"
+          "action": "reveal"
         },
-        "sfx": [
-          "whoosh"
-        ],
         "beats": [
           {
             "id": "S06_01",
@@ -23,30 +18,39 @@
         ]
       },
       {
-        "visual": "HashGrinder",
+        "visual": "HashMachineC",
         "props": {
-          "input": "mango@123",
-          "algo": "SHA-256",
-          "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-          "note": "64 characters, every time",
-          "caption": "No way back. Only guess, hash, compare."
+          "action": "fixed"
         },
         "beats": [
           {
             "id": "S06_02",
             "vo": "It turns any text into a fingerprint of fixed length."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "HashMachineC",
+        "props": {
+          "action": "punch"
+        },
+        "beats": [
           {
             "id": "S06_03",
             "vo": "Feed it mango at the rate one two three, and SHA two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "HashMachineC",
+        "props": {
+          "action": "reverse"
+        },
+        "beats": [
           {
             "id": "S06_04",
             "vo": "And there's no practical way to run it backwards. An attacker can still guess, hash the guess, and compare."
           }
-        ],
-        "sfx": [
-          "tick"
         ]
       }
     ]
@@ -58,14 +62,9 @@
     "transitionIn": "cut",
     "shots": [
       {
-        "visual": "Avalanche",
+        "visual": "CompareC",
         "props": {
-          "a": "hunter2",
-          "b": "hunter3",
-          "diffAt": 6,
-          "hexA": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7",
-          "hexB": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a",
-          "caption": "One character apart. Nothing alike."
+          "mode": "avalanche"
         },
         "beats": [
           {
@@ -95,26 +94,48 @@
     "transitionIn": "push",
     "shots": [
       {
-        "visual": "LoginMatch",
+        "visual": "UsersDrawerC",
         "props": {
-          "input": "mango@123",
-          "email": "you@mail.com",
-          "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-          "caption": "A leak gives fingerprints, not passwords"
+          "field": "sha256"
         },
         "beats": [
           {
             "id": "S08_01",
             "vo": "So the app stores the fingerprint instead of the password."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "HashMachineC",
+        "props": {
+          "action": "login"
+        },
+        "beats": [
           {
             "id": "S08_02",
             "vo": "When you log in, it hashes what you just typed, and compares the two fingerprints."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "CompareC",
+        "props": {
+          "mode": "match"
+        },
+        "beats": [
           {
             "id": "S08_03",
             "vo": "They match, so the app lets you in."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "UsersDrawerC",
+        "props": {
+          "field": "sha256",
+          "copy": true
+        },
+        "beats": [
           {
             "id": "S08_04",
             "vo": "If that table leaks, the attacker gets fingerprints, not passwords. That sounds airtight. LinkedIn found out it wasn't."
@@ -130,28 +151,23 @@
     "transitionIn": "fade",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "EvidenceC",
         "props": {
-          "kicker": "LinkedIn · 2012",
-          "lines": [
-            {
-              "text": "6,458,020 password hashes posted online",
-              "step": 0,
-              "size": 64
-            },
-            {
-              "text": "SHA-1 · no salt",
-              "mono": true,
-              "tone": "red",
-              "step": 1
-            }
-          ]
+          "year": "2012"
         },
         "beats": [
           {
             "id": "S09_01",
             "vo": "In twenty twelve, a file of about six and a half million LinkedIn password hashes was posted online."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "UsersDrawerC",
+        "props": {
+          "field": "sha1"
+        },
+        "beats": [
           {
             "id": "S09_02",
             "vo": "They were SHA one hashes, with nothing added. Unsalted."
@@ -159,80 +175,45 @@
         ]
       },
       {
-        "visual": "LookupWall",
+        "visual": "HashMachineC",
         "props": {
-          "stolen": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-          "rows": [
-            {
-              "password": "123456",
-              "hash": "7c4a8d09ca3762af61e59520943dc26494f8941b"
-            },
-            {
-              "password": "password",
-              "hash": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
-            },
-            {
-              "password": "12345678",
-              "hash": "7c222fb2927d828af22f592134e8932480637c0d"
-            },
-            {
-              "password": "qwerty",
-              "hash": "b1b3773a05c0ed0176787a4f1574ff0075f7521e"
-            },
-            {
-              "password": "iloveyou",
-              "hash": "ee8d8728f435fd550f83852aabab5234ce1da528"
-            },
-            {
-              "password": "111111",
-              "hash": "3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d"
-            },
-            {
-              "password": "mango@123",
-              "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
-            }
-          ],
-          "caption": "Your password is the row next to it"
+          "action": "repeat"
         },
         "beats": [
           {
             "id": "S09_03",
             "vo": "That matters because the same password always produces the same fingerprint."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "LookupC",
+        "props": {
+          "action": "file"
+        },
+        "beats": [
           {
             "id": "S09_04",
             "vo": "Attackers don't need to reverse anything. They hash millions of common passwords once, ahead of time, and keep the results in a lookup table."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "LookupC",
+        "props": {
+          "action": "search"
+        },
+        "beats": [
           {
             "id": "S09_05",
             "vo": "Then they just search. If your fingerprint is in their table, your password is the row next to it."
           }
-        ],
-        "sfx": [
-          "tick"
-        ],
-        "sfxBeat": [
-          2
         ]
       },
       {
-        "visual": "StatGrid",
+        "visual": "EvidenceC",
         "props": {
-          "title": "LinkedIn breach",
-          "items": [
-            {
-              "value": "6.5M",
-              "label": "hashes posted · 2012",
-              "tone": "amber",
-              "step": 0
-            },
-            {
-              "value": "117M",
-              "label": "emails and passwords · LinkedIn, 2016",
-              "tone": "red",
-              "step": 0
-            }
-          ]
+          "year": "2016"
         },
         "beats": [
           {
@@ -250,40 +231,35 @@
     "transitionIn": "zoom",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "HashMachineC",
         "props": {
-          "kicker": "the fix",
-          "lines": [
-            {
-              "text": "Salt",
-              "size": 150,
-              "tone": "teal",
-              "step": 0
-            },
-            {
-              "text": "a random string, unique to each user",
-              "serif": false,
-              "size": 44,
-              "step": 1
-            },
-            {
-              "text": "stored next to the hash · not secret",
-              "serif": false,
-              "size": 40,
-              "tone": "slate",
-              "step": 2
-            }
-          ]
+          "action": "clip"
         },
         "beats": [
           {
             "id": "S10_01",
             "vo": "The fix is called salting."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "HashMachineC",
+        "props": {
+          "action": "salt"
+        },
+        "beats": [
           {
             "id": "S10_02",
             "vo": "Each password gets its own random string, mixed in before hashing. That string is the salt."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "UsersDrawerC",
+        "props": {
+          "field": "salted"
+        },
+        "beats": [
           {
             "id": "S10_03",
             "vo": "It isn't secret. It's stored right next to the hash. Its job is to make the same password hash differently for every user."
@@ -291,28 +267,23 @@
         ]
       },
       {
-        "visual": "SaltGrinder",
+        "visual": "CompareC",
         "props": {
-          "password": "mango@123",
-          "users": [
-            {
-              "name": "Asha",
-              "salt": "9f2c4a71",
-              "hash": "fb9d05563ec1fbbdebc0c48ed14a7db7087102a8373e44fc54ad57d8b1ed0401"
-            },
-            {
-              "name": "You",
-              "salt": "e05b13d8",
-              "hash": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
-            }
-          ],
-          "caption": "A table built in advance would need one per salt"
+          "mode": "salt"
         },
         "beats": [
           {
             "id": "S10_04",
             "vo": "Two people who both chose mango at the rate one two three now get completely different fingerprints."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "LookupC",
+        "props": {
+          "action": "salt"
+        },
+        "beats": [
           {
             "id": "S10_05",
             "vo": "As long as salts are long and random, a table built in advance stops working. It would need a separate table for every salt."
