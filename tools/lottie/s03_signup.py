@@ -46,10 +46,7 @@ def build(laptop):
     start, end = [FIELD[0] + 300, FIELD[1] - 70], [1400, 560]
     out_t, in_t = [180, -230], [-160, -190]
     layers = server(blink=SAVE + 60)
-    arc = path([start, end], ins=[[0, 0], in_t], outs=[out_t, [0, 0]])
-    layers.append(layer('tunnel', [group([arc, stroke(SLATE, 6, dash=14), trim(anim([(SAVE, 0), (SAVE + 22, 100)]))])], (0, 0)))
-    head = path([[end[0] - 26, end[1] - 30], end, [end[0] - 34, end[1] + 4]])
-    layers.append(layer('tunnel head', [group([head, stroke(SLATE, 6)])], (0, 0), o=fade((SAVE + 20, 0), (SAVE + 23, 100))))
+    layers += connection(start, end, out_t, in_t, SAVE, SAVE + 22)
     layers += flight('signup card', SAVE, start, end, out_t, in_t)
     layers += users_table(SAVE + 50)
     layers += flight('login card', LOGIN + 34, start, end, out_t, in_t)

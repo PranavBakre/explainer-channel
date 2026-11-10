@@ -2,7 +2,7 @@
 
 Shapes and layers listed first draw on top.
 """
-import copy
+import copy, math
 
 FPS, W, H = 30, 1920, 1080
 OP = 9999
@@ -186,7 +186,7 @@ def compare(rows, t0, tick_at, hx=SX - 60):
     return out
 
 
-def compose(name, op, lap, layers, under=('server', 'tunnel'), bottom=('server shadow',)):
+def compose(name, op, lap, layers, under=('server', 'tunnel', 'tunnel head'), bottom=('server shadow',)):
     """Order layers over the laptop precomp: `under` sits just above it, `bottom` below it."""
     precomp = {'ddd': 0, 'ind': 1, 'ty': 0, 'nm': 'laptop scene', 'refId': 'laptop', 'sr': 1, 'ao': 0, 'ip': 0, 'op': op, 'st': 0, 'bm': 0, 'w': lap['w'], 'h': lap['h'],
                'ks': {'o': static(100), 'r': static(0), 'p': static([X0, Y0, 0]), 'a': static([0, 0, 0]), 's': static([SC, SC, 100])}}
@@ -200,3 +200,26 @@ def compose(name, op, lap, layers, under=('server', 'tunnel'), bottom=('server s
             'assets': [{'id': 'laptop', 'w': lap['w'], 'h': lap['h'], 'layers': lap['layers']}],
             'fonts': {'list': [{'fName': 'Inter-Bold', 'fFamily': 'Inter', 'fStyle': 'Bold', 'ascent': 72.7}]},
             'layers': ordered}
+
+
+def connection(start, end, out_t, in_t, t0, t1, head=34):
+    """A dashed bezier from start to end that draws in over t0..t1, finished by a filled arrowhead aimed along the curve's end."""
+    dx, dy = -in_t[0], -in_t[1]
+    n = math.hypot(dx, dy)
+    ux, uy = dx / n, dy / n
+    base = [end[0] - ux * head, end[1] - uy * head]
+    wing = head * 0.55
+    tri = path([list(end), [base[0] - uy * wing, base[1] + ux * wing], [base[0] + uy * wing, base[1] - ux * wing]], closed=True)
+    # Scale the tangents so the shortened curve keeps the same shape, then size the dashes so a full dash starts and ends the line.
+    k = 1 - head / math.hypot(end[0] - start[0], end[1] - start[1])
+    o, i = [v * k for v in out_t], [v * k for v in in_t]
+    pts = [start, [start[0] + o[0], start[1] + o[1]], [base[0] + i[0], base[1] + i[1]], base]
+    L, prev = 0, start
+    for s in range(1, 201):
+        t = s / 200
+        p = [(1 - t) ** 3 * pts[0][j] + 3 * (1 - t) ** 2 * t * pts[1][j] + 3 * (1 - t) * t ** 2 * pts[2][j] + t ** 3 * pts[3][j] for j in (0, 1)]
+        L, prev = L + math.hypot(p[0] - prev[0], p[1] - prev[1]), p
+    line = stroke(SLATE, 6, dash=L / (2 * round((L / 14 + 1) / 2) - 1))
+    arc = path([start, base], ins=[[0, 0], i], outs=[o, [0, 0]])
+    return [layer('tunnel', [group([arc, line, trim(anim([(t0, 0), (t1, 100)]))])], (0, 0)),
+            layer('tunnel head', [group([tri, fill(SLATE)])], (0, 0), o=fade((t1 - 2, 0), (t1 + 1, 100)), s=100)]

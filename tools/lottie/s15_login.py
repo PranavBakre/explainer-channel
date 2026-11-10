@@ -16,10 +16,7 @@ def build(laptop):
 
     # Encrypted connection: a dashed arc that draws itself in.
     out_t, in_t = [180, -230], [-160, -190]
-    arc = path([start, end], ins=[[0, 0], in_t], outs=[out_t, [0, 0]])
-    layers.append(layer('tunnel', [group([arc, stroke(SLATE, 6, dash=14), trim(anim([(140, 0), (162, 100)]))])], (0, 0)))
-    head = path([[end[0] - 26, end[1] - 30], end, [end[0] - 34, end[1] + 4]])
-    layers.append(layer('tunnel head', [group([head, stroke(SLATE, 6)])], (0, 0), o=fade((160, 0), (163, 100))))
+    layers += connection(start, end, out_t, in_t, 140, 162)
     layers.append(text('https', [(0, 'encrypted (HTTPS)')], (mid[0] - 20, mid[1] - 80), 28, BLUE, o=fade((158, 0), (166, 100))))
 
     # The typed password lifts out of the field and is locked into a capsule.
@@ -34,7 +31,7 @@ def build(laptop):
     cap_o = fade((152, 0), (160, 100), (204, 100), (212, 0))
     cap = layer('capsule', [group(lock, p=(-62, 2)), group([rect(200, 70, 35), fill(SLATE)])], (0, 0), o=cap_o, s=pop(152, 160))
     cap['ks']['p'] = capsule_p
-    layers += [cap, text('capsule dots', [(0, '•' * len(pw))], (28, 12), 26, '#FFFFFF', parent=cap['ind'], o=cap_o)]
+    layers += [cap, text('capsule dots', [(0, '•' * len(pw))], (28, 9), 26, '#FFFFFF', parent=cap['ind'], o=cap_o)]
 
     # At the server the capsule opens: the site sees the password, then hashes it and compares.
     layers += pill('seen', pw, 206, 240, (SX, SY - 330), w=290, h=70, size=32, border=AMBER)
