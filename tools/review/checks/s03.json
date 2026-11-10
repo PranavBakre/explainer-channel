@@ -1,0 +1,90 @@
+[
+ {
+  "name": "email-in-field",
+  "frame": 120,
+  "region": [
+   470,
+   360,
+   790,
+   420
+  ],
+  "box": "#F3F1ED",
+  "ink": "#000000",
+  "tol": 15,
+  "ink_tol": 200
+ },
+ {
+  "name": "password-in-field",
+  "frame": 120,
+  "region": [
+   470,
+   418,
+   790,
+   480
+  ],
+  "box": "#F3F1ED",
+  "ink": "#E59A00",
+  "tol": 15,
+  "ink_tol": 90
+ },
+ {
+  "name": "users-table",
+  "frame": 330,
+  "region": [
+   1300,
+   95,
+   1860,
+   335
+  ],
+  "box": "#F3F2EE",
+  "ink": "#7A7A72",
+  "tol": 10,
+  "ink_tol": 160,
+  "align": "left",
+  "inset": 8
+ },
+ {
+  "name": "typed-chip",
+  "frame": 540,
+  "region": [
+   1270,
+   165,
+   1770,
+   250
+  ],
+  "box": "#0D161D",
+  "ink": "#E59A00",
+  "tol": 30,
+  "align": "left",
+  "ink_tol": 90
+ },
+ {
+  "name": "saved-chip",
+  "frame": 540,
+  "region": [
+   1270,
+   252,
+   1770,
+   322
+  ],
+  "box": "#F3F2EE",
+  "ink": "#E59A00",
+  "tol": 15,
+  "align": "left",
+  "ink_tol": 90
+ },
+ {
+  "name": "dots-in-field",
+  "frame": 300,
+  "region": [
+   470,
+   418,
+   790,
+   480
+  ],
+  "box": "#F3F1ED",
+  "ink": "#E59A00",
+  "tol": 15,
+  "ink_tol": 90
+ }
+]

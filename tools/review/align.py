@@ -5,7 +5,7 @@ checks.json: [{"name", "frame", "region": [x0,y0,x1,y1], "box": "#hex", "ink": "
 For each check, finds the container (pixels near `box`) and the text (pixels near `ink`) inside `region`,
 then reports the text's offset from the container centre and its padding. Exits 1 if any check fails.
 """
-import argparse, json, subprocess, sys
+import argparse, json, os, subprocess, sys
 import numpy as np
 
 MAX_OFFSET = 0.08  # of container height (vertical) / width (horizontal)
@@ -33,6 +33,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('video'); ap.add_argument('checks'); ap.add_argument('--crops')
     a = ap.parse_args()
+    if a.crops:
+        os.makedirs(a.crops, exist_ok=True)
     bad = 0
     cache = {}
     for c in json.load(open(a.checks)):
