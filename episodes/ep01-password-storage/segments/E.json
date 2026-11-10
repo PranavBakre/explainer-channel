@@ -1,0 +1,250 @@
+[
+  {
+    "id": "S15",
+    "act": 4,
+    "title": "4 · Your side",
+    "transitionIn": "wipe",
+    "shots": [
+      {
+        "visual": "ActTitle",
+        "props": {
+          "act": "Part four",
+          "title": "Your side",
+          "tone": "teal"
+        },
+        "sfx": [
+          "whoosh"
+        ],
+        "beats": [
+          {
+            "id": "S15_01",
+            "vo": "There's one moment the site does see your password. Every time you log in."
+          }
+        ]
+      },
+      {
+        "visual": "FlowDiagram",
+        "props": {
+          "nodes": [
+            {
+              "label": "Browser",
+              "sub": "mango@123",
+              "tone": "amber"
+            },
+            {
+              "label": "Encrypted link",
+              "sub": "TLS"
+            },
+            {
+              "label": "Server",
+              "sub": "Argon2id + salt"
+            },
+            {
+              "label": "Compare",
+              "sub": "then discard",
+              "tone": "teal"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S15_02",
+            "vo": "It arrives over an encrypted connection, then gets hashed and compared with the stored value."
+          }
+        ]
+      },
+      {
+        "visual": "TextStack",
+        "props": {
+          "kicker": "a warning sign",
+          "lines": [
+            {
+              "text": "Emailed the password you forgot?",
+              "step": 0
+            },
+            {
+              "text": "Then they can recover it.",
+              "tone": "red",
+              "step": 0,
+              "size": 60
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S15_03",
+            "vo": "So if a site ever emails you the password you forgot, it can recover your password. That's the warning sign."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S17",
+    "act": 4,
+    "title": "Checking without telling",
+    "transitionIn": "push",
+    "shots": [
+      {
+        "visual": "KAnonExchange",
+        "props": {
+          "password": "mango@123",
+          "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
+          "service": "Have I Been Pwned"
+        },
+        "beats": [
+          {
+            "id": "S17_01",
+            "vo": "That last check can work without sending your password, or even its full hash."
+          },
+          {
+            "id": "S17_02",
+            "vo": "Your browser or app hashes the password with SHA one, and sends only the first five characters to the service Have I Been Poned."
+          },
+          {
+            "id": "S17_03",
+            "vo": "The service returns the endings of matching leaked hashes in its database. Your device checks its own ending against that list."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S18",
+    "act": 4,
+    "title": "Putting it together",
+    "transitionIn": "fade",
+    "shots": [
+      {
+        "visual": "ChainLine",
+        "props": {
+          "card": "mango@123",
+          "stations": [
+            {
+              "label": "plain text",
+              "verdict": "everything leaks",
+              "step": 0
+            },
+            {
+              "label": "encrypted",
+              "verdict": "the key reads all",
+              "step": 0
+            },
+            {
+              "label": "plain hash",
+              "verdict": "lookup table",
+              "step": 1
+            },
+            {
+              "label": "salt + fast hash",
+              "verdict": "graphics card",
+              "step": 1
+            },
+            {
+              "label": "salt + slow hash",
+              "verdict": "every guess is slow",
+              "holds": true,
+              "step": 1
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S18_01",
+            "vo": "Put the whole chain together. Plain text leaks everything. Encryption leaks everything to whoever holds the key."
+          },
+          {
+            "id": "S18_02",
+            "vo": "A plain hash can fall to a lookup table. A salted fast hash can fall to a graphics card. A salted slow hash makes every guess expensive."
+          }
+        ]
+      },
+      {
+        "visual": "TextStack",
+        "props": {
+          "lines": [
+            {
+              "text": "123456",
+              "mono": true,
+              "tone": "amber",
+              "size": 180,
+              "step": 0
+            },
+            {
+              "text": "among the first guesses on any list",
+              "serif": false,
+              "size": 48,
+              "step": 0,
+              "tone": "slate"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S18_03",
+            "vo": "Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses."
+          }
+        ]
+      },
+      {
+        "visual": "Checklist",
+        "props": {
+          "title": "Two jobs",
+          "items": [
+            {
+              "text": "The site: a slow, salted hash",
+              "step": 0
+            },
+            {
+              "text": "You: a long password, used nowhere else",
+              "step": 0
+            },
+            {
+              "text": "Use a password manager",
+              "step": 1
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S18_04",
+            "vo": "So the site's job is to make guessing expensive. Your job is a long password you've used nowhere else, so a leak on one site can't be replayed on your other accounts."
+          },
+          {
+            "id": "S18_05",
+            "vo": "Our advice: use a password manager. Nist now requires sites to allow them."
+          },
+          {
+            "id": "S18_06",
+            "vo": "What you can't see from a login screen is how a site stores your password. That half of the job is out of your hands. Your half isn't."
+          }
+        ]
+      },
+      {
+        "visual": "TextStack",
+        "props": {
+          "kicker": "if a breach notice says",
+          "lines": [
+            {
+              "text": "salted · hashed · slow",
+              "tone": "teal",
+              "step": 0
+            },
+            {
+              "text": "it bought you time",
+              "tone": "cream",
+              "size": 60,
+              "step": 0
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S18_07",
+            "vo": "And if a breach notice ever says passwords were salted and hashed with something slow, you'll know what that bought you. Time."
+          }
+        ]
+      }
+    ]
+  }
+]

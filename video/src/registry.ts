@@ -9,7 +9,14 @@ import {LightTableSet} from './three/sets/LightTableSet';
 import {CatalogSet} from './three/sets/CatalogSet';
 import {LockboxSet} from './three/sets/LockboxSet';
 import {LottieShot} from './components/LottieShot';
+import {DocShot} from './components/DocShot';
+import {FootageShot} from './components/FootageShot';
+import {segA} from './segments/segA';
+import {segB} from './segments/segB';
+import {segC} from './segments/segC';
+import {segD} from './segments/segD';
+import {segE} from './segments/segE';
 
 
-export const registry = {...visuals, Avalanche, KAnonExchange, GuessStream, ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder, MachineSet, LightTableSet, CatalogSet, LockboxSet, LottieShot} as unknown as Record<string, React.FC<Record<string, unknown>>>;
+export const registry = {...visuals, Avalanche, KAnonExchange, GuessStream, ChainLine, HashGrinder, KeyCascade, LockBox, LoginMatch, LookupWall, SaltGrinder, MachineSet, LightTableSet, CatalogSet, LockboxSet, LottieShot, DocShot, FootageShot, ...segA, ...segB, ...segC, ...segD, ...segE} as unknown as Record<string, React.FC<Record<string, unknown>>>;
 

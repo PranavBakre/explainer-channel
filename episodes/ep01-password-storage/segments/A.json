@@ -1,0 +1,314 @@
+[
+  {
+    "id": "S01",
+    "act": 0,
+    "title": "Cold open",
+    "transitionIn": "fade",
+    "shots": [
+      {
+        "visual": "DbTable",
+        "props": {
+          "title": "users — on a server somewhere",
+          "columns": [
+            "email",
+            "password"
+          ],
+          "rows": [
+            [
+              "asha@mail.com",
+              "?"
+            ],
+            [
+              "ravi@mail.com",
+              "?"
+            ],
+            [
+              "you@mail.com",
+              "?"
+            ],
+            [
+              "meera@mail.com",
+              "?"
+            ]
+          ],
+          "variants": [
+            {
+              "fromStep": 2,
+              "rows": [
+                [
+                  "asha@mail.com",
+                  "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
+                ],
+                [
+                  "ravi@mail.com",
+                  "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
+                ],
+                [
+                  "you@mail.com",
+                  "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
+                ],
+                [
+                  "meera@mail.com",
+                  "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
+                ]
+              ],
+              "tone": "teal",
+              "highlight": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "caption": "Well-run site: nobody can read this column back"
+            },
+            {
+              "fromStep": 3,
+              "rows": [
+                [
+                  "asha@mail.com",
+                  "sunshine1"
+                ],
+                [
+                  "ravi@mail.com",
+                  "123456"
+                ],
+                [
+                  "you@mail.com",
+                  "mango@123"
+                ],
+                [
+                  "meera@mail.com",
+                  "qwerty"
+                ]
+              ],
+              "tone": "red",
+              "highlight": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "caption": "Badly run site: anyone with the file can"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S01_01",
+            "vo": "A well-run website does not keep a readable copy of your password."
+          },
+          {
+            "id": "S01_02",
+            "vo": "So when you log in, what is it checking against?"
+          },
+          {
+            "id": "S01_03",
+            "vo": "Somewhere there's a row with your email on it. Next to it sits something nobody at the company can read back."
+          },
+          {
+            "id": "S01_04",
+            "vo": "A badly run website does keep the password."
+          }
+        ],
+        "sfx": [
+          "tick",
+          "tick"
+        ],
+        "sfxBeat": [
+          2,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S02",
+    "act": 0,
+    "title": null,
+    "transitionIn": "cut",
+    "shots": [
+      {
+        "visual": "BigNumber",
+        "props": {
+          "value": 32603388,
+          "label": "RockYou passwords leaked · Dec 2009 · reported count",
+          "note": "stored as plain, readable text",
+          "tone": "red"
+        },
+        "beats": [
+          {
+            "id": "S02_01",
+            "vo": "In December two thousand nine, a company called Rock You was hacked."
+          },
+          {
+            "id": "S02_02",
+            "vo": "About thirty-two million passwords leaked, and they were stored as plain, readable text."
+          }
+        ],
+        "sfx": [
+          "hit"
+        ]
+      },
+      {
+        "visual": "TextStack",
+        "props": {
+          "kicker": "most common password",
+          "lines": [
+            {
+              "text": "123456",
+              "mono": true,
+              "tone": "amber",
+              "size": 180,
+              "step": 0
+            },
+            {
+              "text": "290,731 accounts",
+              "tone": "cream",
+              "size": 56,
+              "step": 0,
+              "serif": false
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S02_03",
+            "vo": "The most common password was one two three four five six. Almost three hundred thousand accounts used it."
+          }
+        ]
+      },
+      {
+        "visual": "TextStack",
+        "props": {
+          "lines": [
+            {
+              "text": "Other sites did protect their passwords.",
+              "step": 0
+            },
+            {
+              "text": "One graphics card: every 8-char a–z 0–9 password, under a minute",
+              "tone": "red",
+              "step": 0,
+              "size": 56
+            },
+            {
+              "text": "for some of those formats · benchmark estimate",
+              "serif": false,
+              "size": 36,
+              "tone": "slate",
+              "step": 0
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S02_04",
+            "vo": "Other sites did protect their passwords. But one modern graphics card can try every eight-character password of lowercase letters and digits, in some of those formats, in under a minute."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "S03",
+    "act": 1,
+    "title": "1 · Keep it",
+    "transitionIn": "wipe",
+    "shots": [
+      {
+        "visual": "ActTitle",
+        "props": {
+          "act": "Part one",
+          "title": "Keep it",
+          "tone": "red"
+        },
+        "sfx": [
+          "whoosh"
+        ],
+        "beats": [
+          {
+            "id": "S03_01",
+            "vo": "Let's say you sign up for a new grocery app. Your password is mango at the rate one two three."
+          }
+        ]
+      },
+      {
+        "visual": "DbTable",
+        "props": {
+          "title": "grocery_app.users",
+          "columns": [
+            "email",
+            "password"
+          ],
+          "rows": [
+            [
+              "asha@mail.com",
+              "sunshine1"
+            ],
+            [
+              "ravi@mail.com",
+              "123456"
+            ],
+            [
+              "you@mail.com",
+              "mango@123"
+            ],
+            [
+              "meera@mail.com",
+              "qwerty"
+            ]
+          ],
+          "variants": [
+            {
+              "fromStep": 2,
+              "rows": [
+                [
+                  "asha@mail.com",
+                  "sunshine1"
+                ],
+                [
+                  "ravi@mail.com",
+                  "123456"
+                ],
+                [
+                  "you@mail.com",
+                  "mango@123"
+                ],
+                [
+                  "meera@mail.com",
+                  "qwerty"
+                ]
+              ],
+              "tone": "red",
+              "highlight": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "caption": "Copy the table, get every password"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "id": "S03_02",
+            "vo": "The simplest thing the app can do is save it as it is. One column for your email, one for your password."
+          },
+          {
+            "id": "S03_03",
+            "vo": "It works. You log in. The app compares what you typed with what it saved, and lets you in."
+          },
+          {
+            "id": "S03_04",
+            "vo": "It also means anyone who copies that table walks away with every password in it. That was Rock You."
+          },
+          {
+            "id": "S03_05",
+            "vo": "And attackers try leaked passwords on other sites. If you reused yours, one leak can open those accounts too."
+          }
+        ]
+      }
+    ]
+  }
+]

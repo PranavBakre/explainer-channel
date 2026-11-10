@@ -5,8 +5,8 @@ Usage: python3 tools/lottie/s03_signup.py <laptop.json> <out.json>
 import json, sys
 from lot import *
 
-OP = 560
-SIGNUP, SAVE, LOGIN = 0, 174, 386
+OP = 600
+SIGNUP, SAVE, LOGIN = 0, 188, 413
 ROWS = [('asha@mail.com', 'sunshine1'), ('ravi@mail.com', '123456'), ('you@mail.com', 'mango@123')]
 TY = 215
 

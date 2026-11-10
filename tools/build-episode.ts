@@ -1,4 +1,4 @@
-// Usage: bun tools/build-episode.ts <episode-dir> <id>
+// Usage: bun tools/build-episode.ts <episode-dir> <id> [storyboard.json]
 // Merges storyboard.json with voice/lines/manifest.json into video/src/episodes/<id>.json,
 // pre-mixes the narration into video/public/<id>/narration.wav, and writes captions.srt + chapters.txt.
 import {existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
@@ -10,9 +10,9 @@ type Scene = {id: string; act: number; title?: string; transitionIn: string; sho
 type Storyboard = {fps: number; width: number; height: number; voice: string; scenes: Scene[]; musicVolume?: number};
 type ManifestLine = {id: string; seconds: number; file: string};
 
-const [epDir, id] = process.argv.slice(2);
+const [epDir, id, sbPath] = process.argv.slice(2);
 const root = resolve(import.meta.dir, '..');
-const sb: Storyboard = JSON.parse(readFileSync(join(epDir, 'storyboard.json'), 'utf8'));
+const sb: Storyboard = JSON.parse(readFileSync(sbPath ?? join(epDir, 'storyboard.json'), 'utf8'));
 const manifest: ManifestLine[] = JSON.parse(readFileSync(join(epDir, 'voice/lines/manifest.json'), 'utf8'));
 const byId = new Map(manifest.map((m) => [m.id, m]));
 const writtenPath = join(epDir, 'voice/written.json');

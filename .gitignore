@@ -5,3 +5,7 @@ episodes/*/voice/**/*.wav
 episodes/*/out/
 video/public/ep*/
 *.mp4
+__pycache__/
+video/public/assets/shots/
+video/public/assets/stills/
+video/public/assets/footage/
