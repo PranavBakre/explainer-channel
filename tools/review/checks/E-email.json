@@ -1,0 +1,45 @@
+[
+  {
+    "name": "exposed-password",
+    "frame": 130,
+    "region": [
+      1082,
+      296,
+      1774,
+      429
+    ],
+    "box": "#FCE4E0",
+    "ink": "#C0463A",
+    "tol": 20,
+    "ink_tol": 60
+  },
+  {
+    "name": "email-warning",
+    "frame": 150,
+    "region": [
+      1000,
+      499,
+      1848,
+      602
+    ],
+    "box": "#C0463A",
+    "ink": "#F3F2EE",
+    "tol": 25,
+    "ink_tol": 30
+  },
+  {
+    "name": "email-content",
+    "frame": 150,
+    "region": [
+      1021,
+      117,
+      1833,
+      480
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 400,
+    "inset": 8
+  }
+]

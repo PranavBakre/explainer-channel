@@ -1,0 +1,140 @@
+[
+  {
+    "name": "machine-header",
+    "frame": 400,
+    "region": [
+      570,
+      380,
+      980,
+      465
+    ],
+    "box": "#2D1D10",
+    "ink": "#EDE3C9",
+    "tol": 35,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "fast-salted-status",
+    "frame": 400,
+    "region": [
+      530,
+      520,
+      1030,
+      650
+    ],
+    "box": "#2D1D10",
+    "ink": "#EDE3C9",
+    "tol": 35,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "salt-chip",
+    "frame": 400,
+    "region": [
+      65,
+      380,
+      340,
+      470
+    ],
+    "box": "#2D1D10",
+    "ink": "#C7B79D",
+    "tol": 40,
+    "ink_tol": 110,
+    "inset": 8
+  },
+  {
+    "name": "gpu-label",
+    "frame": 400,
+    "region": [
+      1200,
+      850,
+      1770,
+      938
+    ],
+    "box": "#130A00",
+    "ink": "#B9A889",
+    "tol": 30,
+    "ink_tol": 65,
+    "inset": 8
+  },
+  {
+    "name": "first-guess-plate",
+    "frame": 850,
+    "region": [
+      670,
+      40,
+      1425,
+      165
+    ],
+    "box": "#332216",
+    "ink": "#EDE3C9",
+    "tol": 40,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "argon-status",
+    "frame": 850,
+    "region": [
+      790,
+      530,
+      1295,
+      650
+    ],
+    "box": "#2D1D10",
+    "ink": "#EDE3C9",
+    "tol": 35,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "first-password-card",
+    "frame": 600,
+    "region": [
+      225,
+      550,
+      660,
+      780
+    ],
+    "box": "#E2D7C1",
+    "ink": "#CC8B32",
+    "tol": 40,
+    "ink_tol": 65,
+    "align": "left",
+    "inset": 10
+  },
+  {
+    "name": "plain-password-row",
+    "frame": 60,
+    "region": [
+      775,
+      355,
+      1128,
+      580
+    ],
+    "box": "#E2D7C1",
+    "ink": "#3F3526",
+    "tol": 40,
+    "ink_tol": 50,
+    "align": "left",
+    "inset": 10
+  },
+  {
+    "name": "recovered-password-card",
+    "frame": 170,
+    "region": [
+      800,
+      290,
+      1115,
+      500
+    ],
+    "box": "#E2D7C1",
+    "ink": "#BC3D2A",
+    "tol": 40,
+    "ink_tol": 65,
+    "align": "left",
+    "inset": 10
+  }
+]

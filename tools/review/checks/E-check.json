@@ -1,0 +1,77 @@
+[
+  {
+    "name": "prefix-only",
+    "frame": 200,
+    "region": [
+      1030,
+      211,
+      1254,
+      308
+    ],
+    "box": "#F3F2EE",
+    "ink": "#066AC9",
+    "tol": 20,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "local-suffix",
+    "frame": 500,
+    "region": [
+      180,
+      797,
+      1084,
+      880
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "returned-suffixes",
+    "frame": 500,
+    "region": [
+      939,
+      161,
+      1853,
+      572
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 340,
+    "inset": 8
+  },
+  {
+    "name": "matching-returned-row",
+    "frame": 500,
+    "region": [
+      980,
+      438,
+      1822,
+      511
+    ],
+    "box": "#D4E8DB",
+    "ink": "#2FB37A",
+    "tol": 25,
+    "ink_tol": 70,
+    "inset": 5
+  },
+  {
+    "name": "local-match-caption",
+    "frame": 500,
+    "region": [
+      200,
+      689,
+      1063,
+      783
+    ],
+    "box": "#F3F2EE",
+    "ink": "#2FB37A",
+    "tol": 20,
+    "ink_tol": 70,
+    "inset": 6
+  }
+]

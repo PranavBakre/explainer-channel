@@ -1,0 +1,60 @@
+[
+  {
+    "name": "unique-account",
+    "frame": 120,
+    "region": [
+      1010,
+      202,
+      1806,
+      314
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "filled-confirmation",
+    "frame": 500,
+    "region": [
+      1083,
+      417,
+      1742,
+      521
+    ],
+    "box": "#2FB37A",
+    "ink": "#F3F2EE",
+    "tol": 25,
+    "ink_tol": 30
+  },
+  {
+    "name": "manager-filled-field",
+    "frame": 500,
+    "region": [
+      475,
+      413,
+      748,
+      478
+    ],
+    "box": "#F3F1ED",
+    "ink": "#E59A00",
+    "tol": 15,
+    "ink_tol": 90
+  },
+  {
+    "name": "manager-content",
+    "frame": 500,
+    "region": [
+      1001,
+      88,
+      1824,
+      398
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 340,
+    "inset": 8
+  }
+]

@@ -4,6 +4,7 @@ Usage: python3 tools/lottie/s15_login.py <laptop.json> <out.json>
 """
 import json, sys
 from lot import *
+from timing import beat_timing, retime
 
 OP = 330
 
@@ -37,7 +38,9 @@ def build(laptop):
     layers += pill('seen', pw, 206, 240, (SX, SY - 330), w=290, h=70, size=32, border=AMBER)
     layers.append(text('seen label', [(0, 'the site sees your password')], (SX, SY - 400), 26, INK, o=fade((210, 0), (216, 100), (232, 100), (240, 0))))
     layers += compare([('typed', 'hashed at login', HASH, True), ('stored', 'stored hash', HASH, False)], 242, 282)
-    return compose('S15 login', OP, lap, layers)
+    data = compose('S15 login', OP, lap, layers)
+    steps, duration = beat_timing('S15_01', 'S15_02')
+    return retime(data, [(0, 0), (138, steps[1]), (330, duration)])
 
 
 if __name__ == '__main__':

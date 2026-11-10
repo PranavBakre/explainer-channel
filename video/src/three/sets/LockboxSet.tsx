@@ -170,3 +170,5 @@ export const LockboxSet: React.FC<{
     </AbsoluteFill>
   );
 };
+
+export const EncryptionBox = Box;
