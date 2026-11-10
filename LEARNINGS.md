@@ -112,3 +112,9 @@ Running log. Newest at the bottom of each section.
 - A punched hash card must contain the complete digest's bits, even when a nearby textual label uses a prefix. E's first recap used 32 prefix bits for a salted SHA-256 output; compute and punch all 256 bits, and use the same digest on its comparison table.
 - For the recap's first-guess card, rotate it flat, align it with the real machine slot, then feed it into the machine body. Let the body occlude it; shrinking a card before it reaches the slot weakens the mechanism.
 - The final E recap and closing passes rendered correctly with explicit `--gl=angle` through `tools/render.sh`; the default browser had selected SwiftShader. Inspect frames when changing the renderer backend.
+
+## Segment E lead review (2026-11-10)
+- A camera track needs a framing envelope for each focus stop. The lookup cabinet was centred while the SHA-1 machine was clipped; project the whole active prop group through the camera, including the episode push-in, and retain margin at every held stop.
+- A recap inherits each prop's established studio colour. Blend between drawer/lockbox brown, hash-machine blue and light-table teal as focus moves; a new neutral recap studio breaks the episode's visual meanings.
+- Physical label reflections can become a second, upside-down reading. Keep the graphics-card name plate on a main-camera-only layer while its body and the other props retain their reflections. Default Studio/Plate behaviour stays unchanged.
+- New Lottie flows must inherit the S03/S15 text roles: Inter, 26 px values, 20–28 px labels. Separate a long local digest from the browser and wrap it in a dedicated readout instead of packing a small hash into the browser's top margin.

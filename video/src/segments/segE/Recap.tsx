@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame} from 'remotion';
 import {RoundedBox} from '@react-three/drei';
 import {CatalogDrawer, LookupCabinet} from '../../three/sets/CatalogSet';
 import {EncryptionBox, Key} from '../../three/sets/LockboxSet';
@@ -16,15 +16,20 @@ export const ERecap: React.FC<Props> = ({steps, duration}) => {
   const second = steps.length === 3 ? steps[1] : 226;
   const common = steps.length === 3 ? steps[2] : 535;
   const phase = f < 86 ? 0 : f < second ? 1 : f < second + 100 ? 2 : f < second + 205 ? 3 : 4;
-  const x = interpolate(f, [0, 65, 110, second - 12, second + 36, second + 100, second + 150, common - 15, common + 45, duration], [-10, -10, -5, -5, 1, 1, 5.7, 6.4, 3.7, 5], clamp);
-  const target: V3 = [x, 1.5, 0];
+  const stops = [0, 60, 115, second - 12, second + 38, second + 98, second + 145, second + 192, second + 220, common - 12, common + 45, duration];
+  const motion = {...clamp, easing: Easing.inOut(Easing.cubic)};
+  const x = interpolate(f, stops, [-10, -10, -5, -5, 3.2, 3.2, 8.8, 8.8, 5, 5, 3.8, 5], motion);
+  const z = interpolate(f, stops, [11, 11, 10.5, 10.5, 13, 13, 13.5, 13.5, 12, 12, 12.7, 12.7], motion);
+  const y = interpolate(f, stops, [1.6, 1.6, 1.5, 1.5, 1.6, 1.6, 0.9, 0.9, 1.8, 1.8, 1.8, 1.8], motion);
+  const color = interpolateColors(f, stops, ['#4E3A36', '#4E3A36', '#4E3A36', '#4E3A36', '#2E5663', '#2E5663', '#2B4F5C', '#2B4F5C', '#2E5663', '#2E5663', '#2E5663', '#2E5663']);
+  const target: V3 = [x, y, 0];
   const first = ease(f, common + 125, common + 210);
   const turn = ease(first, 0, 0.3);
   const feed = ease(first, 0.25, 1);
   const commonShot = f >= common;
   const salted = phase >= 3;
   return (
-    <Studio color="#3C4947" angle={{from: [x + 0.4, 3.8, 10], target, fov: 31}} duration={duration}>
+    <Studio color={color} unreflectedLabels angle={{from: [x + 0.4, 4.8, z], target, fov: 34}} duration={duration}>
       {[-10, -5, 5, 11].map((station) => <pointLight key={station} position={[station, 6, 4]} intensity={60} distance={13} color="#FFE2C0" />)}
       <group position={[-10, 0, 0]}>
         <CatalogDrawer field="plain" lift={0.4} />
@@ -41,15 +46,15 @@ export const ERecap: React.FC<Props> = ({steps, duration}) => {
         <ComparisonTable hex={HASH} slide={ease(f, second + 150, second + 205)} />
       </group>
       {phase === 3 ? (
-        <group position={[8.3, 1.0, 1.2]}>
-          <RoundedBox args={[2.8, 1.2, 0.3]} radius={0.07} castShadow><meshStandardMaterial color="#222A30" metalness={0.65} roughness={0.35} /></RoundedBox>
+        <group position={[12.4, 1.0, 1.2]}>
+          <RoundedBox args={[2.8, 1.8, 0.3]} radius={0.07} position={[0, 0.2, 0]} castShadow><meshStandardMaterial color="#222A30" metalness={0.65} roughness={0.35} /></RoundedBox>
           {[-0.72, 0.72].map((cx) => (
-            <group key={cx} position={[cx, 0, 0.18]} rotation={[0, 0, f * 0.2]}>
+            <group key={cx} position={[cx, 0.35, 0.18]} rotation={[0, 0, f * 0.2]}>
               <mesh><torusGeometry args={[0.43, 0.05, 12, 32]} /><meshStandardMaterial color="#8A959E" metalness={0.8} /></mesh>
               {[0, 1, 2, 3, 4, 5].map((blade) => <mesh key={blade} rotation={[0, 0, blade * Math.PI / 3]}><boxGeometry args={[0.75, 0.1, 0.07]} /><meshStandardMaterial color="#47545E" /></mesh>)}
             </group>
           ))}
-          <group position={[0, -0.85, 0.18]}><Plate text="GRAPHICS CARD" w={2.5} h={0.35} /></group>
+          <group position={[0, -0.45, 0.24]}><Plate text="GRAPHICS CARD" w={2.5} h={0.35} reflect={false} /></group>
         </group>
       ) : null}
       {salted && !commonShot ? (
@@ -80,7 +85,7 @@ export const EDrawerClose: React.FC<Props> = ({steps, duration}) => {
   const close = ease(f, last + 60, duration - 80);
   return (
     <AbsoluteFill>
-      <Studio color="#3C4947" angle={{from: [0.8, 4.7, 12.0], to: [0.5, 4.0, 11.4], target: [0, 1.8, 0.8], fov: 34}} duration={duration}>
+      <Studio color="#4E3A36" angle={{from: [0.8, 4.7, 12.0], to: [0.5, 4.0, 11.4], target: [0, 1.8, 0.8], fov: 34}} duration={duration}>
         <group position={[0, 0, mix(1.4, -2.3, close)]}>
           <CatalogDrawer field="argon2id" lift={0.25} />
           <group position={[0, mix(3.5, 1.3, close), 1.1]} rotation={[-0.12, 0, 0]}>

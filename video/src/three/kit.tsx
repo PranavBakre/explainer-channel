@@ -32,14 +32,16 @@ export const useCanvasTexture = (w: number, h: number, draw: (c: CanvasRendering
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
-export const CameraRig: React.FC<{pos: V3; target: V3; fov?: number}> = ({pos, target, fov}) => {
+export const CameraRig: React.FC<{pos: V3; target: V3; fov?: number; unreflectedLabels?: boolean}> = ({pos, target, fov, unreflectedLabels = false}) => {
   const camera = useThree((st) => st.camera) as THREE.PerspectiveCamera;
   useLayoutEffect(() => {
     camera.position.set(...pos);
     if (fov) camera.fov = fov;
     camera.lookAt(...target);
+    camera.layers.set(0);
+    if (unreflectedLabels) camera.layers.enable(1);
     camera.updateProjectionMatrix();
-  }, [camera, pos, target, fov]);
+  }, [camera, pos, target, fov, unreflectedLabels]);
   return null;
 };
 
@@ -49,12 +51,13 @@ export type Angle = {from: V3; to?: V3; target: V3; fov?: number};
 export const Studio: React.FC<{
   color: string;
   floor?: string;
+  unreflectedLabels?: boolean;
   angle: Angle;
   children: React.ReactNode;
   keyColor?: string;
   shadows?: boolean;
   duration: number;
-}> = ({color, floor, angle, children, keyColor = '#FFE2C0', shadows = true, duration}) => {
+}> = ({color, floor, unreflectedLabels = false, angle, children, keyColor = '#FFE2C0', shadows = true, duration}) => {
   const frame = useCurrentFrame();
   const {width, height} = useVideoConfig();
   const t = interpolate(frame, [0, Math.max(1, duration)], [0, 1], clamp);
@@ -63,7 +66,7 @@ export const Studio: React.FC<{
   return (
     <AbsoluteFill style={{background: color}}>
       <ThreeCanvas width={width} height={height} shadows camera={{position: pos, fov: angle.fov ?? 32}}>
-        <CameraRig pos={pos} target={angle.target} fov={angle.fov ?? 32} />
+        <CameraRig pos={pos} target={angle.target} fov={angle.fov ?? 32} unreflectedLabels={unreflectedLabels} />
         <color attach="background" args={[color]} />
         <fog attach="fog" args={[color, 18, 40]} />
         <mesh position={[0, 7, -10]} receiveShadow>
@@ -214,8 +217,8 @@ export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; tit
   );
 };
 
-// Dark brass-edged name plate.
-export const Plate: React.FC<{text: string; w: number; h: number; glow?: number; color?: string; bg?: string; textShift?: number}> = ({
+// Dark brass-edged name plate; unreflected plates use layer 1, enabled by Studio.unreflectedLabels.
+export const Plate: React.FC<{text: string; w: number; h: number; glow?: number; color?: string; bg?: string; textShift?: number; reflect?: boolean}> = ({
   text,
   w,
   h,
@@ -223,6 +226,7 @@ export const Plate: React.FC<{text: string; w: number; h: number; glow?: number;
   color = '#F2D9A8',
   bg = '#2B2116',
   textShift = 0,
+  reflect = true,
 }) => {
   const tex = useCanvasTexture(
     1024,
@@ -247,7 +251,7 @@ export const Plate: React.FC<{text: string; w: number; h: number; glow?: number;
     [text, w, h, color, bg, textShift],
   );
   return (
-    <mesh>
+    <mesh layers-mask={reflect ? 1 : 2}>
       <planeGeometry args={[w, h]} />
       <meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={0.15 + glow} roughness={0.5} />
     </mesh>
