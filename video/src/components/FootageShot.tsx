@@ -8,8 +8,9 @@ export const FootageShot: React.FC<{
   startFrom?: number;
   rate?: number;
   tags?: {x: number; y: number; text: string; at?: number; color?: string}[];
+  scrim?: boolean;
   duration: number;
-}> = ({file, startFrom = 0, rate = 1, tags = [], duration}) => {
+}> = ({file, startFrom = 0, rate = 1, tags = [], scrim, duration}) => {
   const frame = useCurrentFrame();
   const t = frame / Math.max(1, duration);
   return (
@@ -21,6 +22,7 @@ export const FootageShot: React.FC<{
         muted
         style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${1.02 + 0.05 * t})`}}
       />
+      {scrim ? <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(6,9,13,0.82) 0%, rgba(6,9,13,0.58) 24%, rgba(6,9,13,0) 44%)'}} /> : null}
       {tags.map((tg, i) => (
         <Tag key={i} x={tg.x} y={tg.y} text={tg.text} color={tg.color} opacity={interpolate(t, [tg.at ?? 0.3, (tg.at ?? 0.3) + 0.08], [0, 1], clamp)} />
       ))}

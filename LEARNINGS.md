@@ -118,3 +118,23 @@ Running log. Newest at the bottom of each section.
 - A recap inherits each prop's established studio colour. Blend between drawer/lockbox brown, hash-machine blue and light-table teal as focus moves; a new neutral recap studio breaks the episode's visual meanings.
 - Physical label reflections can become a second, upside-down reading. Keep the graphics-card name plate on a main-camera-only layer while its body and the other props retain their reflections. Default Studio/Plate behaviour stays unchanged.
 - New Lottie flows must inherit the S03/S15 text roles: Inter, 26 px values, 20–28 px labels. Separate a long local digest from the browser and wrap it in a dedicated readout instead of packing a small hash into the browser's top margin.
+
+## Segment build, ep01 v3 (2026-11-10)
+- **`tools/render.sh` resolves the output path after `cd video`.** `${2:A}` runs in the video directory, so a relative
+  `episodes/...` path renders into `video/episodes/...` (and Remotion fails only after all frames). Always pass an
+  absolute output path.
+- **Lottie draws the first layer on top**: a panel's background must be appended LAST and its text before its field
+  rect. Building the card first and adding text after gave white boxes with no text at all.
+- **A translucent 3D set hides its own cards.** `CatalogSet`'s ghost copy (opacity 0.85) is drawn in front of its cards,
+  so the card faces show through the drawer front as milky rectangles with text. `copyOpacity={1}` gives a clean
+  second drawer; keep the ghost only where the copy must read as not-real.
+- **Values on a lined index card belong above the rule, not on it.** With the value baseline exactly on a ruled line the
+  text looked misaligned against the email row (whose baseline sits above its rule); moving the baseline up 22 canvas px
+  matched the two rows.
+- **A per-card scale contradicts a lone card.** "one card = 1,000 accounts" beside a single card labelled "1 account"
+  reads as a contradiction; drop the scale and let the two labels ("290,731 accounts" / "1 account") carry it.
+- **Footage with text over it needs a scrim.** Cream serif tags over RGB-lit GPU footage vanish on the bright areas; a
+  top gradient (82 % → 0 at 44 %) makes them legible without touching the footage.
+- **`remotion still` is the cheap loop, renders are the expensive one.** Five worktrees share one render lock; a gallery
+  render of 2,600 frames sat queued for 25 minutes behind another segment. Iterating on `node stills.mjs gallery`
+  (bundle once, N frames) found every layout problem before paying for a render.
