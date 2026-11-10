@@ -1,0 +1,63 @@
+[
+  {
+    "name": "D-S11-2-2-machine",
+    "frame": 207,
+    "region": [
+      936,
+      342,
+      1581,
+      445
+    ],
+    "box": "#211308",
+    "ink": "#e1cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-2-2-status",
+    "frame": 207,
+    "region": [
+      1021,
+      498,
+      1494,
+      608
+    ],
+    "box": "#352414",
+    "ink": "#f4ead9",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-2-2-salt",
+    "frame": 207,
+    "region": [
+      352,
+      254,
+      942,
+      385
+    ],
+    "box": "#e2d9cc",
+    "ink": "#1f1914",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-2-2-input-row",
+    "frame": 207,
+    "region": [
+      361,
+      497,
+      653,
+      720
+    ],
+    "box": "#c6b9a7",
+    "ink": "#985713",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  }
+]

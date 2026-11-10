@@ -1,0 +1,183 @@
+[
+  {
+    "name": "D-S11-3-5-popular-bin",
+    "frame": 80,
+    "region": [
+      248,
+      671,
+      911,
+      753
+    ],
+    "box": "#0b1211",
+    "ink": "#dbc8a6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 11
+  },
+  {
+    "name": "D-S11-3-5-other-bin",
+    "frame": 80,
+    "region": [
+      1009,
+      671,
+      1672,
+      753
+    ],
+    "box": "#080d0f",
+    "ink": "#d2bf9b",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 11
+  },
+  {
+    "name": "D-S11-3-5-header",
+    "frame": 80,
+    "region": [
+      542,
+      258,
+      1378,
+      338
+    ],
+    "box": "#151917",
+    "ink": "#e1d0ae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 11
+  },
+  {
+    "name": "D-S11-3-6-popular-bin",
+    "frame": 297,
+    "region": [
+      223,
+      674,
+      909,
+      758
+    ],
+    "box": "#0b1211",
+    "ink": "#dbc8a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-6-other-bin",
+    "frame": 297,
+    "region": [
+      1011,
+      674,
+      1697,
+      758
+    ],
+    "box": "#080e0e",
+    "ink": "#d2bf9a",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-6-header",
+    "frame": 297,
+    "region": [
+      512,
+      39,
+      1408,
+      129
+    ],
+    "box": "#111413",
+    "ink": "#dac8a6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-6-rank",
+    "frame": 297,
+    "region": [
+      726,
+      133,
+      1194,
+      194
+    ],
+    "box": "#0f1412",
+    "ink": "#d1bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "D-S11-3-6-rank-row",
+    "frame": 297,
+    "region": [
+      784,
+      202,
+      1136,
+      368
+    ],
+    "box": "#cfc1af",
+    "ink": "#ab6213",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S11-3-7-popular-bin",
+    "frame": 396,
+    "region": [
+      211,
+      675,
+      908,
+      761
+    ],
+    "box": "#0b1211",
+    "ink": "#d9c8a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-7-other-bin",
+    "frame": 396,
+    "region": [
+      1012,
+      675,
+      1709,
+      761
+    ],
+    "box": "#080d0e",
+    "ink": "#d1bf9b",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-7-header",
+    "frame": 396,
+    "region": [
+      506,
+      32,
+      1414,
+      123
+    ],
+    "box": "#111412",
+    "ink": "#d9c8a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S11-3-7-rank",
+    "frame": 396,
+    "region": [
+      724,
+      129,
+      1196,
+      190
+    ],
+    "box": "#0f1411",
+    "ink": "#cfbf9d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  }
+]

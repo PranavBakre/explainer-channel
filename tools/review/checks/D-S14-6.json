@@ -1,0 +1,258 @@
+[
+  {
+    "name": "D-S14-6-49-machine",
+    "frame": 5069,
+    "region": [
+      763,
+      439,
+      1157,
+      503
+    ],
+    "box": "#221409",
+    "ink": "#e1ceab",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-49-status",
+    "frame": 5069,
+    "region": [
+      816,
+      533,
+      1104,
+      602
+    ],
+    "box": "#27180d",
+    "ink": "#ebdcc3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-49-dial-value",
+    "frame": 5069,
+    "region": [
+      1246,
+      555,
+      1411,
+      613
+    ],
+    "box": "#d0c7b7",
+    "ink": "#0e0600",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 8
+  },
+  {
+    "name": "D-S14-6-49-dial-label",
+    "frame": 5069,
+    "region": [
+      1213,
+      651,
+      1431,
+      709
+    ],
+    "box": "#0a1010",
+    "ink": "#d1be9d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "D-S14-6-49-memory",
+    "frame": 5069,
+    "region": [
+      412,
+      336,
+      702,
+      411
+    ],
+    "box": "#222520",
+    "ink": "#e6d6b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-6-49-parameters",
+    "frame": 5069,
+    "region": [
+      606,
+      177,
+      1314,
+      241
+    ],
+    "box": "#0f1412",
+    "ink": "#e2d1ae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-49-guess-row",
+    "frame": 5069,
+    "region": [
+      139,
+      589,
+      410,
+      723
+    ],
+    "box": "#978d7e",
+    "ink": "#6f3c09",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-6-49-leaked-salt",
+    "frame": 5069,
+    "region": [
+      1379,
+      237,
+      1773,
+      303
+    ],
+    "box": "#070c0c",
+    "ink": "#bbab88",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-49-leaked-hash",
+    "frame": 5069,
+    "region": [
+      1378,
+      310,
+      1769,
+      375
+    ],
+    "box": "#070c0c",
+    "ink": "#c2b18d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-50-machine",
+    "frame": 5338,
+    "region": [
+      752,
+      431,
+      1168,
+      499
+    ],
+    "box": "#231409",
+    "ink": "#e1cead",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-50-status",
+    "frame": 5338,
+    "region": [
+      807,
+      531,
+      1113,
+      604
+    ],
+    "box": "#27180c",
+    "ink": "#ebdcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-6-50-dial-value",
+    "frame": 5338,
+    "region": [
+      1263,
+      555,
+      1437,
+      616
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0f0702",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 8
+  },
+  {
+    "name": "D-S14-6-50-dial-label",
+    "frame": 5338,
+    "region": [
+      1227,
+      657,
+      1457,
+      718
+    ],
+    "box": "#0a1011",
+    "ink": "#d2bf9e",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "D-S14-6-50-memory",
+    "frame": 5338,
+    "region": [
+      382,
+      324,
+      687,
+      402
+    ],
+    "box": "#222621",
+    "ink": "#e7d7b8",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 11
+  },
+  {
+    "name": "D-S14-6-50-parameters",
+    "frame": 5338,
+    "region": [
+      587,
+      158,
+      1333,
+      225
+    ],
+    "box": "#2f2e27",
+    "ink": "#e2d1af",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-50-leaked-salt",
+    "frame": 5338,
+    "region": [
+      1401,
+      221,
+      1815,
+      290
+    ],
+    "box": "#070b0c",
+    "ink": "#b7a887",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-6-50-leaked-hash",
+    "frame": 5338,
+    "region": [
+      1400,
+      298,
+      1811,
+      366
+    ],
+    "box": "#080c0e",
+    "ink": "#c1b08d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  }
+]

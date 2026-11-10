@@ -1,0 +1,78 @@
+[
+  {
+    "name": "D-S13-4-31-source",
+    "frame": 3292,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#26292d",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  },
+  {
+    "name": "D-S13-4-34-gpu",
+    "frame": 3456,
+    "region": [
+      378,
+      374,
+      787,
+      440
+    ],
+    "box": "#1d211d",
+    "ink": "#e3d4b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S13-4-34-calendar-algorithm",
+    "frame": 3456,
+    "region": [
+      979,
+      413,
+      1525,
+      479
+    ],
+    "box": "#0e1212",
+    "ink": "#d8c6a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S13-4-34-calendar-value",
+    "frame": 3456,
+    "region": [
+      979,
+      481,
+      1521,
+      601
+    ],
+    "box": "#d3c9bb",
+    "ink": "#0b0704",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-4-34-search",
+    "frame": 3456,
+    "region": [
+      964,
+      706,
+      1596,
+      766
+    ],
+    "box": "#0b0f0f",
+    "ink": "#d0c1a0",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  }
+]

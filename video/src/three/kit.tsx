@@ -214,13 +214,14 @@ export const PunchedCard: React.FC<{hex: string; w?: number; title?: string; col
 };
 
 // Dark brass-edged name plate.
-export const Plate: React.FC<{text: string; w: number; h: number; glow?: number; color?: string; bg?: string}> = ({
+export const Plate: React.FC<{text: string; w: number; h: number; glow?: number; color?: string; bg?: string; textShift?: number}> = ({
   text,
   w,
   h,
   glow = 0,
   color = '#F2D9A8',
   bg = '#2B2116',
+  textShift = 0,
 }) => {
   const tex = useCanvasTexture(
     1024,
@@ -240,9 +241,9 @@ export const Plate: React.FC<{text: string; w: number; h: number; glow?: number;
       }
       c.textAlign = 'center';
       c.textBaseline = 'middle';
-      c.fillText(text, W / 2, H / 2 + 4);
+      c.fillText(text, W / 2, H / 2 + 4 + H * textShift);
     },
-    [text, w, h, color, bg],
+    [text, w, h, color, bg, textShift],
   );
   return (
     <mesh>

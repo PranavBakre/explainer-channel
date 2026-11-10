@@ -1,0 +1,108 @@
+[
+  {
+    "name": "D-S11-1-0-machine",
+    "frame": 80,
+    "region": [
+      936,
+      343,
+      1579,
+      445
+    ],
+    "box": "#211308",
+    "ink": "#e1cfac",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-1-0-status",
+    "frame": 80,
+    "region": [
+      1021,
+      498,
+      1492,
+      608
+    ],
+    "box": "#352414",
+    "ink": "#f4eada",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-1-0-salt",
+    "frame": 80,
+    "region": [
+      353,
+      255,
+      942,
+      385
+    ],
+    "box": "#e2d9cc",
+    "ink": "#1e1812",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-1-0-input-row",
+    "frame": 80,
+    "region": [
+      288,
+      499,
+      603,
+      716
+    ],
+    "box": "#c8baa5",
+    "ink": "#9b560f",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S11-1-1-machine",
+    "frame": 107,
+    "region": [
+      935,
+      339,
+      1588,
+      443
+    ],
+    "box": "#21130a",
+    "ink": "#e1cfae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-1-1-status",
+    "frame": 107,
+    "region": [
+      1020,
+      497,
+      1500,
+      609
+    ],
+    "box": "#362414",
+    "ink": "#f5eadb",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S11-1-1-salt",
+    "frame": 107,
+    "region": [
+      344,
+      250,
+      940,
+      382
+    ],
+    "box": "#e2d9cc",
+    "ink": "#1e1914",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  }
+]

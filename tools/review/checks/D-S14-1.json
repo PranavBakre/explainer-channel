@@ -1,0 +1,34 @@
+[
+  {
+    "name": "D-S14-1-35-source",
+    "frame": 3556,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#272a2d",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-1-36-source",
+    "frame": 3840,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#262a2e",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  }
+]

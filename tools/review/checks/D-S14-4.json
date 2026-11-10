@@ -1,0 +1,228 @@
+[
+  {
+    "name": "D-S14-4-43-machine",
+    "frame": 4490,
+    "region": [
+      695,
+      409,
+      1225,
+      494
+    ],
+    "box": "#221308",
+    "ink": "#e0cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-4-43-status",
+    "frame": 4490,
+    "region": [
+      766,
+      536,
+      1154,
+      627
+    ],
+    "box": "#27180c",
+    "ink": "#ebdcc3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  },
+  {
+    "name": "D-S14-4-43-dial-value",
+    "frame": 4490,
+    "region": [
+      1344,
+      565,
+      1565,
+      641
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0d0702",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-4-43-dial-label",
+    "frame": 4490,
+    "region": [
+      1297,
+      692,
+      1586,
+      766
+    ],
+    "box": "#0a0f10",
+    "ink": "#d0bf9d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-4-43-memory",
+    "frame": 4490,
+    "region": [
+      224,
+      270,
+      613,
+      369
+    ],
+    "box": "#212520",
+    "ink": "#e7d7b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-4-43-parameters",
+    "frame": 4490,
+    "region": [
+      490,
+      59,
+      1430,
+      143
+    ],
+    "box": "#302e27",
+    "ink": "#e1d0ae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-4-44-machine",
+    "frame": 4535,
+    "region": [
+      691,
+      405,
+      1229,
+      492
+    ],
+    "box": "#21130a",
+    "ink": "#e1ceac",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-4-44-status",
+    "frame": 4535,
+    "region": [
+      763,
+      535,
+      1157,
+      627
+    ],
+    "box": "#27180c",
+    "ink": "#ebdcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  },
+  {
+    "name": "D-S14-4-44-dial-value",
+    "frame": 4535,
+    "region": [
+      1351,
+      565,
+      1575,
+      642
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0f0604",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S14-4-44-dial-label",
+    "frame": 4535,
+    "region": [
+      1302,
+      693,
+      1596,
+      769
+    ],
+    "box": "#0a0f10",
+    "ink": "#d1bf9d",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-4-44-memory",
+    "frame": 4535,
+    "region": [
+      214,
+      265,
+      608,
+      365
+    ],
+    "box": "#222420",
+    "ink": "#e8d6b7",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-4-44-parameters",
+    "frame": 4535,
+    "region": [
+      484,
+      52,
+      1436,
+      137
+    ],
+    "box": "#302f28",
+    "ink": "#e0cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-4-45-drawer",
+    "frame": 4570,
+    "region": [
+      539,
+      792,
+      1381,
+      895
+    ],
+    "box": "#0e1313",
+    "ink": "#dbc8a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-4-45-recipe",
+    "frame": 4570,
+    "region": [
+      385,
+      72,
+      1535,
+      578
+    ],
+    "box": "#dacebc",
+    "ink": "#20170e",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-4-46-drawer",
+    "frame": 4652,
+    "region": [
+      523,
+      802,
+      1397,
+      909
+    ],
+    "box": "#0e1313",
+    "ink": "#dac8a6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  }
+]

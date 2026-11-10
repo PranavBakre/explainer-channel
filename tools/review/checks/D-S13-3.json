@@ -1,0 +1,152 @@
+[
+  {
+    "name": "D-S13-3-29-machine",
+    "frame": 3026,
+    "region": [
+      698,
+      411,
+      1222,
+      495
+    ],
+    "box": "#211308",
+    "ink": "#e0cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S13-3-29-status",
+    "frame": 3026,
+    "region": [
+      768,
+      537,
+      1152,
+      627
+    ],
+    "box": "#26180b",
+    "ink": "#ebdcc3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S13-3-29-dial-value",
+    "frame": 3026,
+    "region": [
+      1340,
+      566,
+      1558,
+      641
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0e0601",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S13-3-29-dial-label",
+    "frame": 3026,
+    "region": [
+      1292,
+      690,
+      1578,
+      764
+    ],
+    "box": "#0a0f10",
+    "ink": "#d2bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S13-3-29-memory",
+    "frame": 3026,
+    "region": [
+      232,
+      274,
+      617,
+      372
+    ],
+    "box": "#212420",
+    "ink": "#e7d7b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-3-30-machine",
+    "frame": 3192,
+    "region": [
+      690,
+      404,
+      1230,
+      491
+    ],
+    "box": "#21130a",
+    "ink": "#e1cfae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S13-3-30-status",
+    "frame": 3192,
+    "region": [
+      762,
+      535,
+      1158,
+      627
+    ],
+    "box": "#27180c",
+    "ink": "#ebdcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  },
+  {
+    "name": "D-S13-3-30-dial-value",
+    "frame": 3192,
+    "region": [
+      1353,
+      564,
+      1578,
+      642
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0f0703",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S13-3-30-dial-label",
+    "frame": 3192,
+    "region": [
+      1304,
+      694,
+      1599,
+      770
+    ],
+    "box": "#0a0f10",
+    "ink": "#d1bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S13-3-30-memory",
+    "frame": 3192,
+    "region": [
+      210,
+      264,
+      606,
+      364
+    ],
+    "box": "#222520",
+    "ink": "#e7d6b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  }
+]

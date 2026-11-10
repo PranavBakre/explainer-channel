@@ -1,0 +1,50 @@
+[
+  {
+    "name": "D-S12-2-12-source",
+    "frame": 1217,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#222528",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  },
+  {
+    "name": "D-S12-2-13-source",
+    "frame": 1351,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#212428",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  },
+  {
+    "name": "D-S12-2-14-source",
+    "frame": 1515,
+    "region": [
+      92,
+      849,
+      1000,
+      912
+    ],
+    "box": "#222529",
+    "ink": "#f2ede4",
+    "tol": 75,
+    "ink_tol": 42,
+    "inset": 9,
+    "align": "left"
+  }
+]

@@ -6,15 +6,10 @@
     "transitionIn": "wipe",
     "shots": [
       {
-        "visual": "ActTitle",
+        "visual": "DAttack",
         "props": {
-          "act": "Part three",
-          "title": "Slow it down",
-          "tone": "red"
+          "mode": "salt"
         },
-        "sfx": [
-          "whoosh"
-        ],
         "beats": [
           {
             "id": "S11_01",
@@ -23,30 +18,9 @@
         ]
       },
       {
-        "visual": "FlowDiagram",
+        "visual": "DAttack",
         "props": {
-          "nodes": [
-            {
-              "label": "Guess",
-              "sub": "sunshine1",
-              "tone": "amber"
-            },
-            {
-              "label": "+ salt",
-              "sub": "e05b13d8",
-              "tone": "teal"
-            },
-            {
-              "label": "Hash"
-            },
-            {
-              "label": "Compare",
-              "sub": "no → next guess",
-              "tone": "red"
-            }
-          ],
-          "caption": "Repeat, billions of times",
-          "captionStep": 1
+          "mode": "loop"
         },
         "beats": [
           {
@@ -56,30 +30,8 @@
         ]
       },
       {
-        "visual": "TextStack",
-        "props": {
-          "kicker": "RockYou leak (Imperva)",
-          "lines": [
-            {
-              "text": "nearly half: names, words, slang, patterns",
-              "step": 0,
-              "size": 60
-            },
-            {
-              "text": "likely guesses first, the long tail later",
-              "serif": false,
-              "size": 42,
-              "tone": "slate",
-              "step": 1
-            },
-            {
-              "text": "and these hashes are fast to calculate",
-              "tone": "red",
-              "size": 58,
-              "step": 2
-            }
-          ]
-        },
+        "visual": "DHeap",
+        "props": {},
         "beats": [
           {
             "id": "S11_03",
@@ -88,7 +40,15 @@
           {
             "id": "S11_04",
             "vo": "So attackers try the likely passwords first, and the long tail later."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DAttack",
+        "props": {
+          "mode": "fast"
+        },
+        "beats": [
           {
             "id": "S11_05",
             "vo": "And the hashes we've seen so far are fast to calculate."
@@ -104,12 +64,23 @@
     "transitionIn": "fade",
     "shots": [
       {
-        "visual": "GuessStream",
+        "visual": "DGPUBench",
+        "props": {
+          "mode": "intro"
+        },
         "beats": [
           {
             "id": "S12_01",
             "vo": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DEvidence",
+        "props": {
+          "kind": "fast"
+        },
+        "beats": [
           {
             "id": "S12_02",
             "vo": "It tries about a hundred and sixty-four billion M D five guesses every second."
@@ -118,63 +89,26 @@
             "id": "S12_03",
             "vo": "About fifty billion for SHA one. About twenty-two billion for SHA two fifty-six."
           }
-        ],
-        "props": {
-          "title": "one RTX 4090 running hashcat",
-          "note": "each card stands for over a billion guesses · hashcat benchmark",
-          "phases": [
-            {
-              "label": "MD5",
-              "rate": "164 billion guesses / s",
-              "perFrame": 4,
-              "step": 1
-            },
-            {
-              "label": "SHA-1",
-              "rate": "50.6 billion / s",
-              "perFrame": 1.23,
-              "step": 2
-            },
-            {
-              "label": "SHA-256",
-              "rate": "22.0 billion / s",
-              "perFrame": 0.54,
-              "step": 2,
-              "offset": 90
-            }
-          ]
-        }
+        ]
       },
       {
-        "visual": "StatGrid",
+        "visual": "DGPUBench",
         "props": {
-          "title": "every 8-character password of a–z and 0–9 · 2.8 trillion · full-search estimate",
-          "items": [
-            {
-              "value": "17 s",
-              "label": "MD5",
-              "tone": "red",
-              "step": 1
-            },
-            {
-              "value": "56 s",
-              "label": "SHA-1",
-              "tone": "red",
-              "step": 1
-            },
-            {
-              "value": "~2 min",
-              "label": "SHA-256",
-              "tone": "red",
-              "step": 1
-            }
-          ]
+          "mode": "space"
         },
         "beats": [
           {
             "id": "S12_04",
             "vo": "Take every possible eight-character password made of lowercase letters and digits. That's about two point eight trillion of them."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DGPUBench",
+        "props": {
+          "mode": "times"
+        },
+        "beats": [
           {
             "id": "S12_05",
             "vo": "With M D five, that card gets through all of them in about seventeen seconds. With SHA one, under a minute. SHA two fifty-six, about two minutes."
@@ -190,28 +124,9 @@
     "transitionIn": "push",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "DSlowMachine",
         "props": {
-          "lines": [
-            {
-              "text": "Make each guess expensive",
-              "step": 0,
-              "tone": "teal"
-            },
-            {
-              "text": "slow on purpose · tunable as hardware improves",
-              "serif": false,
-              "size": 44,
-              "tone": "slate",
-              "step": 1
-            },
-            {
-              "text": "bcrypt · 1999",
-              "mono": true,
-              "tone": "amber",
-              "step": 2
-            }
-          ]
+          "mode": "cost"
         },
         "beats": [
           {
@@ -229,36 +144,35 @@
         ]
       },
       {
-        "visual": "GuessStream",
+        "visual": "DSlowBenchmark",
         "props": {
-          "title": "same RTX 4090 · slow hashes",
-          "note": "drawn far from scale: bcrypt here is about 900,000× slower than MD5",
-          "phases": [
-            {
-              "label": "bcrypt (cost 5)",
-              "rate": "184 thousand / s",
-              "sub": "same 2.8 trillion: about 177 days",
-              "perFrame": 0.07,
-              "step": 0
-            },
-            {
-              "label": "scrypt",
-              "rate": "7,126 / s",
-              "sub": "same 2.8 trillion: about 12.5 years",
-              "perFrame": 0.02,
-              "step": 2
-            }
-          ]
+          "algorithm": "bcrypt"
         },
         "beats": [
           {
             "id": "S13_04",
             "vo": "On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DSlowMachine",
+        "props": {
+          "mode": "memory"
+        },
+        "beats": [
           {
             "id": "S13_05",
             "vo": "S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DSlowBenchmark",
+        "props": {
+          "algorithm": "scrypt"
+        },
+        "beats": [
           {
             "id": "S13_06",
             "vo": "At the tested setting, the card manages about seven thousand guesses a second. About twelve and a half years for the same set."
@@ -274,37 +188,23 @@
     "transitionIn": "fade",
     "shots": [
       {
-        "visual": "TextStack",
+        "visual": "DEvidence",
         "props": {
-          "kicker": "what good sites run",
-          "lines": [
-            {
-              "text": "Argon2id",
-              "size": 130,
-              "tone": "teal",
-              "step": 0
-            },
-            {
-              "text": "OWASP recommends · from Argon2, competition winner 2015",
-              "serif": false,
-              "size": 40,
-              "tone": "slate",
-              "step": 0
-            },
-            {
-              "text": "minimum: 19 MiB memory · 2 passes · 1 lane",
-              "mono": true,
-              "size": 44,
-              "tone": "amber",
-              "step": 1
-            }
-          ]
+          "kind": "owasp"
         },
         "beats": [
           {
             "id": "S14_01",
             "vo": "The Oh wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DSlowMachine",
+        "props": {
+          "mode": "argon"
+        },
+        "beats": [
           {
             "id": "S14_02",
             "vo": "Its minimum setting uses about twenty megabytes of memory and two rounds of work for every single guess."
@@ -312,17 +212,19 @@
         ]
       },
       {
-        "visual": "CodeCard",
-        "props": {
-          "title": "what the database stores for you",
-          "code": "# algorithm + settings · salt · hash\n$argon2id$v=19$m=19456,t=2,p=1\n$cE3JU6U6szy6uvAh96bkyw\n$Pr8MGyxkXWUs/ALFyQ4a+2IS3skjs84BpY4YSDhLGFM",
-          "caption": "Settings travel with the hash, so the cost can be raised later"
-        },
+        "visual": "DRecipe",
+        "props": {},
         "beats": [
           {
             "id": "S14_03",
             "vo": "In a common library's format, the stored value carries its own recipe. One line holds the algorithm and its settings. Then the salt. Then the hash."
-          },
+          }
+        ]
+      },
+      {
+        "visual": "DRehash",
+        "props": {},
+        "beats": [
           {
             "id": "S14_04",
             "vo": "Because the settings travel with the hash, a site can raise the cost later. It re-hashes your password the next time you log in."
@@ -330,24 +232,8 @@
         ]
       },
       {
-        "visual": "TextStack",
-        "props": {
-          "kicker": "optional extra layer",
-          "lines": [
-            {
-              "text": "Pepper",
-              "size": 130,
-              "tone": "amber",
-              "step": 0
-            },
-            {
-              "text": "one secret, kept outside the database",
-              "serif": false,
-              "size": 44,
-              "step": 0
-            }
-          ]
-        },
+        "visual": "DPepper",
+        "props": {},
         "beats": [
           {
             "id": "S14_05",
@@ -356,21 +242,9 @@
         ]
       },
       {
-        "visual": "TextStack",
+        "visual": "DSlowMachine",
         "props": {
-          "kicker": "grocery_app.users · leaked today",
-          "lines": [
-            {
-              "text": "a salt and a slow fingerprint per row",
-              "step": 0,
-              "size": 60
-            },
-            {
-              "text": "every guess costs real time",
-              "tone": "teal",
-              "step": 0
-            }
-          ]
+          "mode": "final"
         },
         "beats": [
           {

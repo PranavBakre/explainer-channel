@@ -1,0 +1,18 @@
+[
+  {
+    "input": "123456",
+    "hex": "18f5aa40812be12091e712305b515234220d185caafb6d74c593c8c8d2e042b3"
+  },
+  {
+    "input": "password",
+    "hex": "de62f9ae86f8462b1e85b328dbf78d6a4e41f631fe314f4c523dbd142abf5c7a"
+  },
+  {
+    "input": "qwerty",
+    "hex": "994232f95abee3f05f457d3028a91cfcfee63e79bb889fd520d129ac54d86674"
+  },
+  {
+    "input": "mango@123",
+    "hex": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
+  }
+]
