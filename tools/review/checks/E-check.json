@@ -1,5 +1,20 @@
 [
   {
+    "name": "local-sha1-readout",
+    "frame": 200,
+    "region": [
+      110,
+      10,
+      955,
+      280
+    ],
+    "box": "#F3F2EE",
+    "ink": "#0D161D",
+    "tol": 20,
+    "ink_tol": 300,
+    "inset": 8
+  },
+  {
     "name": "prefix-only",
     "frame": 200,
     "region": [

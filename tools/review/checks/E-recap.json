@@ -1,12 +1,12 @@
 [
   {
     "name": "machine-header",
-    "frame": 400,
+    "frame": 500,
     "region": [
-      570,
-      380,
-      980,
-      465
+      800,
+      470,
+      1110,
+      545
     ],
     "box": "#2D1D10",
     "ink": "#EDE3C9",
@@ -18,10 +18,10 @@
     "name": "fast-salted-status",
     "frame": 400,
     "region": [
-      530,
-      520,
-      1030,
-      650
+      250,
+      435,
+      610,
+      555
     ],
     "box": "#2D1D10",
     "ink": "#EDE3C9",
@@ -31,12 +31,12 @@
   },
   {
     "name": "salt-chip",
-    "frame": 400,
+    "frame": 500,
     "region": [
-      65,
-      380,
-      340,
-      470
+      420,
+      470,
+      645,
+      545
     ],
     "box": "#2D1D10",
     "ink": "#C7B79D",
@@ -48,10 +48,10 @@
     "name": "gpu-label",
     "frame": 400,
     "region": [
-      1200,
-      850,
-      1770,
-      938
+      1270,
+      610,
+      1670,
+      685
     ],
     "box": "#130A00",
     "ink": "#B9A889",
@@ -63,10 +63,10 @@
     "name": "first-guess-plate",
     "frame": 850,
     "region": [
-      670,
-      40,
-      1425,
-      165
+      710,
+      225,
+      1260,
+      330
     ],
     "box": "#332216",
     "ink": "#EDE3C9",
@@ -78,10 +78,10 @@
     "name": "argon-status",
     "frame": 850,
     "region": [
-      790,
-      530,
-      1295,
-      650
+      795,
+      560,
+      1160,
+      675
     ],
     "box": "#2D1D10",
     "ink": "#EDE3C9",
@@ -93,10 +93,10 @@
     "name": "first-password-card",
     "frame": 600,
     "region": [
-      225,
-      550,
-      660,
-      780
+      440,
+      585,
+      755,
+      760
     ],
     "box": "#E2D7C1",
     "ink": "#CC8B32",
@@ -106,29 +106,45 @@
     "inset": 10
   },
   {
-    "name": "plain-password-row",
+    "name": "plain-password-field",
     "frame": 60,
     "region": [
-      775,
-      355,
-      1128,
+      820,
+      535,
+      1090,
       580
     ],
     "box": "#E2D7C1",
-    "ink": "#3F3526",
+    "ink": "#CB8F34",
     "tol": 40,
-    "ink_tol": 50,
+    "ink_tol": 70,
     "align": "left",
-    "inset": 10
+    "inset": 4
+  },
+  {
+    "name": "plain-email-field",
+    "frame": 60,
+    "region": [
+      820,
+      480,
+      1090,
+      520
+    ],
+    "box": "#E2D7C1",
+    "ink": "#716452",
+    "tol": 40,
+    "ink_tol": 60,
+    "align": "left",
+    "inset": 4
   },
   {
     "name": "recovered-password-card",
     "frame": 170,
     "region": [
-      800,
-      290,
-      1115,
-      500
+      815,
+      325,
+      1100,
+      515
     ],
     "box": "#E2D7C1",
     "ink": "#BC3D2A",
