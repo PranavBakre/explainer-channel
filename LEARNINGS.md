@@ -142,9 +142,9 @@ Running log. Newest at the bottom of each section.
 ## 3D lookdev: scans over procedural finish (2026-11-10)
 - **Operator: the 3D read as "1995 Toy Story" — no texture, surface or finish.** Procedural canvas maps (brushed grain,
   speckle, clearcoat) and better softboxes moved it only slightly. Photoscanned Poly Haven models (CC0) fixed it at once:
-  the card-catalogue drawer and the worn red tool chest read as real objects. Default to scans for every physical prop.
-- **Pick scans with separable parts and no printed text.** The tool chest's lid is its own node, so it hinges open; the
-  catalogue chest's drawers are nodes, so one drawer becomes the users table. A scanned instrument with Cyrillic labels
+  the card-catalogue drawer read as a real object. Default to scans for every physical prop whose look fits its meaning.
+- **Pick scans with separable parts and no printed text.** The catalogue chest's drawers are nodes, so one drawer
+  becomes the users table. A scanned instrument with Cyrillic labels
   and handwriting was rejected: stock text on a prop breaks "everything printed is real data".
 - **Where no scan fits, put scanned surface maps under our colour.** The hash machine keeps its copper and geometry with
   Poly Haven green_metal_rust's normal and roughness and a desaturated, brightened diffuse (mean ~210/255; darker greys
@@ -158,3 +158,58 @@ Running log. Newest at the bottom of each section.
 - **Operator liked the real GPU footage (S02.4).** Prefer licensed footage when real hardware is the subject.
 - **A direct `npx remotion render ... --gl=angle --codec=h264 --crf=20` rendered the full episode** after `tools/render.sh`
   failed silently six minutes in.
+
+## Operator review of the scan pass (2026-11-10)
+- **"Lockbox looks ass. You gave it a rusted toolbox."** A worn tool chest scan read as broken, not secure. A scan must
+  fit the prop's meaning, not just look real; the lockbox is now our own brushed-steel box with a brass lock. Brushed
+  metal at metalness 1 read as black lacquer under softboxes; 0.55 reads as steel.
+- **A copied drawer drawn inside its original showed a doubled pull.** Copies grow in beside the original from scale 0.
+  Fading the copy instead was rejected: its cards would not fade with it.
+- **Mirrored text in floor reflections.** The lockbox hint plate read upside down in the floor. `Plate reflect={false}`
+  moves it to layer 1, which only renders if the Studio has `unreflectedLabels`.
+- **The recap showed a ciphertext from an older key** (`Y5DCWKxs…`) while the lockbox shot showed the current one
+  (`6FeRQifM…`). Recompute every on-screen value from the recorded command and list recurring values side by side in QA.
+- **Key teeth stopped outside the lock.** A key shown unlocking must visibly enter the cylinder before it turns.
+- **The agent picked episode 1's topic without asking.** Topics are the operator's call; season 1 is in
+  `docs/season-1.md`, and `episode-brief` now shortlists and waits.
+- **Skills were improved with Dumbledore's skill-judge, graded by Codex** (`.claude/skills/GRADES.md`). Episode-specific
+  facts stay here, not in skills.
+
+## Viewer review of the ep01 final (2026-11-10)
+Watched as a viewer (captions plus a frame every 7 s), after every gate had passed. Teaching held up; entertainment did
+not. Each finding below passed its gate because the gate did not ask the question; the skills now do.
+- **Hook buried.** The opener is a calm statement; the graphics-card fact lands at 0:37 behind "in some of those
+  formats". The Hook row only asked for a surprise and a question in 15 s.
+- **No takes, no light line in ten minutes.** Style guide rules 9 and 11 exist; the Voice row only checked banned
+  phrases, so a script with nothing wrong and nothing said passed.
+- **Scope fixes turned into hedges.** "At the tested setting", "in a common library's format": the cure for
+  overbroad claims was applied as qualifiers instead of naming the case.
+- **Adobe piles three counts into 20 s** (109 M hints, 38 M active users, 153 M records).
+- **NIST scene (8:09–8:54) is one blurred page for 45 s** with four highlight boxes. Each beat changed something, so
+  the 8 s hold rule passed.
+- **`mango@123` never gets its verdict.** The benchmark covers 8-character lowercase plus digits; the running example
+  is neither, and the video never says how long it lasts.
+- **Floating captions unreadable on a phone** though over 24 px: "290,731 accounts" (0:30), "the copy holds every
+  password" (1:14), "146 of 256 bits changed" (3:10), "Illustrative salt · 32 bits" (4:22). Thin condensed serif,
+  pale on pale or red on brown/teal.
+- **A cold-viewer pass by Codex** (`reviews/viewer-r1-codex.md`, now `video-qa` §4) agreed on Adobe, the NIST scene and the
+  missing `mango@123` verdict, and added a drop-off at 5:45: the full-search arithmetic after the guesses-per-second
+  figures. It also asked what "forgot password" does when a site cannot recover a password.
+- **Read loudness with `ebur128`, not `loudnorm`'s summary.** The last lines `loudnorm` prints are its own *output*
+  at its default −24 LUFS target; a `tail` of that looked like a −24 LUFS file. The episode measures −16.0.
+
+## Script redo review (2026-11-10)
+- **Correct computed numbers can still imply an unsupported password lifetime.** The ep01 redo round-one script review found that a full mask-search cost became a guaranteed time for a password absent from lists, and one list/Argon2id configuration became a generic slow-hash result. Preserve the operation, upper bound, list, settings and hardware in both narration and the final on-screen reading. A key allowing decryption also does not establish that encryption lasts until the key leaks.
+- **Count voice and handoffs, not just banned phrases.** The redo has explicit takes but only two clear early deadpan beats and disconnected late section transitions. Full findings and source-scope checks: `episodes/ep01-password-storage-r2/reviews/script-r1-codex-163453-28861.md` (FAIL; no earlier script review for this redo).
+
+## Skill grading rounds (2026-11-10)
+- **Grading by a different model found tool bugs, not just prose gaps.** Codex reproduced each claim in a temp copy:
+  voice and storyboard each waited on the other for a new episode, `merge-segments.py`/`beat-frames.py` hard-coded
+  ep01, `Root.tsx` registered only ep01, `beat-frames.py` rounded halves to even (Python `round`) where the builder
+  rounds up, and `second-look.sh` exited 0 when Codex failed. Skills went from 1 A to 9 A over six rounds.
+- **Two numbers in a rewritten skill had no source** ("bottom 12 %", "≥ 24 px"); ep01's brief says bottom 15 %. Check
+  every number in a skill against the brief, code or LEARNINGS before writing it.
+- **`claude -p "<prompt>" --allowedTools Read`**: the prompt goes first; `--allowedTools` is variadic and swallows it.
+- **The lockbox plate's "0" reads as "8"** at full size (`6FeRQifM…I0QUmw==`), and `==` blurs into one bar; the data
+  is right, the plate font is not. The fixed second look also flagged the key ring cut off at frame 3000 and the
+  machine covering the SALT label's corner at frame 9000.

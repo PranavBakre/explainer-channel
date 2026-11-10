@@ -4,10 +4,7 @@ import {Episode} from './Episode';
 import {Thumbnail} from './Thumbnail';
 import {Gallery, GALLERY_LENGTH} from './Gallery';
 import {HashMachineSet} from './three/HashMachineSet';
-import {BuiltEpisode} from './types';
-import ep01 from './episodes/ep01.json';
-
-const episodes = [ep01 as BuiltEpisode];
+import {episodes} from './episodes';
 
 export const Root: React.FC = () => (
   <>

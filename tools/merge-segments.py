@@ -1,15 +1,16 @@
 """Join the segment storyboards into storyboard.json and check every narration line appears once, in order, verbatim.
 
-Usage: python3 tools/merge-segments.py
+Usage: python3 tools/merge-segments.py <episode-dir>
+Segments are scene arrays in <episode-dir>/segments/*.json; storyboard.json supplies the top-level fields.
 """
 import json, pathlib, sys
 
-ep = pathlib.Path(__file__).parent.parent / 'episodes/ep01-password-storage'
+ep = pathlib.Path(sys.argv[1])
 base = json.loads((ep / 'storyboard.json').read_text())
 lines = json.loads((ep / 'voice/lines.json').read_text())
 scenes = []
-for seg in 'ABCDE':
-    scenes += json.loads((ep / f'segments/{seg}.json').read_text())
+for seg in sorted((ep / 'segments').glob('*.json')):
+    scenes += json.loads(seg.read_text())
 scenes.sort(key=lambda sc: int(sc['id'][1:]))
 beats = [b for sc in scenes for sh in sc['shots'] for b in sh['beats']]
 want = [(l['id'], l['text']) for l in lines]

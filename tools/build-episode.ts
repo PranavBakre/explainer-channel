@@ -71,6 +71,13 @@ if (mix.exitCode !== 0) throw new Error(`narration mix failed: ${mix.stderr.toSt
 const music = existsSync(join(pubDir, 'pad.wav')) ? {file: 'pad.wav', volume: sb.musicVolume ?? 0.12} : undefined;
 const built = {id, fps, width: sb.width, height: sb.height, durationInFrames: t, scenes, audio: [{file: 'narration.wav', from: 0}], music};
 writeFileSync(join(root, 'video/src/episodes', `${id}.json`), JSON.stringify(built, null, 1));
+const epIds = readdirSync(join(root, 'video/src/episodes')).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5)).sort();
+writeFileSync(
+  join(root, 'video/src/episodes/index.ts'),
+  epIds.map((e, i) => `import e${i} from './${e}.json';`).join('\n') +
+    `\nimport {BuiltEpisode} from '../types';\n\nexport const episodes = [${epIds.map((_, i) => `e${i}`).join(', ')}] as BuiltEpisode[];\n`,
+);
+mkdirSync(join(epDir, 'out'), {recursive: true});
 writeFileSync(join(epDir, 'out', 'captions.srt'), srt.join('\n'));
 writeFileSync(join(epDir, 'out', 'chapters.txt'), chapters.join('\n') + '\n');
 console.log(`${id}: ${scenes.length} scenes, ${audio.length} lines, ${(t / fps / 60).toFixed(2)} min (${t} frames)`);
