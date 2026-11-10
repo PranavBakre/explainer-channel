@@ -20,7 +20,7 @@ export const CompareC: React.FC<{mode: 'avalanche' | 'match' | 'salt'; steps: nu
   const reveal = ease(frame, revealAt, revealAt + (mode === 'match' ? 14 : 20));
   const top = avalanche ? ease(frame, steps[3] ?? 531, (steps[3] ?? 531) + 35) : ease(frame, duration * 0.6, duration * 0.85);
   return <AbsoluteFill>
-    <Studio color="#2B4F5C" angle={{from: [0, mix(5.9, 8.2, top), mix(7.4, 2.5, top)], target: [0, 0.7, 0.25], fov: 43}} duration={duration}>
+    <Studio color="#2B4F5C" angle={{from: [0.25 - 0.5 * frame / Math.max(1, duration), mix(5.9, 8.2, top), mix(7.4, 2.5, top) - 0.4 * frame / Math.max(1, duration)], target: [0, 0.7, 0.25], fov: 43}} duration={duration}>
       <RoundedBox args={[7.4, 0.5, 4.0]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow><Oak repeat={[3, 1]} tint="#8A6446" /></RoundedBox>
       <mesh position={[0, 0.51, 0]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[7.0, 3.6]} /><meshStandardMaterial color="#FFF6E2" emissive="#FFF1D0" emissiveIntensity={0.45} /></mesh>
       <group position={[mix(-1.65, 0, slide), 0.54, -0.05]} rotation={[-Math.PI / 2, 0, 0]}><PunchedCard titleScale={1.7} hex={a} w={2.75} title={avalanche ? 'hunter2' : mode === 'salt' ? '9f2c4a71 / mango@123' : 'STORED'} /></group>

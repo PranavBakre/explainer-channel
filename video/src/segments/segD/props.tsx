@@ -66,7 +66,7 @@ export const Stopwatch: React.FC<{reading: string; algorithm: string; needle: nu
   <Block at={[0, 1.4, 0]} size={[0.42, 0.2, 0.2]} color={BRASS} />
   <Sign at={[0, -0.29, 0.22]} text={reading} w={1.9} h={0.56} light />
   <Block at={[0, -1.36, -0.03]} size={[1, 0.23, 0.7]} color="#493628" />
-  <Sign at={[0, -1.66, 1.6]} text={algorithm} w={3.3} h={0.46} />
+  <Sign at={[-0.14, -1.66, 1.6]} text={algorithm} w={3.3} h={0.46} />
 </group>;
 
 export const Calendar: React.FC<{reading: string; algorithm: string; flip?: number}> = ({reading, algorithm, flip = 0}) => <group position={[2.35, 2.1, 0.4]}>

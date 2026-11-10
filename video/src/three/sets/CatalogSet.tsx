@@ -24,7 +24,7 @@ const FIELD_TEXT: Record<Field, (pw: string) => {text: string; color: string}> =
   salted: () => ({text: 'e05b13d8 · 324ce3f9…', color: '#1A1E24'}),
   cipher: (pw) => ({text: `${CIPHER[pw].replace(/=+$/, '').slice(0, 12)}…`, color: '#1A1E24'}),
   argon2id: () => ({text: '$argon2id$v=19$…', color: '#1A1E24'}),
-  argon: () => ({text: '$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…', color: '#1A1E24'}),
+  argon: () => ({text: '$argon2id$v=19$m=19456,t=2,p=1$…', color: '#1A1E24'}),
 };
 
 const IndexCard: React.FC<{email: string; value: string; color: string}> = ({email, value, color}) => {

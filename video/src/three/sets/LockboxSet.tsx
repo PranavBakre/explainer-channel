@@ -164,7 +164,7 @@ export const LockboxSet: React.FC<{
               );
             })}
             {action === 'wall' ? (
-              <Key position={[interpolate(t, [0.1, 0.75], [-6.5, 7.5], clamp), 2.2 + Math.sin(frame / 6) * 0.08, 1.4]} rotation={[0, 0, -0.3]} scale={1.1} />
+              <Key position={[interpolate(t, [0.1, 0.75], [-6.5, 7.5], clamp), 3.3 + Math.sin(frame / 6) * 0.08, 1.4]} rotation={[0, 0, -0.3]} scale={1.1} />
             ) : null}
             <Glow position={[0, 1.6, -1.5]} size={8} opacity={action === 'wall' ? 0.12 * t : 0.1} color="224,69,47" />
           </>
