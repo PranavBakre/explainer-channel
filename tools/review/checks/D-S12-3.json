@@ -1,0 +1,452 @@
+[
+  {
+    "name": "D-S12-3-15-gpu",
+    "frame": 1615,
+    "region": [
+      399,
+      380,
+      793,
+      444
+    ],
+    "box": "#1c201c",
+    "ink": "#e3d3b1",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-3-15-counter-title",
+    "frame": 1615,
+    "region": [
+      934,
+      445,
+      1505,
+      497
+    ],
+    "box": "#0f1210",
+    "ink": "#d8c6a3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 7
+  },
+  {
+    "name": "D-S12-3-15-digit-0",
+    "frame": 1615,
+    "region": [
+      942,
+      509,
+      978,
+      586
+    ],
+    "box": "#d6cab7",
+    "ink": "#17110a",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-2",
+    "frame": 1615,
+    "region": [
+      1008,
+      509,
+      1044,
+      586
+    ],
+    "box": "#d4c8b6",
+    "ink": "#180d04",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-3",
+    "frame": 1615,
+    "region": [
+      1041,
+      509,
+      1077,
+      586
+    ],
+    "box": "#d3c6b5",
+    "ink": "#190e00",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-4",
+    "frame": 1615,
+    "region": [
+      1074,
+      509,
+      1110,
+      586
+    ],
+    "box": "#d2c5b4",
+    "ink": "#160e02",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-6",
+    "frame": 1615,
+    "region": [
+      1139,
+      509,
+      1176,
+      586
+    ],
+    "box": "#d0c3b1",
+    "ink": "#170c00",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-7",
+    "frame": 1615,
+    "region": [
+      1172,
+      509,
+      1209,
+      586
+    ],
+    "box": "#cfc1af",
+    "ink": "#130900",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-8",
+    "frame": 1615,
+    "region": [
+      1205,
+      509,
+      1242,
+      586
+    ],
+    "box": "#ccbfad",
+    "ink": "#120900",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-10",
+    "frame": 1615,
+    "region": [
+      1270,
+      509,
+      1308,
+      586
+    ],
+    "box": "#c9bba9",
+    "ink": "#100600",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-11",
+    "frame": 1615,
+    "region": [
+      1303,
+      509,
+      1341,
+      586
+    ],
+    "box": "#c6b9a7",
+    "ink": "#0f0600",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-12",
+    "frame": 1615,
+    "region": [
+      1336,
+      509,
+      1374,
+      586
+    ],
+    "box": "#c4b7a5",
+    "ink": "#100700",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-14",
+    "frame": 1615,
+    "region": [
+      1401,
+      509,
+      1440,
+      586
+    ],
+    "box": "#bfb2a1",
+    "ink": "#0e0400",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-15",
+    "frame": 1615,
+    "region": [
+      1434,
+      509,
+      1473,
+      586
+    ],
+    "box": "#bcb09e",
+    "ink": "#0c0200",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-15-digit-16",
+    "frame": 1615,
+    "region": [
+      1467,
+      509,
+      1506,
+      586
+    ],
+    "box": "#baad9c",
+    "ink": "#090400",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-gpu",
+    "frame": 1774,
+    "region": [
+      374,
+      373,
+      785,
+      439
+    ],
+    "box": "#1d211d",
+    "ink": "#e4d3b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-3-16-counter-title",
+    "frame": 1774,
+    "region": [
+      933,
+      441,
+      1530,
+      495
+    ],
+    "box": "#0e1210",
+    "ink": "#d8c6a3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 7
+  },
+  {
+    "name": "D-S12-3-16-digit-0",
+    "frame": 1774,
+    "region": [
+      942,
+      507,
+      978,
+      587
+    ],
+    "box": "#d6cab7",
+    "ink": "#161008",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-2",
+    "frame": 1774,
+    "region": [
+      1011,
+      507,
+      1047,
+      587
+    ],
+    "box": "#d4c8b6",
+    "ink": "#171007",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-3",
+    "frame": 1774,
+    "region": [
+      1045,
+      507,
+      1082,
+      587
+    ],
+    "box": "#d3c6b5",
+    "ink": "#170e08",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-4",
+    "frame": 1774,
+    "region": [
+      1079,
+      507,
+      1116,
+      587
+    ],
+    "box": "#d2c5b4",
+    "ink": "#160e06",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-6",
+    "frame": 1774,
+    "region": [
+      1148,
+      507,
+      1185,
+      587
+    ],
+    "box": "#d0c3b1",
+    "ink": "#150b05",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-7",
+    "frame": 1774,
+    "region": [
+      1182,
+      507,
+      1220,
+      587
+    ],
+    "box": "#cfc1af",
+    "ink": "#140c04",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-8",
+    "frame": 1774,
+    "region": [
+      1216,
+      507,
+      1255,
+      587
+    ],
+    "box": "#ccc0ad",
+    "ink": "#120b03",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-10",
+    "frame": 1774,
+    "region": [
+      1285,
+      507,
+      1324,
+      587
+    ],
+    "box": "#c9bba9",
+    "ink": "#120a03",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-11",
+    "frame": 1774,
+    "region": [
+      1319,
+      507,
+      1358,
+      587
+    ],
+    "box": "#c6b9a7",
+    "ink": "#110803",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-12",
+    "frame": 1774,
+    "region": [
+      1354,
+      507,
+      1393,
+      587
+    ],
+    "box": "#c4b7a5",
+    "ink": "#0f0803",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-14",
+    "frame": 1774,
+    "region": [
+      1422,
+      507,
+      1462,
+      587
+    ],
+    "box": "#bfb2a1",
+    "ink": "#0d0603",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-15",
+    "frame": 1774,
+    "region": [
+      1456,
+      507,
+      1496,
+      587
+    ],
+    "box": "#bdb09e",
+    "ink": "#0d0601",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-3-16-digit-16",
+    "frame": 1774,
+    "region": [
+      1491,
+      507,
+      1531,
+      587
+    ],
+    "box": "#baad9c",
+    "ink": "#0b0500",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  }
+]

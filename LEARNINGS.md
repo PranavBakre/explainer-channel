@@ -85,3 +85,14 @@ Running log. Newest at the bottom of each section.
 - A larger punched-card title also needs a lower text baseline; enlarging its font alone crops capital letters against the top edge. Keep default shared renders unchanged and move the baseline only for enlarged titles.
 - Inspect supplied evidence crops themselves: the 2016 LinkedIn quote asset highlights “more than 100 million” and cuts through the next line. Preserve that asset, trim the cut fragments locally, and additionally magnify the original page paragraph that explicitly says 117 million.
 - On this Mac, default headless Chrome selected `swiftshader-webgl` (software GPU process around 640% CPU), holding the shared render lock for many minutes. Segment C’s checked shot renders use `tools/render.sh ... --gl=angle`; its 20 full-duration shots completed in roughly two minutes. Keep the shared queue and pass an absolute output path.
+
+## Segment D build (2026-11-10)
+- `tools/render.sh` changes into `video/` before resolving its output argument; pass an absolute output path so the MP4 lands under the episode's `out/`, rather than `video/episodes/`.
+- Imperva F4 gives a combined nearly-50% share for names, words, slang and patterns, not individual category shares. Keep that group together; do not invent percentages for separate bins.
+- `tools/render.sh` already supplies `--log=error`; appending a second `--log` makes Remotion parse an array and reject it. Keep a single log flag.
+- Remotion clamps `Freeze` to the composition range. A short pose-sampling gallery needs a padded composition duration (then render only the sample range), or late-shot samples silently show early states.
+- Do not put a 1024-wide canvas Plate on each narrow counter digit: its tall aspect ratio creates multi-megabyte textures that change every frame. Counter drums use small digit textures and dispose replaced maps.
+- The drawer plate text (with descenders) measured 9–10 px low despite looking plausible in a contact sheet. Use a per-plate text shift, preserve the shared default, and measure the full-size result. Lit brass can match cream lettering, so pick ink from the inner area and inset the border before judging centering.
+- Calendar readings alone do not fulfil a page-turn shot. The GPU desk calendars now turn real printed pages while the estimate advances and hold the final computed reading cleanly.
+- Run the computed Argon2 recipe checks with the shared `tools/tts/.venv/bin/python`; the system Python lacks argon2-cffi.
+- Check projected plate rectangles as well as their text: different depths made the heap heading cover the rank plate, and the Argon parameter/pass plates touched. Separate the screen-space bounds; matching world-space heights alone is insufficient.

@@ -1,0 +1,242 @@
+[
+  {
+    "name": "D-S12-4-17-gpu",
+    "frame": 1874,
+    "region": [
+      402,
+      381,
+      794,
+      445
+    ],
+    "box": "#1c201c",
+    "ink": "#e5d3b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-17-stopwatch",
+    "frame": 1874,
+    "region": [
+      1130,
+      491,
+      1363,
+      562
+    ],
+    "box": "#d2c9ba",
+    "ink": "#0f0701",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S12-4-17-algorithm",
+    "frame": 1874,
+    "region": [
+      1054,
+      698,
+      1488,
+      760
+    ],
+    "box": "#0a1010",
+    "ink": "#d1bf9e",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "D-S12-4-17-search",
+    "frame": 1874,
+    "region": [
+      250,
+      695,
+      866,
+      760
+    ],
+    "box": "#0e1312",
+    "ink": "#dccaa8",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-18-gpu",
+    "frame": 1944,
+    "region": [
+      395,
+      379,
+      792,
+      443
+    ],
+    "box": "#1c211c",
+    "ink": "#e4d4b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-18-stopwatch",
+    "frame": 1944,
+    "region": [
+      1132,
+      490,
+      1368,
+      562
+    ],
+    "box": "#d3c9ba",
+    "ink": "#100807",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S12-4-18-algorithm",
+    "frame": 1944,
+    "region": [
+      1056,
+      700,
+      1496,
+      763
+    ],
+    "box": "#0a0f10",
+    "ink": "#d2bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-18-search",
+    "frame": 1944,
+    "region": [
+      239,
+      697,
+      864,
+      763
+    ],
+    "box": "#0e1312",
+    "ink": "#dccaa9",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-19-gpu",
+    "frame": 2029,
+    "region": [
+      385,
+      376,
+      789,
+      441
+    ],
+    "box": "#1c211d",
+    "ink": "#e4d3b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-19-stopwatch",
+    "frame": 2029,
+    "region": [
+      1135,
+      489,
+      1375,
+      562
+    ],
+    "box": "#d3c9ba",
+    "ink": "#0f0905",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S12-4-19-algorithm",
+    "frame": 2029,
+    "region": [
+      1058,
+      702,
+      1506,
+      767
+    ],
+    "box": "#0a0f11",
+    "ink": "#d1c09e",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-19-search",
+    "frame": 2029,
+    "region": [
+      226,
+      700,
+      862,
+      767
+    ],
+    "box": "#0e1312",
+    "ink": "#dccaa7",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-20-gpu",
+    "frame": 2135,
+    "region": [
+      373,
+      373,
+      785,
+      439
+    ],
+    "box": "#1d211c",
+    "ink": "#e3d3b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-20-stopwatch",
+    "frame": 2135,
+    "region": [
+      1139,
+      488,
+      1385,
+      562
+    ],
+    "box": "#d3c9ba",
+    "ink": "#0e0803",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S12-4-20-algorithm",
+    "frame": 2135,
+    "region": [
+      1060,
+      706,
+      1520,
+      772
+    ],
+    "box": "#090f10",
+    "ink": "#d0c09e",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-4-20-search",
+    "frame": 2135,
+    "region": [
+      207,
+      703,
+      860,
+      772
+    ],
+    "box": "#0e1310",
+    "ink": "#dbcaa8",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  }
+]

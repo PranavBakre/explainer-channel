@@ -1,0 +1,155 @@
+[
+  {
+    "name": "D-S14-5-47-vault",
+    "frame": 4752,
+    "region": [
+      234,
+      451,
+      446,
+      514
+    ],
+    "box": "#0a0e0f",
+    "ink": "#d0bd98",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-5-47-vault-location",
+    "frame": 4752,
+    "region": [
+      159,
+      276,
+      901,
+      338
+    ],
+    "box": "#1c1a15",
+    "ink": "#ccb999",
+    "tol": 75,
+    "ink_tol": 90,
+    "inset": 17
+  },
+  {
+    "name": "D-S14-5-47-original-drawer",
+    "frame": 4752,
+    "region": [
+      514,
+      649,
+      996,
+      709
+    ],
+    "box": "#0e1413",
+    "ink": "#dac9a8",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 8
+  },
+  {
+    "name": "D-S14-5-47-original-row",
+    "frame": 4752,
+    "region": [
+      523,
+      403,
+      994,
+      606
+    ],
+    "box": "#d8cbb8",
+    "ink": "#be6f16",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-5-48-vault",
+    "frame": 4969,
+    "region": [
+      197,
+      445,
+      419,
+      512
+    ],
+    "box": "#090e0f",
+    "ink": "#d0bc98",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-5-48-vault-location",
+    "frame": 4969,
+    "region": [
+      121,
+      263,
+      898,
+      328
+    ],
+    "box": "#1d1d17",
+    "ink": "#ccb999",
+    "tol": 75,
+    "ink_tol": 90,
+    "inset": 17
+  },
+  {
+    "name": "D-S14-5-48-original-drawer",
+    "frame": 4969,
+    "region": [
+      492,
+      653,
+      998,
+      716
+    ],
+    "box": "#0e1415",
+    "ink": "#dbcaa9",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-5-48-original-row",
+    "frame": 4969,
+    "region": [
+      503,
+      396,
+      995,
+      610
+    ],
+    "box": "#d8cbb8",
+    "ink": "#be6f16",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-5-48-copied-drawer",
+    "frame": 4969,
+    "region": [
+      1057,
+      672,
+      1584,
+      737
+    ],
+    "box": "#090e10",
+    "ink": "#d1c09e",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S14-5-48-copied-row",
+    "frame": 4969,
+    "region": [
+      1055,
+      403,
+      1570,
+      625
+    ],
+    "box": "#c9bca9",
+    "ink": "#a1580b",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  }
+]

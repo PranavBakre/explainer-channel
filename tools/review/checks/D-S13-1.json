@@ -1,0 +1,242 @@
+[
+  {
+    "name": "D-S13-1-21-machine",
+    "frame": 2235,
+    "region": [
+      340,
+      355,
+      1086,
+      474
+    ],
+    "box": "#23150a",
+    "ink": "#e1cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-21-status",
+    "frame": 2235,
+    "region": [
+      442,
+      535,
+      987,
+      661
+    ],
+    "box": "#27180d",
+    "ink": "#eadcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-21-dial-value",
+    "frame": 2235,
+    "region": [
+      1260,
+      576,
+      1567,
+      680
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0b0703",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-21-dial-label",
+    "frame": 2235,
+    "region": [
+      1197,
+      750,
+      1595,
+      852
+    ],
+    "box": "#080f0f",
+    "ink": "#cdbc98",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-22-machine",
+    "frame": 2295,
+    "region": [
+      334,
+      353,
+      1087,
+      472
+    ],
+    "box": "#23150b",
+    "ink": "#e1d0ad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-22-status",
+    "frame": 2295,
+    "region": [
+      437,
+      535,
+      987,
+      662
+    ],
+    "box": "#27180d",
+    "ink": "#e9dcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-22-dial-value",
+    "frame": 2295,
+    "region": [
+      1263,
+      576,
+      1572,
+      681
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0b0703",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-22-dial-label",
+    "frame": 2295,
+    "region": [
+      1200,
+      752,
+      1601,
+      854
+    ],
+    "box": "#090f0f",
+    "ink": "#cebc99",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-23-machine",
+    "frame": 2536,
+    "region": [
+      309,
+      342,
+      1092,
+      467
+    ],
+    "box": "#23150c",
+    "ink": "#e2d0ae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-23-status",
+    "frame": 2536,
+    "region": [
+      416,
+      532,
+      988,
+      664
+    ],
+    "box": "#27180d",
+    "ink": "#ebdcc5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-23-dial-value",
+    "frame": 2536,
+    "region": [
+      1276,
+      575,
+      1597,
+      684
+    ],
+    "box": "#d1c7b8",
+    "ink": "#0c0706",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-23-dial-label",
+    "frame": 2536,
+    "region": [
+      1209,
+      759,
+      1627,
+      865
+    ],
+    "box": "#090f0f",
+    "ink": "#cbb997",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-24-machine",
+    "frame": 2577,
+    "region": [
+      304,
+      340,
+      1093,
+      466
+    ],
+    "box": "#23150b",
+    "ink": "#e1d0ad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-24-status",
+    "frame": 2577,
+    "region": [
+      412,
+      531,
+      988,
+      664
+    ],
+    "box": "#27180d",
+    "ink": "#eadcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-24-dial-value",
+    "frame": 2577,
+    "region": [
+      1278,
+      575,
+      1602,
+      685
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0b0702",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14
+  },
+  {
+    "name": "D-S13-1-24-dial-label",
+    "frame": 2577,
+    "region": [
+      1211,
+      760,
+      1631,
+      867
+    ],
+    "box": "#080e0f",
+    "ink": "#cab997",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "name": "D-S14-3-39-drawer",
+    "frame": 4156,
+    "region": [
+      536,
+      794,
+      1384,
+      898
+    ],
+    "box": "#0e1313",
+    "ink": "#dac8a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-3-39-recipe",
+    "frame": 4156,
+    "region": [
+      383,
+      159,
+      1537,
+      666
+    ],
+    "box": "#d9cdbb",
+    "ink": "#1d150c",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-3-40-drawer",
+    "frame": 4256,
+    "region": [
+      529,
+      798,
+      1391,
+      904
+    ],
+    "box": "#0c1313",
+    "ink": "#dac8a6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-3-40-recipe",
+    "frame": 4256,
+    "region": [
+      374,
+      153,
+      1546,
+      667
+    ],
+    "box": "#d9cdba",
+    "ink": "#1e150c",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-3-41-drawer",
+    "frame": 4346,
+    "region": [
+      523,
+      801,
+      1397,
+      909
+    ],
+    "box": "#0d1313",
+    "ink": "#dac7a4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-3-41-recipe",
+    "frame": 4346,
+    "region": [
+      366,
+      148,
+      1554,
+      669
+    ],
+    "box": "#d9cdbb",
+    "ink": "#1d150c",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  },
+  {
+    "name": "D-S14-3-42-drawer",
+    "frame": 4390,
+    "region": [
+      520,
+      803,
+      1400,
+      911
+    ],
+    "box": "#0c1313",
+    "ink": "#dac7a5",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-3-42-recipe",
+    "frame": 4390,
+    "region": [
+      362,
+      145,
+      1558,
+      670
+    ],
+    "box": "#d9cebb",
+    "ink": "#1d150d",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 14,
+    "align": "left"
+  }
+]

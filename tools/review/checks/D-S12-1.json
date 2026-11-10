@@ -1,0 +1,92 @@
+[
+  {
+    "name": "D-S12-1-10-gpu",
+    "frame": 1011,
+    "region": [
+      396,
+      380,
+      792,
+      443
+    ],
+    "box": "#1c201c",
+    "ink": "#e4d3b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-1-10-counter-title",
+    "frame": 1011,
+    "region": [
+      934,
+      445,
+      1508,
+      497
+    ],
+    "box": "#0d1111",
+    "ink": "#d7c5a2",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 7
+  },
+  {
+    "name": "D-S12-1-10-counter-value",
+    "frame": 1011,
+    "region": [
+      934,
+      502,
+      1505,
+      579
+    ],
+    "box": "#d3c9bb",
+    "ink": "#0d0804",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S12-1-11-gpu",
+    "frame": 1117,
+    "region": [
+      375,
+      373,
+      786,
+      440
+    ],
+    "box": "#1d201d",
+    "ink": "#e3d4b3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 9
+  },
+  {
+    "name": "D-S12-1-11-counter-title",
+    "frame": 1117,
+    "region": [
+      933,
+      441,
+      1529,
+      495
+    ],
+    "box": "#0e1111",
+    "ink": "#d6c6a4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 7
+  },
+  {
+    "name": "D-S12-1-11-counter-value",
+    "frame": 1117,
+    "region": [
+      933,
+      501,
+      1526,
+      581
+    ],
+    "box": "#d5cbbc",
+    "ink": "#0d0805",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  }
+]

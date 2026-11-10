@@ -1,0 +1,212 @@
+[
+  {
+    "name": "D-S14-2-37-machine",
+    "frame": 80,
+    "region": [
+      697,
+      411,
+      1223,
+      495
+    ],
+    "box": "#211309",
+    "ink": "#e0cfac",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-2-37-status",
+    "frame": 80,
+    "region": [
+      768,
+      537,
+      1152,
+      627
+    ],
+    "box": "#27180c",
+    "ink": "#eadcc4",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-2-37-dial-value",
+    "frame": 80,
+    "region": [
+      1341,
+      566,
+      1560,
+      641
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0c0603",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-2-37-dial-label",
+    "frame": 80,
+    "region": [
+      1294,
+      691,
+      1580,
+      765
+    ],
+    "box": "#090f10",
+    "ink": "#d2bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-2-37-memory",
+    "frame": 80,
+    "region": [
+      230,
+      273,
+      616,
+      371
+    ],
+    "box": "#212420",
+    "ink": "#e6d6b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-2-37-parameters",
+    "frame": 80,
+    "region": [
+      493,
+      62,
+      1427,
+      146
+    ],
+    "box": "#0f1312",
+    "ink": "#e1d0ae",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-2-37-pass",
+    "frame": 80,
+    "region": [
+      687,
+      155,
+      1233,
+      248
+    ],
+    "box": "#23251d",
+    "ink": "#e9d6b2",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  },
+  {
+    "name": "D-S14-2-38-machine",
+    "frame": 196,
+    "region": [
+      690,
+      405,
+      1230,
+      491
+    ],
+    "box": "#211309",
+    "ink": "#e1cfad",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-2-38-status",
+    "frame": 196,
+    "region": [
+      762,
+      535,
+      1158,
+      627
+    ],
+    "box": "#26180c",
+    "ink": "#ebdcc3",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  },
+  {
+    "name": "D-S14-2-38-dial-value",
+    "frame": 196,
+    "region": [
+      1352,
+      564,
+      1577,
+      642
+    ],
+    "box": "#d0c7b8",
+    "ink": "#0d0604",
+    "tol": 75,
+    "ink_tol": 48,
+    "inset": 11
+  },
+  {
+    "name": "D-S14-2-38-dial-label",
+    "frame": 196,
+    "region": [
+      1303,
+      694,
+      1598,
+      770
+    ],
+    "box": "#0a0f10",
+    "ink": "#d1bf9c",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 10
+  },
+  {
+    "name": "D-S14-2-38-memory",
+    "frame": 196,
+    "region": [
+      211,
+      264,
+      607,
+      365
+    ],
+    "box": "#21241f",
+    "ink": "#e6d6b6",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 14
+  },
+  {
+    "name": "D-S14-2-38-parameters",
+    "frame": 196,
+    "region": [
+      482,
+      51,
+      1438,
+      136
+    ],
+    "box": "#302f27",
+    "ink": "#decead",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 12
+  },
+  {
+    "name": "D-S14-2-38-pass",
+    "frame": 196,
+    "region": [
+      681,
+      145,
+      1239,
+      241
+    ],
+    "box": "#26261e",
+    "ink": "#e9d6b2",
+    "tol": 75,
+    "ink_tol": 70,
+    "inset": 13
+  }
+]
