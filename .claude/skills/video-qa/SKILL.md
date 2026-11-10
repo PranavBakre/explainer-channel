@@ -32,3 +32,11 @@ tools/tts/.venv/bin/python tools/tts/transcribe.py $V > /tmp/transcript.txt     
 4. Have a second model judge the frames (codex or opencode with image input) without telling it your scores; reconcile.
 
 Any FAIL → fix → re-render → re-run the full checklist.
+
+## Per-shot alignment loop (every new or edited shot, before it enters the episode)
+Eyes miss a few pixels; the operator does not. Measure, then look.
+1. Render the shot alone (gallery item with its real `duration`) to `out/<shot>.mp4`.
+2. Write `tools/review/checks/<shot>.json`: one entry per text-in-a-container (field, pill, chip, label plate) at a frame where it is fully shown — `region` around it, container colour `box`, text colour `ink`, `align: left` for left-set text, `inset` ≥ border width for outlined containers.
+3. `tools/tts/.venv/bin/python -I tools/review/align.py out/<shot>.mp4 tools/review/checks/<shot>.json --crops /tmp/rev` — FAIL if the text centre is off by > 8 % of the container or comes within 3 px of an edge. Read every crop in `/tmp/rev`; a reading of equal padding on all sides means the border was measured, so raise `inset`.
+4. Six full-size key frames (start, each motion beat, end) to a second model, which never sees your verdict: `tools/review/second-look.sh out/<shot>.mp4 60 150 185 225 270 325`. It takes several minutes; run it in the background. Image paths must be absolute or Codex reports them missing.
+5. Fix every finding in the generator, re-render, re-run from step 3. Done when a round has no measured FAIL and no second-model finding you agree with.

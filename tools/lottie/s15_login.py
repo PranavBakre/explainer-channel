@@ -9,7 +9,7 @@ import copy, json, sys
 FPS, W, H, OP = 30, 1920, 1080, 330
 INK, SLATE, ORANGE, BLUE = '#0D161D', '#283D47', '#FF7B30', '#066AC9'
 LIGHT, PAPER, AMBER, GREEN = '#DAD9D1', '#F3F2EE', '#E59A00', '#2FB37A'
-HASH = '81c68634d1b2…'
+HASH = '81c68634…221efff1'
 
 
 def rgb(h, a=1):
@@ -24,7 +24,7 @@ def anim(keys, spatial=False):
     """keys: [(frame, value)], eased in-out; holds after the last key."""
     out = []
     for i, (t, v) in enumerate(keys):
-        k = {'t': t, 's': v if isinstance(v, list) else [v]}
+        k = {'t': t, 's': (list(v) + [0] if spatial and len(v) == 2 else v) if isinstance(v, list) else [v]}
         if i < len(keys) - 1:
             n = 1 if spatial else len(k['s'])
             ease_o, ease_i = ([0.33] * n, [0] * n), ([0.67] * n, [1] * n)
@@ -110,6 +110,10 @@ def fade(*keys):
 def prune(g, drop):
     if g.get('ty') == 'gr':
         g['it'] = [prune(x, drop) for x in g['it'] if x.get('nm') not in drop]
+        if g.get('nm') == 'lock iron rod':
+            # The source animates the padlock open, which contradicts "encrypted"; hold it shut.
+            t = next(x for x in g['it'] if x.get('ty') == 'tr')
+            t['r'] = static(t['r']['k'][0]['s'][0])
     return g
 
 
@@ -130,13 +134,16 @@ def build(laptop):
             d['f'] = 'Inter-Bold'
             if l['nm'] == 'username@gmail.com':
                 d['t'] = 'you@mail.com'
+                l['ks']['p']['k'][1] -= 2
             else:
                 d['fc'] = rgb(AMBER)[:3]
-                d['s'] = 15
-                l['t']['d']['k'] = [{'s': {**d, 't': ''}, 't': 0}] + [{'s': {**d, 't': pw[:i]}, 't': 24 + 4 * i} for i in range(1, len(pw) + 1)]
+                d['s'] = 12
+                l['ks']['p']['k'][1] = 167.2
+                l['t']['d']['k'] = ([{'s': {**d, 't': ''}, 't': 0}] + [{'s': {**d, 't': pw[:i]}, 't': 24 + 4 * i} for i in range(1, len(pw) + 1)]
+                                    + [{'s': {**d, 't': '•' * len(pw)}, 't': 140}])
     X0, Y0, SC = 120, 120, 200
     field = (X0 + 253.25 * 2, Y0 + 168 * 2)
-    start, mid, end = [field[0] + 150, field[1] - 10], [1110, 330], [1400, 560]
+    start, mid, end = [field[0] + 300, field[1] - 70], [1110, 330], [1400, 560]
     sx, sy = 1580, 640
 
     layers = []
@@ -152,14 +159,19 @@ def build(laptop):
     layers.append(text('server label', [(0, 'THE SITE')], (sx, sy - 250), 30, SLATE))
 
     # Encrypted connection: a dashed arc that draws itself in.
-    arc = path([start, end], ins=[[0, 0], [-160, -190]], outs=[[180, -230], [0, 0]])
+    out_t, in_t = [180, -230], [-160, -190]
+    arc = path([start, end], ins=[[0, 0], in_t], outs=[out_t, [0, 0]])
     layers.append(layer('tunnel', [group([arc, stroke(SLATE, 6, dash=14), trim(anim([(140, 0), (162, 100)]))])], (0, 0)))
-    layers.append(text('https', [(0, 'encrypted (HTTPS)')], (mid[0], mid[1] - 40), 28, BLUE, o=fade((158, 0), (166, 100))))
+    head = path([[end[0] - 26, end[1] - 30], end, [end[0] - 34, end[1] + 4]])
+    layers.append(layer('tunnel head', [group([head, stroke(SLATE, 6)])], (0, 0), o=fade((160, 0), (163, 100))))
+    layers.append(text('https', [(0, 'encrypted (HTTPS)')], (mid[0] - 20, mid[1] - 80), 28, BLUE, o=fade((158, 0), (166, 100))))
 
     # The typed password lifts out of the field and is locked into a capsule.
     lock = [group([path([[-14, -2], [-14, -16], [0, -26], [14, -16], [14, -2]], ins=[[0, 0], [0, 8], [-8, 0], [0, -8], [0, 0]], outs=[[0, 0], [0, -8], [8, 0], [0, 8], [0, 0]]), stroke('#FFFFFF', 5)]),
             group([rect(40, 30, 6, (0, 10)), fill('#FFFFFF')])]
     capsule_p = anim([(150, start), (168, start), (200, end)], spatial=True)
+    # Travel along the drawn arc: the moving key's spatial tangents are the arc's bezier handles.
+    capsule_p['k'][1]['to'], capsule_p['k'][1]['ti'] = out_t + [0], in_t + [0]
     card_o = [(138, 0), (144, 100), (158, 100), (162, 0)]
     card = layer('pw card', [group([rect(230, 64, 32), stroke(AMBER, 4)]), group([rect(230, 64, 32), fill(PAPER)])], (0, 0),
                  o=fade(*card_o), s=pop(138))
@@ -170,16 +182,16 @@ def build(laptop):
     cap = layer('capsule', [group(lock, p=(-62, 2)), group([rect(200, 70, 35), fill(SLATE)])], (0, 0), o=fade(*cap_o), s=pop(152, 160))
     cap['ks']['p'] = capsule_p
     layers.append(cap)
-    layers.append(text('capsule dots', [(0, '••••••')], (30, 12), 30, '#FFFFFF', parent=cap['ind'], o=fade(*cap_o)))
+    layers.append(text('capsule dots', [(0, '•' * 9)], (28, 12), 26, '#FFFFFF', parent=cap['ind'], o=fade(*cap_o)))
 
     # At the server the capsule opens: the site sees the password, then hashes it and compares.
     seen_o = [(206, 0), (212, 100), (232, 100), (240, 0)]
-    seen = layer('seen', [group([rect(250, 70, 35), stroke(AMBER, 4)]), group([rect(250, 70, 35), fill(PAPER)])], (sx, sy - 330), o=fade(*seen_o), s=pop(206, 214))
+    seen = layer('seen', [group([rect(290, 70, 35), stroke(AMBER, 4)]), group([rect(290, 70, 35), fill(PAPER)])], (sx, sy - 330), o=fade(*seen_o), s=pop(206, 214))
     layers.append(seen)
     layers.append(text('seen text', [(0, pw)], (0, 11), 32, AMBER, parent=seen['ind'], o=fade(*seen_o)))
-    layers.append(text('seen label', [(0, 'the site sees it')], (sx, sy - 400), 26, INK, o=fade((210, 0), (216, 100), (232, 100), (240, 0))))
+    layers.append(text('seen label', [(0, 'the site sees your password')], (sx, sy - 400), 26, INK, o=fade((210, 0), (216, 100), (232, 100), (240, 0))))
     hx = sx - 60
-    for nm, y, lab, t0, bg, fg in (('typed', sy - 430, 'typed, hashed', 242, INK, '#FFFFFF'), ('stored', sy - 355, 'stored', 262, PAPER, INK)):
+    for nm, y, lab, t0, bg, fg in (('typed', sy - 430, 'hashed at login', 242, INK, '#FFFFFF'), ('stored', sy - 355, 'stored hash', 262, PAPER, INK)):
         chip = layer(nm, ([] if bg == INK else [group([rect(470, 60, 12), stroke(LIGHT, 3)])]) + [group([rect(470, 60, 12), fill(bg)])], (hx, y), o=fade((t0, 0), (t0 + 8, 100)), s=pop(t0))
         layers.append(chip)
         layers.append(text(nm + ' hex', [(0, HASH)], (75, 10), 26, fg, parent=chip['ind'], o=fade((t0, 0), (t0 + 8, 100))))
