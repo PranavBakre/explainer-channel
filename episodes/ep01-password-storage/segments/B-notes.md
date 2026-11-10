@@ -87,6 +87,11 @@ with the reason it is not a defect.
 `oaic-note-chip` box 635×51 dx=+0 dy=+2 pad l/t/r/b 20/15/19/12; `oaic-source-chip` 599×50 dx=+0 dy=+2
 19/15/19/11; `nist-source-chip` 538×50 dx=+0 dy=+2 20/16/20/11.
 
+The only text-in-a-2D-container elements in this segment are the citation chips. Everything else printed is a
+canvas texture on a 3D mesh seen in perspective (the index cards, the box lid, the nameplate, the hint tags, the
+punched cards), where an axis-aligned container/text bbox is not the container; those were judged from the
+second-look frames instead, which reported the plates as centred within their containers.
+
 **EvidenceShot crop bands.** Each crop PNG carries slivers of the paragraph above and below; a second-model
 review called them "severed text… looks unfinished". `quoteBand` clips the displayed region to complete text
 rows, computed from the crops' row profiles (drop rows within 3 px of an edge, pad 10 px, and drop a trailing
