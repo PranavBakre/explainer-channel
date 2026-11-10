@@ -145,6 +145,9 @@ absolute difference of 2.3/255, against 44.3 for the uncropped image.
 - S16_05: the crop ends at "For example, the list may include:" — a colon with the list off the bottom of the
   crop, which one review calls unfinished. Cutting the line instead leaves "…not substrings", a sentence chopped
   mid-thought; the colon is the honest end of what the asset contains.
+- The highlighted span inside `nist-no-rotation-quote.png` and `nist-min-length-quote.png` covers only part of a
+  sentence (it stops at "periodically." / wraps after "15"). That is where the highlighter was drawn in the crop
+  assets; the cards show the full lines, not just the yellow.
 - Document pages: the page capture is a viewport, so body text is cut at the bottom edge; the NIST page's section
   badges (`1Introduction`) are its own CSS; S05_04 shows the source page's "TOP" button under the caption row.
 - Document pages: the source pill sits over the page by design (it is a lower-third caption). Its first 12 frames
