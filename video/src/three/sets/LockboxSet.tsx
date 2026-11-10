@@ -1,5 +1,6 @@
 import React from 'react';
-import {RoundedBox} from '@react-three/drei';
+import {Part, Scanned} from '../Scanned';
+import {Brushed} from '../finish';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Angle, BRASS, clamp, ease, Glow, mix, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
 import {fonts} from '../../theme';
@@ -8,7 +9,7 @@ const ANGLES: Record<string, Angle> = {
   box: {from: [-1.6, 3.2, 7.4], to: [-1.0, 2.9, 6.6], target: [0, 1.0, 0]},
   close: {from: [1.4, 2.2, 4.4], to: [1.0, 2.0, 3.8], target: [0, 1.0, 0.4]},
   wall: {from: [-4.5, 5.6, 12.5], to: [-2.5, 5.2, 11], target: [0, 0.6, -2.3]},
-  hints: {from: [3.4, 4.2, 10.5], to: [2.8, 3.9, 9.5], target: [0.6, 0.6, -2.3]},
+  hints: {from: [2.2, 4.8, 13.0], to: [1.9, 4.5, 12.2], target: [-0.3, 0.6, -2.3]},
   lid: {from: [-1.5, 5.9, 6.4], to: [-1.1, 5.5, 5.9], target: [0, 1.3, 0.1]},
   rise: {from: [-0.6, 3.0, 7.0], to: [-0.4, 2.8, 6.4], target: [0, 1.45, 0.1]},
   stamp: {from: [1.1, 3.5, 5.6], to: [0.9, 3.3, 5.2], target: [0, 0.85, 0.15]},
@@ -18,16 +19,16 @@ export const Key: React.FC<{position: [number, number, number]; rotation?: [numb
   <group position={position} rotation={rotation} scale={scale}>
     <mesh castShadow>
       <torusGeometry args={[0.26, 0.07, 16, 32]} />
-      <meshStandardMaterial color={BRASS} metalness={0.9} roughness={0.22} />
+      <Brushed color={BRASS} roughness={0.22} />
     </mesh>
     <mesh position={[0.75, 0, 0]} rotation={[0, 0, Math.PI / 2]} castShadow>
       <cylinderGeometry args={[0.05, 0.05, 1.0, 16]} />
-      <meshStandardMaterial color={BRASS} metalness={0.9} roughness={0.22} />
+      <Brushed color={BRASS} roughness={0.22} />
     </mesh>
     {[0.95, 1.12].map((x, i) => (
       <mesh key={i} position={[x, -0.1 - i * 0.03, 0]} castShadow>
         <boxGeometry args={[0.08, 0.16 + i * 0.06, 0.05]} />
-        <meshStandardMaterial color={BRASS} metalness={0.9} roughness={0.22} />
+        <Brushed color={BRASS} roughness={0.22} />
       </mesh>
     ))}
   </group>
@@ -61,7 +62,9 @@ const Cipher: React.FC<{text: string}> = ({text}) => {
   );
 };
 
-const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: number; red?: boolean}; position?: [number, number, number]; scale?: number; hint?: string; stamp?: string}> = ({
+const lid = (open: number): Part => ({pivot: [0, 0.3515, -0.1225], rotation: [(1 - open) * (Math.PI / 2) - open * 0.25, 0, 0]});
+
+const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: number; red?: boolean; size?: number}; position?: [number, number, number]; scale?: number; hint?: string; stamp?: string}> = ({
   open,
   cipher,
   card,
@@ -71,44 +74,26 @@ const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: 
   stamp,
 }) => (
   <group position={position} scale={scale}>
-    <RoundedBox args={[2.4, 1.3, 1.6]} radius={0.08} position={[0, 0.65, 0]} castShadow receiveShadow>
-      <meshStandardMaterial color="#5D6670" metalness={0.75} roughness={0.35} />
-    </RoundedBox>
-    {/* The box body is solid; a dark plate 1 mm inside its top face is what makes an open box read as open. */}
-    <mesh position={[0, 1.301, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[2.1, 1.3]} />
-      <meshStandardMaterial color="#191C21" roughness={0.95} />
-    </mesh>
-    <group position={[0, 1.3, -0.8]} rotation={[-open * 1.9, 0, 0]}>
-      <RoundedBox args={[2.45, 0.16, 1.65]} radius={0.06} position={[0, 0.08, 0.82]} castShadow>
-        <meshStandardMaterial color="#6B7580" metalness={0.75} roughness={0.32} />
-      </RoundedBox>
+    <Scanned name="metal_tool_chest" fitNode="metal_tool_chest_chest" size={2.4} parts={{metal_tool_chest_lid: lid(open), metal_tool_chest_hinge_lid: lid(open)}} />
+    <group position={[0, 1.23, -0.51]} rotation={[(1 - open) * (Math.PI / 2) - open * 0.25, 0, 0]}>
       {cipher ? (
-        <group position={[0, 0.17, 0.82]} rotation={[-Math.PI / 2, 0, 0]}>
+        <group position={[0, 0.51, -0.28]} rotation={[Math.PI, 0, 0]}>
           <Cipher text={cipher} />
         </group>
       ) : null}
     </group>
-    <mesh position={[0, 0.85, 0.81]}>
-      <boxGeometry args={[0.42, 0.52, 0.03]} />
-      <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />
-    </mesh>
-    <mesh position={[0, 0.85, 0.83]}>
-      <boxGeometry args={[0.07, 0.22, 0.02]} />
-      <meshStandardMaterial color="#111" />
-    </mesh>
     {card ? (
       <group position={[0, mix(0.7, 2.3, card.rise), 0.1]} rotation={[-0.2, 0, 0]}>
-        <PaperCard big={card.text} label="password" bigColor={card.red ? '#C0392B' : '#B87400'} />
+        <PaperCard big={card.text} label="password" bigColor={card.red ? '#C0392B' : '#B87400'} bigSize={card.size} />
       </group>
     ) : null}
     {hint ? (
-      <group position={[0.56, 0.42, 0.86]} rotation={[0, 0, 0.12]}>
-        <Plate text={hint} w={1.05} h={0.32} bg="#EFE7D6" color="#B23A2E" />
+      <group position={[0, 0.62, 0.6]}>
+        <Plate text={hint} w={2.0} h={0.5} bg="#EFE7D6" color="#B23A2E" />
       </group>
     ) : null}
     {stamp ? (
-      <group position={[0, 0.34, 0.805]}>
+      <group position={[0, 0.34, 0.585]}>
         <Plate text={stamp} w={1.5} h={0.3} bg="#241C13" color="#F2D9A8" />
       </group>
     ) : null}
@@ -156,7 +141,7 @@ export const LockboxSet: React.FC<{
           <>
             <Box open={open} cipher={open < 0.5 ? cipher : undefined} card={{text: plain, rise, red}} stamp={stamp} />
             {action !== 'lock' ? (
-              <Key position={[mix(-3.2, -1.05, keyP), 0.85, mix(2.4, 0.95, keyP)]} rotation={[0, mix(-0.6, 0, keyP), 0]} scale={0.8} />
+              <Key position={[mix(-3.2, -0.95, keyP), 1.05, mix(2.4, 0.75, keyP)]} rotation={[0, mix(-0.6, 0, keyP), 0]} scale={0.8} />
             ) : null}
           </>
         ) : (
@@ -172,8 +157,8 @@ export const LockboxSet: React.FC<{
                   key={i}
                   position={[x + (row % 2) * 1.0, 0, -row * 2.3]}
                   scale={0.62}
-                  open={o * 0.6}
-                  card={{text: WALL[i % WALL.length], rise: o * 0.5, red: true}}
+                  open={o}
+                  card={{text: WALL[i % WALL.length], rise: o * 0.85, red: true, size: 0.2}}
                   hint={action === 'hints' && hintIdx >= 0 ? hints[hintIdx] : undefined}
                 />
               );

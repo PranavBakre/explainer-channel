@@ -15,7 +15,7 @@ def stolen_card():
     o = fade((0, 0), (14, 100))
     w, h = 380, 150
     x, y = CARD
-    out = [text('stolen title', [(0, 'stolen from the grocery app')], (x, y - h / 2 + 26), 18, '#7A7A72', o=o),
+    out = [text('stolen title', [(0, 'stolen from the grocery app')], (x, y - h / 2 + 34), 18, '#7A7A72', o=o),
            text('stolen email', [(0, EMAIL)], (x - w / 2 + 24, y - 6), 22, INK, font='Inter-Bold', j=0, o=o),
            text('stolen pw', [(0, PW)], (x - w / 2 + 24, y + 34), 26, AMBER, font='Inter-Bold', j=0, o=o)]
     return [out[0], out[1], out[2],
@@ -65,10 +65,10 @@ def build(laptop):
     layers += tick('site one tick', FIELD[0], 566, 78, 'signed in')
     layers += site_panel(1500, 560)
     layers += stolen_card()
-    layers += fly('replay one', 18, (980, 200), (760, 432), [-170, -30], [120, -150], 58)
-    layers += fly('replay two', 100, (1060, 200), (1440, 596), [170, -20], [-130, -150], 140)
-    layers += connection((980, 200), (760, 432), [-170, -30], [120, -150], 18, 40)
-    layers += connection((1060, 200), (1440, 596), [170, -20], [-130, -150], 100, 122)
+    layers += fly('replay one', 18, (880, 212), (FIELD[0], 442), [0, 140], [260, 0], 58)
+    layers += fly('replay two', 100, (1150, 212), (1500, 580), [160, 30], [0, -200], 140)
+    layers += connection((880, 212), (818, 442), [0, 140], [110, 0], 18, 40)
+    layers += connection((1150, 212), (1650, 362), [160, 30], [0, -110], 100, 122)
     return compose('S03 reuse', OP, lap, layers)
 
 

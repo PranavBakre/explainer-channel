@@ -1,5 +1,6 @@
 import React from 'react';
 import {RoundedBox} from '@react-three/drei';
+import {Brushed, Oak, Painted} from '../../three/finish';
 import {BRASS, PAPER, Plate, useCanvasTexture, V3} from '../../three/kit';
 import {fonts} from '../../theme';
 
@@ -10,7 +11,7 @@ export const RATES = [164100000000, 50638700000, 21975500000, 184000, 7126];
 
 export const Block: React.FC<{at: V3; size: V3; color?: string}> = ({at, size, color = '#493628'}) => (
   <RoundedBox position={at} args={size} radius={0.04} smoothness={2} castShadow receiveShadow>
-    <meshStandardMaterial color={color} roughness={0.55} metalness={0.25} />
+    <Painted color={color} repeat={[Math.max(1, Math.round(Math.max(size[0], size[2]) / 3)), Math.max(1, Math.round(size[1] / 3))]} />
   </RoundedBox>
 );
 
@@ -19,7 +20,7 @@ export const Sign: React.FC<{at: V3; text: string; w?: number; h?: number; light
 );
 
 export const Bench: React.FC<{children: React.ReactNode}> = ({children}) => <>
-  <Block at={[0, 0.8, 0]} size={[10.8, 0.25, 3.8]} />
+  <RoundedBox position={[0, 0.8, 0]} args={[10.8, 0.25, 3.8]} radius={0.04} smoothness={2} castShadow receiveShadow><Oak repeat={[4, 1]} tint="#7E5636" /></RoundedBox>
   {[-4.6, 4.6].map((x) => <Block key={x} at={[x, 0.4, 0]} size={[0.22, 0.8, 2.8]} color="#222B30" />)}
   {children}
 </>;
@@ -58,7 +59,7 @@ export const Counter: React.FC<{value: string; title: string; at?: V3; mechanica
 </group>;
 
 export const Stopwatch: React.FC<{reading: string; algorithm: string; needle: number}> = ({reading, algorithm, needle}) => <group position={[2.4, 2.4, 0.35]}>
-  <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.25, 1.25, 0.22, 64]} /><meshStandardMaterial color={BRASS} roughness={0.3} metalness={0.8} /></mesh>
+  <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.25, 1.25, 0.22, 64]} /><Brushed color={BRASS} roughness={0.3} /></mesh>
   <mesh position={[0, 0, 0.13]}><circleGeometry args={[1.13, 64]} /><meshStandardMaterial color={PAPER} /></mesh>
   {Array.from({length: 12}, (_, i) => <group key={i} rotation={[0, 0, i * Math.PI / 6]}><Block at={[0, 0.98, 0.15]} size={[0.035, 0.14, 0.02]} color="#303B40" /></group>)}
   <group rotation={[0, 0, -needle]}><Block at={[0, 0.37, 0.18]} size={[0.045, 0.74, 0.03]} color="#A4412E" /></group>
@@ -83,7 +84,7 @@ export const Calendar: React.FC<{reading: string; algorithm: string; flip?: numb
 </group>;
 
 export const Drawer: React.FC<{at?: V3; children?: React.ReactNode; labelScale?: number}> = ({at = [0, 0, 0], children, labelScale = 1}) => <group position={at}>
-  <Block at={[0, 0.65, 0]} size={[6.8, 1.2, 2.1]} color="#794D30" />
+  <RoundedBox position={[0, 0.65, 0]} args={[6.8, 1.2, 2.1]} radius={0.04} smoothness={2} castShadow receiveShadow><Oak repeat={[3, 1]} tint="#A9774E" /></RoundedBox>
   <Sign at={[0, 0.6, 1.07]} text="grocery_app.users" textShift={-0.06} w={4.6 * labelScale} h={0.55 * labelScale} />
   {children}
 </group>;

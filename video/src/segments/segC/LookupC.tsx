@@ -1,23 +1,24 @@
 import React from 'react';
 import {RoundedBox} from '@react-three/drei';
+import {Oak} from '../../three/finish';
+import {Scanned} from '../../three/Scanned';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import {Machine} from '../../three/sets/MachineSet';
-import {BRASS, ease, mix, PunchedCard, Studio, Tag} from '../../three/kit';
+import {ease, mix, PunchedCard, Studio, Tag} from '../../three/kit';
 import {digest, LabelC} from './props';
 
 const passwords = ['123456', 'password', 'qwerty', 'iloveyou', '111111', 'mango@123'];
 
 const WallC: React.FC<{salt?: string; algorithm?: string; hit?: number; file?: number; position?: [number, number, number]; scale?: number}> = ({salt, algorithm = 'sha1', hit = 0, file = 0, position = [0, 0, 0], scale = 1}) => <group position={position} scale={scale}>
-  <RoundedBox args={[7.9, 3.8, 1.4]} radius={0.08} position={[0, 2.1, -0.8]} castShadow receiveShadow><meshStandardMaterial color="#5E3B22" roughness={0.65} /></RoundedBox>
+  <RoundedBox args={[7.9, 3.8, 1.4]} radius={0.08} position={[0, 2.1, -0.8]} castShadow receiveShadow><Oak repeat={[3, 1.5]} tint="#7E5636" /></RoundedBox>
   <group position={[0, 4.22, 0]}><LabelC lines={[salt ? `salt: ${salt}` : algorithm === 'sha256' ? 'SHA-256 / UNSALTED' : 'SHA-1 / PRECOMPUTED']} w={5.4} h={0.76} /></group>
   {passwords.map((pw, i) => {
     const hash = digest((salt ?? '') + pw, salt ? 'sha256' : algorithm);
     const x = (i % 3 - 1) * 2.5, y = 3 - Math.floor(i / 3) * 1.65;
     const open = i === 5 ? hit : 0;
     return <group key={pw} position={[x, y, open * 1.0]}>
-      <RoundedBox args={[2.35, 1.45, 0.25]} radius={0.04} castShadow><meshStandardMaterial color={open > 0.5 ? '#9C3B2E' : '#7A4E2E'} roughness={0.55} /></RoundedBox>
-      <group position={[0, 0.15, 0.15]}><LabelC lines={[hash.slice(0, 8)]} w={2.17} h={0.68} /></group>
-      <mesh position={[0, -0.39, 0.16]}><boxGeometry args={[0.6, 0.12, 0.07]} /><meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} /></mesh>
+      <Scanned name="vintage_wooden_drawer_01" node="vintage_wooden_drawer_01_drawer02" fit={[2.35, 1.45, 1.4]} position={[0, -0.725, -0.57]} />
+      <group position={[0, 0.3, 0.17]}><LabelC lines={[hash.slice(0, 8)]} w={1.9} h={0.6} color={open > 0.5 ? '#9C3B2E' : '#1A1E24'} /></group>
       {open > 0.01 ? <group position={[0, mix(0, 1.0, open), 0.35]}><LabelC lines={[pw]} w={2.6} h={0.8} color="#A96B00" /></group> : null}
       {i === 5 && file > 0 && file < 1 ? <group position={[mix(-8, 0, file), mix(0.8, 0, file), mix(2, -0.15, file)]}><PunchedCard hex={hash} w={1.4} title="" /></group> : null}
     </group>;

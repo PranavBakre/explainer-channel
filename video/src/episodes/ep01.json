@@ -13,89 +13,82 @@
    "duration": 571,
    "shots": [
     {
-     "visual": "DbTable",
+     "visual": "CatalogSet",
      "props": {
-      "title": "users — on a server somewhere",
-      "columns": [
-       "email",
-       "password"
-      ],
-      "rows": [
-       [
-        "asha@mail.com",
-        "?"
-       ],
-       [
-        "ravi@mail.com",
-        "?"
-       ],
-       [
-        "you@mail.com",
-        "?"
-       ],
-       [
-        "meera@mail.com",
-        "?"
-       ]
-      ],
-      "variants": [
+      "action": "row",
+      "angle": "wide",
+      "rise": 1.1,
+      "states": [
        {
-        "fromStep": 2,
-        "rows": [
-         [
-          "asha@mail.com",
-          "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-         ],
-         [
-          "ravi@mail.com",
-          "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-         ],
-         [
-          "you@mail.com",
-          "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-         ],
-         [
-          "meera@mail.com",
-          "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-         ]
+        "step": 0,
+        "field": "hidden",
+        "pos": [
+         -3.2,
+         3.4,
+         5.3
         ],
-        "tone": "teal",
-        "highlight": [
+        "posTo": [
+         -2.75,
+         3.1,
+         4.75
+        ],
+        "target": [
          0,
-         1,
-         2,
-         3
-        ],
-        "caption": "Well-run site: nobody can read this column back"
+         1.45,
+         0.4
+        ]
        },
        {
-        "fromStep": 3,
-        "rows": [
-         [
-          "asha@mail.com",
-          "sunshine1"
-         ],
-         [
-          "ravi@mail.com",
-          "123456"
-         ],
-         [
-          "you@mail.com",
-          "mango@123"
-         ],
-         [
-          "meera@mail.com",
-          "qwerty"
-         ]
+        "step": 1,
+        "field": "hidden",
+        "pos": [
+         0.35,
+         3.05,
+         4.5
         ],
-        "tone": "red",
-        "highlight": [
+        "posTo": [
+         0.32,
+         3,
+         4.35
+        ],
+        "target": [
          0,
-         1,
-         2,
-         3
+         2.65,
+         1.15
+        ]
+       },
+       {
+        "step": 2,
+        "field": "argon",
+        "pos": [
+         0.32,
+         3,
+         4.35
         ],
-        "caption": "Badly run site: anyone with the file can"
+        "posTo": [
+         0.31,
+         2.98,
+         4.27
+        ],
+        "target": [
+         0,
+         2.65,
+         1.15
+        ]
+       },
+       {
+        "step": 3,
+        "field": "plain",
+        "pos": [
+         0.31,
+         2.98,
+         4.27
+        ],
+        "target": [
+         0,
+         2.65,
+         1.15
+        ]
        }
       ]
      },
@@ -128,12 +121,16 @@
    "duration": 959,
    "shots": [
     {
-     "visual": "BigNumber",
+     "visual": "DocShot",
      "props": {
-      "value": 32603388,
-      "label": "RockYou passwords leaked · Dec 2009 · reported count",
-      "note": "stored as plain, readable text",
-      "tone": "red"
+      "page": "rockyou.png",
+      "quote": "rockyou-quote.png",
+      "quoteStep": 1,
+      "source": "TechCrunch, 14 Dec 2009",
+      "focus": [
+       0.5,
+       0.3
+      ]
      },
      "from": 0,
      "duration": 319,
@@ -149,25 +146,11 @@
      ]
     },
     {
-     "visual": "TextStack",
+     "visual": "HeapSet",
      "props": {
-      "kicker": "most common password",
-      "lines": [
-       {
-        "text": "123456",
-        "mono": true,
-        "tone": "amber",
-        "size": 180,
-        "step": 0
-       },
-       {
-        "text": "290,731 accounts",
-        "tone": "cream",
-        "size": 56,
-        "step": 0,
-        "serif": false
-       }
-      ]
+      "big": "123456",
+      "count": 290731,
+      "perCard": 1000
      },
      "from": 319,
      "duration": 219,
@@ -177,27 +160,31 @@
      "sfx": []
     },
     {
-     "visual": "TextStack",
+     "visual": "FootageShot",
      "props": {
-      "lines": [
+      "file": "gpu-rtx-rgb-fans.mp4",
+      "rate": 0.68,
+      "tags": [
        {
-        "text": "Other sites did protect their passwords.",
-        "step": 0
+        "x": 960,
+        "y": 128,
+        "text": "one modern graphics card",
+        "at": 0.08
        },
        {
-        "text": "One graphics card: every 8-char a–z 0–9 password, under a minute",
-        "tone": "red",
-        "step": 0,
-        "size": 56
+        "x": 960,
+        "y": 200,
+        "text": "every 8-character a–z 0–9 password",
+        "at": 0.3
        },
        {
-        "text": "for some of those formats · benchmark estimate",
-        "serif": false,
-        "size": 36,
-        "tone": "slate",
-        "step": 0
+        "x": 960,
+        "y": 272,
+        "text": "2,821,109,907,456 guesses",
+        "at": 0.56
        }
-      ]
+      ],
+      "scrim": true
      },
      "from": 538,
      "duration": 421,
@@ -211,21 +198,23 @@
   {
    "id": "S03",
    "act": 1,
-   "transitionIn": "wipe",
+   "transitionIn": "fade",
    "from": 1548,
    "duration": 1048,
    "shots": [
     {
-     "visual": "ActTitle",
+     "visual": "LottieShot",
      "props": {
-      "act": "Part one",
-      "title": "Keep it",
-      "tone": "red"
+      "file": "s03-signup",
+      "scale": 1,
+      "bg": "#F1EFE9"
      },
      "from": 0,
-     "duration": 188,
+     "duration": 600,
      "steps": [
-      0
+      0,
+      188,
+      413
      ],
      "sfx": [
       {
@@ -235,70 +224,67 @@
      ]
     },
     {
-     "visual": "DbTable",
+     "visual": "CatalogSet",
      "props": {
-      "title": "grocery_app.users",
-      "columns": [
-       "email",
-       "password"
-      ],
-      "rows": [
-       [
-        "asha@mail.com",
-        "sunshine1"
-       ],
-       [
-        "ravi@mail.com",
-        "123456"
-       ],
-       [
-        "you@mail.com",
-        "mango@123"
-       ],
-       [
-        "meera@mail.com",
-        "qwerty"
-       ]
-      ],
-      "variants": [
+      "action": "copy",
+      "field": "plain",
+      "color": "#4E3A36",
+      "tags": [
        {
-        "fromStep": 2,
-        "rows": [
-         [
-          "asha@mail.com",
-          "sunshine1"
-         ],
-         [
-          "ravi@mail.com",
-          "123456"
-         ],
-         [
-          "you@mail.com",
-          "mango@123"
-         ],
-         [
-          "meera@mail.com",
-          "qwerty"
-         ]
-        ],
-        "tone": "red",
-        "highlight": [
-         0,
-         1,
-         2,
-         3
-        ],
-        "caption": "Copy the table, get every password"
+        "x": 1290,
+        "y": 110,
+        "text": "the copy holds every password",
+        "atStep": 0,
+        "color": "#FF5A4E"
        }
-      ]
+      ],
+      "states": [
+       {
+        "step": 0,
+        "field": "plain",
+        "pos": [
+         -1.3,
+         3.5,
+         8.2
+        ],
+        "posTo": [
+         -1.25,
+         3.42,
+         7.9
+        ],
+        "target": [
+         1.75,
+         1.15,
+         0.1
+        ]
+       }
+      ],
+      "copyLift": 0.06,
+      "copyTo": [
+       3.6,
+       0.06,
+       0
+      ],
+      "copyOpacity": 1
      },
-     "from": 188,
-     "duration": 860,
+     "from": 600,
+     "duration": 202,
      "steps": [
-      0,
-      225,
-      412,
-      614
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LottieShot",
+     "props": {
+      "file": "s03-reuse",
+      "scale": 1,
+      "bg": "#F1EFE9"
+     },
+     "from": 802,
+     "duration": 246,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -307,23 +293,51 @@
   {
    "id": "S04",
    "act": 1,
-   "transitionIn": "push",
+   "transitionIn": "cut",
    "from": 2596,
    "duration": 570,
    "shots": [
     {
-     "visual": "LockBox",
+     "visual": "LockboxSet",
      "props": {
+      "action": "lock",
+      "angle": "lid",
       "plain": "mango@123",
-      "cipher": "U2FsdGVkX19x4k",
-      "caption": "Whoever holds the key reads everything"
+      "cipher": "6FeRQifMiphtMzZfI0QUmw=="
      },
      "from": 0,
-     "duration": 570,
+     "duration": 180,
      "steps": [
-      0,
-      180,
-      348
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "CatalogSet",
+     "props": {
+      "action": "drawer",
+      "angle": "drawer",
+      "field": "cipher"
+     },
+     "from": 180,
+     "duration": 168,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LockboxSet",
+     "props": {
+      "action": "unlock",
+      "angle": "rise",
+      "plain": "mango@123",
+      "cipher": "6FeRQifMiphtMzZfI0QUmw=="
+     },
+     "from": 348,
+     "duration": 222,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -332,84 +346,102 @@
   {
    "id": "S05",
    "act": 1,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 3166,
    "duration": 1307,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "EvidenceShot",
      "props": {
-      "kicker": "Adobe · 2013",
-      "lines": [
-       {
-        "text": "Encrypted, not hashed",
-        "step": 0
-       },
-       {
-        "text": "Triple DES",
-        "mono": true,
-        "tone": "amber",
-        "step": 1
-       }
+      "page": "adobe-krebs.png",
+      "source": "Krebs on Security · 29 Oct 2013",
+      "focus": [
+       0,
+       0.25
       ]
      },
      "from": 0,
-     "duration": 267,
+     "duration": 91,
      "steps": [
-      0,
-      91
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "KeyCascade",
+     "visual": "LockboxSet",
      "props": {
-      "hints": [
-       {
-        "at": 2,
-        "text": "my dog's name"
-       },
-       {
-        "at": 9,
-        "text": "123456 lol"
-       },
-       {
-        "at": 16,
-        "text": "usual"
-       }
-      ],
-      "caption": "One key for all of them · ~109M hints in plain text"
+      "action": "locked",
+      "angle": "stamp",
+      "plain": "mango@123",
+      "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+      "stamp": "TRIPLE DES"
+     },
+     "from": 91,
+     "duration": 176,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LockboxSet",
+     "props": {
+      "action": "wall",
+      "angle": "wall",
+      "plain": "mango@123",
+      "cipher": "6FeRQifMiphtMzZfI0QUmw=="
      },
      "from": 267,
-     "duration": 402,
+     "duration": 216,
      "steps": [
-      0,
-      216
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "EvidenceShot",
+     "props": {
+      "page": "adobe-oaic.png",
+      "quote": "adobe-oaic-quote.png",
+      "source": "OAIC · Adobe investigation report · June 2015",
+      "note": "Counted by Troy Hunt: ≈109M records had a hint",
+      "at": 45,
+      "quoteBand": [
+       2672,
+       213,
+       57,
+       161
+      ]
+     },
+     "from": 483,
+     "duration": 186,
+     "steps": [
+      0
      ],
      "sfx": [
       {
        "kind": "tick",
-       "at": 216
+       "at": 0
       }
      ]
     },
     {
-     "visual": "StatGrid",
+     "visual": "EvidenceShot",
      "props": {
-      "title": "Adobe breach",
-      "items": [
-       {
-        "value": "38M",
-        "label": "active users hit (Adobe)",
-        "tone": "red",
-        "step": 0
-       },
-       {
-        "value": "~153M",
-        "label": "records in the leaked file",
-        "tone": "red",
-        "step": 0
-       }
+      "page": "adobe-krebs.png",
+      "quote": "adobe-krebs-quote.png",
+      "source": "Krebs on Security · 29 Oct 2013",
+      "note": "Counted by Have I Been Pwned: ≈153M records in the leaked file",
+      "at": 45,
+      "focus": [
+       0,
+       0.3
+      ],
+      "quoteBand": [
+       1677,
+       347,
+       54,
+       287
       ]
      },
      "from": 669,
@@ -420,33 +452,44 @@
      "sfx": []
     },
     {
-     "visual": "TextStack",
+     "visual": "LockboxSet",
      "props": {
-      "lines": [
-       {
-        "text": "A hint is a head start.",
-        "step": 0,
-        "tone": "red"
-       },
-       {
-        "text": "The site never needs to read it back.",
-        "step": 1,
-        "size": 56,
-        "tone": "amber"
-       },
-       {
-        "text": "It only needs to check it.",
-        "step": 1,
-        "size": 56,
-        "tone": "teal"
-       }
+      "action": "hints",
+      "angle": "hints",
+      "closed": true,
+      "plain": "mango@123",
+      "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+      "hints": [
+       "my dog's name",
+       "my dog's name",
+       "my dog's name"
       ]
      },
      "from": 930,
-     "duration": 377,
+     "duration": 120,
      "steps": [
-      0,
-      120
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LightTableSet",
+     "props": {
+      "action": "match",
+      "angle": "wide",
+      "a": {
+       "label": "WHAT YOU TYPED",
+       "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+      },
+      "b": {
+       "label": "WHAT IS STORED",
+       "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+      }
+     },
+     "from": 1050,
+     "duration": 257,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -455,51 +498,57 @@
   {
    "id": "S06",
    "act": 2,
-   "transitionIn": "wipe",
+   "transitionIn": "fade",
    "from": 4473,
    "duration": 809,
    "shots": [
     {
-     "visual": "ActTitle",
+     "visual": "HashMachineC",
      "props": {
-      "act": "Part two",
-      "title": "Fingerprint it",
-      "tone": "amber"
+      "action": "reveal"
      },
      "from": 0,
      "duration": 130,
      "steps": [
       0
      ],
-     "sfx": [
-      {
-       "kind": "whoosh",
-       "at": 0
-      }
-     ]
+     "sfx": []
     },
     {
-     "visual": "HashGrinder",
+     "visual": "HashMachineC",
      "props": {
-      "input": "mango@123",
-      "algo": "SHA-256",
-      "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-      "note": "64 characters, every time",
-      "caption": "No way back. Only guess, hash, compare."
+      "action": "fixed"
      },
      "from": 130,
-     "duration": 679,
+     "duration": 112,
      "steps": [
-      0,
-      112,
-      456
+      0
      ],
-     "sfx": [
-      {
-       "kind": "tick",
-       "at": 0
-      }
-     ]
+     "sfx": []
+    },
+    {
+     "visual": "HashMachineC",
+     "props": {
+      "action": "punch"
+     },
+     "from": 242,
+     "duration": 344,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "HashMachineC",
+     "props": {
+      "action": "reverse"
+     },
+     "from": 586,
+     "duration": 223,
+     "steps": [
+      0
+     ],
+     "sfx": []
     }
    ]
   },
@@ -511,14 +560,9 @@
    "duration": 629,
    "shots": [
     {
-     "visual": "Avalanche",
+     "visual": "CompareC",
      "props": {
-      "a": "hunter2",
-      "b": "hunter3",
-      "diffAt": 6,
-      "hexA": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7",
-      "hexB": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a",
-      "caption": "One character apart. Nothing alike."
+      "mode": "avalanche"
      },
      "from": 0,
      "duration": 629,
@@ -535,25 +579,56 @@
   {
    "id": "S08",
    "act": 2,
-   "transitionIn": "push",
+   "transitionIn": "cut",
    "from": 5911,
    "duration": 605,
    "shots": [
     {
-     "visual": "LoginMatch",
+     "visual": "UsersDrawerC",
      "props": {
-      "input": "mango@123",
-      "email": "you@mail.com",
-      "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-      "caption": "A leak gives fingerprints, not passwords"
+      "field": "sha256"
      },
      "from": 0,
-     "duration": 605,
+     "duration": 111,
      "steps": [
-      0,
-      111,
-      276,
-      355
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "HashMachineC",
+     "props": {
+      "action": "login"
+     },
+     "from": 111,
+     "duration": 165,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "CompareC",
+     "props": {
+      "mode": "match"
+     },
+     "from": 276,
+     "duration": 79,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "UsersDrawerC",
+     "props": {
+      "field": "sha256",
+      "copy": true
+     },
+     "from": 355,
+     "duration": 250,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -562,104 +637,74 @@
   {
    "id": "S09",
    "act": 2,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 6516,
    "duration": 1274,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "EvidenceC",
      "props": {
-      "kicker": "LinkedIn · 2012",
-      "lines": [
-       {
-        "text": "6,458,020 password hashes posted online",
-        "step": 0,
-        "size": 64
-       },
-       {
-        "text": "SHA-1 · no salt",
-        "mono": true,
-        "tone": "red",
-        "step": 1
-       }
-      ]
+      "year": "2012"
      },
      "from": 0,
-     "duration": 360,
+     "duration": 218,
      "steps": [
-      0,
-      218
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "LookupWall",
+     "visual": "UsersDrawerC",
      "props": {
-      "stolen": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-      "rows": [
-       {
-        "password": "123456",
-        "hash": "7c4a8d09ca3762af61e59520943dc26494f8941b"
-       },
-       {
-        "password": "password",
-        "hash": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
-       },
-       {
-        "password": "12345678",
-        "hash": "7c222fb2927d828af22f592134e8932480637c0d"
-       },
-       {
-        "password": "qwerty",
-        "hash": "b1b3773a05c0ed0176787a4f1574ff0075f7521e"
-       },
-       {
-        "password": "iloveyou",
-        "hash": "ee8d8728f435fd550f83852aabab5234ce1da528"
-       },
-       {
-        "password": "111111",
-        "hash": "3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d"
-       },
-       {
-        "password": "mango@123",
-        "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
-       }
-      ],
-      "caption": "Your password is the row next to it"
+      "field": "sha1"
      },
-     "from": 360,
-     "duration": 648,
+     "from": 218,
+     "duration": 142,
      "steps": [
-      0,
-      160,
-      454
+      0
      ],
-     "sfx": [
-      {
-       "kind": "tick",
-       "at": 454
-      }
-     ]
+     "sfx": []
     },
     {
-     "visual": "StatGrid",
+     "visual": "HashMachineC",
      "props": {
-      "title": "LinkedIn breach",
-      "items": [
-       {
-        "value": "6.5M",
-        "label": "hashes posted · 2012",
-        "tone": "amber",
-        "step": 0
-       },
-       {
-        "value": "117M",
-        "label": "emails and passwords · LinkedIn, 2016",
-        "tone": "red",
-        "step": 0
-       }
-      ]
+      "action": "repeat"
+     },
+     "from": 360,
+     "duration": 160,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LookupC",
+     "props": {
+      "action": "file"
+     },
+     "from": 520,
+     "duration": 294,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LookupC",
+     "props": {
+      "action": "search"
+     },
+     "from": 814,
+     "duration": 194,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "EvidenceC",
+     "props": {
+      "year": "2016"
      },
      "from": 1008,
      "duration": 266,
@@ -673,68 +718,67 @@
   {
    "id": "S10",
    "act": 2,
-   "transitionIn": "zoom",
+   "transitionIn": "cut",
    "from": 7790,
    "duration": 1025,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "HashMachineC",
      "props": {
-      "kicker": "the fix",
-      "lines": [
-       {
-        "text": "Salt",
-        "size": 150,
-        "tone": "teal",
-        "step": 0
-       },
-       {
-        "text": "a random string, unique to each user",
-        "serif": false,
-        "size": 44,
-        "step": 1
-       },
-       {
-        "text": "stored next to the hash · not secret",
-        "serif": false,
-        "size": 40,
-        "tone": "slate",
-        "step": 2
-       }
-      ]
+      "action": "clip"
      },
      "from": 0,
-     "duration": 536,
+     "duration": 65,
      "steps": [
-      0,
-      65,
-      265
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "SaltGrinder",
+     "visual": "HashMachineC",
      "props": {
-      "password": "mango@123",
-      "users": [
-       {
-        "name": "Asha",
-        "salt": "9f2c4a71",
-        "hash": "fb9d05563ec1fbbdebc0c48ed14a7db7087102a8373e44fc54ad57d8b1ed0401"
-       },
-       {
-        "name": "You",
-        "salt": "e05b13d8",
-        "hash": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
-       }
-      ],
-      "caption": "A table built in advance would need one per salt"
+      "action": "salt"
+     },
+     "from": 65,
+     "duration": 200,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "UsersDrawerC",
+     "props": {
+      "field": "salted"
+     },
+     "from": 265,
+     "duration": 271,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "CompareC",
+     "props": {
+      "mode": "salt"
      },
      "from": 536,
-     "duration": 489,
+     "duration": 196,
      "steps": [
-      0,
-      196
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "LookupC",
+     "props": {
+      "action": "salt"
+     },
+     "from": 732,
+     "duration": 293,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -743,54 +787,26 @@
   {
    "id": "S11",
    "act": 3,
-   "transitionIn": "wipe",
+   "transitionIn": "fade",
    "from": 8815,
    "duration": 931,
    "shots": [
     {
-     "visual": "ActTitle",
+     "visual": "DAttack",
      "props": {
-      "act": "Part three",
-      "title": "Slow it down",
-      "tone": "red"
+      "mode": "salt"
      },
      "from": 0,
      "duration": 127,
      "steps": [
       0
      ],
-     "sfx": [
-      {
-       "kind": "whoosh",
-       "at": 0
-      }
-     ]
+     "sfx": []
     },
     {
-     "visual": "FlowDiagram",
+     "visual": "DAttack",
      "props": {
-      "nodes": [
-       {
-        "label": "Guess",
-        "sub": "sunshine1",
-        "tone": "amber"
-       },
-       {
-        "label": "+ salt",
-        "sub": "e05b13d8",
-        "tone": "teal"
-       },
-       {
-        "label": "Hash"
-       },
-       {
-        "label": "Compare",
-        "sub": "no → next guess",
-        "tone": "red"
-       }
-      ],
-      "caption": "Repeat, billions of times",
-      "captionStep": 1
+      "mode": "loop"
      },
      "from": 127,
      "duration": 263,
@@ -800,36 +816,25 @@
      "sfx": []
     },
     {
-     "visual": "TextStack",
-     "props": {
-      "kicker": "RockYou leak (Imperva)",
-      "lines": [
-       {
-        "text": "nearly half: names, words, slang, patterns",
-        "step": 0,
-        "size": 60
-       },
-       {
-        "text": "likely guesses first, the long tail later",
-        "serif": false,
-        "size": 42,
-        "tone": "slate",
-        "step": 1
-       },
-       {
-        "text": "and these hashes are fast to calculate",
-        "tone": "red",
-        "size": 58,
-        "step": 2
-       }
-      ]
-     },
+     "visual": "DHeap",
+     "props": {},
      "from": 390,
-     "duration": 541,
+     "duration": 416,
      "steps": [
       0,
-      267,
-      416
+      267
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DAttack",
+     "props": {
+      "mode": "fast"
+     },
+     "from": 806,
+     "duration": 125,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -838,76 +843,56 @@
   {
    "id": "S12",
    "act": 3,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 9746,
    "duration": 1224,
    "shots": [
     {
-     "visual": "GuessStream",
+     "visual": "DGPUBench",
      "props": {
-      "title": "one RTX 4090 running hashcat",
-      "note": "each card stands for over a billion guesses · hashcat benchmark",
-      "phases": [
-       {
-        "label": "MD5",
-        "rate": "164 billion guesses / s",
-        "perFrame": 4,
-        "step": 1
-       },
-       {
-        "label": "SHA-1",
-        "rate": "50.6 billion / s",
-        "perFrame": 1.23,
-        "step": 2
-       },
-       {
-        "label": "SHA-256",
-        "rate": "22.0 billion / s",
-        "perFrame": 0.54,
-        "step": 2,
-        "offset": 90
-       }
-      ]
+      "mode": "intro"
      },
      "from": 0,
-     "duration": 604,
+     "duration": 206,
      "steps": [
-      0,
-      206,
-      390
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "StatGrid",
+     "visual": "DEvidence",
      "props": {
-      "title": "every 8-character password of a–z and 0–9 · 2.8 trillion · full-search estimate",
-      "items": [
-       {
-        "value": "17 s",
-        "label": "MD5",
-        "tone": "red",
-        "step": 1
-       },
-       {
-        "value": "56 s",
-        "label": "SHA-1",
-        "tone": "red",
-        "step": 1
-       },
-       {
-        "value": "~2 min",
-        "label": "SHA-256",
-        "tone": "red",
-        "step": 1
-       }
-      ]
+      "kind": "fast"
      },
-     "from": 604,
-     "duration": 620,
+     "from": 206,
+     "duration": 398,
      "steps": [
       0,
-      259
+      184
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DGPUBench",
+     "props": {
+      "mode": "space"
+     },
+     "from": 604,
+     "duration": 259,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DGPUBench",
+     "props": {
+      "mode": "times"
+     },
+     "from": 863,
+     "duration": 361,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -916,33 +901,14 @@
   {
    "id": "S13",
    "act": 3,
-   "transitionIn": "push",
+   "transitionIn": "cut",
    "from": 10970,
    "duration": 1321,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "DSlowMachine",
      "props": {
-      "lines": [
-       {
-        "text": "Make each guess expensive",
-        "step": 0,
-        "tone": "teal"
-       },
-       {
-        "text": "slow on purpose · tunable as hardware improves",
-        "serif": false,
-        "size": 44,
-        "tone": "slate",
-        "step": 1
-       },
-       {
-        "text": "bcrypt · 1999",
-        "mono": true,
-        "tone": "amber",
-        "step": 2
-       }
-      ]
+      "mode": "cost"
      },
      "from": 0,
      "duration": 442,
@@ -954,33 +920,38 @@
      "sfx": []
     },
     {
-     "visual": "GuessStream",
+     "visual": "DSlowBenchmark",
      "props": {
-      "title": "same RTX 4090 · slow hashes",
-      "note": "drawn far from scale: bcrypt here is about 900,000× slower than MD5",
-      "phases": [
-       {
-        "label": "bcrypt (cost 5)",
-        "rate": "184 thousand / s",
-        "sub": "same 2.8 trillion: about 177 days",
-        "perFrame": 0.07,
-        "step": 0
-       },
-       {
-        "label": "scrypt",
-        "rate": "7,126 / s",
-        "sub": "same 2.8 trillion: about 12.5 years",
-        "perFrame": 0.02,
-        "step": 2
-       }
-      ]
+      "algorithm": "bcrypt"
      },
      "from": 442,
-     "duration": 879,
+     "duration": 349,
      "steps": [
-      0,
-      349,
-      615
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DSlowMachine",
+     "props": {
+      "mode": "memory"
+     },
+     "from": 791,
+     "duration": 266,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DSlowBenchmark",
+     "props": {
+      "algorithm": "scrypt"
+     },
+     "from": 1057,
+     "duration": 264,
+     "steps": [
+      0
      ],
      "sfx": []
     }
@@ -989,79 +960,57 @@
   {
    "id": "S14",
    "act": 3,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 12291,
    "duration": 1843,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "DEvidence",
      "props": {
-      "kicker": "what good sites run",
-      "lines": [
-       {
-        "text": "Argon2id",
-        "size": 130,
-        "tone": "teal",
-        "step": 0
-       },
-       {
-        "text": "OWASP recommends · from Argon2, competition winner 2015",
-        "serif": false,
-        "size": 40,
-        "tone": "slate",
-        "step": 0
-       },
-       {
-        "text": "minimum: 19 MiB memory · 2 passes · 1 lane",
-        "mono": true,
-        "size": 44,
-        "tone": "amber",
-        "step": 1
-       }
-      ]
+      "kind": "owasp"
      },
      "from": 0,
-     "duration": 600,
+     "duration": 384,
      "steps": [
-      0,
-      384
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "CodeCard",
+     "visual": "DSlowMachine",
      "props": {
-      "title": "what the database stores for you",
-      "code": "# algorithm + settings · salt · hash\n$argon2id$v=19$m=19456,t=2,p=1\n$cE3JU6U6szy6uvAh96bkyw\n$Pr8MGyxkXWUs/ALFyQ4a+2IS3skjs84BpY4YSDhLGFM",
-      "caption": "Settings travel with the hash, so the cost can be raised later"
+      "mode": "argon"
      },
+     "from": 384,
+     "duration": 216,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DRecipe",
+     "props": {},
      "from": 600,
-     "duration": 596,
+     "duration": 334,
      "steps": [
-      0,
-      334
+      0
      ],
      "sfx": []
     },
     {
-     "visual": "TextStack",
-     "props": {
-      "kicker": "optional extra layer",
-      "lines": [
-       {
-        "text": "Pepper",
-        "size": 130,
-        "tone": "amber",
-        "step": 0
-       },
-       {
-        "text": "one secret, kept outside the database",
-        "serif": false,
-        "size": 44,
-        "step": 0
-       }
-      ]
-     },
+     "visual": "DRehash",
+     "props": {},
+     "from": 934,
+     "duration": 262,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "DPepper",
+     "props": {},
      "from": 1196,
      "duration": 317,
      "steps": [
@@ -1070,21 +1019,9 @@
      "sfx": []
     },
     {
-     "visual": "TextStack",
+     "visual": "DSlowMachine",
      "props": {
-      "kicker": "grocery_app.users · leaked today",
-      "lines": [
-       {
-        "text": "a salt and a slow fingerprint per row",
-        "step": 0,
-        "size": 60
-       },
-       {
-        "text": "every guess costs real time",
-        "tone": "teal",
-        "step": 0
-       }
-      ]
+      "mode": "final"
      },
      "from": 1513,
      "duration": 330,
@@ -1098,77 +1035,24 @@
   {
    "id": "S15",
    "act": 4,
-   "transitionIn": "wipe",
+   "transitionIn": "fade",
    "from": 14134,
    "duration": 562,
    "shots": [
     {
-     "visual": "ActTitle",
-     "props": {
-      "act": "Part four",
-      "title": "Your side",
-      "tone": "teal"
-     },
+     "visual": "ELogin",
+     "props": {},
      "from": 0,
-     "duration": 147,
+     "duration": 337,
      "steps": [
-      0
-     ],
-     "sfx": [
-      {
-       "kind": "whoosh",
-       "at": 0
-      }
-     ]
-    },
-    {
-     "visual": "FlowDiagram",
-     "props": {
-      "nodes": [
-       {
-        "label": "Browser",
-        "sub": "mango@123",
-        "tone": "amber"
-       },
-       {
-        "label": "Encrypted link",
-        "sub": "TLS"
-       },
-       {
-        "label": "Server",
-        "sub": "Argon2id + salt"
-       },
-       {
-        "label": "Compare",
-        "sub": "then discard",
-        "tone": "teal"
-       }
-      ]
-     },
-     "from": 147,
-     "duration": 190,
-     "steps": [
-      0
+      0,
+      147
      ],
      "sfx": []
     },
     {
-     "visual": "TextStack",
-     "props": {
-      "kicker": "a warning sign",
-      "lines": [
-       {
-        "text": "Emailed the password you forgot?",
-        "step": 0
-       },
-       {
-        "text": "Then they can recover it.",
-        "tone": "red",
-        "step": 0,
-        "size": 60
-       }
-      ]
-     },
+     "visual": "EEmail",
+     "props": {},
      "from": 337,
      "duration": 225,
      "steps": [
@@ -1181,20 +1065,15 @@
   {
    "id": "S16",
    "act": 4,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 14696,
    "duration": 1342,
    "shots": [
     {
-     "visual": "TextStack",
+     "visual": "EvidenceShot",
      "props": {
-      "kicker": "NIST SP 800-63B-4 · July 2025",
-      "lines": [
-       {
-        "text": "The current rules",
-        "step": 0
-       }
-      ]
+      "page": "nist.png",
+      "source": "NIST SP 800-63B-4 · July 2025"
      },
      "from": 0,
      "duration": 91,
@@ -1204,11 +1083,19 @@
      "sfx": []
     },
     {
-     "visual": "QuoteCard",
+     "visual": "EvidenceShot",
      "props": {
-      "quote": "Passwords SHALL be salted and hashed using a suitable password hashing scheme.",
-      "highlight": "salted and hashed",
-      "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+      "page": "nist.png",
+      "quote": "nist-salted-hashed-quote.png",
+      "source": "NIST SP 800-63B-4 · July 2025",
+      "at": 105,
+      "quoteBand": [
+       2162,
+       570,
+       63,
+       513
+      ],
+      "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
      "from": 91,
      "duration": 326,
@@ -1218,11 +1105,19 @@
      "sfx": []
     },
     {
-     "visual": "QuoteCard",
+     "visual": "EvidenceShot",
      "props": {
-      "quote": "Verifiers and CSPs SHALL NOT require subscribers to change passwords periodically.",
-      "highlight": "SHALL NOT",
-      "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+      "page": "nist.png",
+      "quote": "nist-no-rotation-quote.png",
+      "source": "NIST SP 800-63B-4 · July 2025",
+      "at": 0,
+      "quoteBand": [
+       2082,
+       226,
+       4,
+       163
+      ],
+      "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
      "from": 417,
      "duration": 356,
@@ -1232,11 +1127,19 @@
      "sfx": []
     },
     {
-     "visual": "QuoteCard",
+     "visual": "EvidenceShot",
      "props": {
-      "quote": "a minimum of 15 characters in length",
-      "highlight": "15 characters",
-      "source": "NIST SP 800-63B-4 · §3.1.1.2 · single-factor passwords"
+      "page": "nist.png",
+      "quote": "nist-min-length-quote.png",
+      "source": "NIST SP 800-63B-4 · July 2025",
+      "at": 0,
+      "quoteBand": [
+       2082,
+       286,
+       62,
+       285
+      ],
+      "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
      "from": 773,
      "duration": 316,
@@ -1246,11 +1149,19 @@
      "sfx": []
     },
     {
-     "visual": "QuoteCard",
+     "visual": "EvidenceShot",
      "props": {
-      "quote": "SHALL compare the prospective secret against a blocklist that contains known commonly used, expected, or compromised passwords",
-      "highlight": "blocklist",
-      "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+      "page": "nist.png",
+      "quote": "nist-blocklist-quote.png",
+      "source": "NIST SP 800-63B-4 · July 2025",
+      "at": 0,
+      "quoteBand": [
+       2162,
+       284,
+       63,
+       228
+      ],
+      "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
      },
      "from": 1089,
      "duration": 253,
@@ -1264,23 +1175,28 @@
   {
    "id": "S17",
    "act": 4,
-   "transitionIn": "push",
+   "transitionIn": "cut",
    "from": 16038,
    "duration": 732,
    "shots": [
     {
-     "visual": "KAnonExchange",
-     "props": {
-      "password": "mango@123",
-      "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-      "service": "Have I Been Pwned"
-     },
+     "visual": "EHibpSource",
+     "props": {},
      "from": 0,
-     "duration": 732,
+     "duration": 158,
+     "steps": [
+      0
+     ],
+     "sfx": []
+    },
+    {
+     "visual": "ECheck",
+     "props": {},
+     "from": 158,
+     "duration": 574,
      "steps": [
       0,
-      158,
-      454
+      296
      ],
      "sfx": []
     }
@@ -1289,128 +1205,41 @@
   {
    "id": "S18",
    "act": 4,
-   "transitionIn": "fade",
+   "transitionIn": "cut",
    "from": 16770,
    "duration": 2072,
    "shots": [
     {
-     "visual": "ChainLine",
-     "props": {
-      "card": "mango@123",
-      "stations": [
-       {
-        "label": "plain text",
-        "verdict": "everything leaks",
-        "step": 0
-       },
-       {
-        "label": "encrypted",
-        "verdict": "the key reads all",
-        "step": 0
-       },
-       {
-        "label": "plain hash",
-        "verdict": "lookup table",
-        "step": 1
-       },
-       {
-        "label": "salt + fast hash",
-        "verdict": "graphics card",
-        "step": 1
-       },
-       {
-        "label": "salt + slow hash",
-        "verdict": "every guess is slow",
-        "holds": true,
-        "step": 1
-       }
-      ]
-     },
+     "visual": "ERecap",
+     "props": {},
      "from": 0,
-     "duration": 535,
+     "duration": 970,
      "steps": [
       0,
-      226
+      226,
+      535
      ],
      "sfx": []
     },
     {
-     "visual": "TextStack",
-     "props": {
-      "lines": [
-       {
-        "text": "123456",
-        "mono": true,
-        "tone": "amber",
-        "size": 180,
-        "step": 0
-       },
-       {
-        "text": "among the first guesses on any list",
-        "serif": false,
-        "size": 48,
-        "step": 0,
-        "tone": "slate"
-       }
-      ]
-     },
-     "from": 535,
-     "duration": 435,
-     "steps": [
-      0
-     ],
-     "sfx": []
-    },
-    {
-     "visual": "Checklist",
-     "props": {
-      "title": "Two jobs",
-      "items": [
-       {
-        "text": "The site: a slow, salted hash",
-        "step": 0
-       },
-       {
-        "text": "You: a long password, used nowhere else",
-        "step": 0
-       },
-       {
-        "text": "Use a password manager",
-        "step": 1
-       }
-      ]
-     },
+     "visual": "EManager",
+     "props": {},
      "from": 970,
-     "duration": 802,
+     "duration": 534,
      "steps": [
       0,
-      352,
-      534
+      352
      ],
      "sfx": []
     },
     {
-     "visual": "TextStack",
-     "props": {
-      "kicker": "if a breach notice says",
-      "lines": [
-       {
-        "text": "salted · hashed · slow",
-        "tone": "teal",
-        "step": 0
-       },
-       {
-        "text": "it bought you time",
-        "tone": "cream",
-        "size": 60,
-        "step": 0
-       }
-      ]
-     },
-     "from": 1772,
-     "duration": 300,
+     "visual": "EDrawerClose",
+     "props": {},
+     "from": 1504,
+     "duration": 568,
      "steps": [
-      0
+      0,
+      268
      ],
      "sfx": []
     }

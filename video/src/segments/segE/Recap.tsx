@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame} from 'remotion';
 import {RoundedBox} from '@react-three/drei';
+import {Oak, Painted} from '../../three/finish';
 import {CatalogDrawer, LookupCabinet} from '../../three/sets/CatalogSet';
 import {EncryptionBox, Key} from '../../three/sets/LockboxSet';
 import {Machine} from '../../three/sets/MachineSet';
@@ -47,7 +48,7 @@ export const ERecap: React.FC<Props> = ({steps, duration}) => {
       </group>
       {phase === 3 ? (
         <group position={[12.4, 1.0, 1.2]}>
-          <RoundedBox args={[2.8, 1.8, 0.3]} radius={0.07} position={[0, 0.2, 0]} castShadow><meshStandardMaterial color="#222A30" metalness={0.65} roughness={0.35} /></RoundedBox>
+          <RoundedBox args={[2.8, 1.8, 0.3]} radius={0.07} position={[0, 0.2, 0]} castShadow><Painted color="#3A444C" /></RoundedBox>
           {[-0.72, 0.72].map((cx) => (
             <group key={cx} position={[cx, 0.35, 0.18]} rotation={[0, 0, f * 0.2]}>
               <mesh><torusGeometry args={[0.43, 0.05, 12, 32]} /><meshStandardMaterial color="#8A959E" metalness={0.8} /></mesh>
@@ -91,14 +92,11 @@ export const EDrawerClose: React.FC<Props> = ({steps, duration}) => {
           <group position={[0, mix(3.5, 1.3, close), 1.1]} rotation={[-0.12, 0, 0]}>
             <PaperCard big="Argon2id" label="SALTED · HASHED · SLOW" w={2.6} h={1.9} />
           </group>
-          <RoundedBox args={[2.5, 2.4, 0.15]} radius={0.04} position={[0, 1.2, 2.05]} castShadow>
-            <meshStandardMaterial color="#7A4E2E" roughness={0.55} />
-          </RoundedBox>
-          <group position={[0, 1.25, 2.14]}><Plate text="USERS" w={0.95} h={0.35} /></group>
+          <group position={[0, 0.62, 1.78]}><Plate text="USERS" w={0.95} h={0.35} /></group>
         </group>
-        {[-1, 1].map((side) => <mesh key={side} position={[side * 1.4, 1.4, -1.7]} castShadow><boxGeometry args={[0.3, 2.8, 4]} /><meshStandardMaterial color="#50351F" /></mesh>)}
-        <mesh position={[0, 2.75, -1.7]} castShadow><boxGeometry args={[3.1, 0.25, 4]} /><meshStandardMaterial color="#50351F" /></mesh>
-        <mesh position={[0, 1.4, -3.7]}><boxGeometry args={[3.1, 2.8, 0.2]} /><meshStandardMaterial color="#50351F" /></mesh>
+        {[-1, 1].map((side) => <mesh key={side} position={[side * 1.4, 1.4, -1.7]} castShadow><boxGeometry args={[0.3, 2.8, 4]} /><Oak repeat={[2, 1]} tint="#7E5636" /></mesh>)}
+        <mesh position={[0, 2.75, -1.7]} castShadow><boxGeometry args={[3.1, 0.25, 4]} /><Oak repeat={[2, 1]} tint="#7E5636" /></mesh>
+        <mesh position={[0, 1.4, -3.7]}><boxGeometry args={[3.1, 2.8, 0.2]} /><Oak repeat={[2, 1]} tint="#7E5636" /></mesh>
       </Studio>
       <AbsoluteFill style={{background: '#080C0C', opacity: 0.82 * ease(f, duration - 75, duration - 1)}} />
     </AbsoluteFill>

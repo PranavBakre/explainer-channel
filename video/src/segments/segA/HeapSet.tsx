@@ -1,3 +1,4 @@
+import {Painted} from '../../three/finish';
 import React, {useLayoutEffect, useMemo, useRef} from 'react';
 import * as THREE from 'three';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
@@ -93,7 +94,7 @@ export const HeapSet: React.FC<{big: string; count: number; perCard: number; dur
       <Studio color="#2E3A3E" angle={ANGLES.wide} duration={duration}>
         <mesh position={[0.1, -0.07, -0.2]} receiveShadow castShadow>
           <boxGeometry args={[7.0, 0.18, 4.4]} />
-          <meshStandardMaterial color="#3A4448" roughness={0.72} metalness={0.08} />
+          <Painted color="#4A565B" repeat={[2, 1]} />
         </mesh>
         <Pile tex={tex} total={total} duration={duration} />
         <group position={[1.45, 0.19, -0.25]} rotation={[0, 0.3, 0]}>
@@ -107,8 +108,8 @@ export const HeapSet: React.FC<{big: string; count: number; perCard: number; dur
         </group>
         <Glow position={[1.45, 0.35, -0.25]} size={1.5} opacity={0.22 * inK} color="255,238,200" />
       </Studio>
-      <Tag x={680} y={130} text={`${count.toLocaleString('en-US')} accounts`} size={44} opacity={inK} />
-      <Tag x={1595} y={540} text="1 account" size={44} opacity={interpolate(inK, [0.4, 1], [0, 1], clamp)} />
+      <Tag x={667} y={130} text={`${count.toLocaleString('en-US')} accounts`} size={44} opacity={inK} />
+      <Tag x={1582} y={540} text="1 account" size={44} opacity={interpolate(inK, [0.4, 1], [0, 1], clamp)} />
     </AbsoluteFill>
   );
 };

@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
 import {RoundedBox} from '@react-three/drei';
+import {Oak} from '../finish';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {hexBits} from '../../components/fingerprint';
 import {Angle, clamp, ease, Glow, mix, PaperCard, PunchedCard, Studio, Tag} from '../kit';
@@ -33,7 +34,7 @@ export const LightTableSet: React.FC<{
     <AbsoluteFill>
       <Studio color="#2B4F5C" angle={ANGLES[angle] ?? ANGLES.wide} duration={duration}>
         <RoundedBox args={[6.4, 0.5, 3.6]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow>
-          <meshStandardMaterial color="#5A4636" metalness={0.3} roughness={0.6} />
+          <Oak repeat={[3, 1]} tint="#8A6446" />
         </RoundedBox>
         <mesh position={[0, 0.51, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[5.9, 3.1]} />
@@ -69,7 +70,7 @@ export const LightTableSet: React.FC<{
 export const ComparisonTable: React.FC<{hex: string; slide: number}> = ({hex, slide}) => (
   <group>
     <RoundedBox args={[6.4, 0.5, 3.6]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow>
-      <meshStandardMaterial color="#5A4636" metalness={0.3} roughness={0.6} />
+      <Oak repeat={[3, 1]} tint="#8A6446" />
     </RoundedBox>
     <mesh position={[0, 0.51, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[5.9, 3.1]} />

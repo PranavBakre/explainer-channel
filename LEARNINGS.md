@@ -138,3 +138,23 @@ Running log. Newest at the bottom of each section.
 - **`remotion still` is the cheap loop, renders are the expensive one.** Five worktrees share one render lock; a gallery
   render of 2,600 frames sat queued for 25 minutes behind another segment. Iterating on `node stills.mjs gallery`
   (bundle once, N frames) found every layout problem before paying for a render.
+
+## 3D lookdev: scans over procedural finish (2026-11-10)
+- **Operator: the 3D read as "1995 Toy Story" — no texture, surface or finish.** Procedural canvas maps (brushed grain,
+  speckle, clearcoat) and better softboxes moved it only slightly. Photoscanned Poly Haven models (CC0) fixed it at once:
+  the card-catalogue drawer and the worn red tool chest read as real objects. Default to scans for every physical prop.
+- **Pick scans with separable parts and no printed text.** The tool chest's lid is its own node, so it hinges open; the
+  catalogue chest's drawers are nodes, so one drawer becomes the users table. A scanned instrument with Cyrillic labels
+  and handwriting was rejected: stock text on a prop breaks "everything printed is real data".
+- **Where no scan fits, put scanned surface maps under our colour.** The hash machine keeps its copper and geometry with
+  Poly Haven green_metal_rust's normal and roughness and a desaturated, brightened diffuse (mean ~210/255; darker greys
+  multiply the paint colour toward black in linear space).
+- **`Scanned` hinges a part about a pivot in model metres.** Solve the pivot from the open and closed poses, and attach
+  anything mounted on the part (the ciphertext plate) in the same pivot frame, or it floats. Check text on a hinged part
+  for mirroring after the rotation.
+- **An HDRI studio fought the art direction** (black copper, washed floor); softbox Lightformers stayed.
+- **Arrows end at a container's edge, outside it, drawn above the art.** S03.5's heads ended inside fields that were
+  layered above the connector and vanished; the flying pill carries the value into the field instead.
+- **Operator liked the real GPU footage (S02.4).** Prefer licensed footage when real hardware is the subject.
+- **A direct `npx remotion render ... --gl=angle --codec=h264 --crf=20` rendered the full episode** after `tools/render.sh`
+  failed silently six minutes in.

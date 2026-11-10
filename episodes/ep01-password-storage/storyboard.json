@@ -16,7 +16,7 @@
           "props": {
             "action": "row",
             "angle": "wide",
-            "rise": 0.85,
+            "rise": 1.1,
             "states": [
               {
                 "step": 0,
@@ -42,17 +42,17 @@
                 "field": "hidden",
                 "pos": [
                   0.35,
-                  2.85,
-                  4.15
+                  3.05,
+                  4.5
                 ],
                 "posTo": [
                   0.32,
-                  2.8,
-                  4.0
+                  3.0,
+                  4.35
                 ],
                 "target": [
                   0,
-                  2.45,
+                  2.65,
                   1.15
                 ]
               },
@@ -61,17 +61,17 @@
                 "field": "argon",
                 "pos": [
                   0.32,
-                  2.8,
-                  4.0
+                  3.0,
+                  4.35
                 ],
                 "posTo": [
                   0.31,
-                  2.78,
-                  3.92
+                  2.98,
+                  4.27
                 ],
                 "target": [
                   0,
-                  2.45,
+                  2.65,
                   1.15
                 ]
               },
@@ -80,12 +80,12 @@
                 "field": "plain",
                 "pos": [
                   0.31,
-                  2.78,
-                  3.92
+                  2.98,
+                  4.27
                 ],
                 "target": [
                   0,
-                  2.45,
+                  2.65,
                   1.15
                 ]
               }
@@ -1129,7 +1129,7 @@
             "page": "nist.png",
             "quote": "nist-no-rotation-quote.png",
             "source": "NIST SP 800-63B-4 · July 2025",
-            "at": 70,
+            "at": 0,
             "quoteBand": [
               2082,
               226,
@@ -1151,7 +1151,7 @@
             "page": "nist.png",
             "quote": "nist-min-length-quote.png",
             "source": "NIST SP 800-63B-4 · July 2025",
-            "at": 150,
+            "at": 0,
             "quoteBand": [
               2082,
               286,
@@ -1173,7 +1173,7 @@
             "page": "nist.png",
             "quote": "nist-blocklist-quote.png",
             "source": "NIST SP 800-63B-4 · July 2025",
-            "at": 55,
+            "at": 0,
             "quoteBand": [
               2162,
               284,

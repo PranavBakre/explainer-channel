@@ -1,5 +1,6 @@
 import React from 'react';
 import {RoundedBox} from '@react-three/drei';
+import {Oak} from '../../three/finish';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import {hexBits} from '../../components/fingerprint';
 import {ease, mix, PunchedCard, Studio, Tag} from '../../three/kit';
@@ -20,7 +21,7 @@ export const CompareC: React.FC<{mode: 'avalanche' | 'match' | 'salt'; steps: nu
   const top = avalanche ? ease(frame, steps[3] ?? 531, (steps[3] ?? 531) + 35) : ease(frame, duration * 0.6, duration * 0.85);
   return <AbsoluteFill>
     <Studio color="#2B4F5C" angle={{from: [0, mix(5.9, 8.2, top), mix(7.4, 2.5, top)], target: [0, 0.7, 0.25], fov: 43}} duration={duration}>
-      <RoundedBox args={[7.4, 0.5, 4.0]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow><meshStandardMaterial color="#5A4636" metalness={0.3} roughness={0.6} /></RoundedBox>
+      <RoundedBox args={[7.4, 0.5, 4.0]} radius={0.08} position={[0, 0.25, 0]} castShadow receiveShadow><Oak repeat={[3, 1]} tint="#8A6446" /></RoundedBox>
       <mesh position={[0, 0.51, 0]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[7.0, 3.6]} /><meshStandardMaterial color="#FFF6E2" emissive="#FFF1D0" emissiveIntensity={0.45} /></mesh>
       <group position={[mix(-1.65, 0, slide), 0.54, -0.05]} rotation={[-Math.PI / 2, 0, 0]}><PunchedCard titleScale={1.7} hex={a} w={2.75} title={avalanche ? 'hunter2' : mode === 'salt' ? '9f2c4a71 / mango@123' : 'STORED'} /></group>
       <group position={[mix(1.65, 0, slide), 0.57, -0.05]} rotation={[-Math.PI / 2, 0, 0]}><PunchedCard titleScale={1.7} hex={b} w={2.75} title={reveal > 0.5 ? mode === 'match' ? 'MATCH' : 'CHANGED BITS' : avalanche ? 'hunter3' : mode === 'salt' ? 'e05b13d8 / mango@123' : 'TYPED → HASHED'} mark={reveal > 0.5 && mode !== 'match' ? diff : undefined} tint={reveal > 0.5 && mode === 'match' ? '#DDF5E8' : undefined} /></group>

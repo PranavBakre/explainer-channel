@@ -1,8 +1,10 @@
 import React from 'react';
+import {fibre, Oak} from '../finish';
 import {RoundedBox} from '@react-three/drei';
+import {Scanned} from '../Scanned';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {fonts} from '../../theme';
-import {Angle, BRASS, clamp, ease, Glow, mix, mixV, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture, V3} from '../kit';
+import {Angle, clamp, ease, Glow, mix, mixV, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture, V3} from '../kit';
 
 export type Field = 'plain' | 'hidden' | 'hash' | 'salted' | 'cipher' | 'argon2id' | 'argon';
 
@@ -44,7 +46,8 @@ const IndexCard: React.FC<{email: string; value: string; color: string}> = ({ema
       c.fillText('PASSWORD', 60, 394);
       c.fillStyle = '#1A1E24';
       c.font = `500 64px ${fonts.sans}`;
-      c.fillText(email, 60, 290);
+      c.textBaseline = 'middle';
+      c.fillText(email, 60, 275);
       c.fillStyle = color;
       let size = 84;
       c.font = `700 ${size}px ${fonts.mono}`;
@@ -52,7 +55,7 @@ const IndexCard: React.FC<{email: string; value: string; color: string}> = ({ema
         size -= 4;
         c.font = `700 ${size}px ${fonts.mono}`;
       }
-      c.fillText(value, 60, 478);
+      c.fillText(value, 60, 455);
     },
     [email, value, color],
   );
@@ -60,9 +63,9 @@ const IndexCard: React.FC<{email: string; value: string; color: string}> = ({ema
     <mesh castShadow>
       <boxGeometry args={[1.6, 1.0, 0.015]} />
       {[0, 1, 2, 3, 5].map((i) => (
-        <meshStandardMaterial key={i} attach={`material-${i}`} color="#E6DCC8" />
+        <meshStandardMaterial key={i} attach={`material-${i}`} color="#E6DCC8" roughness={0.9} bumpMap={fibre()} bumpScale={0.6} />
       ))}
-      <meshStandardMaterial attach="material-4" map={tex} roughness={0.85} />
+      <meshStandardMaterial attach="material-4" map={tex} roughness={0.85} bumpMap={fibre()} bumpScale={0.6} />
     </mesh>
   );
 };
@@ -88,13 +91,7 @@ export const CIPHER: Record<string, string> = {
 
 const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, number]; ghost?: boolean; ghostOpacity?: number}> = ({field, lift, position = [0, 0, 0], ghost, ghostOpacity = 0.85}) => (
   <group position={position}>
-    <RoundedBox args={[2.0, 0.9, 3.4]} radius={0.05} position={[0, 0.95, 0]} castShadow receiveShadow>
-      <meshStandardMaterial color="#7A4E2E" roughness={0.55} metalness={0.05} transparent={ghost && ghostOpacity < 1} opacity={ghost ? ghostOpacity : 1} />
-    </RoundedBox>
-    <mesh position={[0, 1.05, 1.71]}>
-      <boxGeometry args={[0.5, 0.18, 0.04]} />
-      <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />
-    </mesh>
+    <Scanned name="vintage_wooden_drawer_01" node="vintage_wooden_drawer_01_drawer02" fit={[2.0, 1.4, 3.4]} opacity={ghost ? ghostOpacity : 1} />
     {USERS.map(([email, pw], i) => {
       const f = FIELD_TEXT[field](pw);
       const isYou = email === 'you@mail.com';
@@ -113,7 +110,7 @@ const LibraryWall: React.FC<{hit: number; columns?: number; rows?: number; hitIn
   return (
     <group>
       <RoundedBox args={[cols * 1.25 + 0.4, rows * 0.95 + 0.4, 1.6]} radius={0.05} position={[0, rows * 0.475 + 0.3, -0.85]} castShadow receiveShadow>
-        <meshStandardMaterial color="#5E3B22" roughness={0.6} />
+        <Oak repeat={[4, 2]} tint="#7E5636" />
       </RoundedBox>
       {Array.from({length: cols * rows}, (_, i) => {
         const cx = (i % cols) * 1.25 - ((cols - 1) * 1.25) / 2;
@@ -122,21 +119,15 @@ const LibraryWall: React.FC<{hit: number; columns?: number; rows?: number; hitIn
         const out = isHit ? hit : 0;
         return (
           <group key={i} position={[cx, cy, 0.02 + out * 0.9]}>
-            <RoundedBox args={[1.12, 0.82, 0.12]} radius={0.03}>
-              <meshStandardMaterial color={isHit && hit > 0.5 ? '#9C3B2E' : '#7A4E2E'} roughness={0.55} />
-            </RoundedBox>
-            <group position={[0, 0.12, 0.07]}>
-              <Plate text={isHit ? 'f14d5ba7' : labels[i % labels.length]} w={0.8} h={0.2} bg="#EFE7D6" color="#1A1E24" />
+            <Scanned name="vintage_wooden_drawer_01" node="vintage_wooden_drawer_01_drawer02" fit={[1.12, 0.82, 1.9]} position={[0, -0.41, -0.88]} />
+            <group position={[0, 0.24, 0.09]}>
+              <Plate text={isHit ? 'f14d5ba7' : labels[i % labels.length]} w={0.8} h={0.2} bg={isHit && hit > 0.5 ? '#F3D3C8' : '#EFE7D6'} color={isHit && hit > 0.5 ? '#9C3B2E' : '#1A1E24'} />
             </group>
             {isHit && hit > 0.01 ? (
               <group position={[0, 0.35 + hit * 0.75, 0.3]} rotation={[-0.15, 0, 0]}>
                 <PaperCard big="mango@123" label="password" w={1.3} h={0.8} />
               </group>
             ) : null}
-            <mesh position={[0, -0.18, 0.08]}>
-              <boxGeometry args={[0.3, 0.08, 0.04]} />
-              <meshStandardMaterial color={BRASS} metalness={0.85} roughness={0.25} />
-            </mesh>
             {isHit ? <Glow position={[0, 0, 0.4]} size={2.4 * hit} opacity={0.5 * hit} color="224,69,47" /> : null}
           </group>
         );

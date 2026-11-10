@@ -1,7 +1,8 @@
 import React from 'react';
+import {Brushed, Glass, Painted} from '../finish';
 import {RoundedBox} from '@react-three/drei';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
-import {Angle, clamp, COPPER, ease, Glow, mix, PaperCard, Plate, PunchedCard, Studio, Tag, V3} from '../kit';
+import {Angle, clamp, ease, Glow, mix, PaperCard, Plate, PunchedCard, Studio, Tag, V3} from '../kit';
 
 type Action = 'reveal' | 'feed' | 'punch' | 'done' | 'reverse' | 'loop' | 'slow';
 
@@ -30,29 +31,29 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
   return (
     <group position={[position[0] + shake, position[1], position[2]]}>
       <RoundedBox args={[3.2, 2.6, 2.2]} radius={0.22} smoothness={6} position={[0, 1.3, 0]} castShadow receiveShadow>
-        <meshStandardMaterial color={COPPER} metalness={0.45} roughness={0.5} />
+        <Painted color="#C8754A" repeat={[1.4, 1.1]} />
       </RoundedBox>
       {[-1, 1].map((sgn) => (
         <mesh key={sgn} position={[sgn * 1.78, 1.35, 0.2]} rotation={[0, sgn * 0.5, 0]} castShadow>
           <boxGeometry args={[0.06, 2.1, 1.2]} />
-          <meshStandardMaterial color="#5A4636" metalness={0.6} roughness={0.45} />
+          <Brushed color="#5C4A3C" roughness={0.42} />
         </mesh>
       ))}
       {/* input slot on the left face, output slot on the right */}
       <mesh position={[-1.61, 1.15, 0.3]}>
         <boxGeometry args={[0.04, 0.12, 1.3]} />
-        <meshStandardMaterial color="#0B0D10" />
+        <Glass color="#07090C" />
       </mesh>
       <mesh position={[1.61, 1.0, 0.3]}>
         <boxGeometry args={[0.04, 0.12, 1.3]} />
-        <meshStandardMaterial color="#0B0D10" />
+        <Glass color="#07090C" />
       </mesh>
       <group position={[0, 0, 1.11]}>
         <group position={[0, 2.3, 0.01]}>
           <Plate text={label} w={largeLabel ? 2.8 : largeLabels ? 3 : 1.7} h={largeLabel ? 0.65 : largeLabels ? 0.46 : 0.26} />
         </group>
         <RoundedBox args={[2.4, 0.75, 0.08]} radius={0.06} position={[0, 1.55, 0]}>
-          <meshStandardMaterial color="#12161C" metalness={0.2} roughness={0.15} />
+          <Glass color="#10141A" />
         </RoundedBox>
         <group position={[0, 1.55, 0.05]}>
           <Plate text={status} w={2.2} h={largeLabel ? 0.65 : 0.5} glow={busy * 1.2} />
@@ -63,7 +64,7 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
         </mesh>
         <mesh position={[0, 0.35, 0.05]} rotation={[Math.PI / 2, frame * 0.05 * busy, 0]}>
           <cylinderGeometry args={[0.18, 0.2, 0.12, 24]} />
-          <meshStandardMaterial color="#2A3038" metalness={0.7} roughness={0.3} />
+          <Brushed color="#3A4048" roughness={0.3} />
         </mesh>
       </group>
       {heavy > 0 ? (
@@ -75,20 +76,20 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
               <group key={k} position={[k ? -0.78 : 0, k ? 0.18 : 0, 0.05 * k]} rotation={[0, 0, rot]}>
                 <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
                   <cylinderGeometry args={[r, r, 0.12, 32]} />
-                  <meshStandardMaterial color="#8C6B3E" metalness={0.8} roughness={0.3} />
+                  <Brushed color="#A27C45" roughness={0.3} />
                 </mesh>
                 {Array.from({length: k ? 9 : 14}, (_, i) => {
                   const a2 = (i / (k ? 9 : 14)) * Math.PI * 2;
                   return (
                     <mesh key={i} position={[Math.cos(a2) * (r + 0.06), Math.sin(a2) * (r + 0.06), 0]} rotation={[0, 0, a2]}>
                       <boxGeometry args={[0.14, 0.1, 0.12]} />
-                      <meshStandardMaterial color="#8C6B3E" metalness={0.8} roughness={0.3} />
+                      <Brushed color="#A27C45" roughness={0.3} />
                     </mesh>
                   );
                 })}
                 <mesh position={[0, 0, 0.08]} rotation={[Math.PI / 2, 0, 0]}>
                   <cylinderGeometry args={[0.08, 0.08, 0.06, 16]} />
-                  <meshStandardMaterial color="#2A3038" metalness={0.8} roughness={0.3} />
+                  <Brushed color="#3A4048" roughness={0.3} />
                 </mesh>
               </group>
             );
@@ -97,7 +98,7 @@ export const Machine: React.FC<{frame: number; busy: number; label?: string; sta
       ) : null}
       <mesh position={[0, 2.75, 0]}>
         <cylinderGeometry args={[0.16, 0.2, 0.22, 24]} />
-        <meshStandardMaterial color="#8A6A3A" metalness={0.8} roughness={0.3} />
+        <Brushed color="#A27C45" roughness={0.28} />
       </mesh>
       <mesh position={[0, 3.05, 0]}>
         <sphereGeometry args={[0.24, 32, 32]} />

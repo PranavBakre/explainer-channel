@@ -78,19 +78,38 @@ export const Studio: React.FC<{
         <spotLight position={[-5, 9, 7]} angle={0.5} penumbra={0.8} intensity={280} color={keyColor} castShadow={shadows} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0004} />
         <spotLight position={[6, 5, -5]} angle={0.6} penumbra={1} intensity={110} color="#9FD0E6" />
         <spotLight position={[0, 10, -3]} angle={0.9} penumbra={1} intensity={80} color="#CFE7F0" />
-        <Environment resolution={256}>
-          <Lightformer form="rect" intensity={3} position={[0, 5, 4]} scale={[8, 2, 1]} color="#FFE9CF" />
-          <Lightformer form="rect" intensity={1.5} position={[-6, 2, 0]} rotation-y={Math.PI / 2} scale={[6, 3, 1]} color="#9FC7EA" />
+        <Environment resolution={512}>
+          <Lightformer form="rect" intensity={2.5} position={[0, 6, 3]} rotation-x={Math.PI / 2} scale={[10, 6, 1]} color="#FFF1DE" />
+          <Lightformer form="rect" intensity={3} position={[0, 2.5, 9]} rotation-y={Math.PI} scale={[12, 3.5, 1]} color="#FFE9CF" />
+          <Lightformer form="rect" intensity={1.2} position={[-7, 2, 0]} rotation-y={Math.PI / 2} scale={[7, 4, 1]} color="#9FC7EA" />
+          <Lightformer form="rect" intensity={1.2} position={[7, 2, 0]} rotation-y={-Math.PI / 2} scale={[7, 4, 1]} color="#FFD9B0" />
           <Lightformer form="ring" intensity={2} position={[5, 3, -3]} scale={2} color="#FFB224" />
         </Environment>
         {children}
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[80, 80]} />
-          <MeshReflectorMaterial resolution={1024} mixBlur={1.2} mixStrength={14} blur={[400, 120]} roughness={0.85} depthScale={1} color={floor ?? back} metalness={0.3} mirror={0.35} />
+          <MeshReflectorMaterial resolution={1024} mixBlur={1.2} mixStrength={10} blur={[400, 120]} roughness={0.85} depthScale={1} color={floor ?? back} metalness={0.25} mirror={0.3} />
         </mesh>
         <ContactShadows position={[0, 0.005, 0]} opacity={0.55} scale={20} blur={2.4} far={5} frames={1} />
       </ThreeCanvas>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.42) 100%)'}} />
+      <Grain />
+    </AbsoluteFill>
+  );
+};
+
+// Film grain, reseeded every frame.
+const Grain: React.FC = () => {
+  const frame = useCurrentFrame();
+  return (
+    <AbsoluteFill style={{opacity: 0.07, mixBlendMode: 'overlay', pointerEvents: 'none'}}>
+      <svg width="100%" height="100%">
+        <filter id={`grain-${frame}`}>
+          <feTurbulence type="fractalNoise" baseFrequency={0.85} numOctaves={2} seed={frame % 97} stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter={`url(#grain-${frame})`} />
+      </svg>
     </AbsoluteFill>
   );
 };
@@ -135,7 +154,8 @@ export const PaperCard: React.FC<{
   bigColor?: string;
   sub?: string;
   paper?: string;
-}> = ({w = 1.6, h = 1.0, label, big, bigColor = '#B87400', sub, paper = PAPER}) => {
+  bigSize?: number;
+}> = ({w = 1.6, h = 1.0, label, big, bigColor = '#B87400', sub, paper = PAPER, bigSize = 0.24}) => {
   const tex = useCanvasTexture(
     1024,
     Math.round((1024 * h) / w),
@@ -151,7 +171,7 @@ export const PaperCard: React.FC<{
         c.fillText(label.toUpperCase(), 70, H * 0.2);
       }
       c.fillStyle = bigColor;
-      let size = Math.round(H * 0.24);
+      let size = Math.round(H * bigSize);
       c.font = `700 ${size}px ${fonts.mono}`;
       while (c.measureText(big).width > W - 140 && size > 20) {
         size -= 4;
