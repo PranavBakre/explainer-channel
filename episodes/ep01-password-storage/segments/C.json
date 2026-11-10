@@ -2,8 +2,8 @@
   {
     "id": "S06",
     "act": 2,
-    "title": "2 \u00b7 Fingerprint it",
-    "transitionIn": "wipe",
+    "title": "2 · Fingerprint it",
+    "transitionIn": "fade",
     "shots": [
       {
         "visual": "HashMachineC",
@@ -91,7 +91,7 @@
     "id": "S08",
     "act": 2,
     "title": "Login, with hashes",
-    "transitionIn": "push",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "UsersDrawerC",
@@ -148,7 +148,7 @@
     "id": "S09",
     "act": 2,
     "title": "LinkedIn, 2012",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "EvidenceC",
@@ -228,7 +228,7 @@
     "id": "S10",
     "act": 2,
     "title": "Salt",
-    "transitionIn": "zoom",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "HashMachineC",

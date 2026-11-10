@@ -3,7 +3,7 @@
     "id": "S04",
     "act": 1,
     "title": "Encrypt it",
-    "transitionIn": "push",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "LockboxSet",
@@ -55,7 +55,7 @@
     "id": "S05",
     "act": 1,
     "title": "Adobe, 2013",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "EvidenceShot",
@@ -204,7 +204,7 @@
     "id": "S16",
     "act": 4,
     "title": "The rules changed",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "EvidenceShot",

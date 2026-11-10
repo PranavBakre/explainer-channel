@@ -2,8 +2,8 @@
   {
     "id": "S15",
     "act": 4,
-    "title": "4 \u00b7 Your side",
-    "transitionIn": "wipe",
+    "title": "4 · Your side",
+    "transitionIn": "fade",
     "shots": [
       {
         "visual": "ELogin",
@@ -35,7 +35,7 @@
     "id": "S17",
     "act": 4,
     "title": "Checking without telling",
-    "transitionIn": "push",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "EHibpSource",
@@ -67,7 +67,7 @@
     "id": "S18",
     "act": 4,
     "title": "Putting it together",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "ERecap",

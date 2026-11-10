@@ -5,4 +5,4 @@ LOCK=/tmp/explainer-render.lock
 until mkdir $LOCK 2>/dev/null; do sleep 3; done
 trap 'rmdir $LOCK' EXIT
 cd ${0:A:h}/../video
-npx remotion render src/index.ts $1 ${2:A} --concurrency=4 --log=error ${@:3}
+npx remotion render src/index.ts $1 ${2:A} --concurrency=4 --gl=angle --log=error ${@:3}

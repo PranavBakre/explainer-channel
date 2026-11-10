@@ -12,89 +12,82 @@
       "transitionIn": "fade",
       "shots": [
         {
-          "visual": "DbTable",
+          "visual": "CatalogSet",
           "props": {
-            "title": "users — on a server somewhere",
-            "columns": [
-              "email",
-              "password"
-            ],
-            "rows": [
-              [
-                "asha@mail.com",
-                "?"
-              ],
-              [
-                "ravi@mail.com",
-                "?"
-              ],
-              [
-                "you@mail.com",
-                "?"
-              ],
-              [
-                "meera@mail.com",
-                "?"
-              ]
-            ],
-            "variants": [
+            "action": "row",
+            "angle": "wide",
+            "rise": 0.85,
+            "states": [
               {
-                "fromStep": 2,
-                "rows": [
-                  [
-                    "asha@mail.com",
-                    "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-                  ],
-                  [
-                    "ravi@mail.com",
-                    "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-                  ],
-                  [
-                    "you@mail.com",
-                    "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-                  ],
-                  [
-                    "meera@mail.com",
-                    "$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…"
-                  ]
+                "step": 0,
+                "field": "hidden",
+                "pos": [
+                  -3.2,
+                  3.4,
+                  5.3
                 ],
-                "tone": "teal",
-                "highlight": [
+                "posTo": [
+                  -2.75,
+                  3.1,
+                  4.75
+                ],
+                "target": [
                   0,
-                  1,
-                  2,
-                  3
-                ],
-                "caption": "Well-run site: nobody can read this column back"
+                  1.45,
+                  0.4
+                ]
               },
               {
-                "fromStep": 3,
-                "rows": [
-                  [
-                    "asha@mail.com",
-                    "sunshine1"
-                  ],
-                  [
-                    "ravi@mail.com",
-                    "123456"
-                  ],
-                  [
-                    "you@mail.com",
-                    "mango@123"
-                  ],
-                  [
-                    "meera@mail.com",
-                    "qwerty"
-                  ]
+                "step": 1,
+                "field": "hidden",
+                "pos": [
+                  0.35,
+                  2.85,
+                  4.15
                 ],
-                "tone": "red",
-                "highlight": [
+                "posTo": [
+                  0.32,
+                  2.8,
+                  4.0
+                ],
+                "target": [
                   0,
-                  1,
-                  2,
-                  3
+                  2.45,
+                  1.15
+                ]
+              },
+              {
+                "step": 2,
+                "field": "argon",
+                "pos": [
+                  0.32,
+                  2.8,
+                  4.0
                 ],
-                "caption": "Badly run site: anyone with the file can"
+                "posTo": [
+                  0.31,
+                  2.78,
+                  3.92
+                ],
+                "target": [
+                  0,
+                  2.45,
+                  1.15
+                ]
+              },
+              {
+                "step": 3,
+                "field": "plain",
+                "pos": [
+                  0.31,
+                  2.78,
+                  3.92
+                ],
+                "target": [
+                  0,
+                  2.45,
+                  1.15
+                ]
               }
             ]
           },
@@ -134,12 +127,16 @@
       "transitionIn": "cut",
       "shots": [
         {
-          "visual": "BigNumber",
+          "visual": "DocShot",
           "props": {
-            "value": 32603388,
-            "label": "RockYou passwords leaked · Dec 2009 · reported count",
-            "note": "stored as plain, readable text",
-            "tone": "red"
+            "page": "rockyou.png",
+            "quote": "rockyou-quote.png",
+            "quoteStep": 1,
+            "source": "TechCrunch, 14 Dec 2009",
+            "focus": [
+              0.5,
+              0.3
+            ]
           },
           "beats": [
             {
@@ -156,25 +153,11 @@
           ]
         },
         {
-          "visual": "TextStack",
+          "visual": "HeapSet",
           "props": {
-            "kicker": "most common password",
-            "lines": [
-              {
-                "text": "123456",
-                "mono": true,
-                "tone": "amber",
-                "size": 180,
-                "step": 0
-              },
-              {
-                "text": "290,731 accounts",
-                "tone": "cream",
-                "size": 56,
-                "step": 0,
-                "serif": false
-              }
-            ]
+            "big": "123456",
+            "count": 290731,
+            "perCard": 1000
           },
           "beats": [
             {
@@ -184,27 +167,31 @@
           ]
         },
         {
-          "visual": "TextStack",
+          "visual": "FootageShot",
           "props": {
-            "lines": [
+            "file": "gpu-rtx-rgb-fans.mp4",
+            "rate": 0.68,
+            "tags": [
               {
-                "text": "Other sites did protect their passwords.",
-                "step": 0
+                "x": 960,
+                "y": 128,
+                "text": "one modern graphics card",
+                "at": 0.08
               },
               {
-                "text": "One graphics card: every 8-char a–z 0–9 password, under a minute",
-                "tone": "red",
-                "step": 0,
-                "size": 56
+                "x": 960,
+                "y": 200,
+                "text": "every 8-character a–z 0–9 password",
+                "at": 0.3
               },
               {
-                "text": "for some of those formats · benchmark estimate",
-                "serif": false,
-                "size": 36,
-                "tone": "slate",
-                "step": 0
+                "x": 960,
+                "y": 272,
+                "text": "2,821,109,907,456 guesses",
+                "at": 0.56
               }
-            ]
+            ],
+            "scrim": true
           },
           "beats": [
             {
@@ -219,14 +206,14 @@
       "id": "S03",
       "act": 1,
       "title": "1 · Keep it",
-      "transitionIn": "wipe",
+      "transitionIn": "fade",
       "shots": [
         {
-          "visual": "ActTitle",
+          "visual": "LottieShot",
           "props": {
-            "act": "Part one",
-            "title": "Keep it",
-            "tone": "red"
+            "file": "s03-signup",
+            "scale": 1,
+            "bg": "#F1EFE9"
           },
           "sfx": [
             "whoosh"
@@ -235,68 +222,7 @@
             {
               "id": "S03_01",
               "vo": "Let's say you sign up for a new grocery app. Your password is mango at the rate one two three."
-            }
-          ]
-        },
-        {
-          "visual": "DbTable",
-          "props": {
-            "title": "grocery_app.users",
-            "columns": [
-              "email",
-              "password"
-            ],
-            "rows": [
-              [
-                "asha@mail.com",
-                "sunshine1"
-              ],
-              [
-                "ravi@mail.com",
-                "123456"
-              ],
-              [
-                "you@mail.com",
-                "mango@123"
-              ],
-              [
-                "meera@mail.com",
-                "qwerty"
-              ]
-            ],
-            "variants": [
-              {
-                "fromStep": 2,
-                "rows": [
-                  [
-                    "asha@mail.com",
-                    "sunshine1"
-                  ],
-                  [
-                    "ravi@mail.com",
-                    "123456"
-                  ],
-                  [
-                    "you@mail.com",
-                    "mango@123"
-                  ],
-                  [
-                    "meera@mail.com",
-                    "qwerty"
-                  ]
-                ],
-                "tone": "red",
-                "highlight": [
-                  0,
-                  1,
-                  2,
-                  3
-                ],
-                "caption": "Copy the table, get every password"
-              }
-            ]
-          },
-          "beats": [
+            },
             {
               "id": "S03_02",
               "vo": "The simplest thing the app can do is save it as it is. One column for your email, one for your password."
@@ -304,11 +230,68 @@
             {
               "id": "S03_03",
               "vo": "It works. You log in. The app compares what you typed with what it saved, and lets you in."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "CatalogSet",
+          "props": {
+            "action": "copy",
+            "field": "plain",
+            "color": "#4E3A36",
+            "tags": [
+              {
+                "x": 1290,
+                "y": 110,
+                "text": "the copy holds every password",
+                "atStep": 0,
+                "color": "#FF5A4E"
+              }
+            ],
+            "states": [
+              {
+                "step": 0,
+                "field": "plain",
+                "pos": [
+                  -1.3,
+                  3.5,
+                  8.2
+                ],
+                "posTo": [
+                  -1.25,
+                  3.42,
+                  7.9
+                ],
+                "target": [
+                  1.75,
+                  1.15,
+                  0.1
+                ]
+              }
+            ],
+            "copyLift": 0.06,
+            "copyTo": [
+              3.6,
+              0.06,
+              0
+            ],
+            "copyOpacity": 1
+          },
+          "beats": [
             {
               "id": "S03_04",
               "vo": "It also means anyone who copies that table walks away with every password in it. That was Rock You."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LottieShot",
+          "props": {
+            "file": "s03-reuse",
+            "scale": 1,
+            "bg": "#F1EFE9"
+          },
+          "beats": [
             {
               "id": "S03_05",
               "vo": "And attackers try leaked passwords on other sites. If you reused yours, one leak can open those accounts too."
@@ -321,24 +304,46 @@
       "id": "S04",
       "act": 1,
       "title": "Encrypt it",
-      "transitionIn": "push",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "LockBox",
+          "visual": "LockboxSet",
           "props": {
+            "action": "lock",
+            "angle": "lid",
             "plain": "mango@123",
-            "cipher": "U2FsdGVkX19x4k",
-            "caption": "Whoever holds the key reads everything"
+            "cipher": "6FeRQifMiphtMzZfI0QUmw=="
           },
           "beats": [
             {
               "id": "S04_01",
               "vo": "The obvious fix is to lock the column. Encrypt each password with a secret key."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "CatalogSet",
+          "props": {
+            "action": "drawer",
+            "angle": "drawer",
+            "field": "cipher"
+          },
+          "beats": [
             {
               "id": "S04_02",
               "vo": "Now the table shows scrambled text instead of mango at the rate one two three."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LockboxSet",
+          "props": {
+            "action": "unlock",
+            "angle": "rise",
+            "plain": "mango@123",
+            "cipher": "6FeRQifMiphtMzZfI0QUmw=="
+          },
+          "beats": [
             {
               "id": "S04_03",
               "vo": "But encryption is built to be undone. Whoever holds the key can turn every row back into the original."
@@ -351,30 +356,35 @@
       "id": "S05",
       "act": 1,
       "title": "Adobe, 2013",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "EvidenceShot",
           "props": {
-            "kicker": "Adobe · 2013",
-            "lines": [
-              {
-                "text": "Encrypted, not hashed",
-                "step": 0
-              },
-              {
-                "text": "Triple DES",
-                "mono": true,
-                "tone": "amber",
-                "step": 1
-              }
+            "page": "adobe-krebs.png",
+            "source": "Krebs on Security · 29 Oct 2013",
+            "focus": [
+              0,
+              0.25
             ]
           },
           "beats": [
             {
               "id": "S05_01",
               "vo": "In twenty thirteen, Adobe was breached."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LockboxSet",
+          "props": {
+            "action": "locked",
+            "angle": "stamp",
+            "plain": "mango@123",
+            "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+            "stamp": "TRIPLE DES"
+          },
+          "beats": [
             {
               "id": "S05_02",
               "vo": "Its passwords were encrypted, not hashed, with a cipher called Triple D E S."
@@ -382,29 +392,36 @@
           ]
         },
         {
-          "visual": "KeyCascade",
+          "visual": "LockboxSet",
           "props": {
-            "hints": [
-              {
-                "at": 2,
-                "text": "my dog's name"
-              },
-              {
-                "at": 9,
-                "text": "123456 lol"
-              },
-              {
-                "at": 16,
-                "text": "usual"
-              }
-            ],
-            "caption": "One key for all of them · ~109M hints in plain text"
+            "action": "wall",
+            "angle": "wall",
+            "plain": "mango@123",
+            "cipher": "6FeRQifMiphtMzZfI0QUmw=="
           },
           "beats": [
             {
               "id": "S05_03",
               "vo": "Australia's privacy regulator later found that Adobe used a single encryption key for all of them."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "EvidenceShot",
+          "props": {
+            "page": "adobe-oaic.png",
+            "quote": "adobe-oaic-quote.png",
+            "source": "OAIC · Adobe investigation report · June 2015",
+            "note": "Counted by Troy Hunt: ≈109M records had a hint",
+            "at": 45,
+            "quoteBand": [
+              2672,
+              213,
+              57,
+              161
+            ]
+          },
+          "beats": [
             {
               "id": "S05_04",
               "vo": "About a hundred and nine million records also had a password hint, stored in plain text."
@@ -412,28 +429,25 @@
           ],
           "sfx": [
             "tick"
-          ],
-          "sfxBeat": [
-            1
           ]
         },
         {
-          "visual": "StatGrid",
+          "visual": "EvidenceShot",
           "props": {
-            "title": "Adobe breach",
-            "items": [
-              {
-                "value": "38M",
-                "label": "active users hit (Adobe)",
-                "tone": "red",
-                "step": 0
-              },
-              {
-                "value": "~153M",
-                "label": "records in the leaked file",
-                "tone": "red",
-                "step": 0
-              }
+            "page": "adobe-krebs.png",
+            "quote": "adobe-krebs-quote.png",
+            "source": "Krebs on Security · 29 Oct 2013",
+            "note": "Counted by Have I Been Pwned: ≈153M records in the leaked file",
+            "at": 45,
+            "focus": [
+              0,
+              0.3
+            ],
+            "quoteBand": [
+              1677,
+              347,
+              54,
+              287
             ]
           },
           "beats": [
@@ -444,33 +458,41 @@
           ]
         },
         {
-          "visual": "TextStack",
+          "visual": "LockboxSet",
           "props": {
-            "lines": [
-              {
-                "text": "A hint is a head start.",
-                "step": 0,
-                "tone": "red"
-              },
-              {
-                "text": "The site never needs to read it back.",
-                "step": 1,
-                "size": 56,
-                "tone": "amber"
-              },
-              {
-                "text": "It only needs to check it.",
-                "step": 1,
-                "size": 56,
-                "tone": "teal"
-              }
+            "action": "hints",
+            "angle": "hints",
+            "closed": true,
+            "plain": "mango@123",
+            "cipher": "6FeRQifMiphtMzZfI0QUmw==",
+            "hints": [
+              "my dog's name",
+              "my dog's name",
+              "my dog's name"
             ]
           },
           "beats": [
             {
               "id": "S05_06",
               "vo": "A hint like \"my dog's name\" gives a guesser a head start."
+            }
+          ]
+        },
+        {
+          "visual": "LightTableSet",
+          "props": {
+            "action": "match",
+            "angle": "wide",
+            "a": {
+              "label": "WHAT YOU TYPED",
+              "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
             },
+            "b": {
+              "label": "WHAT IS STORED",
+              "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1"
+            }
+          },
+          "beats": [
             {
               "id": "S05_07",
               "vo": "So encryption solved the wrong problem. The site never needed to read your password back. It only needs to check it."
@@ -483,18 +505,13 @@
       "id": "S06",
       "act": 2,
       "title": "2 · Fingerprint it",
-      "transitionIn": "wipe",
+      "transitionIn": "fade",
       "shots": [
         {
-          "visual": "ActTitle",
+          "visual": "HashMachineC",
           "props": {
-            "act": "Part two",
-            "title": "Fingerprint it",
-            "tone": "amber"
+            "action": "reveal"
           },
-          "sfx": [
-            "whoosh"
-          ],
           "beats": [
             {
               "id": "S06_01",
@@ -503,30 +520,39 @@
           ]
         },
         {
-          "visual": "HashGrinder",
+          "visual": "HashMachineC",
           "props": {
-            "input": "mango@123",
-            "algo": "SHA-256",
-            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-            "note": "64 characters, every time",
-            "caption": "No way back. Only guess, hash, compare."
+            "action": "fixed"
           },
           "beats": [
             {
               "id": "S06_02",
               "vo": "It turns any text into a fingerprint of fixed length."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "HashMachineC",
+          "props": {
+            "action": "punch"
+          },
+          "beats": [
             {
               "id": "S06_03",
               "vo": "Feed it mango at the rate one two three, and SHA two fifty-six gives back sixty-four characters, a jumble of digits and letters. It looks like noise."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "HashMachineC",
+          "props": {
+            "action": "reverse"
+          },
+          "beats": [
             {
               "id": "S06_04",
               "vo": "And there's no practical way to run it backwards. An attacker can still guess, hash the guess, and compare."
             }
-          ],
-          "sfx": [
-            "tick"
           ]
         }
       ]
@@ -538,14 +564,9 @@
       "transitionIn": "cut",
       "shots": [
         {
-          "visual": "Avalanche",
+          "visual": "CompareC",
           "props": {
-            "a": "hunter2",
-            "b": "hunter3",
-            "diffAt": 6,
-            "hexA": "f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7",
-            "hexB": "fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a",
-            "caption": "One character apart. Nothing alike."
+            "mode": "avalanche"
           },
           "beats": [
             {
@@ -572,29 +593,51 @@
       "id": "S08",
       "act": 2,
       "title": "Login, with hashes",
-      "transitionIn": "push",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "LoginMatch",
+          "visual": "UsersDrawerC",
           "props": {
-            "input": "mango@123",
-            "email": "you@mail.com",
-            "hex": "81c68634d1b211e0d5632839f7efc8601c743f1ef0c94da8220e26ab221efff1",
-            "caption": "A leak gives fingerprints, not passwords"
+            "field": "sha256"
           },
           "beats": [
             {
               "id": "S08_01",
               "vo": "So the app stores the fingerprint instead of the password."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "HashMachineC",
+          "props": {
+            "action": "login"
+          },
+          "beats": [
             {
               "id": "S08_02",
               "vo": "When you log in, it hashes what you just typed, and compares the two fingerprints."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "CompareC",
+          "props": {
+            "mode": "match"
+          },
+          "beats": [
             {
               "id": "S08_03",
               "vo": "They match, so the app lets you in."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "UsersDrawerC",
+          "props": {
+            "field": "sha256",
+            "copy": true
+          },
+          "beats": [
             {
               "id": "S08_04",
               "vo": "If that table leaks, the attacker gets fingerprints, not passwords. That sounds airtight. LinkedIn found out it wasn't."
@@ -607,31 +650,26 @@
       "id": "S09",
       "act": 2,
       "title": "LinkedIn, 2012",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "EvidenceC",
           "props": {
-            "kicker": "LinkedIn · 2012",
-            "lines": [
-              {
-                "text": "6,458,020 password hashes posted online",
-                "step": 0,
-                "size": 64
-              },
-              {
-                "text": "SHA-1 · no salt",
-                "mono": true,
-                "tone": "red",
-                "step": 1
-              }
-            ]
+            "year": "2012"
           },
           "beats": [
             {
               "id": "S09_01",
               "vo": "In twenty twelve, a file of about six and a half million LinkedIn password hashes was posted online."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "UsersDrawerC",
+          "props": {
+            "field": "sha1"
+          },
+          "beats": [
             {
               "id": "S09_02",
               "vo": "They were SHA one hashes, with nothing added. Unsalted."
@@ -639,80 +677,45 @@
           ]
         },
         {
-          "visual": "LookupWall",
+          "visual": "HashMachineC",
           "props": {
-            "stolen": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-            "rows": [
-              {
-                "password": "123456",
-                "hash": "7c4a8d09ca3762af61e59520943dc26494f8941b"
-              },
-              {
-                "password": "password",
-                "hash": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
-              },
-              {
-                "password": "12345678",
-                "hash": "7c222fb2927d828af22f592134e8932480637c0d"
-              },
-              {
-                "password": "qwerty",
-                "hash": "b1b3773a05c0ed0176787a4f1574ff0075f7521e"
-              },
-              {
-                "password": "iloveyou",
-                "hash": "ee8d8728f435fd550f83852aabab5234ce1da528"
-              },
-              {
-                "password": "111111",
-                "hash": "3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d"
-              },
-              {
-                "password": "mango@123",
-                "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297"
-              }
-            ],
-            "caption": "Your password is the row next to it"
+            "action": "repeat"
           },
           "beats": [
             {
               "id": "S09_03",
               "vo": "That matters because the same password always produces the same fingerprint."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LookupC",
+          "props": {
+            "action": "file"
+          },
+          "beats": [
             {
               "id": "S09_04",
               "vo": "Attackers don't need to reverse anything. They hash millions of common passwords once, ahead of time, and keep the results in a lookup table."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LookupC",
+          "props": {
+            "action": "search"
+          },
+          "beats": [
             {
               "id": "S09_05",
               "vo": "Then they just search. If your fingerprint is in their table, your password is the row next to it."
             }
-          ],
-          "sfx": [
-            "tick"
-          ],
-          "sfxBeat": [
-            2
           ]
         },
         {
-          "visual": "StatGrid",
+          "visual": "EvidenceC",
           "props": {
-            "title": "LinkedIn breach",
-            "items": [
-              {
-                "value": "6.5M",
-                "label": "hashes posted · 2012",
-                "tone": "amber",
-                "step": 0
-              },
-              {
-                "value": "117M",
-                "label": "emails and passwords · LinkedIn, 2016",
-                "tone": "red",
-                "step": 0
-              }
-            ]
+            "year": "2016"
           },
           "beats": [
             {
@@ -727,43 +730,38 @@
       "id": "S10",
       "act": 2,
       "title": "Salt",
-      "transitionIn": "zoom",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "HashMachineC",
           "props": {
-            "kicker": "the fix",
-            "lines": [
-              {
-                "text": "Salt",
-                "size": 150,
-                "tone": "teal",
-                "step": 0
-              },
-              {
-                "text": "a random string, unique to each user",
-                "serif": false,
-                "size": 44,
-                "step": 1
-              },
-              {
-                "text": "stored next to the hash · not secret",
-                "serif": false,
-                "size": 40,
-                "tone": "slate",
-                "step": 2
-              }
-            ]
+            "action": "clip"
           },
           "beats": [
             {
               "id": "S10_01",
               "vo": "The fix is called salting."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "HashMachineC",
+          "props": {
+            "action": "salt"
+          },
+          "beats": [
             {
               "id": "S10_02",
               "vo": "Each password gets its own random string, mixed in before hashing. That string is the salt."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "UsersDrawerC",
+          "props": {
+            "field": "salted"
+          },
+          "beats": [
             {
               "id": "S10_03",
               "vo": "It isn't secret. It's stored right next to the hash. Its job is to make the same password hash differently for every user."
@@ -771,28 +769,23 @@
           ]
         },
         {
-          "visual": "SaltGrinder",
+          "visual": "CompareC",
           "props": {
-            "password": "mango@123",
-            "users": [
-              {
-                "name": "Asha",
-                "salt": "9f2c4a71",
-                "hash": "fb9d05563ec1fbbdebc0c48ed14a7db7087102a8373e44fc54ad57d8b1ed0401"
-              },
-              {
-                "name": "You",
-                "salt": "e05b13d8",
-                "hash": "324ce3f954f77c01e68347a9e85134bc81b2455b7a852fa022ea6c4b0efea9a8"
-              }
-            ],
-            "caption": "A table built in advance would need one per salt"
+            "mode": "salt"
           },
           "beats": [
             {
               "id": "S10_04",
               "vo": "Two people who both chose mango at the rate one two three now get completely different fingerprints."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "LookupC",
+          "props": {
+            "action": "salt"
+          },
+          "beats": [
             {
               "id": "S10_05",
               "vo": "As long as salts are long and random, a table built in advance stops working. It would need a separate table for every salt."
@@ -805,18 +798,13 @@
       "id": "S11",
       "act": 3,
       "title": "3 · Slow it down",
-      "transitionIn": "wipe",
+      "transitionIn": "fade",
       "shots": [
         {
-          "visual": "ActTitle",
+          "visual": "DAttack",
           "props": {
-            "act": "Part three",
-            "title": "Slow it down",
-            "tone": "red"
+            "mode": "salt"
           },
-          "sfx": [
-            "whoosh"
-          ],
           "beats": [
             {
               "id": "S11_01",
@@ -825,30 +813,9 @@
           ]
         },
         {
-          "visual": "FlowDiagram",
+          "visual": "DAttack",
           "props": {
-            "nodes": [
-              {
-                "label": "Guess",
-                "sub": "sunshine1",
-                "tone": "amber"
-              },
-              {
-                "label": "+ salt",
-                "sub": "e05b13d8",
-                "tone": "teal"
-              },
-              {
-                "label": "Hash"
-              },
-              {
-                "label": "Compare",
-                "sub": "no → next guess",
-                "tone": "red"
-              }
-            ],
-            "caption": "Repeat, billions of times",
-            "captionStep": 1
+            "mode": "loop"
           },
           "beats": [
             {
@@ -858,30 +825,8 @@
           ]
         },
         {
-          "visual": "TextStack",
-          "props": {
-            "kicker": "RockYou leak (Imperva)",
-            "lines": [
-              {
-                "text": "nearly half: names, words, slang, patterns",
-                "step": 0,
-                "size": 60
-              },
-              {
-                "text": "likely guesses first, the long tail later",
-                "serif": false,
-                "size": 42,
-                "tone": "slate",
-                "step": 1
-              },
-              {
-                "text": "and these hashes are fast to calculate",
-                "tone": "red",
-                "size": 58,
-                "step": 2
-              }
-            ]
-          },
+          "visual": "DHeap",
+          "props": {},
           "beats": [
             {
               "id": "S11_03",
@@ -890,7 +835,15 @@
             {
               "id": "S11_04",
               "vo": "So attackers try the likely passwords first, and the long tail later."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DAttack",
+          "props": {
+            "mode": "fast"
+          },
+          "beats": [
             {
               "id": "S11_05",
               "vo": "And the hashes we've seen so far are fast to calculate."
@@ -903,15 +856,26 @@
       "id": "S12",
       "act": 3,
       "title": "The GPU race",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "GuessStream",
+          "visual": "DGPUBench",
+          "props": {
+            "mode": "intro"
+          },
           "beats": [
             {
               "id": "S12_01",
               "vo": "Take one gaming graphics card, an R T X forty ninety, running the cracking tool hash cat."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DEvidence",
+          "props": {
+            "kind": "fast"
+          },
+          "beats": [
             {
               "id": "S12_02",
               "vo": "It tries about a hundred and sixty-four billion M D five guesses every second."
@@ -920,63 +884,26 @@
               "id": "S12_03",
               "vo": "About fifty billion for SHA one. About twenty-two billion for SHA two fifty-six."
             }
-          ],
-          "props": {
-            "title": "one RTX 4090 running hashcat",
-            "note": "each card stands for over a billion guesses · hashcat benchmark",
-            "phases": [
-              {
-                "label": "MD5",
-                "rate": "164 billion guesses / s",
-                "perFrame": 4,
-                "step": 1
-              },
-              {
-                "label": "SHA-1",
-                "rate": "50.6 billion / s",
-                "perFrame": 1.23,
-                "step": 2
-              },
-              {
-                "label": "SHA-256",
-                "rate": "22.0 billion / s",
-                "perFrame": 0.54,
-                "step": 2,
-                "offset": 90
-              }
-            ]
-          }
+          ]
         },
         {
-          "visual": "StatGrid",
+          "visual": "DGPUBench",
           "props": {
-            "title": "every 8-character password of a–z and 0–9 · 2.8 trillion · full-search estimate",
-            "items": [
-              {
-                "value": "17 s",
-                "label": "MD5",
-                "tone": "red",
-                "step": 1
-              },
-              {
-                "value": "56 s",
-                "label": "SHA-1",
-                "tone": "red",
-                "step": 1
-              },
-              {
-                "value": "~2 min",
-                "label": "SHA-256",
-                "tone": "red",
-                "step": 1
-              }
-            ]
+            "mode": "space"
           },
           "beats": [
             {
               "id": "S12_04",
               "vo": "Take every possible eight-character password made of lowercase letters and digits. That's about two point eight trillion of them."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DGPUBench",
+          "props": {
+            "mode": "times"
+          },
+          "beats": [
             {
               "id": "S12_05",
               "vo": "With M D five, that card gets through all of them in about seventeen seconds. With SHA one, under a minute. SHA two fifty-six, about two minutes."
@@ -989,31 +916,12 @@
       "id": "S13",
       "act": 3,
       "title": "Slow on purpose",
-      "transitionIn": "push",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "DSlowMachine",
           "props": {
-            "lines": [
-              {
-                "text": "Make each guess expensive",
-                "step": 0,
-                "tone": "teal"
-              },
-              {
-                "text": "slow on purpose · tunable as hardware improves",
-                "serif": false,
-                "size": 44,
-                "tone": "slate",
-                "step": 1
-              },
-              {
-                "text": "bcrypt · 1999",
-                "mono": true,
-                "tone": "amber",
-                "step": 2
-              }
-            ]
+            "mode": "cost"
           },
           "beats": [
             {
@@ -1031,36 +939,35 @@
           ]
         },
         {
-          "visual": "GuessStream",
+          "visual": "DSlowBenchmark",
           "props": {
-            "title": "same RTX 4090 · slow hashes",
-            "note": "drawn far from scale: bcrypt here is about 900,000× slower than MD5",
-            "phases": [
-              {
-                "label": "bcrypt (cost 5)",
-                "rate": "184 thousand / s",
-                "sub": "same 2.8 trillion: about 177 days",
-                "perFrame": 0.07,
-                "step": 0
-              },
-              {
-                "label": "scrypt",
-                "rate": "7,126 / s",
-                "sub": "same 2.8 trillion: about 12.5 years",
-                "perFrame": 0.02,
-                "step": 2
-              }
-            ]
+            "algorithm": "bcrypt"
           },
           "beats": [
             {
               "id": "S13_04",
               "vo": "On the same card, B crypt at a low setting manages about a hundred and eighty-four thousand guesses a second. That same set of passwords now takes about half a year."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DSlowMachine",
+          "props": {
+            "mode": "memory"
+          },
+          "beats": [
             {
               "id": "S13_05",
               "vo": "S crypt arrived in two thousand nine. It also makes each guess use a lot of memory, to blunt custom cracking hardware."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DSlowBenchmark",
+          "props": {
+            "algorithm": "scrypt"
+          },
+          "beats": [
             {
               "id": "S13_06",
               "vo": "At the tested setting, the card manages about seven thousand guesses a second. About twelve and a half years for the same set."
@@ -1073,40 +980,26 @@
       "id": "S14",
       "act": 3,
       "title": "Argon2",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "DEvidence",
           "props": {
-            "kicker": "what good sites run",
-            "lines": [
-              {
-                "text": "Argon2id",
-                "size": 130,
-                "tone": "teal",
-                "step": 0
-              },
-              {
-                "text": "OWASP recommends · from Argon2, competition winner 2015",
-                "serif": false,
-                "size": 40,
-                "tone": "slate",
-                "step": 0
-              },
-              {
-                "text": "minimum: 19 MiB memory · 2 passes · 1 lane",
-                "mono": true,
-                "size": 44,
-                "tone": "amber",
-                "step": 1
-              }
-            ]
+            "kind": "owasp"
           },
           "beats": [
             {
               "id": "S14_01",
               "vo": "The Oh wasp guidance on password storage recommends Argon two I D. It comes from Argon two, which won an open password hashing competition in twenty fifteen."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DSlowMachine",
+          "props": {
+            "mode": "argon"
+          },
+          "beats": [
             {
               "id": "S14_02",
               "vo": "Its minimum setting uses about twenty megabytes of memory and two rounds of work for every single guess."
@@ -1114,17 +1007,19 @@
           ]
         },
         {
-          "visual": "CodeCard",
-          "props": {
-            "title": "what the database stores for you",
-            "code": "# algorithm + settings · salt · hash\n$argon2id$v=19$m=19456,t=2,p=1\n$cE3JU6U6szy6uvAh96bkyw\n$Pr8MGyxkXWUs/ALFyQ4a+2IS3skjs84BpY4YSDhLGFM",
-            "caption": "Settings travel with the hash, so the cost can be raised later"
-          },
+          "visual": "DRecipe",
+          "props": {},
           "beats": [
             {
               "id": "S14_03",
               "vo": "In a common library's format, the stored value carries its own recipe. One line holds the algorithm and its settings. Then the salt. Then the hash."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "DRehash",
+          "props": {},
+          "beats": [
             {
               "id": "S14_04",
               "vo": "Because the settings travel with the hash, a site can raise the cost later. It re-hashes your password the next time you log in."
@@ -1132,24 +1027,8 @@
           ]
         },
         {
-          "visual": "TextStack",
-          "props": {
-            "kicker": "optional extra layer",
-            "lines": [
-              {
-                "text": "Pepper",
-                "size": 130,
-                "tone": "amber",
-                "step": 0
-              },
-              {
-                "text": "one secret, kept outside the database",
-                "serif": false,
-                "size": 44,
-                "step": 0
-              }
-            ]
-          },
+          "visual": "DPepper",
+          "props": {},
           "beats": [
             {
               "id": "S14_05",
@@ -1158,21 +1037,9 @@
           ]
         },
         {
-          "visual": "TextStack",
+          "visual": "DSlowMachine",
           "props": {
-            "kicker": "grocery_app.users · leaked today",
-            "lines": [
-              {
-                "text": "a salt and a slow fingerprint per row",
-                "step": 0,
-                "size": 60
-              },
-              {
-                "text": "every guess costs real time",
-                "tone": "teal",
-                "step": 0
-              }
-            ]
+            "mode": "final"
           },
           "beats": [
             {
@@ -1187,50 +1054,16 @@
       "id": "S15",
       "act": 4,
       "title": "4 · Your side",
-      "transitionIn": "wipe",
+      "transitionIn": "fade",
       "shots": [
         {
-          "visual": "ActTitle",
-          "props": {
-            "act": "Part four",
-            "title": "Your side",
-            "tone": "teal"
-          },
-          "sfx": [
-            "whoosh"
-          ],
+          "visual": "ELogin",
+          "props": {},
           "beats": [
             {
               "id": "S15_01",
               "vo": "There's one moment the site does see your password. Every time you log in."
-            }
-          ]
-        },
-        {
-          "visual": "FlowDiagram",
-          "props": {
-            "nodes": [
-              {
-                "label": "Browser",
-                "sub": "mango@123",
-                "tone": "amber"
-              },
-              {
-                "label": "Encrypted link",
-                "sub": "TLS"
-              },
-              {
-                "label": "Server",
-                "sub": "Argon2id + salt"
-              },
-              {
-                "label": "Compare",
-                "sub": "then discard",
-                "tone": "teal"
-              }
-            ]
-          },
-          "beats": [
+            },
             {
               "id": "S15_02",
               "vo": "It arrives over an encrypted connection, then gets hashed and compared with the stored value."
@@ -1238,22 +1071,8 @@
           ]
         },
         {
-          "visual": "TextStack",
-          "props": {
-            "kicker": "a warning sign",
-            "lines": [
-              {
-                "text": "Emailed the password you forgot?",
-                "step": 0
-              },
-              {
-                "text": "Then they can recover it.",
-                "tone": "red",
-                "step": 0,
-                "size": 60
-              }
-            ]
-          },
+          "visual": "EEmail",
+          "props": {},
           "beats": [
             {
               "id": "S15_03",
@@ -1267,18 +1086,13 @@
       "id": "S16",
       "act": 4,
       "title": "The rules changed",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "TextStack",
+          "visual": "EvidenceShot",
           "props": {
-            "kicker": "NIST SP 800-63B-4 · July 2025",
-            "lines": [
-              {
-                "text": "The current rules",
-                "step": 0
-              }
-            ]
+            "page": "nist.png",
+            "source": "NIST SP 800-63B-4 · July 2025"
           },
           "beats": [
             {
@@ -1288,11 +1102,19 @@
           ]
         },
         {
-          "visual": "QuoteCard",
+          "visual": "EvidenceShot",
           "props": {
-            "quote": "Passwords SHALL be salted and hashed using a suitable password hashing scheme.",
-            "highlight": "salted and hashed",
-            "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+            "page": "nist.png",
+            "quote": "nist-salted-hashed-quote.png",
+            "source": "NIST SP 800-63B-4 · July 2025",
+            "at": 105,
+            "quoteBand": [
+              2162,
+              570,
+              63,
+              513
+            ],
+            "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
           },
           "beats": [
             {
@@ -1302,11 +1124,19 @@
           ]
         },
         {
-          "visual": "QuoteCard",
+          "visual": "EvidenceShot",
           "props": {
-            "quote": "Verifiers and CSPs SHALL NOT require subscribers to change passwords periodically.",
-            "highlight": "SHALL NOT",
-            "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+            "page": "nist.png",
+            "quote": "nist-no-rotation-quote.png",
+            "source": "NIST SP 800-63B-4 · July 2025",
+            "at": 70,
+            "quoteBand": [
+              2082,
+              226,
+              4,
+              163
+            ],
+            "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
           },
           "beats": [
             {
@@ -1316,11 +1146,19 @@
           ]
         },
         {
-          "visual": "QuoteCard",
+          "visual": "EvidenceShot",
           "props": {
-            "quote": "a minimum of 15 characters in length",
-            "highlight": "15 characters",
-            "source": "NIST SP 800-63B-4 · §3.1.1.2 · single-factor passwords"
+            "page": "nist.png",
+            "quote": "nist-min-length-quote.png",
+            "source": "NIST SP 800-63B-4 · July 2025",
+            "at": 150,
+            "quoteBand": [
+              2082,
+              286,
+              62,
+              285
+            ],
+            "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
           },
           "beats": [
             {
@@ -1330,11 +1168,19 @@
           ]
         },
         {
-          "visual": "QuoteCard",
+          "visual": "EvidenceShot",
           "props": {
-            "quote": "SHALL compare the prospective secret against a blocklist that contains known commonly used, expected, or compromised passwords",
-            "highlight": "blocklist",
-            "source": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
+            "page": "nist.png",
+            "quote": "nist-blocklist-quote.png",
+            "source": "NIST SP 800-63B-4 · July 2025",
+            "at": 55,
+            "quoteBand": [
+              2162,
+              284,
+              63,
+              228
+            ],
+            "quoteSource": "NIST SP 800-63B-4 · §3.1.1.2 · July 2025"
           },
           "beats": [
             {
@@ -1349,20 +1195,22 @@
       "id": "S17",
       "act": 4,
       "title": "Checking without telling",
-      "transitionIn": "push",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "KAnonExchange",
-          "props": {
-            "password": "mango@123",
-            "hash": "f14d5ba7f5892b8cb2549dea72287ee3692bb297",
-            "service": "Have I Been Pwned"
-          },
+          "visual": "EHibpSource",
+          "props": {},
           "beats": [
             {
               "id": "S17_01",
               "vo": "That last check can work without sending your password, or even its full hash."
-            },
+            }
+          ]
+        },
+        {
+          "visual": "ECheck",
+          "props": {},
+          "beats": [
             {
               "id": "S17_02",
               "vo": "Your browser or app hashes the password with SHA one, and sends only the first five characters to the service Have I Been Poned."
@@ -1379,41 +1227,11 @@
       "id": "S18",
       "act": 4,
       "title": "Putting it together",
-      "transitionIn": "fade",
+      "transitionIn": "cut",
       "shots": [
         {
-          "visual": "ChainLine",
-          "props": {
-            "card": "mango@123",
-            "stations": [
-              {
-                "label": "plain text",
-                "verdict": "everything leaks",
-                "step": 0
-              },
-              {
-                "label": "encrypted",
-                "verdict": "the key reads all",
-                "step": 0
-              },
-              {
-                "label": "plain hash",
-                "verdict": "lookup table",
-                "step": 1
-              },
-              {
-                "label": "salt + fast hash",
-                "verdict": "graphics card",
-                "step": 1
-              },
-              {
-                "label": "salt + slow hash",
-                "verdict": "every guess is slow",
-                "holds": true,
-                "step": 1
-              }
-            ]
-          },
+          "visual": "ERecap",
+          "props": {},
           "beats": [
             {
               "id": "S18_01",
@@ -1422,30 +1240,7 @@
             {
               "id": "S18_02",
               "vo": "A plain hash can fall to a lookup table. A salted fast hash can fall to a graphics card. A salted slow hash makes every guess expensive."
-            }
-          ]
-        },
-        {
-          "visual": "TextStack",
-          "props": {
-            "lines": [
-              {
-                "text": "123456",
-                "mono": true,
-                "tone": "amber",
-                "size": 180,
-                "step": 0
-              },
-              {
-                "text": "among the first guesses on any list",
-                "serif": false,
-                "size": 48,
-                "step": 0,
-                "tone": "slate"
-              }
-            ]
-          },
-          "beats": [
+            },
             {
               "id": "S18_03",
               "vo": "Back to the most popular password in the Rock You leak. A sensible attacker tries the most common passwords first. So even behind Argon two, one two three four five six would be among the first guesses."
@@ -1453,24 +1248,8 @@
           ]
         },
         {
-          "visual": "Checklist",
-          "props": {
-            "title": "Two jobs",
-            "items": [
-              {
-                "text": "The site: a slow, salted hash",
-                "step": 0
-              },
-              {
-                "text": "You: a long password, used nowhere else",
-                "step": 0
-              },
-              {
-                "text": "Use a password manager",
-                "step": 1
-              }
-            ]
-          },
+          "visual": "EManager",
+          "props": {},
           "beats": [
             {
               "id": "S18_04",
@@ -1479,32 +1258,17 @@
             {
               "id": "S18_05",
               "vo": "Our advice: use a password manager. Nist now requires sites to allow them."
-            },
-            {
-              "id": "S18_06",
-              "vo": "What you can't see from a login screen is how a site stores your password. That half of the job is out of your hands. Your half isn't."
             }
           ]
         },
         {
-          "visual": "TextStack",
-          "props": {
-            "kicker": "if a breach notice says",
-            "lines": [
-              {
-                "text": "salted · hashed · slow",
-                "tone": "teal",
-                "step": 0
-              },
-              {
-                "text": "it bought you time",
-                "tone": "cream",
-                "size": 60,
-                "step": 0
-              }
-            ]
-          },
+          "visual": "EDrawerClose",
+          "props": {},
           "beats": [
+            {
+              "id": "S18_06",
+              "vo": "What you can't see from a login screen is how a site stores your password. That half of the job is out of your hands. Your half isn't."
+            },
             {
               "id": "S18_07",
               "vo": "And if a breach notice ever says passwords were salted and hashed with something slow, you'll know what that bought you. Time."

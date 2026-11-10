@@ -3,7 +3,7 @@
     "id": "S11",
     "act": 3,
     "title": "3 · Slow it down",
-    "transitionIn": "wipe",
+    "transitionIn": "fade",
     "shots": [
       {
         "visual": "DAttack",
@@ -61,7 +61,7 @@
     "id": "S12",
     "act": 3,
     "title": "The GPU race",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "DGPUBench",
@@ -121,7 +121,7 @@
     "id": "S13",
     "act": 3,
     "title": "Slow on purpose",
-    "transitionIn": "push",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "DSlowMachine",
@@ -185,7 +185,7 @@
     "id": "S14",
     "act": 3,
     "title": "Argon2",
-    "transitionIn": "fade",
+    "transitionIn": "cut",
     "shots": [
       {
         "visual": "DEvidence",
