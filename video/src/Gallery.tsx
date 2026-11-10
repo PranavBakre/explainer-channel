@@ -19,7 +19,7 @@ export const Gallery: React.FC = () => (
       const d = g.duration ?? GALLERY_SHOT;
       return (
         <Sequence key={i} from={starts[i]} durationInFrames={d}>
-          <V {...g.props} steps={[0, 40, 80, 110]} duration={d} />
+          <V {...g.props} steps={(g.props.steps as number[] | undefined) ?? [0, 40, 80, 110]} duration={d} />
         </Sequence>
       );
     })}

@@ -2,12 +2,13 @@ import React from 'react';
 import {RoundedBox} from '@react-three/drei';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {fonts} from '../../theme';
-import {Angle, BRASS, clamp, ease, Glow, mix, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
+import {Angle, BRASS, clamp, ease, Glow, mix, mixV, PAPER, PaperCard, Plate, Studio, Tag, useCanvasTexture, V3} from '../kit';
 
-export type Field = 'plain' | 'hidden' | 'hash' | 'salted';
+export type Field = 'plain' | 'hidden' | 'hash' | 'salted' | 'argon';
 
 const ANGLES: Record<string, Angle> = {
   row: {from: [0.4, 2.3, 4.2], to: [0.2, 2.2, 3.6], target: [0, 1.75, 0.6]},
+  wide: {from: [-3.2, 3.4, 5.3], to: [-2.9, 3.2, 4.9], target: [0, 1.45, 0.4]},
   drawer: {from: [-3.6, 4.2, 7.2], to: [-2.8, 3.8, 6.4], target: [0, 1.2, 0]},
   copy: {from: [1.5, 4.4, 9.5], to: [1.8, 4.0, 8.6], target: [1.6, 1.1, 0]},
   library: {from: [-3.5, 3.0, 13.5], to: [1.5, 2.9, 12], target: [0, 2.7, 0]},
@@ -19,6 +20,7 @@ const FIELD_TEXT: Record<Field, (pw: string) => {text: string; color: string}> =
   hidden: () => ({text: '?', color: '#8A8F98'}),
   hash: () => ({text: '81c68634d1b2…', color: '#1A1E24'}),
   salted: () => ({text: 'e05b13d8 · 324ce3f9…', color: '#1A1E24'}),
+  argon: () => ({text: '$argon2id$v=19$m=19456,t=2,p=1$cE3JU6U6s…', color: '#1A1E24'}),
 };
 
 const IndexCard: React.FC<{email: string; value: string; color: string}> = ({email, value, color}) => {
@@ -37,7 +39,7 @@ const IndexCard: React.FC<{email: string; value: string; color: string}> = ({ema
       c.fillStyle = '#7A6A52';
       c.font = `600 40px ${fonts.sans}`;
       c.fillText('EMAIL', 60, 200);
-      c.fillText('PASSWORD', 60, 400);
+      c.fillText('PASSWORD', 60, 394);
       c.fillStyle = '#1A1E24';
       c.font = `500 64px ${fonts.sans}`;
       c.fillText(email, 60, 290);
@@ -48,7 +50,7 @@ const IndexCard: React.FC<{email: string; value: string; color: string}> = ({ema
         size -= 4;
         c.font = `700 ${size}px ${fonts.mono}`;
       }
-      c.fillText(value, 60, 500);
+      c.fillText(value, 60, 478);
     },
     [email, value, color],
   );
@@ -72,10 +74,10 @@ const USERS = [
   ['you@mail.com', 'mango@123'],
 ];
 
-const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, number]; ghost?: boolean}> = ({field, lift, position = [0, 0, 0], ghost}) => (
+const Drawer: React.FC<{field: Field; lift: number; position?: [number, number, number]; ghost?: boolean; ghostOpacity?: number}> = ({field, lift, position = [0, 0, 0], ghost, ghostOpacity = 0.85}) => (
   <group position={position}>
     <RoundedBox args={[2.0, 0.9, 3.4]} radius={0.05} position={[0, 0.95, 0]} castShadow receiveShadow>
-      <meshStandardMaterial color="#7A4E2E" roughness={0.55} metalness={0.05} transparent={ghost} opacity={ghost ? 0.85 : 1} />
+      <meshStandardMaterial color="#7A4E2E" roughness={0.55} metalness={0.05} transparent={ghost && ghostOpacity < 1} opacity={ghost ? ghostOpacity : 1} />
     </RoundedBox>
     <mesh position={[0, 1.05, 1.71]}>
       <boxGeometry args={[0.5, 0.18, 0.04]} />
@@ -133,38 +135,66 @@ const LibraryWall: React.FC<{hit: number}> = ({hit}) => {
 };
 
 // Card-catalogue set: a drawer of user rows, a stolen copy, or a wall of precomputed lookups.
+export type CatalogState = {step: number; field: Field; pos?: V3; posTo?: V3; target?: V3; targetTo?: V3};
+
 export const CatalogSet: React.FC<{
   action: 'row' | 'drawer' | 'copy' | 'library';
   angle?: string;
   field?: Field;
   fieldTo?: Field;
+  states?: CatalogState[];
+  steps?: number[];
+  rise?: number;
+  copyLift?: number;
+  copyTo?: V3;
+  copyOpacity?: number;
   color?: string;
-  tags?: {x: number; y: number; text: string; at?: number; color?: string}[];
+  tags?: {x: number; y: number; text: string; at?: number; atStep?: number; color?: string}[];
   duration: number;
-}> = ({action, angle, field = 'plain', fieldTo, color = '#4E3A36', tags = [], duration}) => {
+}> = ({action, angle, field = 'plain', fieldTo, states = [], steps = [], rise = 0, copyLift = 0, copyTo = [3.6, 0, 0.8], copyOpacity = 0.85, color = '#4E3A36', tags = [], duration}) => {
   const frame = useCurrentFrame();
   const t = frame / Math.max(1, duration);
+  const stateAt = (s: CatalogState) => steps[s.step] ?? 0;
+  const state = states.length ? states.reduce((a, s) => (stateAt(s) <= frame ? s : a), states[0]) : null;
   const swap = fieldTo ? t > 0.5 : false;
-  const f = swap ? fieldTo! : field;
-  const lift = action === 'row' ? 0.35 : 0;
+  const f = state ? state.field : swap ? fieldTo! : field;
+  const lift = action === 'row' && rise ? rise * ease(frame, steps[0] ?? 0, (steps[0] ?? 0) + 24) : action === 'row' ? 0.35 : 0;
   const steal = action === 'copy' ? ease(t, 0.15, 0.7) : 0;
   const hit = action === 'library' ? ease(t, 0.55, 0.75) : 0;
   const ang = ANGLES[angle ?? (action === 'library' ? 'library' : action === 'copy' ? 'copy' : action === 'row' ? 'row' : 'drawer')];
+  // Each state owns a slow move from its own framing to its `…To` framing; the 24 frames after a step blend from the previous state.
+  const camAt = (i: number, at: number) => {
+    const s = states[i];
+    const until = i + 1 < states.length ? stateAt(states[i + 1]) : duration;
+    const k = Math.min(1, Math.max(0, (at - stateAt(s)) / Math.max(1, until - stateAt(s))));
+    return {pos: mixV(s.pos ?? ang.from, s.posTo ?? s.pos ?? ang.from, k), target: mixV(s.target ?? ang.target, s.targetTo ?? s.target ?? ang.target, k)};
+  };
+  const look = (() => {
+    if (!state) return undefined;
+    const i = states.indexOf(state);
+    const at = stateAt(state);
+    const to = camAt(i, frame);
+    if (i === 0) return to;
+    const from = camAt(i - 1, at);
+    const k = ease(frame, at, at + 24);
+    return {pos: mixV(from.pos, to.pos, k), target: mixV(from.target, to.target, k)};
+  })();
   return (
     <AbsoluteFill>
-      <Studio color={color} angle={ang} duration={duration}>
+      <Studio color={color} angle={ang} look={look} duration={duration}>
         {action === 'library' ? (
           <LibraryWall hit={hit} />
         ) : (
           <>
             <Drawer field={f} lift={lift} />
-            {action === 'copy' ? <Drawer field={f} lift={0} position={[mix(0, 3.6, steal), 0, mix(0, 0.8, steal)]} ghost /> : null}
+            {action === 'copy' ? <Drawer field={f} lift={0} position={[mix(0, copyTo[0], steal), copyLift + mix(0, copyTo[1], steal), mix(0, copyTo[2], steal)]} ghost ghostOpacity={copyOpacity} /> : null}
           </>
         )}
       </Studio>
-      {tags.map((tg, i) => (
-        <Tag key={i} x={tg.x} y={tg.y} text={tg.text} color={tg.color} opacity={interpolate(t, [tg.at ?? 0.3, (tg.at ?? 0.3) + 0.08], [0, 1], clamp)} />
-      ))}
+      {tags.map((tg, i) => {
+        const at = tg.atStep === undefined ? tg.at ?? 0.3 : (steps[tg.atStep] ?? 0) / Math.max(1, duration);
+        return <Tag key={i} x={tg.x} y={tg.y} text={tg.text} color={tg.color} opacity={interpolate(t, [at, at + 0.08], [0, 1], clamp)} />;
+      })}
     </AbsoluteFill>
   );
 };

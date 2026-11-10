@@ -50,20 +50,21 @@ export const Studio: React.FC<{
   color: string;
   floor?: string;
   angle: Angle;
+  look?: {pos: V3; target: V3};
   children: React.ReactNode;
   keyColor?: string;
   shadows?: boolean;
   duration: number;
-}> = ({color, floor, angle, children, keyColor = '#FFE2C0', shadows = true, duration}) => {
+}> = ({color, floor, angle, look, children, keyColor = '#FFE2C0', shadows = true, duration}) => {
   const frame = useCurrentFrame();
   const {width, height} = useVideoConfig();
   const t = interpolate(frame, [0, Math.max(1, duration)], [0, 1], clamp);
-  const pos = mixV(angle.from, angle.to ?? angle.from, t);
+  const pos = look?.pos ?? mixV(angle.from, angle.to ?? angle.from, t);
   const back = useMemo(() => new THREE.Color(color).offsetHSL(0, -0.05, 0.12).getStyle(), [color]);
   return (
     <AbsoluteFill style={{background: color}}>
       <ThreeCanvas width={width} height={height} shadows camera={{position: pos, fov: angle.fov ?? 32}}>
-        <CameraRig pos={pos} target={angle.target} fov={angle.fov ?? 32} />
+        <CameraRig pos={pos} target={look?.target ?? angle.target} fov={angle.fov ?? 32} />
         <color attach="background" args={[color]} />
         <fog attach="fog" args={[color, 18, 40]} />
         <mesh position={[0, 7, -10]} receiveShadow>

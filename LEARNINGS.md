@@ -77,3 +77,23 @@ Running log. Newest at the bottom of each section.
 - **Lottie test (stock LottieFiles).** `@remotion/lottie` renders frame-accurately; the LottieFiles GraphQL API (`searchPublicAnimations`) gives JSON and GIF previews for fast contact sheets. Stock results mix a dozen illustration styles even within "isometric" searches, the good-quality ones are generic (the best login scene shows a 2FA code step the episode never mentions), and several look like re-uploads of other studios' art, so licence provenance is unclear. Usable only with one consistent family and content that matches the narration.
 - **Editing stock Lottie to fit the script works.** S15 is one generated 1920×1080 Lottie (`tools/lottie/s15_login.py`): the stock laptop scene as a precomp with its 2FA layers, slide-in panel and baked-in asterisks removed, text changed to `you@mail.com` and an amber `mango@123` typed by text keyframes, plus drawn connection, capsule, server, hash compare in the illustration's own palette. Traps: lottie-web hides text set in a monospace web font (its load check compares against the monospace fallback), so use a proportional font; parenting carries transforms but not opacity, so child text needs its parent's fade; the first layer draws on top, so a child text must sit above its parent's fill; original text layers carry their own typing animators (`t.a`).
 - **Measure every text state, not just the first.** S03's review caught the password set at size 12 beside a size-9 email (two values in matching fields) and the masked `•••••••••` sitting lower than the typed text it replaces: a bullet's ink centres near x-height, letters near cap height, and `mango@123` has a descender. Field values now share one size and a `dots-in-field` check measures the masked state. Shared builders live in `tools/lottie/lot.py`, so a fix there re-renders every flow shot; re-run each shot's checks after touching it.
+
+## Segment build, ep01 v3 (2026-11-10)
+- **`tools/render.sh` resolves the output path after `cd video`.** `${2:A}` runs in the video directory, so a relative
+  `episodes/...` path renders into `video/episodes/...` (and Remotion fails only after all frames). Always pass an
+  absolute output path.
+- **Lottie draws the first layer on top**: a panel's background must be appended LAST and its text before its field
+  rect. Building the card first and adding text after gave white boxes with no text at all.
+- **A translucent 3D set hides its own cards.** `CatalogSet`'s ghost copy (opacity 0.85) is drawn in front of its cards,
+  so the card faces show through the drawer front as milky rectangles with text. `copyOpacity={1}` gives a clean
+  second drawer; keep the ghost only where the copy must read as not-real.
+- **Values on a lined index card belong above the rule, not on it.** With the value baseline exactly on a ruled line the
+  text looked misaligned against the email row (whose baseline sits above its rule); moving the baseline up 22 canvas px
+  matched the two rows.
+- **A per-card scale contradicts a lone card.** "one card = 1,000 accounts" beside a single card labelled "1 account"
+  reads as a contradiction; drop the scale and let the two labels ("290,731 accounts" / "1 account") carry it.
+- **Footage with text over it needs a scrim.** Cream serif tags over RGB-lit GPU footage vanish on the bright areas; a
+  top gradient (82 % → 0 at 44 %) makes them legible without touching the footage.
+- **`remotion still` is the cheap loop, renders are the expensive one.** Five worktrees share one render lock; a gallery
+  render of 2,600 frames sat queued for 25 minutes behind another segment. Iterating on `node stills.mjs gallery`
+  (bundle once, N frames) found every layout problem before paying for a render.

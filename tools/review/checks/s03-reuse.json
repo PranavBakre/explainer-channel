@@ -1,0 +1,5 @@
+[
+ {"name": "laptop-password-field", "frame": 200, "region": [470, 418, 790, 480], "box": "#F3F1ED", "ink": "#E59A00", "tol": 15, "ink_tol": 90},
+ {"name": "second-site-email-field", "frame": 200, "region": [1240, 450, 1790, 530], "box": "#EFEEE9", "ink": "#0D161D", "tol": 12, "ink_tol": 60},
+ {"name": "second-site-password-field", "frame": 200, "region": [1240, 540, 1790, 620], "box": "#EFEEE9", "ink": "#E59A00", "tol": 20, "ink_tol": 70}
+]
