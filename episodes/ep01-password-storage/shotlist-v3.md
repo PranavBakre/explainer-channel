@@ -11,7 +11,7 @@ Evidence (news, regulators, NIST, benchmarks) goes on screen as the actual docum
 | Prop | Stands for | Its state is always true to |
 |---|---|---|
 | Card drawer | the app's `users` table | the password column: plain / Triple DES / hash / salt+hash / Argon2id string |
-| Index card | one row | real values (`81c68634…`, `f14d5ba7…`, `Y5DCWKxs…` = 3DES of mango@123 under a demo key) |
+| Index card | one row | real values (`81c68634…`, `f14d5ba7…`, `6FeRQifM…` = 3DES-EDE3-CBC of mango@123 under the demo key 0123…CDEF, IV zero) |
 | Lockbox + key | encryption | one key per site; opening reveals the real plaintext |
 | Hash machine | the hash function | punched card holes = the real 256 (or 160) bits |
 | Light table | the compare step at login | overlaying the two real bit patterns |

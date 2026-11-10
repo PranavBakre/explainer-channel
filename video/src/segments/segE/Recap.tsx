@@ -3,7 +3,7 @@ import {AbsoluteFill, Easing, interpolate, interpolateColors, useCurrentFrame} f
 import {RoundedBox} from '@react-three/drei';
 import {Oak, Painted} from '../../three/finish';
 import {CatalogDrawer, LookupCabinet} from '../../three/sets/CatalogSet';
-import {EncryptionBox, Key} from '../../three/sets/LockboxSet';
+import {EncryptionBox, KeyInLock} from '../../three/sets/LockboxSet';
 import {Machine} from '../../three/sets/MachineSet';
 import {ComparisonTable} from '../../three/sets/LightTableSet';
 import {clamp, ease, mix, PaperCard, Plate, PunchedCard, Studio, V3} from '../../three/kit';
@@ -36,8 +36,8 @@ export const ERecap: React.FC<Props> = ({steps, duration}) => {
         <CatalogDrawer field="plain" lift={0.4} />
       </group>
       <group position={[-5, 0, 0]}>
-        <EncryptionBox open={ease(f, 100, 145)} cipher="Y5DCWKxs…" card={{text: 'mango@123', rise: ease(f, 135, 175), red: true}} />
-        <Key position={[-0.35, 0.85, 1.05]} rotation={[ease(f, 105, 125) * Math.PI / 2, 0, 0]} scale={0.8} />
+        <EncryptionBox open={ease(f, 100, 145)} cipher="6FeRQifM…" card={{text: 'mango@123', rise: ease(f, 135, 175), red: true}} />
+        <KeyInLock approach={1} insert={1} turn={ease(f, 82, 100)} />
       </group>
       <group position={[1, 0, -1.5]} scale={0.65}>
         <LookupCabinet hit={ease(f, second + 20, second + 70)} columns={4} rows={3} hitIndex={5} />

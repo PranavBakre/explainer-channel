@@ -23,7 +23,9 @@ export const Scanned: React.FC<{
 }> = ({name, size, fit, node, fitNode, parts = {}, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1, opacity = 1}) => {
   const {scene} = useGLTF(staticFile(`assets/models/${name}/${name}_1k.gltf`));
   const partNames = Object.keys(parts).join('|');
-  const [obj, k, offset, pivots] = useMemo(() => {
+  const translucent = opacity < 1;
+  const [obj, k, offset, pivots, mats] = useMemo(() => {
+    const mats: THREE.Material[] = [];
     scene.updateMatrixWorld(true);
     let o: THREE.Object3D;
     if (node) {
@@ -38,14 +40,14 @@ export const Scanned: React.FC<{
     o.traverse((m) => {
       if ((m as THREE.Mesh).isMesh) {
         const mesh = m as THREE.Mesh;
-        mesh.castShadow = opacity === 1;
+        mesh.castShadow = !translucent;
         mesh.receiveShadow = true;
-        if (opacity < 1) {
+        if (translucent) {
           const mat = (mesh.material as THREE.MeshStandardMaterial).clone();
           mat.transparent = true;
-          mat.opacity = opacity;
           mat.depthWrite = false;
           mesh.material = mat;
+          mats.push(mat);
         }
       }
     });
@@ -72,9 +74,10 @@ export const Scanned: React.FC<{
       g.userData.base = local.clone();
       piv[p] = g;
     }
-    return [o, s, [-c.x * s[0], -box.min.y * s[1], -c.z * s[2]] as V3, piv];
+    return [o, s, [-c.x * s[0], -box.min.y * s[1], -c.z * s[2]] as V3, piv, mats];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scene, size, fit?.join(), node, fitNode, partNames, opacity]);
+  }, [scene, size, fit?.join(), node, fitNode, partNames, translucent]);
+  for (const m of mats) m.opacity = opacity;
   for (const [p, g] of Object.entries(pivots)) {
     const {rotation: r = [0, 0, 0], offset: d = [0, 0, 0]} = parts[p];
     g.rotation.set(r[0], r[1], r[2]);

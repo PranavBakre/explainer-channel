@@ -72,9 +72,9 @@ export const fibre = () =>
   });
 
 // Brushed metal: copper, brass, steel. Grain runs along the object's x axis.
-export const Brushed: React.FC<{color: string; roughness?: number; attach?: string}> = ({color, roughness = 0.34, attach}) => {
+export const Brushed: React.FC<{color: string; roughness?: number; metalness?: number; bump?: number; attach?: string}> = ({color, roughness = 0.34, metalness = 1, bump = 0.35, attach}) => {
   const m = brushed();
-  return <meshPhysicalMaterial attach={attach} color={color} metalness={1} roughness={roughness} roughnessMap={m} bumpMap={m} bumpScale={0.35} anisotropy={0.6} />;
+  return <meshPhysicalMaterial attach={attach} color={color} metalness={metalness} roughness={roughness} roughnessMap={m} bumpMap={m} bumpScale={bump} anisotropy={0.6} />;
 };
 
 // Dark glass for displays and slots.

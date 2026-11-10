@@ -189,7 +189,11 @@ export const CatalogSet: React.FC<{
         ) : (
           <>
             <Drawer field={f} lift={lift} />
-            {action === 'copy' ? <Drawer field={f} lift={0} position={[mix(0, copyTo[0], steal), copyLift + mix(0, copyTo[1], steal), mix(0, copyTo[2], steal)]} ghost ghostOpacity={copyOpacity} /> : null}
+            {action === 'copy' && steal > 0 ? (
+              <group position={[mix(2.3, copyTo[0], steal), copyLift + mix(0, copyTo[1], steal), mix(0, copyTo[2], steal)]} scale={ease(steal, 0, 0.3) || 0.001}>
+                <Drawer field={f} lift={0} ghost ghostOpacity={copyOpacity} />
+              </group>
+            ) : null}
           </>
         )}
       </Studio>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Part, Scanned} from '../Scanned';
+import {RoundedBox} from '@react-three/drei';
 import {Brushed} from '../finish';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Angle, BRASS, clamp, ease, Glow, mix, PaperCard, Plate, Studio, Tag, useCanvasTexture} from '../kit';
@@ -62,7 +62,16 @@ const Cipher: React.FC<{text: string}> = ({text}) => {
   );
 };
 
-const lid = (open: number): Part => ({pivot: [0, 0.3515, -0.1225], rotation: [(1 - open) * (Math.PI / 2) - open * 0.25, 0, 0]});
+const STEEL = '#C4CACF';
+
+// The key's shaft runs along its local x; yawing it a quarter turn points it into the keyhole at (0, 0.82, 0.87).
+export const KeyInLock: React.FC<{approach: number; insert: number; turn: number}> = ({approach, insert, turn}) => (
+  <group position={[mix(-3.2, 0, approach), 0.82, mix(2.6, mix(2.2, 1.62, insert), approach)]} rotation={[0, mix(-0.6, Math.PI / 2, approach), 0]}>
+    <group rotation={[turn * (Math.PI / 2), 0, 0]}>
+      <Key position={[0, 0, 0]} scale={0.8} />
+    </group>
+  </group>
+);
 
 const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: number; red?: boolean; size?: number}; position?: [number, number, number]; scale?: number; hint?: string; stamp?: string}> = ({
   open,
@@ -74,13 +83,50 @@ const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: 
   stamp,
 }) => (
   <group position={position} scale={scale}>
-    <Scanned name="metal_tool_chest" fitNode="metal_tool_chest_chest" size={2.4} parts={{metal_tool_chest_lid: lid(open), metal_tool_chest_hinge_lid: lid(open)}} />
-    <group position={[0, 1.23, -0.51]} rotation={[(1 - open) * (Math.PI / 2) - open * 0.25, 0, 0]}>
+    <RoundedBox args={[2.4, 1.18, 1.6]} radius={0.07} smoothness={5} position={[0, 0.59, 0]} castShadow receiveShadow>
+      <Brushed color={STEEL} roughness={0.42} metalness={0.55} bump={0.9} />
+    </RoundedBox>
+    {/* The body is solid; a dark plate just inside its top face is what makes an open box read as open. */}
+    <mesh position={[0, 1.181, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[2.18, 1.38]} />
+      <meshStandardMaterial color="#14171B" roughness={0.95} />
+    </mesh>
+    <mesh position={[0, 1.2, 0]}>
+      <boxGeometry args={[2.36, 0.03, 1.56]} />
+      <meshStandardMaterial color="#1A1D21" roughness={0.6} />
+    </mesh>
+    {[-0.75, 0.75].map((x) => (
+      <mesh key={x} position={[x, 1.22, -0.82]} rotation={[0, 0, Math.PI / 2]} castShadow>
+        <cylinderGeometry args={[0.055, 0.055, 0.42, 20]} />
+        <Brushed color={STEEL} roughness={0.22} />
+      </mesh>
+    ))}
+    <group position={[0, 1.22, -0.8]} rotation={[-open * 1.9, 0, 0]}>
+      <RoundedBox args={[2.42, 0.2, 1.62]} radius={0.07} smoothness={5} position={[0, 0.1, 0.81]} castShadow>
+        <Brushed color={STEEL} roughness={0.38} metalness={0.55} bump={0.9} />
+      </RoundedBox>
+      <mesh position={[0, 0.06, 1.63]}>
+        <boxGeometry args={[0.7, 0.07, 0.05]} />
+        <Brushed color="#7D848B" roughness={0.2} />
+      </mesh>
       {cipher ? (
-        <group position={[0, 0.51, -0.28]} rotation={[Math.PI, 0, 0]}>
+        <group position={[0, 0.205, 0.81]} rotation={[-Math.PI / 2, 0, 0]}>
           <Cipher text={cipher} />
         </group>
       ) : null}
+    </group>
+    <group position={[0, 0.82, 0.8]}>
+      <RoundedBox args={[0.46, 0.56, 0.04]} radius={0.02}>
+        <Brushed color={BRASS} roughness={0.32} metalness={0.7} />
+      </RoundedBox>
+      <mesh position={[0, 0, 0.04]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.14, 0.15, 0.06, 40]} />
+        <Brushed color={BRASS} roughness={0.22} metalness={0.8} />
+      </mesh>
+      <mesh position={[0, 0, 0.072]}>
+        <boxGeometry args={[0.035, 0.15, 0.01]} />
+        <meshStandardMaterial color="#0B0C0E" roughness={0.9} />
+      </mesh>
     </group>
     {card ? (
       <group position={[0, mix(0.7, 2.3, card.rise), 0.1]} rotation={[-0.2, 0, 0]}>
@@ -88,13 +134,13 @@ const Box: React.FC<{open: number; cipher?: string; card?: {text: string; rise: 
       </group>
     ) : null}
     {hint ? (
-      <group position={[0, 0.62, 0.6]}>
-        <Plate text={hint} w={2.0} h={0.5} bg="#EFE7D6" color="#B23A2E" />
+      <group position={[0, 0.3, 0.81]}>
+        <Plate text={hint} w={2.0} h={0.42} bg="#EFE7D6" color="#B23A2E" reflect={false} />
       </group>
     ) : null}
     {stamp ? (
-      <group position={[0, 0.34, 0.585]}>
-        <Plate text={stamp} w={1.5} h={0.3} bg="#241C13" color="#F2D9A8" />
+      <group position={[0, 0.3, 0.805]}>
+        <Plate text={stamp} w={1.5} h={0.3} bg="#241C13" color="#F2D9A8" reflect={false} />
       </group>
     ) : null}
   </group>
@@ -127,8 +173,8 @@ export const LockboxSet: React.FC<{
   }
   if (action === 'unlock') {
     keyP = ease(t, 0.05, 0.4);
-    open = ease(t, 0.45, 0.65);
-    rise = ease(t, 0.55, 0.8);
+    open = ease(t, 0.56, 0.72);
+    rise = ease(t, 0.64, 0.86);
     red = true;
   }
   const single = action === 'lock' || action === 'locked' || action === 'unlock';
@@ -136,12 +182,12 @@ export const LockboxSet: React.FC<{
   const rows = 3;
   return (
     <AbsoluteFill>
-      <Studio color="#4E3A36" angle={ang} duration={duration}>
+      <Studio color="#4E3A36" unreflectedLabels angle={ang} duration={duration}>
         {single ? (
           <>
             <Box open={open} cipher={open < 0.5 ? cipher : undefined} card={{text: plain, rise, red}} stamp={stamp} />
             {action !== 'lock' ? (
-              <Key position={[mix(-3.2, -0.95, keyP), 1.05, mix(2.4, 0.75, keyP)]} rotation={[0, mix(-0.6, 0, keyP), 0]} scale={0.8} />
+              <KeyInLock approach={keyP} insert={ease(t, 0.4, 0.46)} turn={ease(t, 0.46, 0.54)} />
             ) : null}
           </>
         ) : (
