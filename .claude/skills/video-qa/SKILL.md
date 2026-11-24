@@ -1,9 +1,11 @@
 ---
 name: video-qa
-description: Gate a rendered explainer MP4 (whole episode) or a single new or edited shot — automated checks (format, loudness, black, grain-resistant freeze, silence, transcript), a runtime-wide contact sheet, cross-shot data consistency, pixel alignment of text in containers and a second-model visual review, with a dispositioned report. Use after every full render, after a shot is built or edited, and before calling an episode done or packaging it.
+description: Gate a rendered explainer MP4 (whole episode) or a single new or edited shot - measured checks (format, loudness at -14 LUFS, static holds and near-empty frames, text size, on-screen text read by OCR, spoken words against the script, a per-channel ratchet), a measured comparison with reference explainers, a runtime-wide contact sheet, cross-shot data consistency, pixel alignment of text in containers and a second-model visual review, with a dispositioned report; after publishing, real retention against the cold viewer's predictions. Use after every full render, after a shot is built or edited, before calling an episode done or packaging it, and 24 hours and 7 days after an episode goes live.
 ---
 
 # Video QA (gate)
+
+A check that could not run is NOT CHECKED, and NOT CHECKED is never a pass. Write NOT CHECKED in its row with the reason; the verdict cannot be PASS while any gate row says it, unless the operator signs off on that row in the report in their own words.
 
 Output: `episodes/<ep>/reviews/video-qa-<round>.md`: each check PASS/FAIL with evidence, each finding with a disposition (fixed / accepted with reason / rejected with reason), and a verdict.
 
@@ -16,21 +18,46 @@ ffmpeg -i $V -vf blackdetect=d=0.5:pix_th=0.05 -an -f null - 2>&1 | grep black_s
 ffmpeg -i $V -vf "scale=320:-1,gblur=sigma=2,freezedetect=n=0.002:d=2" -an -f null - 2>&1 | grep -E 'freeze_(start|duration|end)'
 ffmpeg -i $V -af silencedetect=n=-40dB:d=2 -f null - 2>&1 | grep silence_start
 tools/tts/.venv/bin/python tools/tts/transcribe.py $V > /tmp/transcript.txt
-shasum -a 256 $V      # record all 64 characters in the report; any re-render invalidates it
+shasum -a 256 $V      # file identity for the package gate: docs/ops.md §3
 ```
-Plain `freezedetect` reported 0 freezes under animated grain while a reviewer saw long holds; the blur pass found 20. Detect at 2 s, then classify: > 8 s FAIL, 2–8 s listed and judged against the beat's visual change. The blur also hides small real changes: on ep03 it reported 11.3 s at 1:23.9 across a real press, and 8.03 s across v4's thin focus ring. Confirm every blurred hold over 8 s with an unblurred per-frame difference scan (small greyscale frames) or frames either side before calling it. Also check, from the built cue list and `voice/words`: each cue's motion onset within ±0.25 s of its word (ep03 r3: 95 of 104; the no-op cues were both blockers), and zero moving frames in every breath rest and scene tail.
+Plain `freezedetect` reported 0 freezes under animated grain while a reviewer saw long holds; the blur pass found 20. `tools/qa/static_holds.py` (§1a) runs this blurred pass and then splits each hold where a small real change happened, because the blur also hides those: on ep03 it reported 11.3 s at 1:23.9 across a real press, and 8.03 s across v4's thin focus ring. Still open frames either side of every listed hold before calling it. Also check, from the built cue list and `voice/words`: each cue's motion onset within ±0.25 s of its word (ep03 r3: 95 of 104; the no-op cues were both blockers), and zero moving frames in every breath rest and scene tail.
 | Check | Pass |
 |---|---|
 | Duration | inside the brief's target |
 | Format | h264, 1920×1080, 30 fps, AAC |
-| Loudness | −16 ± 1 LUFS integrated, true peak ≤ −1 dBTP |
+| Loudness | −14 ± 1 LUFS integrated, true peak ≤ −1 dBTP (`tools/qa/loudness.py`, §1a; matches `sound-design` §6) |
 | Black / silence | none unintended, at `pix_th=0.05` as above (ffmpeg's default 0.10 also flags the 0.6 s lead-in, `video-build` §2, which is intended); silence < −40 dB only at act tails and rests, never inside speech |
-| Freeze | no hold > 8 s; holds of 2–8 s listed with timestamps and judged |
-| Transcript | every script sentence present in order (normalize numbers; Whisper writes "$50 billion"); flag unusual words for `voice-narration` §5's human listen, never pass them on the transcript |
-| Sound (`video-build` §5) | effect share as `video-build` §5 says (count the built `sfx` lists); no digital silence (`silencedetect=n=-90dB:d=0.3` finds nothing, the last half second included); no speech audible in the music or effect files (`transcribe.py` on each, gain raised until audible; a recognised word is a listen item, a FAIL only if a person hears speech: Whisper wrote "You" on `hit.wav` and one sentence looped 12 times on `pad.wav`, ep03 r2–r3) |
+| Freeze | nothing still for 4 s or more and no hold over 8 s (§1a); holds of 2 to 4 s listed with timestamps and judged |
+| Transcript | every script sentence present in order (`tools/qa/spoken_words.py`, §1a) (normalize numbers; Whisper writes "$50 billion"); flag unusual words for `voice-narration` §5's human listen, never pass them on the transcript |
+| Sound | the latest `sound-design` §7 gate report for this mix says READY; no digital silence (`silencedetect=n=-90dB:d=0.3` finds nothing, the last half second included); no speech audible in the music or effect files (`transcribe.py` on each, gain raised until audible; a recognised word is a listen item, a FAIL only if a person hears speech: Whisper wrote "You" on `hit.wav` and one sentence looped 12 times on `pad.wav`, ep03 r2–r3) |
 | Shot list | after any re-cut, every shot with its length (`ffmpeg -vf "select='gt(scene,0.3)',showinfo"`); a shot under about 0.5 s is a ghost frame until judged |
 
-Report, not gate: cuts a minute (scene score over 0.3) and big picture changes a minute (over 8 % of the frame in a half-second step; method in `research/reference-Jktv8v8ICpk.md` §8), beside the faceless reference, an incident story and so a comparison rather than a target for other formats (0.1 and about 4), and ep02 (4.7 and 12).
+## 1a. Measured checks (gates)
+Each tool writes a JSON result (`--out episodes/<ep>/reviews/qa-<round>/<tool>.json`) and exits 0 PASS, 1 FAIL, 2 NOT CHECKED. Paste each status and its spans into the report.
+```
+Q=episodes/<ep>/reviews/qa-<round>; mkdir -p $Q
+python3 tools/qa/static_holds.py $V --out $Q/static_holds.json
+python3 tools/qa/loudness.py $V --out $Q/loudness.json
+python3 tools/qa/spoken_words.py episodes/<ep>/script.md /tmp/transcript.txt --out $Q/spoken_words.json
+python3 tools/qa/pace.py $V --words <words.json from transcribe.py --words> --out $Q/pace.json
+python3 tools/qa/ratchet.py check $Q/*.json
+```
+| Check | Pass |
+|---|---|
+| Static holds | nothing still for 4 s or more (`static_holds.py`; planned rests are still and stay under 4 s). Holds of 2 to 4 s are listed and judged against the beat. Open frames 0.5 s either side of each listed span before calling it. |
+| Near-empty frames | nothing near-empty (80 % of the frame in one flat tone) for 1 s or more; the 0.6 s lead-in is under that |
+| Text size | every word a viewer must read is at least 30 px cap height at 1080p; more for a call to action, as the brief sets (`tools/qa/text_size.md`; no script yet, so by hand or NOT CHECKED) |
+| On-screen reading | the words on screen, read twice a second by OCR, match the storyboard's on-screen lines and data table (`tools/qa/text_size.md`; same status as text size) |
+| Spoken words | no run of 4 or more script words missing or replaced in the transcript (`spoken_words.py`); "number, listen" runs and the rest of its list go to the human listen |
+| Loudness | as the §1 row |
+| Ratchet | `ratchet.py check` exits 0: no ratcheted measure is worse than the channel's best. A drop passes only with the operator's note in their words, recorded by `ratchet.py record --note`; the agent never writes that note. After the episode passes, record it: `ratchet.py record $Q/*.json --episode <ep>`. |
+
+The longer-hold rule stays alongside: a blurred `freezedetect` hold over 8 s is a FAIL even where something small moves in it.
+
+## 1b. Reference baseline (gate)
+Compare the render's `pace.json`, longest still, smallest must-read text and when the music enters with the ranges in `docs/reference-baseline.md`, for the first 60 s and the whole film, using only references of the episode's format. Outside a range = FAIL unless the operator signs off in the report. While the baseline is unmeasured, this row is NOT CHECKED.
+
+Also put the first 60 s beside one reference of the same format: frames at 0, 5 and 10 s side by side, with picture changes a minute, voice words a minute, when the music enters and text size for both. This side-by-side is part of the gate, judged against the same ranges.
 
 ## 2. Contact sheet across the whole runtime
 ```
@@ -48,10 +75,7 @@ Look for: one focal point per frame, legibility at 360 px wide, props consistent
 List every on-screen value that recurs (hashes, ciphertexts, counts, names, the running example) with its shots and the one file that owns it (`data.ts`). Each must match its fact or recorded computation exactly. Ep01's recap showed a ciphertext from an older key while the lockbox shot showed the current one; neither a contact sheet nor a reviewer caught it until the values were listed side by side.
 
 ## 4. Second-model visual review
-Pick key frames from the built timing (`video/src/episodes/<id>.json`): each shot's first full reveal and its 70 % frame, plus every act boundary. Two independent passes by a model family other than the one that built the video, never shown your own verdict. Claude built it → the Codex commands below (Codex down → `opencode run` with a Cerebras or NVIDIA vision model, or the gate stays closed). Another family built it (DeepSeek, …) → the Codex commands first, Claude second; never GLM-5.3, the DeepSeek script route, which cannot read images (`research/reviewer-calibration-2026-11-15.md`). Codex built it → the same prompts through Claude, which reads the frame files itself:
-`claude -p "Read each of these frames: <abs paths>. <same prompt>. Print the complete review, every frame number with defects or clean." --model claude-opus-5-5 --allowedTools Read < /dev/null > <same report path>` (prompt before `--allowedTools`, which is variadic and swallows it otherwise)
-Neither family available → §4 is incomplete and the gate stays closed.
-**Calibrate before trusting** a new or changed reviewer prompt (here or in `script-review` §3a): run it once on a known-good input, which must pass, and an unrelated one, which must fail; record both in the report. The GrowthX studio's judges passed their original and failed an unrelated reel (`research/study-youtube-video-creation.md` §3).
+Pick key frames from the built timing (`video/src/episodes/<id>.json`): each shot's first full reveal and its 70 % frame, plus every act boundary. One reviewer from a model family other than the one that built the video runs the passes below, never shown your own verdict. Which reviewer, the exact Claude command for frames, calibration and what to do on a usage limit: `docs/ops.md` §1. No reviewer available → §4 is incomplete and the gate stays closed.
 - **Spatial polish:** `tools/review/second-look.sh $V <frames…> > episodes/<ep>/reviews/second-look-<round>.md` (clipping, centring, labels, arrows; several minutes, run in the background). The helper exits nonzero if Codex fails or any frame number is missing from the review; then rerun it, never disposition a partial file.
 - **Explanation and pacing:** write the frames to a folder and run
   `codex exec --skip-git-repo-check -s workspace-write -C <repo> "Review these frames of episodes/<ep> against brief.md, storyboard.md and .claude/skills/art-direction/references/directions/<the direction brief.md names>.md: does each frame show the mechanism its narration describes, keep each prop's meaning and colour, and change every beat? Write findings with frame numbers to episodes/<ep>/reviews/video-visual-<round>.md; print DONE." --image <abs paths, comma-separated> < /dev/null`
@@ -75,8 +99,16 @@ Wait for all three files; a missing or truncated review is a FAIL of §4, not an
 
 A shot pass covers only §5 and §2's caption check for that shot; it never stands in for the episode gate.
 
+## 6. After publishing: real viewers
+At 24 hours and at 7 days after the episode goes live, read YouTube Studio for it (the operator's account; read only) and add to `LEARNINGS.md` under a heading "<ep> viewers (24 h)" or "(7 d)":
+- views, impressions click-through rate (CTR), average view duration and average percentage viewed;
+- the retention curve's drop points: every place the curve falls more steeply than around it, with its timestamp and the share of viewers lost there, plus the share still watching at 0:30 and at the halfway mark;
+- the cold viewer's predicted click-aways from the last `reviews/viewer-*.md` before publishing, each marked hit (a real drop within 15 s of it) or miss, and every real drop nobody predicted;
+- hit rate per reviewer: for each reviewer that predicted click-aways (the cold viewer, the cold listener in `script-review`), hits divided by predictions, and the running total across episodes. A reviewer whose running hit rate stays low gets its prompt changed and recalibrated (`docs/ops.md` §1), not more weight.
+Studio numbers that cannot be read are written as NOT CHECKED with the reason; never estimate them.
+
 ## Verdict
-PASS only when §1 passes; §2 has no FAIL (holds, medium runs, captions at 360 px); §4's reviews are complete and each finding is fixed or rejected with a reason; §5 passed for every shot changed since the last episode PASS, §3 has no mismatch, and every finding has a disposition. Any fix → re-render → new checksum → a scoped round: every check touching the changed spans or a shared component they use, plus one whole-file audio and black pass. Give the reviewer the changed spans and the accepted deviations so it does not re-raise them (ep02's scoped round 3 took 10 minutes). Find the changed spans with a per-frame difference between the old and new cut rather than from the builder's notes; ep03 r4 found every span that way and judged against the script and contract. Fix should-fix findings in the same round as the blockers, not only the blockers: ep03 v3 failed r3 on two holds with eleven should-fix items, and v4 closed all of them in one round and passed r4. A re-render voids every earlier QA verdict and checksum, so the package gate waits for the new round.
+PASS only when §1 passes; every §1a row passes (or carries the operator's sign-off) and the ratchet holds; §1b is inside the baseline or signed off; §2 has no FAIL (holds, medium runs, captions at 360 px); §4's reviews are complete and each finding is fixed or rejected with a reason; §5 passed for every shot changed since the last episode PASS, §3 has no mismatch, and every finding has a disposition. Any fix → re-render → new checksum (`docs/ops.md` §3) → a scoped round, the §1a tools rerun on the whole file: every check touching the changed spans or a shared component they use, plus one whole-file audio and black pass. Give the reviewer the changed spans and the accepted deviations so it does not re-raise them (ep02's scoped round 3 took 10 minutes). Find the changed spans with a per-frame difference between the old and new cut rather than from the builder's notes; ep03 r4 found every span that way and judged against the script and contract. Fix should-fix findings in the same round as the blockers, not only the blockers: ep03 v3 failed r3 on two holds with eleven should-fix items, and v4 closed all of them in one round and passed r4. A re-render voids every earlier QA verdict and checksum, so the package gate waits for the new round.
 
 ## NEVER
 - Never report a piece as cropped from one sampled frame. Take frames 0.5 s before and after: if it is still moving it is mid-transition, not cropped. On ep01's paper cut two of the three "worst crops" (a machine with its input card showing "mar", a card at the left edge) were pieces sliding in; the operator caught it, and one fix had already changed camera work nobody objected to.

@@ -1,6 +1,8 @@
 # Cut-paper stop motion
 
-Settled with the operator on the ep01 redo, 2026-11-11. Evidence: `episodes/ep01-password-storage-r2/package/` (`thumb-peel.png`, `styleframes/compare.jpg`, `styleframes/paper-test-v4.mp4`, the accepted motion reference; `paper-test-v2-rejected.mp4` is what not to do).
+**Reference only for season 1.** Screen-first is the locked season look (`art-direction` §0). Use this file for its lessons and failures; an episode uses this look only after an explicit operator decision recorded in `LEARNINGS.md`, never for one episode.
+
+Settled with the operator on the ep01 redo, 2026-11-11. Evidence: `episodes/ep01-password-storage-r2/package/` (not in repo) (`thumb-peel.png`, `styleframes/compare.jpg`, `styleframes/paper-test-v4.mp4`, the accepted motion reference; `paper-test-v2-rejected.mp4` is what not to do).
 
 ## 1. Idea
 Everything is cut paper lying on a table, shot from above and moved by hand a step at a time. The operator's reference: "Shaun the Sheep", meaning the handmade frame-by-frame feel of stop motion, not clay puppets.

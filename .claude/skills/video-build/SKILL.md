@@ -20,8 +20,8 @@ ffprobe -v error -show_entries format=duration -of csv=p=0 $RAW   # must exist a
 ```
 Loudness, two passes (the raw mix lands near −22 LUFS). `TP=-2.0` keeps the AAC-encoded file under −1 dBTP; ep02's −1 dB target measured −0.8 after encoding:
 ```
-ffmpeg -i $RAW -af loudnorm=I=-16:TP=-2.0:LRA=11:print_format=json -f null - 2>&1 | tail -12
-ffmpeg -i $RAW -c:v copy -af loudnorm=I=-16:TP=-2.0:LRA=11:measured_I=<input_i>:measured_TP=<input_tp>:measured_LRA=<input_lra>:measured_thresh=<input_thresh>:offset=<target_offset>:linear=true -c:a aac -b:a 192k $FINAL
+ffmpeg -i $RAW -af loudnorm=I=-14:TP=-2.0:LRA=11:print_format=json -f null - 2>&1 | tail -12
+ffmpeg -i $RAW -c:v copy -af loudnorm=I=-14:TP=-2.0:LRA=11:measured_I=<input_i>:measured_TP=<input_tp>:measured_LRA=<input_lra>:measured_thresh=<input_thresh>:offset=<target_offset>:linear=true -c:a aac -b:a 192k $FINAL
 ```
 Hand `$FINAL` to `video-qa`.
 
@@ -32,10 +32,10 @@ Hand `$FINAL` to `video-qa`.
 - **Narration is pre-mixed.** Remotion's mixer writes a full-length WAV per group of overlapping clips (~120 MB each) and filled the disk.
 - **Cleanup:** every bundle copies `public/` (~150 MB) into `$TMPDIR`. Note `ls -d $TMPDIR/remotion-webpack-bundle-*` before the render and delete only the new ones after it; also test MP4s and still folders. `stills.mjs` removes its own bundle.
 - Iterate with stills: `tools/boat/still.sh $ID <frame> <out.png>` (remote, about 3 s); locally only while Boat is down (`npx remotion bundle src/index.ts --out-dir=/tmp/xbundle` once, then `npx remotion still /tmp/xbundle $ID f.png --frame=N --gl=angle`). Render a shot or `--frames=a-b` range only when motion must be judged.
-- **Stills before render.** Before any full render, send the operator contact sheets of settled stills per scene group (Slack DM), and render only on their word (operator, 2026-11-15: "is it not possible for me to see before rendering? it takes time then i give feedback"). If they ask to scrub it live, start Remotion Studio (`cd video && bunx remotion studio src/index.ts --port 3123 --no-open`), tell builders to leave it alone, and stop it before the render (operator: "render it. and close the studio"). On ep03 this made one render one round.
+- **Stills before render.** Before any full render, show the operator the settled stills per scene group on the review page (`storyboard` §6), and render only on their word (operator, 2026-11-15: "is it not possible for me to see before rendering? it takes time then i give feedback"). If they ask to scrub it live, start Remotion Studio (`cd video && bunx remotion studio src/index.ts --port 3123 --no-open`), tell builders to leave it alone, and stop it before the render (operator: "render it. and close the studio"). On ep03 this made one render one round.
 - **Build the pilot first** (`storyboard` §1.6): act 1 at finished quality, then stop until the operator has watched it. With no operator in the session, render act 1 (`--frames=a-b`), note its path in `episodes/<ep>/HANDOFF.md` and stop there.
 - **Fix rounds:** show each fix as stills or a short before/after clip; render the full episode once per round, after the fixes are accepted.
-- **One heavy process at a time** on this machine (a render, frame extraction, a Codex review). Builders take stills on the remote sandbox (`tools/boat/still.sh`, about 3 s); the lead (whoever owns the episode; a single agent is its own lead) does the one full render on the laptop (Boat full renders failed three times on dropped SSH). Never start a second render to rerun a first: check the remote for a running one (`BOAT_KILL_STALE=1` clears it). Every builder brief carries these rules plus: no local stills while Boat is up, one `tsc` at the end, and never end a turn with a render, review or extraction still running (operator, 2026-11-12: "stop tasks. they are causing my laptop to lag"; 2026-11-15: "why are you having 5 shells and 1 monitor?"). A background shell stops at 10 minutes: a render plus mastering fits; anything longer runs under `nohup` with one watcher.
+- **One heavy process at a time** on this machine (a render, frame extraction, a Codex review). Builders take stills on the remote sandbox (`tools/boat/still.sh` (not in repo), about 3 s); the lead (whoever owns the episode; a single agent is its own lead) does the one full render on the laptop (Boat full renders failed three times on dropped SSH). Never start a second render to rerun a first: check the remote for a running one (`BOAT_KILL_STALE=1` clears it). Every builder brief carries these rules plus: no local stills while Boat is up, one `tsc` at the end, and never end a turn with a render, review or extraction still running (operator, 2026-11-12: "stop tasks. they are causing my laptop to lag"; 2026-11-15: "why are you having 5 shells and 1 monitor?"). A background shell stops at 10 minutes: a render plus mastering fits; anything longer runs under `nohup` with one watcher.
 
 ## 2. Timing
 Voice is the clock: beat = VO seconds + pause (defaults 0.45 s beat, 0.7 s scene, 1.2 s act, 0.6 s lead-in, 2.5 s episode tail; `build-episode.ts`; a beat's `pause` and the storyboard's `pauseScene` / `pauseAct` replace them). Never stretch audio. Animate on beat frames (`tools/beat-frames.py`); a component with more elements than beats must pace the rest after the last beat, or it stalls.
@@ -58,15 +58,15 @@ Text, numbers, hashes and code render from data; images only for authentic evide
 Every third-party asset (model, texture, footage, Lottie source, sound effect, music) gets an entry in `video/public/assets/credits.json` when it is added: title, author, URL, licence, what was changed. Ep02's package gate blocked on `tick.wav` and `hit.wav`, unrecorded since ep01. The file stays local (operator rule); `package-review` copies the used entries into its committed report.
 
 ## 5. Sound
-From the GrowthX studio's rules (`research/study-youtube-video-creation.md` §3, items 7–8); `video-qa` §1 checks the countable ones.
-- One sound family per film, and the sound matches the move it marks (a tick for a count, a hit for a reveal); how many effects: `storyboard` §2.
-- Effects sit at least 6 dB over the music, or they are not heard; with four or more kinds of effect, no single one is more than a quarter of all effects (with fewer kinds the rule cannot hold: ep03's hit-and-tick palette was waived twice, QA r2–r3).
-- Music drops out at the story's turns (the reveal, an act start) and comes back on the line that relaunches it.
-- Never digital silence: a breath rest silences the voice, not the mix; a quiet bed or room tone stays under it. Generate the bed to the built episode length plus 1 s, again after any re-time, and let it fade to the last frame: ep03 v3's 363.24 s bed under a 363.53 s cut left 0.54 s of silence at the end (QA r3 S9).
-- Dips are 50 % of the bed, not 30 %: 30 % of a 0.10 bed measured about −58 dBFS, silent on a phone (ep03 QA r1).
+Sound follows `sound-design`: its sound plan, written at storyboard time, sets the music per act, the hook sting and a sound on every visual action, and its sound gate must print READY before anyone hears a mix. The flat generated bed at 0.12 (`tools/make_pad.sh`) is retired.
+- Levels on the percent-of-voice scale: 75 % = 13.5 dB under the voice, 45 % = 18 dB under, held stretch by stretch, every change a ramp; the music dips about 5 dB under each movement sound; effects mostly about 26 dB under the voice.
+- Licensed music and effects only, each logged with its source and licence (`sound-design` §4, `credits.json` in §4 here).
+- Music and effects are mixed as one stem and placed as `video/public/<id>/pad.wav` with `"musicVolume": 1` (`sound-design` §5), because the player here plays music at one flat volume.
+- Master to −14 LUFS integrated, true peak −1 dBTP: in §1's two `loudnorm` commands use `I=-14`, and check the words in the final mix for clarity (`sound-design` §6).
+- Never digital silence: room tone stays under a dropped-out stretch, and the stem is rebuilt to the episode length after any re-time.
 
 ## 6. Lead review (before any full render)
-The lead runs this on every builder's scenes, and a single agent on its own. Pull stills (remote `tools/boat/still.sh`, else local `npx remotion still`) at every beat's last frame, and at each action's frame plus 0.5 s before and after it. Look at each full size and again at 360 px wide. Reject on sight (each was rejected on ep01 or ep02; `LEARNINGS.md` operator feedback and ep02 build sections, `episodes/ep02-otp-2fa/reviews/video-qa-r1.md`):
+The lead runs this on every builder's scenes, and a single agent on its own. Pull stills (remote `tools/boat/still.sh` (not in repo), else local `npx remotion still`) at every beat's last frame, and at each action's frame plus 0.5 s before and after it. Look at each full size and again at 360 px wide. Reject on sight (each was rejected on ep01 or ep02; `LEARNINGS.md` operator feedback and ep02 build sections, `episodes/ep02-otp-2fa/reviews/video-qa-r1.md` (not in repo)):
 - a marker in any colour but brick red, or amber on anything but the password;
 - a clipping or phone cropped by the camera to enlarge text; any prop not whole with table around it;
 - text overlapping another value (a used value must leave first);

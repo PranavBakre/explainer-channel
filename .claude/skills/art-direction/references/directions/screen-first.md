@@ -2,7 +2,9 @@ Model: claude-opus-5-5
 
 # Screen-first
 
-Settled with the operator on ep03, 2026-11-15, after the cut-paper look read as dated. Evidence: `episodes/ep03-passkeys/look2/` (`01–06` stills, `sheet.jpg`, `old-vs-new.jpg`, `look2-example.mp4`, the approved motion reference; README there), code `video/src/proto/look2/`. First full use: `episodes/ep03-passkeys/storyboard.md`, cut `out/ep03-passkeys-v4.mp4` (`reviews/video-qa-r4.md`).
+**Season-1 locked default** (`art-direction` §0): every season-1 episode uses this look. It is improved inside this file, never swapped per episode; a different look needs an explicit operator decision recorded in `LEARNINGS.md`.
+
+Settled with the operator on ep03, 2026-11-15, after the cut-paper look read as dated. Evidence: `episodes/ep03-passkeys/look2/` (not in repo) (`01–06` stills, `sheet.jpg`, `old-vs-new.jpg`, `look2-example.mp4`, the approved motion reference; README there), code `video/src/proto/look2/`. First full use: `episodes/ep03-passkeys/storyboard.md` (not in repo), cut `out/ep03-passkeys-v4.mp4` (`reviews/video-qa-r4.md`).
 
 ## 1. Idea
 Real-looking screens in one dark studio, filmed by a camera that travels between them: your phone, the other side's device, the thing the phone makes inside itself, and a browser window for each source. The operator approved the proof frames and the example track ("yes, rebuild the episode in this look"), with one warning: "our episode 1 v1 had a similar style of tables that i disliked" (see "What it must not become").
@@ -27,20 +29,20 @@ The field never changes colour; state is carried by objects (a teal disc, a bric
 | Chapters / ways around | full-screen doors, only when they are the subject (operator on ep03 v2: "why are you constantly showing the doors?"): door n opens with one object and one short label inside, earlier doors already open beside it; the camera goes through the opening into the act | built ep03 v4; portal open |
 | Evidence from a source | a browser window sliding in over the set, tab title = source tag, unaltered capture, brick-red marker | proved (frame 06) |
 | A list of rules / what to do | each action done on the device in turn (the setting switched, the call declined), never a checklist | storyboarded ep03 |
-| Real hardware, a place, a number with scale | open | open |
+| Real hardware, a place, a number with scale | open; a headline gap is shown on a scale that feels as large as it is (a timer against a calendar, not log bars; `storyboard` §1.2) | open |
 
 ## 5. Material and process
 Vector screens (SVG/DOM): a phone with bezel, status bar and address bar; forms with aligned labels and fields; system sheets with drawn glyphs. A page's content fills the screen: ep03's "Try another way" and code pages left the lower half of the phone blank and were re-laid out with the block just above centre. Soft shadows under objects, light from inside an open door, an engraving glint. No paper, texture, grain or table. Screens never copy a real product's UI or logo; brand tiles are generic (`grocery`).
 
 ## 6. Motion
-- One continuous world: every station has a fixed position; the camera moves between them (ease-in-out, log-scale zoom, 0.7–1.2 s). A move is an action: it starts on its word and stops. No drift, no idle animation.
+- One continuous world: every station has a fixed position; the camera moves between them (ease-in-out, log-scale zoom, 0.7–1.2 s). A move is an action: it starts on its word and stops. No drift, no idle animation; a rest stays fully still for up to 4 s, then something moves or the shot cuts (`storyboard` §1.2, *channel*).
 - At rest the camera shows whole devices: one whole-phone framing (phone ~86–90 % of frame height), never a cropped close-up preset. Ep03's address-bar, form and sheet presets cut the phone in every group that used them; they were removed, and type inside the page was enlarged instead.
 - One action per narrated change, landing on its word; then everything holds through the rest (breath ~1.6 s, scene tail ~2.2 s).
 - No fades to hide neighbours: place stations so every framing excludes them. No cuts unless the reason is written in the storyboard's cut list; scene joins are invisible; doors are entered by pushing through the opening.
-- Anti-slideshow: never cut to a new centred object; lift comparisons and evidence out of the set and put them back; no hold over ~8 s outside evidence.
+- Anti-slideshow: never cut to a new centred object; lift comparisons and evidence out of the set and put them back; nothing still for 4 s or more and no hold over 8 s, evidence included (`storyboard` §1.2).
 
 ## 7. Text on screen
-Only UI text the screen would really show, plus owned labels (door labels, tab titles). No captions, headings or words floating over the field. The claim of a beat is in a large element when it is spoken: a pulled-out pill (128 px), door labels (58 px), a lifted value. Phone UI copy at the whole-phone framing is 19–27 px, about 5 px at 360 px wide (ep03 QA r3 S6, accepted by the lead): it is never the claim, and a claim-bearing control (`Sign in with a passkey`, `Lost your phone?`) is enlarged inside the page or lifted out, not pushed into (the push-in presets broke whole objects, §6). Open: claim-bearing phone UI is still unreadable at 360 px.
+Only UI text the screen would really show, plus owned labels (door labels, tab titles). No captions, headings or words floating over the field. The claim of a beat is in a large element when it is spoken: a pulled-out pill (128 px), door labels (58 px), a lifted value. Anything the viewer must read is at least 30 px letter height at 1080p (`storyboard` §4). Phone UI copy at the whole-phone framing may stay at 19–27 px only as background the narration does not claim (ep03 QA r3 S6 accepted it; the independent review scored legibility 2 of 5). A claim-bearing control (`Sign in with a passkey`, `Lost your phone?`) is lifted out of the phone and grown to at least 30 px letters, or the page is re-laid out so it reaches that size, not pushed into (the push-in presets broke whole objects, §6).
 
 ## 8. Real captures and footage
 The capture PNG unaltered inside a plain browser window (light chrome, one tab whose title is the exact source tag); no address bar when a source address would break a channel rule (NIST's), and then none on any window of the episode. Marker: brick red at 0.42 opacity, multiply, behind the phrase, rectangles from `clippings.json`. Laid in one action, only the marker moves (the dimmed set behind it too: ep03 v4's phone swap under the NIST window, QA r4 N1), ≥ 2.5 s after the marker, ≤ 12 s on screen. A window slides in over a composed whole-object frame, never over a cropped phone. Wrap every clipping to a common width before sizing the windows: one long line rendered at a third of the others' size, and ep03's NIST clipping was re-wrapped to two lines as an image (`clippings.json` rectangles redone), never retyped. A capture whose own colours break §2 (ep03's FIDO capture: eight amber shields on teal, QA r3 S1) is the operator's call: accept it as the source's figure or recapture a crop of the marked lines. Open: a capture's own type is unreadable at 360 px; only a crop of the marked phrase fixes it.
@@ -61,6 +63,7 @@ The operator rejected these on ep01 (`episodes/ep01-password-storage/reviews/qa/
 - boxes joined by arrows (a flow diagram), including "phone → server → thief" as labelled boxes;
 - a sentence over a small diagram; any frame that is text alone;
 - a cut from one centred object to the next (keynote).
+**Aim for instead** (`art-direction`, Aim for): a 3Blue1Brown-style mechanism shot (the one changing value lifted out of the phone, enlarged and lit, the set dimmed behind it); Kurzgesagt scale (a gap drawn as size or time you can feel); Fireship density (real screens at readable size, something new every few seconds, a sound on each); a ByteByteGo-style journey drawn as devices handing a request along, never boxes.
 Mute test for every frame: "if I mute the narration, is something happening to an object, or am I reading?" If reading, it is one of the above.
 
 ## 10. How it is built
