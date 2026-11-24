@@ -16,6 +16,7 @@ Start only after the topic is approved (`docs/season-*.md` or the operator's pic
 - Source: <title> — <URL> (opened <date>) · Quote: "<the sentence that says it>"
 - VERIFIED | VERIFIED (computed: <command>) | UNVERIFIED (<why: secondary only, paywalled, author's own inference>)
 ```
+IDs are unique and never reused: a dropped fact keeps its number, marked WITHDRAWN. A fact cites only this sheet or a file path that exists and holds the cited id (ep03's F27 cited ep01 F46/F49, which live only in `ep01-password-storage-r2/factsheet.md`). Every quote appears verbatim in a capture saved under `sources/` (page text, or an excerpt file with URL and date opened); where a PDF's columns split the sentence, save the passage as its own excerpt. Capture the whole page with page numbers, not only the excerpt, so quotes can be re-verified later (ep03). Convert HTML with `textutil -inputencoding UTF-8`; without it curly quotes and dashes turn to mojibake and the quote check below fails.
 An attribution can be VERIFIED: "Researchers at <named source> concluded the passwords were encrypted with ECB" is VERIFIED if that source says so; "Adobe used ECB" is not. Your own reasoning from facts is never a fact; put it in the script as explanation, labelled as such, or cut it.
 Scope is a first-class field. The costly ep01 failures were all scope, not falsehood: a benchmark for 8-character lowercase-plus-digit passwords narrated as "every short password"; NIST "SHALL NOT" softened to "should not"; a researcher's inference ("allegedly ECB") presented as the company's admission.
 
@@ -24,6 +25,7 @@ Standard or spec text → original paper or tool output → the company's or reg
 
 ## Compute instead of quoting
 Hashes, ciphertexts, keyspaces, percentages and durations shown on screen are computed locally; paste the exact command and parameters (key, IV, mode, rate, rounding) under the fact so any later shot can recompute the same value. Randomised outputs (a salted Argon2 hash) are reproducible only from the saved salt: store the salt, or mark the value as one example run and never compare its bytes across shots.
+Demo keys and other secret-looking material: keep only the public values the episode shows, and never write a private key into the repo (scanners flag it; someone reuses it). Pipe the private half away: `openssl ecparam -name prime256v1 -genkey -noout | openssl pkey -pubout -outform DER | base64`; a changed value means a fresh pair, recorded with this command.
 
 ## When the script needs something the sheet lacks
 1. Find and open a primary → append a new `F<n>` (next free number).
@@ -32,6 +34,20 @@ Hashes, ciphertexts, keyspaces, percentages and durations shown on screen are co
 **Sources disagree or a newer one supersedes:** keep the ID, add both sources with dates, state which wins and why (newer data, primary over secondary); if it cannot be settled, mark UNVERIFIED and narrow the claim to what both support.
 
 When a fact changes, run the revision sweep in `script-writing` §5; it covers props, TSX literals, Lottie, voice, captions and the description.
+
+## Check before the script starts (and after every new fact)
+Prints duplicate ids and every quote missing from `sources/`; the script starts only when it prints `duplicate ids: []` and nothing else. Then open each cross-episode path the sheet cites and find the cited id in it.
+```
+python3 - episodes/<ep> <<'EOF'
+import re,sys,pathlib,collections
+e=pathlib.Path(sys.argv[1]); n=lambda s:' '.join(re.sub('[“”]','"',re.sub('[‘’]',"'",s)).split()).lower()
+fs=(e/'factsheet.md').read_text().splitlines(); src=n(' '.join(p.read_text(errors='ignore') for p in (e/'sources').rglob('*') if p.is_file()))
+print('duplicate ids:',[i for i,c in collections.Counter(re.findall(r'^\*\*(F\d+)\.','\n'.join(fs),re.M)).items() if c>1])
+for l in (n(l) for l in fs if l.startswith('- Source:')):
+  for q in re.findall(r'"([^"]+)"',l.split('quote',1)[-1]):
+    if any(f.strip(' .') not in src for f in re.split(r'\.\.\.|…',q) if f.strip(' .')): print('not in sources/:',q[:90])
+EOF
+```
 
 ## Also write
 - **Misconceptions** (3–5): the wrong belief, who holds it, the fact that corrects it.
