@@ -1,11 +1,64 @@
+# OS / editor
+.DS_Store
+*.swp
+
+# Dependencies and environments
 node_modules/
 tools/tts/.venv/
-tools/tts-models/
-episodes/*/voice/**/*.wav
-episodes/*/out/
-video/public/ep*/
-*.mp4
 __pycache__/
+*.pyc
+.env
+.env.*
+
+# Models
+tools/tts-models/
+
+# Rendered video and audio, anywhere
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+
+# Episode artifacts: keep the text (scripts, briefs, reviews, storyboards, json),
+# drop renders, frames, evidence stills, captures and voice takes
+episodes/*/out/
+episodes/**/*.png
+episodes/**/*.jpg
+episodes/**/*.jpeg
+episodes/**/*.webp
+episodes/**/*.gif
+episodes/**/*.pdf
+episodes/**/*-evidence/
+episodes/**/integration-evidence/
+episodes/*/voice*/lines/
+episodes/*/voice*/words/
+episodes/*/sources/captures/
+
+# Research reference frames
+research/**/*-frames/
+
+# Remotion: generated per-episode public dirs and large asset caches
+video/public/ep*/
 video/public/assets/shots/
 video/public/assets/stills/
 video/public/assets/footage/
+video/out/
+video/.remotion/
+
+# Remote render (Boat) run state
+tools/boat/logs/
+tools/boat/run.log
+tools/boat/workers
+tools/boat/.last-sync*
+
+# Run state / scratch
+*.log
+*.status
+.progress
+**/reviews/.last-*
+*.tmp
