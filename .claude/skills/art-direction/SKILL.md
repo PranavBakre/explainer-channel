@@ -13,10 +13,10 @@ The ep01 redo went from script to shots with no art-direction step. Builders mad
 Read only the file for the direction in play (never a second one; its anchors leak):
 | Direction | File | State |
 |---|---|---|
-| Cut-paper stop motion | `references/directions/cut-paper-stop-motion.md` | proved in stills and a motion test (ep01 redo, 2026-11-11); dropped on ep03 v2 as dated (operator, 2026-11-15: "this UI has gotten old now. we need to innovate") |
-| Screen-first | `references/directions/screen-first.md` | proved in stills and an example track (ep03 look2, 2026-11-15); full episode ep03 v4 (QA r4 PASS; operator: "i like the new video") |
-| Painted props, 3D | `references/directions/painted-props-3d.md` | shipped in ep01 r1–r7; ranked last blind; kept as a record of what it costs |
-A new episode uses the settled direction (screen-first since 2026-11-15) unless the operator asks for another. Go on to §1 only for a new direction or when the operator rejects the current one.
+| Cut-paper stop motion | `references/directions/cut-paper-stop-motion.md` | reference only; proved in stills and a motion test (ep01 redo, 2026-11-11); dropped on ep03 v2 as dated (operator, 2026-11-15: "this UI has gotten old now. we need to innovate") |
+| Screen-first | `references/directions/screen-first.md` | **season-1 locked default**; proved in stills and an example track (ep03 look2, 2026-11-15); full episode ep03 v4 (QA r4 PASS; operator: "i like the new video") |
+| Painted props, 3D | `references/directions/painted-props-3d.md` | reference only; shipped in ep01 r1–r7; ranked last blind; kept as a record of what it costs |
+**One look for the season.** Screen-first is the season-1 default and is locked: every episode uses it, and it is not changed per episode or by a lead's judgement. The look went painted 3D → cut paper → screen-first in about two weeks, and ep01 mixed four styles in one video; each restart threw away its components. The other directions stay as references (their failures and fixes are evidence), never as an option for one episode. A new look needs an explicit operator decision, recorded in `LEARNINGS.md` under operator feedback with their words and date, before §1 starts; a look that weakens inside the season is fixed inside screen-first (its §10 and §9), not replaced.
 
 ## 1. Find the gap before proposing a look
 - Put the video where it competes: a contact sheet of its own frames (`ffmpeg -vf "fps=1/14,scale=480:-1,tile=6x7"`) beside the thumbnail it will ship with and the house sheet of competing thumbnails (`dumbledore-creative` §1–2).
@@ -51,7 +51,23 @@ When the operator accepts the test, write `references/directions/<name>.md` with
 10. How it is built: components and helpers, assets, prompts that worked, build gotchas of this look, and the checks.
 Then add its row to §0, a line to `LEARNINGS.md` under operator feedback, and name it in the episode's `brief.md`.
 
+## 5. Component library: reuse before building
+Approved shots and components are listed in `video/src/components/LIBRARY.md`. An entry is added when the operator approves a shot or a component ships in a passing episode, with: **name** (the export and its file), **what it shows**, **when to use** (the mechanism and the beat it fits, and when not to), and **the episode it shipped in**. Before building anything new for a brief or storyboard, check the library: an approved entry that shows the mechanism is reused (restyled only through the direction's tokens); a new piece is built only when none fits, and the storyboard row says which entries were checked and why they did not fit. Remove or mark an entry when the operator rejects it, so the library holds only what to aim for. Ep03's builders each wrote private copies of door reveals, laptop pages and the thief layer (`LEARNINGS.md`, ep03 rebuild); the library is the shared copy.
+
+## Aim for (next to the NEVER list)
+Rules here mostly say what failed. These are frames to aim at; take the idea, never copy the art:
+- **3Blue1Brown-style mechanism shots:** one mechanism isolated on a dark field, the part that changes enlarged and lit, everything else dimmed, the change shown continuously rather than cut to.
+- **Kurzgesagt:** one big object carrying the idea, scale shown as size (a tiny thing beside a huge one), bold flat colour with one accent, and a sound on every move.
+- **Fireship:** fast, dense, real code and real screens at readable size, a light line every few seconds, a sound on every visual beat.
+- **ByteByteGo:** a request visibly travelling through a system that is built piece by piece, each part lighting as it is named. In screen-first the parts are real-looking devices and screens, never labelled boxes joined by arrows (`screen-first.md`, What it must not become).
+Before a look option or style frame goes to the operator, put one frame from the closest of these beside it.
+
+## Showing look options
+Style frames, before/after sheets and motion tests go to the operator as one local HTML review page (`storyboard` §6), one card per option, not as images in Slack.
+
 ## NEVER
+- Never change the season's look for one episode, or without an operator decision recorded in `LEARNINGS.md`.
+- Never build a new component before checking `video/src/components/LIBRARY.md`.
 - Never rebuild shots in a new look before a motion test the operator has watched.
 - Never show a generated image as a finished frame, or use one that contains text.
 - Never carry one loud field colour through a whole episode; colour is a state.

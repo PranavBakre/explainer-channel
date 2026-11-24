@@ -1,5 +1,7 @@
 # Painted props, 3D
 
+**Reference only for season 1.** Screen-first is the locked season look (`art-direction` §0). Use this file for its lessons and failures; an episode uses this look only after an explicit operator decision recorded in `LEARNINGS.md`, never for one episode.
+
 The look ep01 shipped in through revision 7. Kept as a record and a working spec; the operator moved to `cut-paper-stop-motion.md` on 2026-11-11.
 
 ## 1. Idea

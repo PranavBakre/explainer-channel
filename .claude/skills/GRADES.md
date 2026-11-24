@@ -1,3 +1,5 @@
+> Frozen 2026-11-24: no new grading rounds; judge skills by the videos they produce (video-qa ratchet, retention). Model: claude-opus-5-5. Reason: `docs/reviews/2026-11-24-video-quality-review.md` §7.
+
 # Round 6 (2026-11-10, video-qa only)
 
 **video-qa: 110/120 (91.7%) · A**, up **3** from Round 5's 107/120 · B. The reviewer exit-status defect is fixed and the Claude image-review invocation now exists. Frame-completeness validation remains weaker than advertised, and one outage branch conflicts with author-family independence. An aggregate A does not waive those issues or certify a rendered episode.
